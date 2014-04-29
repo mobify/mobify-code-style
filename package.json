@@ -1,0 +1,19 @@
+{
+  "name": "mobify-code-style",
+  "version": "0.0.1",
+  "description": "Code style guide and linting tools for Mobify",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mobify/mobify-code-style.git"
+  },
+  "author": "Mobify",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mobify/mobify-code-style/issues"
+  },
+  "homepage": "https://github.com/mobify/mobify-code-style"
+}
