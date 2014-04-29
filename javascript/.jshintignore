@@ -1,8 +1,0 @@
-node_modules
-adaptation/bower_components/**/*.js
-assets/bower_components/**/*.js
-build
-saved
-assets/js/pikabu.js
-assets/js/bellows.js
-assets/fonts/**/*.js
