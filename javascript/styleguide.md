@@ -1,5 +1,6 @@
-General
-Comments
+# General
+## Comments
+
 Please comment code extensively. More comments are always better than fewer comments. Comments should describe the why of your code - not what the code is doing:
 // bad!
 // Shows footer if shopping bag is absent
@@ -9,12 +10,12 @@ var showFooter = !$('.shopping-bag').length;
 // PROJ-12: As per client request, we hide the footer if 
 // the shopping bag is not visible on the page.
 var showFooter = !$('.shopping-bag').length;
+
 Don't commit commented out sections of code back into the repository. Just delete the code. That's what git's history is for!
 
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
  
-JavaScript
-General
+
 Use single quotes
 // good
 $('.footer')
