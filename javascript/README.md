@@ -43,7 +43,7 @@ if($('.blah').length === 7) { ... }
 if(el.nodeType === Node.TEXT_NODE) { ... }
  
 // good
-if($('.blah').length === DEFAULT_ROOM_COUNT) { ... }
+if($('.blah').length === DefaultRoomCount) { ... }
 ````
 
 Declare variables with var
