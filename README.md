@@ -13,6 +13,7 @@ To add javascript linting to your project:
 
 Sample jshint config:
 
+```javascript
 jshint:{
     dev: {
         src: ['src/**/*.js'],
@@ -22,12 +23,15 @@ jshint:{
         }
     }
 }
+```
 
 Sample jscs config:
 
+```javascript
 jscs: {
     options: {
         config: 'node_modules/mobify-code-style/javascript/jscsrc.json'
     },
     src: ['src/**/*.js']
 }
+```
