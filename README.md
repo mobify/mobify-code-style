@@ -31,7 +31,7 @@ Sample jscs config:
 ```javascript
 jscs: {
     options: {
-        config: 'node_modules/mobify-code-style/javascript/jscsrc.json'
+        config: 'node_modules/mobify-code-style/javascript/jscsrc.js'
     },
     src: ['src/**/*.js']
 }
