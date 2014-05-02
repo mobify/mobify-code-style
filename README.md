@@ -20,7 +20,7 @@ jshint:{
         src: ['src/**/*.js'],
         options: {
             force: false,
-            jshintrc: 'node_modules/mobify-code-style/javascript/jshint.js'
+            jshintrc: 'node_modules/mobify-code-style/javascript/.jshintrc'
         }
     }
 }
@@ -31,7 +31,7 @@ Sample jscs config:
 ```javascript
 jscs: {
     options: {
-        config: 'node_modules/mobify-code-style/javascript/jscsrc.js'
+        config: 'node_modules/mobify-code-style/javascript/.jscsrc'
     },
     src: ['src/**/*.js']
 }
