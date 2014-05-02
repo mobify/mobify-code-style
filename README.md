@@ -22,7 +22,7 @@ jshint:{
             // The task fails if force is set to false. With true, it shows the
             // linting errors, but continues
             force: false,
-            jshintrc: 'node_modules/mobify-code-style/javascript/jshintrc.js'
+            jshintrc: 'node_modules/mobify-code-style/javascript/.jshintrc'
         }
     }
 }
@@ -33,7 +33,7 @@ Sample jscs config:
 ```javascript
 jscs: {
     options: {
-        config: 'node_modules/mobify-code-style/javascript/jscsrc.js'
+        config: 'node_modules/mobify-code-style/javascript/.jscsrc'
     },
     src: ['src/**/*.js']
 }
