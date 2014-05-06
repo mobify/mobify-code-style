@@ -2,6 +2,8 @@
 
 A repo to document code standards for different languages and provide tools for linting Mobify projects.
 
+[![NPM version](https://badge.fury.io/js/mobify-code-style.svg)](http://badge.fury.io/js/mobify-code-style)
+
 ## JavaScript
 
 Typically we lint our javascript files using [Grunt](http://gruntjs.com/). We have two javascript linters with different features. [jshint](https://github.com/gruntjs/grunt-contrib-jshint) and [jscs](https://github.com/gustavohenke/grunt-jscs-checker).
