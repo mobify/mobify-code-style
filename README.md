@@ -40,3 +40,5 @@ jscs: {
     src: ['src/**/*.js']
 }
 ```
+## CSS
+Our Client Services team's [CSS Style Guide](/css-handbook/CSS%20Style%20Guide.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
