@@ -191,7 +191,7 @@ var computer = {};
 Use camel-case for function names
 
 ````javascript
-// bad: this is our variable name convention
+// bad: underscores shouldn’t be used in identifiers
 function recalculate_item_height() { ... }
  
 // bad: this is our constructor name convention
