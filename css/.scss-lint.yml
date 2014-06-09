@@ -103,7 +103,7 @@ linters:
         enabled: true
         convention: hyphenated_lowercase
 
-    # Report @extend unless extending a placeholder?  
+    # Report @extend unless extending a placeholder?
     PlaceholderInExtend:
         enabled: true
 
@@ -114,7 +114,7 @@ linters:
 
     # Lint selector depth?
     # Configure: number of levels (number of combinators + 1), e.g.
-    # `ul > li > a` is 3 levels. 
+    # `ul > li > a` is 3 levels.
     SelectorDepth:
         enabled: true
         max_depth: 3
@@ -139,7 +139,7 @@ linters:
     # Configure: `no_space`, `at_least_one_space`, or `aligned`
     SpaceAfterPropertyColon:
         enabled: true
-        style: one_space 
+        style: one_space
 
     # Report lack of space between selector and opening brace?
     SpaceBeforeBrace:
@@ -192,7 +192,7 @@ linters:
             "quotes",
             "counter-reset",
             "counter-increment",
-            
+
             # Positioning
             "position",
             "top",
@@ -200,7 +200,7 @@ linters:
             "bottom",
             "left",
             "z-index",
-            
+
             # Display, layout modes & box model
             "display",
             "overflow",
@@ -336,7 +336,7 @@ linters:
             "user-select",
             "resize",
             "pointer-events",
-            
+
             # Transitions, Animations and Transforms
             "transition",
             "transition-property",
