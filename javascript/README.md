@@ -33,17 +33,17 @@ Don't use magic numbers
 
 ````javascript
 // bad: what was 3 again? Text node? Comment?
-if(el.nodeType === 3) { ... } 
+if (el.nodeType === 3) { ... }
  
 // bad: The reader doesn't know why we chose 7, and if we change 7 with 8, we'll have to carefully search and replace all occurrences
-if($('.blah').length === 7) { ... }
+if ($('.blah').length === 7) { ... }
  
 // good
  
-if(el.nodeType === Node.TEXT_NODE) { ... }
+if (el.nodeType === Node.TEXT_NODE) { ... }
  
 // good
-if($('.blah').length === defaultRoomCount) { ... }
+if ($('.blah').length === defaultRoomCount) { ... }
 ````
 
 Declare variables with var
