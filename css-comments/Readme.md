@@ -23,7 +23,7 @@ Headings in CSS comments should follow the following format:
 // ### Heading Level 3 and beyond
 ```
 
-All headings should be written with ordinary (title case)[http://www.titlecase.com/].
+All headings should be written with ordinary [title case](http://www.titlecase.com/).
 
 For line spacing before and after headings, follow these rules:
 
