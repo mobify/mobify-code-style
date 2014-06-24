@@ -2,9 +2,16 @@
 >
 > We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
 
-# Philosophy
+# Tools & Frameworks
 
-The Customer Success team uses the [SCSS](http://sass-lang.com/) syntax. If you're not familiar with SASS/SCSS, you should take the time to read up on the documentation before you dive into our styles.
+* [SCSS](http://sass-lang.com/)
+* [Autoprefixer](https://github.com/ai/autoprefixer)
+* [Vellum](https://github.com/mobify/vellum)
+* [Spline](https://github.com/mobify/spline)
+* [Stencil](https://github.com/mobify/stencil)
+* [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml))
+
+# Philosophy
 
 We strive to write extremely modular, object-oriented CSS that will work in as many situations as possible. We also know that sometimes our clients' markup does not allow for this. With those two things in mind, we've come up with a strategy for writing CSS that will help us write faster and better the first time while still being maintainable for new people entering a project.
 
