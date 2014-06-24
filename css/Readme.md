@@ -11,18 +11,31 @@
 * [Stencil](https://github.com/mobify/stencil)
 * [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml))
 
-# Philosophy
+# Philosophy & Structure
 
-We strive to write extremely modular, object-oriented CSS that will work in as many situations as possible. We also know that sometimes our clients' markup does not allow for this. With those two things in mind, we've come up with a strategy for writing CSS that will help us write faster and better the first time while still being maintainable for new people entering a project.
+We strive to write modular, component driven CSS with a clear seperation of concerns, structured so they are reuseable and findable. In the end, our code should be easy to maintain by anyone - even for new people entering a project.
 
-A few ways we do this is by following these guidelines:
+These guidelines are a summary of our base principles: Our code bases should all...
 
-* A code-base should look like a single person typed it, even when many people are contributing to it
-* Always try to write global modules first
-* Page specific styles should be reserved for structure, layout, fixes or obvious one-off situations
-* Question every level of nesting deeper than 2 levels. This prevents overly-specific CSS selectors 
+* Be written like a single person typed it
+* Be components first
+* Be page specific only as a last resort
+* Be written with nesting no deeper than 2 levels
+* Be written with selectors that self documents its location
 
-> You may notice that we are heavily influenced by methodologies like [SMACSS](http://smacss.com/) and [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/). If you are not familiar with these concepts then we strongly urge that you familiarize yourself with at least the basics. [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
+Our seperation of concerns is reflected by our style directory structure as follows:
+
+```
+/styles
+    /vellum
+    /components
+    /partials
+    /pages
+```
+
+> You may notice the heavy influence of methodologies like [SMACSS](http://smacss.com/) and [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/).
+>
+> Familiarity with these concepts is cruicial! If you are not, then we urge that you at least learn the basics: [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
 
 # Coding Style
 
