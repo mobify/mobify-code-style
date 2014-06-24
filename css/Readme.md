@@ -2,7 +2,7 @@ This document outlines the way Customer Success team is expected to write their 
 
 # Philosophy
 
-The Customer Success team uses the SCSS syntax. If you're not familiar with SASS/SCSS, you should take the time to read up on the documentation before you dive into our styles.
+The Customer Success team uses the [SCSS](http://sass-lang.com/) syntax. If you're not familiar with SASS/SCSS, you should take the time to read up on the documentation before you dive into our styles.
 
 We strive to write extremely modular, object-oriented CSS that will work in as many situations as possible. We also know that sometimes our clients' markup does not allow for this. With those two things in mind, we've come up with a strategy for writing CSS that will help us write faster and better the first time while still being maintainable for new people entering a project.
 
@@ -13,8 +13,7 @@ A few ways we do this is by following these guidelines:
 * Page specific styles should be reserved for structure, layout, fixes or obvious one-off situations
 * Question every level of nesting deeper than 2 levels. This prevents overly-specific CSS selectors 
 
->You may notice that we are heavily influenced by methodologies like SMACSS and OOCSS. If you are not familiar with these concepts then we strongly urge that you familiarize yourself with at least the basics.
- Andy Hume's "CSS For Grown Ups" is a good place to start. 
+> You may notice that we are heavily influenced by methodologies like [SMACSS](http://smacss.com/) and [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/). If you are not familiar with these concepts then we strongly urge that you familiarize yourself with at least the basics. [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
 
 # Coding Style
 
@@ -25,7 +24,7 @@ The first thing you'll notice when going through Customer Success's CSS is that 
 Please use consistent formatting following these rules:
 * One selector per line
 * Use a soft indent of four spaces
-* Use one space between selector and first bracket
+* Use one space between selector and first bracketa
 * Use one space between property and value after :
 * Always add a semicolon after property value
 * Use single quotes
@@ -165,13 +164,13 @@ Sometimes we break out of this convention to add to the readability of our style
 
 ## Preprocessor/SCSS Guidelines
 
-As mentioned earlier, we use SASS and Compass to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use [SASS](http://sass-lang.com/) and [Compass](http://compass-style.org/) to build our CSS. We have some guidelines when using these guys.
 
 ### General
 
 Limit nesting as much as possible. Assess every single level of nesting that you use. This prevents increasing specificity and impacting performance.
 
-Use Compass CSS3 mixins whenever possible. This will ensure that we're writing the proper vendor prefixing for these properties. It's easier to deprecate these through Compass than it is to come back and rewrite vendor prefixes when necessary.
+Use [Compass CSS3 mixins](http://compass-style.org/reference/compass/css3/) whenever possible. This will ensure that we're writing the proper vendor prefixing for these properties. It's easier to deprecate these through Compass than it is to come back and rewrite vendor prefixes when necessary.
 
 Any $variable or @mixin that is used in more than one file should be placed in the globals/ folder. Others should be placed at the top of the file in which they're used.
 
@@ -245,7 +244,7 @@ ul.button-group li.button {
 
 ## Component Oriented Naming
 
-We follow a very similar structure to the platform team with some minor differences. Our convention uses the BEM philosophy to denote types of classes while still maintaining full use of the cascade. 
+We follow a very similar structure to the platform team with some minor differences. Our convention uses the [BEM philosophy](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
 > While BEM stands for Block, Element, Modifier, we use a slightly different language. Block and Element have meaning in CSS already so we use the terms Component and Subcomponent.
 
@@ -371,9 +370,9 @@ You'll have probably noticed by now that our class names have a variety of prefi
 
 Prefix | Purpose | Scaffold Directory |
 ------ | ------- | ------------------ |
-`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class` | */src/scss/components* |
+`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
 `.t-` | Classes that start with `.t-` are Template and Template Partial specific classes. The names of these classes are most often based on the template names defined by the konf. Example templates might include: `.t-pdp`, `.t-home`, `.t-category`. Example Template Partials might include: `.t-header`, `.t-footer`, `.t-sidebar`. | */src/scss/templates*
-`.x-` | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). | */src/scss/globals/*
+`.x-` | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). [See below](#us-versus-them-aka-theres-an-x-ception-to-every-rule) | */src/scss/globals/*
 `.m-` | This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
 
 ## Us versus Them (aka There's an x-ception to every rule)
