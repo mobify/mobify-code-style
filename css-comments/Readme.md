@@ -94,6 +94,7 @@ The reasons for this are:
 1. Keeps lines shorter
 2. Can fit more detailed comments without crowding the code itself
 3. Can apply the same comment to multiple lines more easily
+4. One line can have multiple comments, if needed
 
 Bad example:
 
