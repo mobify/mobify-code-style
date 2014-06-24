@@ -1,6 +1,6 @@
 > This document outlines the way Customer Success team is expected to write their CSS. Following this document ensures that everyone is writing markup that feels familiar and can be maintained by anyone with little overhead.
 >
-> We follow a mixture of Topcoat Coding Guidelines as well as a slight modification of the BEM principles.
+> We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
 
 # Philosophy
 
