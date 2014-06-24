@@ -175,6 +175,41 @@ Example:
 }
 ```
 
+Alternatively:
+
+```
+// Checkout
+// ========
+//
+// @url http://www.website.com/checkout
+
+
+// Global
+// ------
+//
+// ...
+
+.t-checkout {
+}
+
+// Your Details
+// ------------
+//
+// ...
+
+.t-checkout__details {
+}
+
+
+// Credit Card Info
+// ----------------
+//
+// ...
+
+.t-checkout__credit-card-info {
+}
+```
+
 Note that if sub-template classes are required, they should be included OUT of
 the base template scope and with a level 2 heading. Example:
 
