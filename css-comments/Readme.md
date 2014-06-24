@@ -67,13 +67,13 @@ add the necessary space to make the new lines line up with the rest of the conte
 //   are going to break to a new line
 // * A nice full list of things
 // * More things
-
-// 1. This is an example list whose content is just too long for one line, so we
-//    are going to break to a new line
-// 2. A nice full list of things
-// 3. More things
 //
-// ...
+// 1.  This is an example list whose content is just too long for one line, so we
+//     are going to break to a new line
+// 2.  A nice full list of things
+// 3.  More things
+//
+//     ...
 //
 // 8.  Wow, so many things
 // 9.  Uh oh, I see changes ahead...
