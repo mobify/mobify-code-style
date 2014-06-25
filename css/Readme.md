@@ -49,7 +49,9 @@ Because we work on top of our client's markup and javascript, we need to make su
 
 ## Format
 
-Please use consistent formatting following these rules:
+We want our CSS to be written consistently no matter who the code author is. In order to do so, please follow these below rules.
+
+Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 * One selector per line
 * Use a soft indent of four spaces
@@ -84,9 +86,9 @@ Please use consistent formatting following these rules:
 
 ## Declaration Order
 
-All properties should be consistently ordered according to the following standard.
+Following our practice of writing consistent code, we also want all properties to be consistently ordered according to the bellow standard.
 
->Property specific mixins live where the expanded property would live. For example, if you're using a background–image mixin, that should live in the Visual Styles block instead of in the standard includes section.
+And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 1. Extends
 1. Mixins/Includes (except for property specific mixins)
