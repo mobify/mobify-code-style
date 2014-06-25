@@ -193,41 +193,65 @@ Sometimes we break out of this convention to add to the readability of our style
 }
 ```
 
-## Preprocessor/SCSS Guidelines
+## Sass (SCSS) Best Practices
 
-As mentioned earlier, we use [SASS](http://sass-lang.com/) and [Compass](http://compass-style.org/) to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use [SASS](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines when using these guys.
 
-### General
+### Nest Only When Necessary
 
 Limit nesting as much as possible. Assess every single level of nesting that you use. This prevents increasing specificity and impacting performance.
 
-Use [Compass CSS3 mixins](http://compass-style.org/reference/compass/css3/) whenever possible. This will ensure that we're writing the proper vendor prefixing for these properties. It's easier to deprecate these through Compass than it is to come back and rewrite vendor prefixes when necessary.
+Before nesting, ask yourself "will this work without nesting?"
 
-Any $variable or @mixin that is used in more than one file should be placed in the globals/ folder. Others should be placed at the top of the file in which they're used.
+Just because you CAN nest does not mean you should, or that it makes the code maintainable (it really, really doesn't).
+
+At most, go no more than 4 levels deep.
+
+### Code Like it's 2020
+
+Because we use Autoprefixer, we are able to write our code as if all our properties are fully supported. When compiled, Autoprefixer will of course convert any properties that have special requirements as far as compatibility is concerned and add prefixes to them as needed.
+
+That includes things like Flexbox, CSS3 properties, and many more!
+
+This also means that we SHOULD NOT be using mixins for prefixing!
+
+Remember that Autoprefixer uses data from caniuse.com to determine what will be output - so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
+
+### Global vs. Local Variables/Mixins
+
+Any `$variable` that is used in more than one file should be placed in the `/vellum/variables.scss` file. Others should be placed at the top of the file in which they're used.
+
+Any `@mixin` that is used in more than one file should be placed in the `/utilities` folder.
 
 ### @extends
 
-* Avoid extends when possible. It's always preferable to add a class to the markup than it is to use an extend.
-* Never directly extend a class. This can easily lead to enormous bloat in the generated CSS.
-* When using @extends, always @extend off of a placeholder. This helps eliminate some SCSS extend issues.
+__Avoid extends when possible__. It's always preferable to add a class to the markup than it is to use an extend.
+
+If unavoidable, __never directly extend a standard class__. This can easily lead to enormous bloat in the generated CSS.
+
+When using @extends, __only extend a placeholder class__. This avoids the most problematic issues of Sass `@extend`s.
 
 ```scss
-%x-placeholder {
-	[styles]
-} 
+// BAD
 
-.x-placeholder {
-	@extend %x-placeholder;
+.c-some-class {
+	// ...
 }
-// Note: if you NEED to @extend something that is
-// also a class required for use in your markup, then
-// the following is the best approach:
-%x-placeholder,  // Define the placeholder at the same time as the class.
-.x-placeholder { // That way, this class can be added to your markup.
-	[styles]
+
+.t-pdp .client-class {
+	@extend .c-some-class;
 }
-.x-elsewhere {
-	@extend %x-placeholder // You still only extend the placeholder!
+
+
+// Better
+
+.c-some-class,   // A placeholder should ALWAYS have a standard class to go with it. Add the placeholder
+%c-some-class {  // AFTER the standard class. This makes the code easier to find based on the compiled selectors.
+	// ...
+}
+
+.t-pdp .client-class {
+	@extend %c-some-class;
 }
 ```
 
