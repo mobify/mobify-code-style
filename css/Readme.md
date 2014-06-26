@@ -41,6 +41,16 @@ Note that Vellum represents our "Base" styles.
 
 # CSS Best Practices
 
+### Code Like it's 2020
+
+Because we use Autoprefixer, we are able to write our code as if all our properties are fully supported. When compiled, Autoprefixer will of course convert any properties that have special requirements as far as compatibility is concerned and add prefixes to them as needed.
+
+That includes things like Flexbox, CSS3 properties, and many more!
+
+This also means that we SHOULD NOT be using mixins for prefixing!
+
+Remember that Autoprefixer uses data from caniuse.com to determine what will be output - so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
+
 ## Selector Specificity
 
 We should strive to write performant, portable, selectors whenever possible.
@@ -75,11 +85,30 @@ ul.button-group li.button {
 }
 ```
 
+## Class Naming Convention
+
+We use a modified version of BEM that we call CSM (Component, Sub-component, Modifier). At it's core, it's virtually identical to BEM, but our exact syntax is slightly different. Basically:
+
+```
+.c-component
+.c-component__sub-component
+.c-component.c--modifier
+```
+
+We cover this convention in greater detail [below](user-content-class-naming-convention-csm).
+
 ## Name Spacing
 
 The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning _component_ or _template_ respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
 
 Because we work on top of our client's markup and javascript, we need to make sure our class names will never conflict with their class names. By prefixing/namespacing our classes with `c-` or `t-`, we can be assured that 99.9% of those situations will be avoided.
+
+## Size Units
+
+* Use pixels for fixed-width elements.
+* Use percentages for fluid-width elements.
+* Use pixels for font-size because it offers absolute control over text.
+* Use unitless line-height in conjunction with font-size because it acts as a multiplier of the pixel value.
 
 ## Format
 
@@ -241,16 +270,6 @@ Just because you CAN nest does not mean you should, or that it makes the code ma
 
 At most, go no more than 4 levels deep.
 
-### Code Like it's 2020
-
-Because we use Autoprefixer, we are able to write our code as if all our properties are fully supported. When compiled, Autoprefixer will of course convert any properties that have special requirements as far as compatibility is concerned and add prefixes to them as needed.
-
-That includes things like Flexbox, CSS3 properties, and many more!
-
-This also means that we SHOULD NOT be using mixins for prefixing!
-
-Remember that Autoprefixer uses data from caniuse.com to determine what will be output - so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
-
 ### Global vs. Local Variables/Mixins
 
 Any `$variable` that is used in more than one file should be placed in the `/vellum/variables.scss` file. Others should be placed at the top of the file in which they're used.
@@ -315,13 +334,6 @@ $grey-50 // 50% greyscale
 ```
 
 Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The point is only to provide a rough approximation and simplify the need to remember color values.
-
-## Size Units
-
-* Use pixels for fixed-width elements.
-* Use percentages for fluid-width elements.
-* Use pixels for font-size because it offers absolute control over text.
-* Use unitless line-height in conjunction with font-size because it acts as a multiplier of the pixel value.
 
 # Class Naming Convention: CSM
 
