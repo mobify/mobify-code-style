@@ -267,6 +267,21 @@ Modifiers should be added before the name. So our above examples with modifiers 
 
 Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
 
+### Exceptions
+
+For color gradients, we following a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
+
+```
+$grey-10 // 10% greyscale
+$grey-20 // 20% greyscale
+$grey-30 // 30% greyscale
+$grey-40 // 40% greyscale
+$grey-50 // 50% greyscale
+// etc.
+```
+
+Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The point is only to provide a rough approximation and simplify the need to remember color values.
+
 ## Size Units
 
 * Use pixels for fixed-width elements.
