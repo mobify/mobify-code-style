@@ -39,7 +39,41 @@ Note that Vellum represents our "Base" styles.
 >
 > Familiarity with these concepts is cruicial! If you are not, then we urge that you at least learn the basics: [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
 
-# Coding Style
+# CSS Best Practices
+
+## Selector Specificity
+
+We should strive to write performant, portable, selectors whenever possible.
+
+### Dos:
+
+* Use class names for specificity because it improves performance.
+* Use the component oriented naming conventions outlined below.
+* If you have no other choice and you must select an ID, use the attribute selector instead
+
+### Do Nots:
+
+* Avoid using IDs. They decrease portability.
+* Avoid using tag selectors. They both impact performance and portability.
+* Never over qualify selectors because it impacts performance.
+
+```scss
+// NO
+ul.button-group li.button {
+} 
+
+// Yes
+.button-group__button {
+}
+
+// NO
+#something {
+}
+
+// Yes (Only as a last resort!)
+[id="something"] {
+}
+```
 
 ## Name Spacing
 
@@ -289,42 +323,7 @@ Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The poin
 * Use pixels for font-size because it offers absolute control over text.
 * Use unitless line-height in conjunction with font-size because it acts as a multiplier of the pixel value.
 
-# Selectors
-
-We should strive to write performant, portable, selectors whenever possible.
-
-## Specificity
-
-### Dos:
-
-* Use class names for specificity because it improves performance.
-* Use the component oriented naming conventions outlined below.
-* If you have no other choice and you must select an ID, use the attribute selector instead
-
-### Do Nots:
-* Avoid using IDs. They decrease portability.
-* Avoid using tag selectors. They both impact performance and portability.
-* Never over qualify selectors because it impacts performance.
-
-```scss
-// NO
-ul.button-group li.button {
-} 
-
-// Yes
-.button-group__button {
-}
-
-// NO
-#something {
-}
-
-// Yes (Only as a last resort!)
-[id="something"] {
-}
-```
-
-## Component Oriented Naming
+# Class Naming Convention: CSM
 
 We follow a very similar structure to the platform team with some minor differences. Our convention uses the [BEM philosophy](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
