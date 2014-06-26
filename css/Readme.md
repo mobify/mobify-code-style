@@ -255,6 +255,18 @@ When using @extends, __only extend a placeholder class__. This avoids the most p
 }
 ```
 
+## Variable Naming Convention
+
+Variable names should follow this pattern: `${modifer(s)}-{name}`.
+
+The name of a variable should describe the application of the variable value. For example, instead of saying `$color` (which is too generic to be useful), you would write `$link-color` which gives the name meaning and purpose.
+
+Similarly, the variable name can refer to specific properties such as `$border-radius` or `$border`.
+
+Modifiers should be added before the name. So our above examples with modifiers prepended to them will look like `$dark-link-color`, `$large-border-radius` and `$dotted-border`.
+
+Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
+
 ## Size Units
 
 * Use pixels for fixed-width elements.
