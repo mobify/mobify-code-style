@@ -4,7 +4,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 
 # Tools & Frameworks
 
-* [SCSS](http://sass-lang.com/)
+* [Sass](http://sass-lang.com/)
 * [Autoprefixer](https://github.com/ai/autoprefixer)
 * [Vellum](https://github.com/mobify/vellum)
 * [Spline](https://github.com/mobify/spline)
@@ -45,15 +45,11 @@ Note that Vellum represents our "Base" styles.
 
 Because we use Autoprefixer, we are able to write our code as if all our properties are fully supported. When compiled, Autoprefixer will of course convert any properties that have special requirements as far as compatibility is concerned and add prefixes to them as needed.
 
-That includes things like Flexbox, CSS3 properties, and many more!
-
-This also means that we SHOULD NOT be using mixins for prefixing!
-
-Remember that Autoprefixer uses data from caniuse.com to determine what will be output - so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
+That includes things like Flexbox, CSS3 properties, and many more! This also means that we *should not* be using mixins for prefixing. Remember that Autoprefixer uses data from caniuse.com to determine what will be output — so properties that don't have enough browser support should probably still be avoided (or at least used with extreme caution).
 
 ## Selector Specificity
 
-We should strive to write performant, portable, selectors whenever possible.
+We strive to write performant, portable, selectors whenever possible.
 
 ### Dos:
 
@@ -99,9 +95,9 @@ We cover this convention in greater detail [below](#user-content-class-naming-co
 
 ## Name Spacing
 
-The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning _component_ or _template_ respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
+The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning `_component_` or `_template_` respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
 
-Because we work on top of our client's markup and javascript, we need to make sure our class names will never conflict with their class names. By prefixing/namespacing our classes with `c-` or `t-`, we can be assured that 99.9% of those situations will be avoided.
+Because we work on top of our client's markup and javascript, we need to make sure our class names will never conflict with their class names. By prefixing/namespacing our classes with `c-` or `t-`, we can be assured that 99.9% of those situations are avoided.
 
 ## Size Units
 
@@ -114,7 +110,7 @@ Because we work on top of our client's markup and javascript, we need to make su
 
 We want our CSS to be written consistently no matter who the code author is. In order to do so, please follow these below rules.
 
-Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
+Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 * One selector per line
 * Use a soft indent of four spaces
@@ -131,8 +127,8 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 * Use // for comment blocks (instead of /* */)
 
 ```scss
-.x-selector1,
-.x-selector2 {
+.c-selector1,
+.c-selector2 {
     // This is a comment
     display: block;
     margin: 0 auto;
@@ -140,10 +136,11 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
     background: #bada55 url('icon.png') center no-repeat;
 }
  
-.x-selector-a,
-.x-selector-b {
+.c-selector-a,
+.c-selector-b {
     padding: 10px;
-	background: rgba(255, 255, 255, 0.25);
+    
+    background: rgba(255, 255, 255, 0.25);
 }
 ```
 
@@ -167,7 +164,7 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 1. Child elements
 
 ```scss
-.x-selector {
+.c-selector {
 	// Extends
 	@extend %x-extend;	
  
@@ -258,15 +255,11 @@ Sometimes we break out of this convention to add to the readability of our style
 
 ## Sass (SCSS) Best Practices
 
-As mentioned earlier, we use [SASS](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines when using these guys.
 
 ### Nest Only When Necessary
 
-Limit nesting as much as possible. Assess every single level of nesting that you use. This prevents increasing specificity and impacting performance.
-
-Before nesting, ask yourself "will this work without nesting?"
-
-Just because you CAN nest does not mean you should, or that it makes the code maintainable (it really, really doesn't).
+Limit nesting as much as possible. Assess every single level of nesting that you use. This prevents increasing specificity and impacting performance. Before nesting, ask yourself "will this work without nesting?" Just because you *can* nest does not mean you should, or that it makes the code maintainable (Hint: it doesn't).
 
 At most, go no more than 4 levels deep.
 
@@ -322,7 +315,7 @@ Do note that variables without modifiers are implicitly the base version of tha
 
 ### Exceptions
 
-For color gradients, we following a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
+For color gradients, we follow a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
 
 ```
 $grey-10 // 10% greyscale
@@ -406,7 +399,7 @@ Like components these should always live at the root level of a file. Do not nes
 
 These are used to modify components or subcomponents. They are always chained to a specific component and are declared in the component or subcomponent that they affect.
 
-* Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`, and `x--`) 
+* Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`) 
 * Contained to the scope of a single component
 * Always declared as a chained selector to a component or subcomponent.
 * Never declared as a stand-alone rule.
