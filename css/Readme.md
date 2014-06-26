@@ -95,7 +95,7 @@ We use a modified version of BEM that we call CSM (Component, Sub-component, Mod
 .c-component.c--modifier
 ```
 
-We cover this convention in greater detail [below](user-content-class-naming-convention-csm).
+We cover this convention in greater detail [below](#user-content-class-naming-convention-csm).
 
 ## Name Spacing
 
