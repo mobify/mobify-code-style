@@ -330,9 +330,9 @@ Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The poin
 
 # Class Naming Convention: CSM
 
-We follow a very similar structure to the platform team with some minor differences. Our convention uses the [BEM philosophy](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
-> While BEM stands for Block, Element, Modifier, we use a slightly different language. Block and Element have meaning in CSS already so we use the terms Component and Subcomponent.
+> BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Subcomponent instead.
 
 ```html
 <div class="c-blog">
@@ -348,14 +348,15 @@ We follow a very similar structure to the platform team with some minor differen
 
 This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
 
-**.c-blog** — This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`.c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
 
-**.c-blog__title** — This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`.c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
 
-**.c-blog-post** — This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
-.c--featured — This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
+`.c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
 
-**.c-blog-post__time** — Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a subcomponent even though it is not a direct child of the component.
+`.c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
+
+`.c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a subcomponent even though it is not a direct child of the component.
 
 ### Components
 
