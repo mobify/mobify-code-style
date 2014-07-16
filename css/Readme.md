@@ -33,7 +33,7 @@ Please use consistent formatting following these rules:
 * Use single quotes
 * Always use quotes around urls
 * Do not specify units on a value of zero
-* Omit leading zeros for decimals in the range 0..1, i.e. prefer .5 over 0.5
+* Always include leading zeros for decimals in the range 0 to 1, i.e. prefer `0.5` over `.5`.
 * Avoid selectors with more than three levels, e.g. `ul > li > a` is OK, but `ul > li > a > span` is not (except when targeting client markup).
 * Include a space after each comma in a comma separated property list
 * User lowercase and shorthand hex values, e.g., #aaa
