@@ -330,13 +330,16 @@ linters:
             "list-style-type",
             "list-style-image",
 
-            # Browser UI
-            "cursor",
-            "user-select",
-            "resize",
-            "pointer-events",
+            # Transforms
+            "transform",
+            "transform-function",
+            "transform-origin",
+            "transform-style",
+            "perspective",
+            "perspective-origin",
+            "backface-visibility",
 
-            # Transitions, Animations and Transforms
+            # Transitions and Animations
             "transition",
             "transition-property",
             "transition-duration",
@@ -351,13 +354,12 @@ linters:
             "animation-direction",
             "animation-fill-mode",
             "animation-play-state",
-            "transform",
-            "transform-function",
-            "transform-origin",
-            "transform-style",
-            "perspective",
-            "perspective-origin",
-            "backface-visibility",
+
+            # Browser UI
+            "cursor",
+            "user-select",
+            "resize",
+            "pointer-events",
 
             # Non-standard properties
             "-webkit-appearance",
