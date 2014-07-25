@@ -451,6 +451,59 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 
 This might look a little weird at the outset but it's the best way to ensure that all of a components styles stay in the same place. It also ensures that no modifier styles are accidentally inherited where they shouldn't be.
 
+### State
+
+When a component or sub-component changes state (in response to a user action or other dynamic behaviour), we often add a class so the state can be styled and made visible to the user. These are almost always added and removed by UI scripts as the user interacts with the page. If a class is being added or removed via JS, chances are it’s a state. Name these state classes similarly to modifiers but with an additional prefix of `is`. Since states will have the same CSS specificity as modifiers, define your states after modifiers in source-order to avoid modifiers accidentally overriding states.
+
+```html
+<ul class="c-select">
+    <li class="c-select__option c--is-selected">Item 1</li>
+    <li class="c-select__option">Item 2</li>
+    <li class="c-select__option">Item 3</li>
+</ul>
+```
+
+```scss
+.c-select {}
+
+.c-select__option {}
+.c-select__option.c--tall {} // modifier
+
+.c-select__option.c--is-selected {} // state
+.c-select__option.c--tall.c--is-selected {} // state
+```
+
+An alternative construction using the `has` prefix is reserved for marking a parent component with a sub-component that is in a particular state. These cases should be rare, but when necessary, would look like this:
+
+```html
+<ul class="c-select c--has-selection">
+    <li class="c-select__option c--is-selected">Item 1</li>
+    <li class="c-select__option">Item 2</li>
+    <li class="c-select__option">Item 3</li>
+</ul>
+```
+
+```scss
+.c-select {}
+.c-select--large {} // modifier
+.c-select.c--has-selection {} // state
+```
+
+An exception is the use of ARIA roles for styling state. Where an ARIA role maps exactly to the state to be styled, it should be preferred over a class, since the attribute being styled carries additional value to users. For example, the custom select element being built above should be marked up with ARIA roles to be understood by screen readers as a select control. In this case, styling on `aria-selected`is preferred to `c--is-selected`. *CAUTION*: don’t add ARIA attributes in order to style a component. Only use them in stylesheets where they are needed for accessibility and make a state class redundant.
+
+```html
+<ul class="c-select" role="listbox">
+    <li class="c-select__option" role="option" aria-selected>Item 1</li>
+    <li class="c-select__option" role="option">Item 2</li>
+    <li class="c-select__option" role="option">Item 3</li>
+</ul>
+```
+
+```scss
+.c-select__option {}
+.c-select__option[aria-selected] {} // state, using `[aria-selected]` instead of `.c--is-selected`
+```
+
 # Class Prefix Conventions
 
 You'll have probably noticed by now that our class names have a variety of prefixes. If not, I will describe their usages now:
