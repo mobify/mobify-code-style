@@ -179,6 +179,22 @@
             "pointer-events"
         ],
         [
+            "-webkit-appearance",
+            "-moz-appearance",
+            "-webkit-overflow-scrolling",
+            "-webkit-tap-highlight-color",
+            "-webkit-text-stroke"
+        ],
+        [
+            "transform",
+            "transform-function",
+            "transform-origin",
+            "transform-style",
+            "perspective",
+            "perspective-origin",
+            "backface-visibility"
+        ],
+        [
             "transition",
             "transition-property",
             "transition-duration",
@@ -192,21 +208,7 @@
             "animation-iteration-count",
             "animation-direction",
             "animation-fill-mode",
-            "animation-play-state",
-            "transform",
-            "transform-function",
-            "transform-origin",
-            "transform-style",
-            "perspective",
-            "perspective-origin",
-            "backface-visibility"
-        ],
-        [
-            "-webkit-appearance",
-            "-moz-appearance",
-            "-webkit-overflow-scrolling",
-            "-webkit-tap-highlight-color",
-            "-webkit-text-stroke"
+            "animation-play-state"
         ]
     ]
 }
