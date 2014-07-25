@@ -86,7 +86,7 @@ linters:
     # Configure: `exclude_zero` or `include_zero`
     LeadingZero:
         enabled: true
-        style: exclude_zero
+        style: include_zero
 
     # Report same selector used twice in a single stylesheet?
     MergeableSelector:
