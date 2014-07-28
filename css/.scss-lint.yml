@@ -16,7 +16,7 @@ linters:
 
     # Prefer hexadecimal color codes over color keywords?
     ColorKeyword:
-        enabled: true
+        enabled: false
 
     # Prefer // comments over /* ... */?
     Comment:
