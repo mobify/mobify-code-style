@@ -2,7 +2,7 @@ This document outlines the way Customer Success team is expected to write their 
 
 # Philosophy
 
-The Customer Success team uses the SCSS syntax. If you're not familiar with SASS/SCSS, you should take the time to read up on the documentation before you dive into our styles.
+The Customer Success team uses the SCSS syntax. If you're not familiar with Sass/SCSS, you should take the time to read up on the documentation before you dive into our styles.
 
 We strive to write extremely modular, object-oriented CSS that will work in as many situations as possible. We also know that sometimes our clients' markup does not allow for this. With those two things in mind, we've come up with a strategy for writing CSS that will help us write faster and better the first time while still being maintainable for new people entering a project.
 
@@ -24,18 +24,26 @@ The first thing you'll notice when going through Customer Success's CSS is that 
 ## Format
 Please use consistent formatting following these rules:
 * One selector per line
+* Use hyphenated lowercase for selector names
 * Use a soft indent of four spaces
-* Use one space between selector and first bracket
-* Use one space between property and value after :
+* Use one space between the selector and opening brace of a declaration block
+* Use no space between property and :
+* Use one space after the colon in a property declaration
 * Always add a semicolon after property value
 * Use single quotes
-* Do not specify units for a zero value
+* Always use quotes around urls
+* Do not specify units on a value of zero
+* Always include leading zeros for decimals in the range 0 to 1, i.e. prefer `0.5` over `.5`.
+* Avoid selectors with more than three levels, e.g. `ul > li > a` is OK, but `ul > li > a > span` is not (except when targeting client markup).
 * Include a space after each comma in a comma separated property list
 * User lowercase and shorthand hex values, e.g., #aaa
-* Always use hex values unless you are declaring rgba.
-* Separate each ruleset by an empty line
+* Always use hex values unless you are declaring rgba or hsla.
+* Don’t pad parentheses with whitespace, e.g. `linear-gradient(to bottom, #fff, #000)`, not `linear-gradient( to bottom, #fff, #000 )`.
 * Separate each declaration block by an empty line
+* Separate each rule group by an empty line (see examples)
 * Use // for comment blocks (instead of /* */)
+* Place Sass `@else` statements on the same line as the closing brace of the preceding `@if`.
+* Always include a blank newline at the end of files.
 
 ```scss
 .x-selector1,
@@ -50,98 +58,129 @@ Please use consistent formatting following these rules:
 .x-selector-a,
 .x-selector-b {
     padding: 10px;
-	background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.25);
 }
 ```
 
 ## Declaration Order
 
-All properties should be consistently ordered according to the following standard.
+All properties should be consistently ordered according to the following standard. Include a newline between these groups.
 
->Property specific mixins live where the expanded property would live. For example, if you're using a background–image mixin, that should live in the Visual Styles block instead of in the standard includes section.
-
-1. Extends
-1. Mixins/Includes (except for property specific mixins)
-1. Position
-1. Display & Box Model
-1. Visual Styles
+1. Extends (`@extend`)
+1. Mixins (`@include`)
+1. Generated content & CSS counters
+1. Positioning
+1. Display, layout modes & box model
+1. Visual styles
 1. Text Styles
-1. Vendor Prefixed Styles
-1. Animations & Transitions
-1. Pseudo-classes
+1. Transforms
+1. Transitions & animations
+1. Browser UI adjustments
+1. Non-standard properties
+1. Pseudo-classes & states
 1. Pseudo-elements
-1. Modifier elements
-1. Child elements
+1. BEM Modifiers
+1. Descendents
 
 ```scss
 .x-selector {
-	// Extends
-	@extend %x-extend;	
+    // Extends
+    @extend %x-extend;
  
-    // Includes
-	@include mixin();
+    // Include mixins
+    @include mixin();
  
-	// Content
-	content: '\25B6';
+    // Content
+    content: '\25B6';
+    quotes: quotes: '“' '”' '‘' '’';
+    counter-reset: my-counter
+    counter-increment: my-counter;
  
     // Positioning
     position: absolute;
-	left: 10px;
-    z-index: 10;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    z-index: 100;
 
     // Display & Box Model
-    display: inline-block;
+    display: flex;
     overflow: hidden;
+    float: left;
+    clear: both;
+    table-layout: fixed;
+    flex-flow: row wrap;
+    align-items: center;
+    flex: 1 1 auto;
+    order: 1;
     box-sizing: border-box;
     width: 100px;
+    min-width: 0;
     height: 100px;
-	margin: 10px;
-	padding: 10px;
-	border: 1px solid #333;
+    max-height: none;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #333;
 
     // Visual styles
+    visibility: visible;
+    opacity: 1;
+    border-radius: 10px;
     background: #000;
-	border-radius: 10px;
-	@include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
- 
-	// Text styles
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0);
+    outline: 2px solid #039;
+
+    // Text styles
     color: #fff;
     font-family: sans-serif;
     font-size: 16px;
+    line-height: 1.5;
     text-align: right;
+    list-syle: none;
 
-    // Vendor prefixed styles
-    -webkit-user-select: none;
-	-webkit-tap-highlight: rgba(0, 0, 0, 0);
+    // Transforms
+    transform: translate3d(0, 0, 0);
+    perspective: 1000;
+    backface-visibility: hidden;
 
-	// Styles that don't fall under any of the above categories
-	pointer-events: none;
+    // Transitions & animations
+    transition: all 0.2s;
+    animation-name: foo;
+
+    // Browser UI
+    user-select: none;
+    resize: vertical;
+    pointer-events: none;
+
+    // Non-standard properties
+    -webkit-appearance: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
  
-	// Animations & Transitions
-	transition: all 0.2s;
+    // Pseudo-classes and states
+    &:active {
+        background: blue;
+    }
+
+    &:last-child {
+        border-top: 1px solid blue;
+    }
  
-	// Pseudo-classes
-	&:active {
-		background: blue;	
-	}
-	&:last-child {
-		border-top: 1px solid blue;
-	}
+    // Pseudo-elements
+    &::before {
+        content: 'CSS Rules!';
+    }
  
-	// Pseudo-elements
-	&::before {
-		content: 'CSS Rules!';	
-	}
+    // BEM Modifiers
+    &.x--light {
+        background: #999;
+    }
  
-	// Modifier Elements
-	&.x--light {
-		background: #999;
-	}
- 
-	// Child Elements
-	span {
-		font-weight: bold;
-	}
+    // Descendents (selecting client markup)
+    > .child,
+    .descendent {
+        font-weight: bold;
+    }
 }
 ```
 
@@ -151,21 +190,21 @@ Sometimes we break out of this convention to add to the readability of our style
 
 ```scss
 .x-selector {
-	@include icon(
-		home,
-		$color: blue,
-		$size: 15px
-	);
+    @include icon(
+        home,
+        $color: blue,
+        $size: 15px
+    );
  
-	transition:
-		opacity 0.2s ease-in-out,
-		width 0.5s linear;
+    transition:
+        opacity 0.2s ease-in-out,
+        width 0.5s linear;
 }
 ```
 
 ## Preprocessor/SCSS Guidelines
 
-As mentioned earlier, we use SASS and Compass to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use Sass and Compass to build our CSS. We have some guidelines when using these guys.
 
 ### General
 
