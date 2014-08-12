@@ -81,7 +81,7 @@ ul.button-group li.button {
 }
 ```
 
-### A Note On Attribute Selectors
+## A Note On Attribute Selectors
 
 Attribute selectors are often overlooked, and when they are noticed that are often qualified alongside an element selector. For example `input[type="text"]`.
 
@@ -114,6 +114,17 @@ For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_produc
 The exception to this rule are when a base or root class is dependant on a global state.
 
 For example `.x-landscape .t-about .c-contact-form` would be found in `_about.scss` and NOT a `_landscape.scss` file (modifier classes alone don't have their own files).
+
+## Single Direction Rule
+
+Not actually a rule, but a suggestion: when adding margins and paddings, only apply them to their designated direction.
+
+*Margins* should be added to the *right* and *bottom*.
+
+*Paddings* should be added to the *top* and *left*.
+
+This principle is talked about in depth by [Harry Roberts on csswizardy.com](http://csswizardry.com/2012/06/single-direction-margin-declarations/).
+
 ## Name Spacing
 
 The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning `_component_` or `_template_` respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
