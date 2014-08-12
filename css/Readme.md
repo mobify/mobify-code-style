@@ -101,6 +101,19 @@ We use a modified version of BEM that we call CSM (Component, Sub-component, Mod
 
 We cover this convention in greater detail [below](#user-content-class-naming-convention-csm).
 
+## Self Documenting Selectors
+
+When authoring CSS, you should be always aware of the selectors that you are creating.
+
+Strive to create selectors that actually fully describe where it is authored. Put another way, any given selector should tell you which file and where in the file it is written.
+
+This can be down by following this simple rule: the first class in a selector is the file it can be found
+
+For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_product.scss`.
+
+The exception to this rule are when a base or root class is dependant on a global state.
+
+For example `.x-landscape .t-about .c-contact-form` would be found in `_about.scss` and NOT a `_landscape.scss` file (modifier classes alone don't have their own files).
 ## Name Spacing
 
 The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning `_component_` or `_template_` respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
