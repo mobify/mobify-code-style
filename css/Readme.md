@@ -66,7 +66,7 @@ We strive to write performant, portable, selectors whenever possible.
 ```scss
 // NO
 ul.button-group li.button {
-} 
+}
 
 // Yes
 .button-group__button {
@@ -140,14 +140,14 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
     // This is a comment
     display: block;
     margin: 0 auto;
-    
+
     background: #bada55 url('icon.png') center no-repeat;
 }
- 
+
 .c-selector-a,
 .c-selector-b {
     padding: 10px;
-    
+
     background: rgba(255, 255, 255, 0.25);
 }
 ```
@@ -174,14 +174,14 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 ```scss
 .c-selector {
 	// Extends
-	@extend %x-extend;	
- 
+	@extend %x-extend;
+
     // Includes
 	@include mixin();
- 
+
 	// Content
 	content: '\25B6';
- 
+
     // Positioning
     position: absolute;
 	left: 10px;
@@ -201,7 +201,7 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
     background: #000;
 	border-radius: 10px;
 	@include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
- 
+
 	// Text styles
     color: #fff;
     font-family: sans-serif;
@@ -214,28 +214,28 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 
 	// Styles that don't fall under any of the above categories
 	pointer-events: none;
- 
+
 	// Animations & Transitions
 	transition: all 0.2s;
- 
+
 	// Pseudo-classes
 	&:active {
-		background: blue;	
+		background: blue;
 	}
 	&:last-child {
 		border-top: 1px solid blue;
 	}
- 
+
 	// Pseudo-elements
 	&::before {
-		content: 'CSS Rules!';	
+		content: 'CSS Rules!';
 	}
- 
+
 	// Modifier Elements
 	&.x--light {
 		background: #999;
 	}
- 
+
 	// Child Elements
 	span {
 		font-weight: bold;
@@ -254,7 +254,7 @@ Sometimes we break out of this convention to add to the readability of our style
 		$color: blue,
 		$size: 15px
 	);
- 
+
 	transition:
 		opacity 0.2s ease-in-out,
 		width 0.5s linear;
@@ -376,7 +376,7 @@ The highest level of a module — it should describe an independent module that 
 
 ```scss
 .c-blog-post {
-} 
+}
 ```
 
 ### Sub-components
@@ -393,8 +393,8 @@ Like components these should always live at the root level of a file. Do not nes
 ```scss
 // Good!
 .c-blog-post__title {
-} 
- 
+}
+
 // Bad!
 //
 // Note how .c-blog-post__title is nested inside it's parent class
@@ -408,7 +408,7 @@ Like components these should always live at the root level of a file. Do not nes
 
 These are used to modify components or subcomponents. They are always chained to a specific component and are declared in the component or subcomponent that they affect.
 
-* Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`) 
+* Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`)
 * Contained to the scope of a single component
 * Always declared as a chained selector to a component or subcomponent.
 * Never declared as a stand-alone rule.
@@ -420,14 +420,14 @@ These are used to modify components or subcomponents. They are always chained to
 .c-blog-post {
 	&.c--featured {
 	}
-} 
- 
+}
+
 // Bad!
 //
 // Note how .c--featured is a selector all by itself? That's bad! It
 // must be chained to it's parent selector!
 .c--featured {
-} 
+}
 ```
 
 ### Component modifiers that affect subcomponents
@@ -448,13 +448,13 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 	&.c--featured {
 		[STYLES]
 	}
-} 
+}
 
 .c-blog-post__title {
 	.c-blog-post.c--featured & {
 		[STYLES]
 	}
-} 
+}
 ```
 
 This might look a little weird at the outset but it's the best way to ensure that all of a components styles stay in the same place. It also ensures that no modifier styles are accidentally inherited where they shouldn't be.
@@ -544,7 +544,7 @@ Knowing that, how do we make the decision to use our class names or their class 
 
 ### How to use their existing selectors in our components
 
-This is a list of rules to use when you're using their selectors within our modules section. 
+This is a list of rules to use when you're using their selectors within our modules section.
 
 > Remember, it's okay to mix our selector naming scheme with their selector naming scheme. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
 
@@ -555,13 +555,13 @@ This is a list of rules to use when you're using their selectors within our modu
 .x-blog-post {
     .title {
     }
-} 
+}
 
 // Don't
 .blogpost {
     .title {
     }
-} 
+}
 ```
 
 #### Subcomponents should be directly inside their parent component where possible. Constantly evaluate your nest in this situation.
@@ -573,15 +573,15 @@ This is a list of rules to use when you're using their selectors within our modu
 	}
 	.image {
 	}
-} 
- 
+}
+
 // Don't
 .x-blog-post {
 	.content {
 		.image {
 		}
 	}
-} 
+}
 ```
 
 #### Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
@@ -591,17 +591,17 @@ This is a list of rules to use when you're using their selectors within our modu
 .x-blog-post {
 	&.darkpost {
 	}
-} 
- 
+}
+
 // Don't
 .darkpost {
-} 
+}
 
 // Don't
 .x-blog-post {
     .darkpost & {
     }
-} 
+}
 ```
 
 > If they use their modifiers in weird or unexpected ways, consider using the konf or templating to add our modifier classes instead.
