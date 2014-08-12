@@ -132,7 +132,7 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 * Always use hex values unless you are declaring rgba.
 * Separate each ruleset by an empty line
 * Separate each declaration block by an empty line
-* Use // for comment blocks (instead of /* */)
+* Use `//` for comment blocks (instead of `/* */`)
 
 ```scss
 .c-selector1,
