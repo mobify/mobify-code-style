@@ -1,0 +1,370 @@
+exclude: [
+    ".git/**",
+    "node_modules/**",
+    "bower_components/**"
+]
+
+# Default application configuration that all configurations inherit from.
+linters:
+    # Prefer border: 0 over border: none?
+    BorderZero:
+        enabled: true
+
+    # Should selectors be all lowercase?
+    CapitalizationInSelector:
+        enabled: true
+
+    # Prefer hexadecimal color codes over color keywords?
+    ColorKeyword:
+        enabled: false
+
+    # Prefer // comments over /* ... */?
+    Comment:
+        enabled: true
+
+    # Report @debug statements?
+    DebugStatement:
+        enabled: true
+
+    # In rulesets, order by: @extend, properties, nested rule sets?
+    DeclarationOrder:
+        enabled: true
+
+    # Report the same property twice in a single rule set?
+    DuplicateProperty:
+        enabled: true
+
+    # Lint position of @else statements?
+    # Configure: `same_line` or `new_line`.
+    ElsePlacement:
+        enabled: true
+        style: same_line
+
+    # Require a blank line between rule, function, and mixin declarations?
+    # Ignore blocks spanning a single line only?
+    EmptyLineBetweenBlocks:
+        enabled: true
+        ignore_single_line_blocks: true
+
+    # Report empty rulesets?
+    EmptyRule:
+        enabled: false
+
+    # Lint end-of-file newline?
+    # Configure: must be present?
+    FinalNewline:
+        enabled: true
+        present: true
+
+    # Lint hex color length?
+    # Configure: `short` or `long`
+    HexLength:
+        enabled: true
+        style: short
+
+    # Lint case of hex colors?
+    # Configure: `lowercase` or `uppercase`.
+    HexNotation:
+        enabled: true
+        style: lowercase
+
+    # Report invalid hexadecimal colors?
+    HexValidation:
+        enabled: true
+
+    # Report selectors chained on id?
+    IdWithExtraneousSelector:
+        enabled: true
+
+    # Use soft tabs?
+    # Configure: number of spaces per indent.
+    Indentation:
+        enabled: true
+        width: 4
+
+    # Lint leading zero on dimension values?
+    # Configure: `exclude_zero` or `include_zero`
+    LeadingZero:
+        enabled: true
+        style: include_zero
+
+    # Report same selector used twice in a single stylesheet?
+    MergeableSelector:
+        enabled: true
+        force_nesting: false
+
+    # Lint format for variable, mixin and function names?
+    # Configure: `hyphenated_lowercase`, a regex pattern or `BEM`.
+    #
+    # Note that the `BEM` value refers to the original Yandex BEM convention
+    # (http://bem.info/method/definitions/).
+    NameFormat:
+        enabled: true
+        convention: hyphenated_lowercase
+
+    # Report @extend unless extending a placeholder?
+    PlaceholderInExtend:
+        enabled: true
+
+    # Report unknown CSS properties? (Ignores vendor prefixes.)
+    PropertySpelling:
+        enabled: true
+        extra_properties: []
+
+    # Lint selector depth?
+    # Configure: number of levels (number of combinators + 1), e.g.
+    # `ul > li > a` is 3 levels.
+    SelectorDepth:
+        enabled: true
+        max_depth: 3
+
+    # Prefer the shortest possible shorthand?
+    Shorthand:
+        enabled: true
+
+    # Report more than one selector per line?
+    SingleLinePerSelector:
+        enabled: true
+
+    # Report lack of space after commas in lists?
+    SpaceAfterComma:
+        enabled: true
+
+    # Report presence of whitespace between property name and colon?
+    SpaceAfterPropertyName:
+        enabled: true
+
+    # Lint whitespace between property colon and value?
+    # Configure: `no_space`, `at_least_one_space`, or `aligned`
+    SpaceAfterPropertyColon:
+        enabled: true
+        style: one_space
+
+    # Report lack of space between selector and opening brace?
+    SpaceBeforeBrace:
+        enabled: true
+        allow_single_line_padding: false
+
+    # Lint whitespace padding within parens?
+    # Configure: number of spaces
+    SpaceBetweenParens:
+        enabled: true
+        spaces: 0
+
+    # Lint quote marks for all strings?
+    # Configure: `single_quotes` or `double_quotes`
+    StringQuotes:
+        enabled: true
+        style: single_quotes
+
+    # Report lack of semicolon at the end of the last rule in a ruleset?
+    TrailingSemicolonAfterPropertyValue:
+        enabled: true
+
+    # Report numeric values with unnecessary fractional portions?
+    UnnecessaryMantissa:
+        enabled: true
+
+    # Report urls containing a protocol or domain?
+    UrlFormat:
+        enabled: true
+
+    # Report urls without quotes?
+    UrlQuotes:
+        enabled: true
+
+    # Report units on zero values?
+    ZeroUnit:
+        enabled: true
+
+    # Use Compass linters?
+    Compass::*:
+        enabled: false
+
+    # Lint the declaration order of properties?
+    # Configure: array of properties
+    PropertySortOrder:
+        enabled: true
+        order: [
+            # Content and counters
+            "content",
+            "quotes",
+            "counter-reset",
+            "counter-increment",
+
+            # Positioning
+            "position",
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "z-index",
+
+            # Display, layout modes & box model
+            "display",
+            "overflow",
+            "overflow-x",
+            "overflow-y",
+            "clip",
+            "float",
+            "clear",
+            "table-layout",
+            "empty-cells",
+            "caption-side",
+            "border-spacing",
+            "border-collapse",
+            "flex-flow",
+            "flex-direction",
+            "flex-wrap",
+            "justify-content",
+            "align-items",
+            "align-content",
+            "flex",
+            "flex-grow",
+            "flex-shrink",
+            "flex-basis",
+            "align-self",
+            "order",
+            "box-sizing",
+            "width",
+            "min-width",
+            "max-width",
+            "height",
+            "min-height",
+            "max-height",
+            "margin",
+            "margin-top",
+            "margin-right",
+            "margin-bottom",
+            "margin-left",
+            "padding",
+            "padding-top",
+            "padding-right",
+            "padding-bottom",
+            "padding-left",
+            "border",
+            "border-width",
+            "border-style",
+            "border-color",
+            "border-top",
+            "border-top-width",
+            "border-top-style",
+            "border-top-color",
+            "border-right",
+            "border-right-width",
+            "border-right-style",
+            "border-right-color",
+            "border-bottom",
+            "border-bottom-width",
+            "border-bottom-style",
+            "border-bottom-color",
+            "border-left",
+            "border-left-width",
+            "border-left-style",
+            "border-left-color",
+
+            # Visual styles
+            "visibility",
+            "opacity",
+            "border-radius",
+            "border-top-left-radius",
+            "border-top-right-radius",
+            "border-bottom-right-radius",
+            "border-bottom-left-radius",
+            "border-image",
+            "border-image-source",
+            "border-image-slice",
+            "border-image-width",
+            "border-image-outset",
+            "border-image-repeat",
+            "background",
+            "background-color",
+            "background-image",
+            "background-repeat",
+            "background-attachment",
+            "background-position",
+            "background-position-x",
+            "background-position-y",
+            "background-origin",
+            "background-size",
+            "background-clip",
+            "box-shadow",
+            "box-decoration-break",
+            "outline",
+            "outline-width",
+            "outline-style",
+            "outline-color",
+            "filter",
+
+            # Text styles
+            "color",
+            "font",
+            "font-family",
+            "font-style",
+            "font-weight",
+            "font-variant",
+            "font-size",
+            "font-size-adjust",
+            "line-height",
+            "letter-spacing",
+            "word-spacing",
+            "direction",
+            "word-wrap",
+            "overflow-wrap",
+            "word-break",
+            "hyphens",
+            "white-space",
+            "text-align",
+            "text-align-last",
+            "text-indent",
+            "text-overflow",
+            "text-transform",
+            "text-decoration",
+            "text-shadow",
+            "text-rendering",
+            "text-size-adjust",
+            "vertical-align",
+            "tab-size",
+            "list-style",
+            "list-style-position",
+            "list-style-type",
+            "list-style-image",
+
+            # Transforms
+            "transform",
+            "transform-function",
+            "transform-origin",
+            "transform-style",
+            "perspective",
+            "perspective-origin",
+            "backface-visibility",
+
+            # Transitions and Animations
+            "transition",
+            "transition-property",
+            "transition-duration",
+            "transition-timing-function",
+            "transition-delay",
+            "animation",
+            "animation-name",
+            "animation-duration",
+            "animation-timing-function",
+            "animation-delay",
+            "animation-iteration-count",
+            "animation-direction",
+            "animation-fill-mode",
+            "animation-play-state",
+
+            # Browser UI
+            "cursor",
+            "user-select",
+            "resize",
+            "pointer-events",
+
+            # Non-standard properties
+            "-webkit-appearance",
+            "-moz-appearance",
+            "-webkit-overflow-scrolling",
+            "-webkit-tap-highlight-color",
+            "-webkit-text-stroke"
+        ]

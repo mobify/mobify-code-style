@@ -197,18 +197,18 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 
 ```scss
 .c-selector {
-	// Extends
-	@extend %x-extend;
+    // Extends
+    @extend %x-extend;
 
     // Includes
-	@include mixin();
+    @include mixin();
 
-	// Content
-	content: '\25B6';
+    // Content
+    content: '\25B6';
 
     // Positioning
     position: absolute;
-	left: 10px;
+    left: 10px;
     z-index: 10;
 
     // Display & Box Model
@@ -217,16 +217,16 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
     box-sizing: border-box;
     width: 100px;
     height: 100px;
-	margin: 10px;
-	padding: 10px;
-	border: 1px solid #333;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #333;
 
     // Visual styles
     background: #000;
-	border-radius: 10px;
-	@include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    @include box-shadow(5px 5px 0 rgba(0, 0, 0, 0);
 
-	// Text styles
+    // Text styles
     color: #fff;
     font-family: sans-serif;
     font-size: 16px;
@@ -234,36 +234,36 @@ And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help e
 
     // Vendor prefixed styles
     -webkit-user-select: none;
-	-webkit-tap-highlight: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight: rgba(0, 0, 0, 0);
 
-	// Styles that don't fall under any of the above categories
-	pointer-events: none;
+    // Styles that don't fall under any of the above categories
+    pointer-events: none;
 
-	// Animations & Transitions
-	transition: all 0.2s;
+    // Animations & Transitions
+    transition: all 0.2s;
 
-	// Pseudo-classes
-	&:active {
-		background: blue;
-	}
-	&:last-child {
-		border-top: 1px solid blue;
-	}
+    // Pseudo-classes
+    &:active {
+        background: blue;
+    }
+    &:last-child {
+        border-top: 1px solid blue;
+    }
 
-	// Pseudo-elements
-	&::before {
-		content: 'CSS Rules!';
-	}
+    // Pseudo-elements
+    &::before {
+        content: 'CSS Rules!';
+    }
 
-	// Modifier Elements
-	&.x--light {
-		background: #999;
-	}
+    // Modifier Elements
+    &.x--light {
+        background: #999;
+    }
 
-	// Child Elements
-	span {
-		font-weight: bold;
-	}
+    // Child Elements
+    span {
+        font-weight: bold;
+    }
 }
 ```
 
@@ -273,15 +273,15 @@ Sometimes we break out of this convention to add to the readability of our style
 
 ```scss
 .x-selector {
-	@include icon(
-		home,
-		$color: blue,
-		$size: 15px
-	);
+    @include icon(
+        home,
+        $color: blue,
+        $size: 15px
+    );
 
-	transition:
-		opacity 0.2s ease-in-out,
-		width 0.5s linear;
+    transition:
+        opacity 0.2s ease-in-out,
+        width 0.5s linear;
 }
 ```
 
@@ -313,11 +313,11 @@ When using @extends, __only extend a placeholder class__. This avoids the most p
 // BAD
 
 .c-some-class {
-	// ...
+    // ...
 }
 
 .t-pdp .client-class {
-	@extend .c-some-class;
+    @extend .c-some-class;
 }
 
 
@@ -325,11 +325,11 @@ When using @extends, __only extend a placeholder class__. This avoids the most p
 
 .c-some-class,   // A placeholder should ALWAYS have a standard class to go with it. Add the placeholder
 %c-some-class {  // AFTER the standard class. This makes the code easier to find based on the compiled selectors.
-	// ...
+    // ...
 }
 
 .t-pdp .client-class {
-	@extend %c-some-class;
+    @extend %c-some-class;
 }
 ```
 
@@ -476,7 +476,7 @@ Similarly, the variable name can refer to specific properties such as `$border-r
 
 Modifiers should be added before the name. So our above examples with modifiers prepended to them will look like `$dark-link-color`, `$large-border-radius` and `$dotted-border`.
 
-Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
+Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
 
 ### Exceptions
 
@@ -501,10 +501,10 @@ Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [B
 
 ```html
 <div class="c-blog">
-	<h1 class="c-blog__title">Blog Title</h1>
+    <h1 class="c-blog__title">Blog Title</h1>
     <div class="c-blog-post c--featured">
-		<h2 class="c-blog-post__title">Blog Post Title</h2>
-		<div class="c-blog-post__date">
+        <h2 class="c-blog-post__title">Blog Post Title</h2>
+        <div class="c-blog-post__date">
             <p class="c-blog-post__time">12:03pm</p>
         </div>
     </div>
@@ -556,8 +556,8 @@ Like components these should always live at the root level of a file. Do not nes
 //
 // Note how .c-blog-post__title is nested inside it's parent class
 .c-blog-post {
-	.c-blog-post__title {
-	}
+    .c-blog-post__title {
+    }
 }
 ```
 
@@ -575,8 +575,8 @@ These are used to modify components or subcomponents. They are always chained to
 //
 // Note how we use the parent selector (&) to chain the modifier class to .c-blog-post
 .c-blog-post {
-	&.c--featured {
-	}
+    &.c--featured {
+    }
 }
 
 // Bad!
@@ -593,8 +593,8 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 
 ```html
 <div class="c-blog-post c--featured">
-	<h2 class="c-blog-post__title">Blog Post Title</h2>
-	<div class="c-blog-post__date">
+    <h2 class="c-blog-post__title">Blog Post Title</h2>
+    <div class="c-blog-post__date">
         <p class="c-blog-post__time">12:03pm</p>
     </div>
 </div>
@@ -602,15 +602,15 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 
 ```scss
 .c-blog-post {
-	&.c--featured {
-		[STYLES]
-	}
+    &.c--featured {
+        [STYLES]
+    }
 }
 
 .c-blog-post__title {
-	.c-blog-post.c--featured & {
-		[STYLES]
-	}
+    .c-blog-post.c--featured & {
+        [STYLES]
+    }
 }
 ```
 
@@ -729,11 +729,11 @@ Constantly evaluate your nesting in situation like this.
 ```scss
 // Okay
 .c-blog-post {
-	.content {
-	}
+    .content {
+    }
 
-	.image {
-	}
+    .image {
+    }
 }
 
 
@@ -750,10 +750,10 @@ Constantly evaluate your nesting in situation like this.
 
 // Don't
 .c-blog-post {
-	.content {
-		.image {
-		}
-	}
+    .content {
+        .image {
+        }
+    }
 }
 ```
 
@@ -762,8 +762,8 @@ Use their modifiers the same way you would use our modifiers. Chain it to the co
 ```scss
 // Okay
 .c-blog-post {
-	&.darkpost {
-	}
+    &.darkpost {
+    }
 }
 
 
