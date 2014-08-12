@@ -146,7 +146,7 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 
 * One selector per line
 * Use a soft indent of four spaces
-* Use one space between selector and first bracketa
+* Use one space between selector and first brackets
 * Use one space between property and value after :
 * Always add a semicolon after property value
 * Use single quotes
