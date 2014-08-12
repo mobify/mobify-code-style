@@ -568,14 +568,15 @@ This is a list of rules to use when you're using their selectors within our modu
 
 > Remember, it's okay to mix our selector naming scheme with their selector naming scheme. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
 
-#### Always wrap the module with our naming scheme
+Always wrap the module with our naming scheme
 
 ```scss
 // Do
-.x-blog-post {
+.c-blog-post {
     .title {
     }
 }
+
 
 // Don't
 .blogpost {
@@ -584,19 +585,34 @@ This is a list of rules to use when you're using their selectors within our modu
 }
 ```
 
-#### Subcomponents should be directly inside their parent component where possible. Constantly evaluate your nest in this situation.
+Subcomponents can be directly inside their parent component, but adding your own classes should be your FIRST approach so as to avoid nesting.
+
+Constantly evaluate your nesting in situation like this.
 
 ```scss
-// Do
-.x-blog-post {
+// Okay
+.c-blog-post {
 	.content {
 	}
+
 	.image {
 	}
 }
 
+
+// Better
+.c-blog-post {
+}
+
+.c-blog-post__content {
+}
+
+.c-blog-post__image {
+}
+
+
 // Don't
-.x-blog-post {
+.c-blog-post {
 	.content {
 		.image {
 		}
@@ -604,21 +620,30 @@ This is a list of rules to use when you're using their selectors within our modu
 }
 ```
 
-#### Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
+Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
 
 ```scss
-// Do
-.x-blog-post {
+// Okay
+.c-blog-post {
 	&.darkpost {
 	}
 }
+
+
+// Better
+.c-blog-post {
+    &.c--dark-post {
+    }
+}
+
 
 // Don't
 .darkpost {
 }
 
+
 // Don't
-.x-blog-post {
+.c-blog-post {
     .darkpost & {
     }
 }
