@@ -309,6 +309,26 @@ When using @extends, __only extend a placeholder class__. This avoids the most p
 }
 ```
 
+### Filename Naming Convention
+
+The file naming convention should be identical to the Class Naming convention as described below, but with the following difference:
+
+Sass files (technical scss files) should be a Sass partial
+
+* This means it's prepended with a underscore `_`
+
+Sass files are named after it's root class name
+
+* Vellum: the filename can be named after the grouping of elements
+    * Example `ul`, `ol` and `li` can be grouped together in `_list.scss`
+* Components: the base component will be the filename
+    * `c-color-picker` makes `_color-picker.scss`
+    * Sub-components and modifiers are ignored!
+* Templates: the base template will be the filename
+    * `t-my-account` makes `_my-account.scss`
+    * Sub-templates and modifiers are ignored!
+    * Note that this should ultimately match our template filename naming convention
+
 ## Variable Naming Convention
 
 Variable names should follow this pattern: `${modifer(s)}-{name}`.
