@@ -329,6 +329,22 @@ Sass files are named after it's root class name
     * Sub-templates and modifiers are ignored!
     * Note that this should ultimately match our template filename naming convention
 
+### Note on Partials
+
+Be aware that there are two kinds of partials:
+
+*Template Partials* are dust template partials that are used specifically to hold small chunks of reusable code.
+
+These partials live in the `/adaptation/templates/partials` directory.
+
+*Sass Partials* are Sass or SCSS files that are appended with the underscore (`_`) character and is used for two reasons: First reason is to prevent the file from compiling into a CSS of the same name. The second is to simplify `@import` declarations by way of allowing you to reference the file without the file extension.
+
+These partials live throughout the `/assets/styles` directory. In fact, most SCSS files are partials with the exception of the core `stylesheet.scss`.
+
+When discussing partials, it should be clear which type is being talked about based on context. For example when discussing HTML, the structure of a document or a View then the Template Partial is what's relevant.
+
+On the flip side, if discussing CSS, Sass or stylesheets then a Sass Partial is what's relevant.
+
 ## Variable Naming Convention
 
 Variable names should follow this pattern: `${modifer(s)}-{name}`.
