@@ -345,6 +345,103 @@ When discussing partials, it should be clear which type is being talked about ba
 
 On the flip side, if discussing CSS, Sass or stylesheets then a Sass Partial is what's relevant.
 
+### Commenting Best Practice
+
+It is always better to over document your stylesheets than under document! That means writing lots of comments!
+
+When writing comments, it is best to following a format that makes making changes easy, without having to clutter your code.
+
+The first thing to keep in mind is that we section our styles based on components/templates and sub-components/templates.
+
+*Each file* should have a main heading using a double underline (`=`) and *each sub-component/template* should have a second level heading using a single underline (`-`).
+
+The second aspect of comments are the comments themselves! There are three types of comments...
+
+1. General Comments
+
+```
+// My Component
+// ============
+//
+// This is a general comment that applies to the whole of this section. It can contain
+// any information that is important to the file, styles and classes inside.
+
+.c-my-component {
+}
+```
+
+2. Direct Comments
+
+Direct comments are those that apply to a single line of code as denoted by the number in the note. So the first note (1) will apply anywhere you see `// 1`.
+
+Be aware that these notes typically only refer to the code directly beneath it, as far as just before the next section (i.e. the next sub-component). That next section could have it's own Direct Notes, but they will only apply to that section despite using the same numbers.
+
+```
+// My Component
+// ============
+//
+// Notes:
+//
+// 1. This is a direct comment about why we're using display: block
+// 2. Absolutely positioned relative to the parent .c-my-component
+
+.c-my-component {
+    position: relative; // 2
+    display: block; // 1
+
+    .some-child {
+        position: absolute; // 2
+    }
+}
+
+
+// My Component: Inner
+// -------------------
+//
+// Notes:
+//
+// 1. We see the number 1 again! But this note only counts for the code below and ignore the 1 above
+
+.c-my-component__inner {
+    display: block; // 1
+}
+
+```
+
+3. Global Direct Comments
+
+Global Direct Comments are used in the same way as normal Direct Comments with one crucial difference: these are declared once at the top of the file and can be used through any section!
+
+So Note A will always refer to the same note.
+
+This is a rare use case, but can be useful sometimes when you have the same set of changes that need to be applied across more than one section of code.
+
+```
+// My Component
+// ============
+//
+// Notes:
+//
+// A. Hide these elements because it's unneeded desktop markup
+
+.c-my-component {
+    display: none; // A
+}
+
+
+// My Component: Inner
+// -------------------
+
+.c-my-component__inner {
+    display: none; // A
+}
+```
+
+#### Common things to Comment
+
+* The parent relative position to an absolutely positioned element
+* Explicit dimensions like widths or heights that don't appear based on any meaninful unit (like `$v-space` or `$h-space` and even font sizes)
+
 ## Variable Naming Convention
 
 Variable names should follow this pattern: `${modifer(s)}-{name}`.
