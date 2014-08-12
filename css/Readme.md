@@ -81,6 +81,14 @@ ul.button-group li.button {
 }
 ```
 
+### A Note On Attribute Selectors
+
+Attribute selectors are often overlooked, and when they are noticed that are often qualified alongside an element selector. For example `input[type="text"]`.
+
+It's important to realize that the element selector is not necessary and actually increases the specificity!
+
+So for that reason, attribute selectors should be used alone, just like classes.
+
 ## Class Naming Convention
 
 We use a modified version of BEM that we call CSM (Component, Sub-component, Modifier). At it's core, it's virtually identical to BEM, but our exact syntax is slightly different. Basically:
