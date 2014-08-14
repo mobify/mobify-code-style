@@ -12,7 +12,7 @@ All our HTML documents should be using the HTML5 doctype
 <!DOCTYPE html>
 ```
 
-Do we have a preference for uppercase vs, e.g. <!doctype html>?
+Do we have a preference for uppercase vs, e.g. `<!doctype html>`?
 
 ### General Formatting
 
@@ -53,7 +53,7 @@ Indent your markup with 4 spaces, not tabs.
 
 ### Table Format
 
-If the content being marked up is tabular data (key-value or multidimensional data), use a table. Make use of the caption, <thead>, <tfoot>, <tbody> and <th> tags when necessary. In general, all <th> elements should always have a scope attribute associating them with a row or column, for accessibility reasons.
+If the content being marked up is tabular data (key-value or multidimensional data), use a table. Make use of the caption, `<thead>`, `<tfoot>`, `<tbody>` and `<th>` tags when necessary. In general, all `<th>` elements should always have a scope attribute associating them with a row or column, for accessibility reasons.
 
 ```html
 <table>
@@ -79,7 +79,7 @@ If the content being marked up is tabular data (key-value or multidimensional da
 </table>
 ```
 
-If data is grouped, tables may have more than one <tbody>. Columns may also have more than one <th>, representing a hierarchy of column labels, with the topmost <th> elements able to span several secondary headers using the `colspan` attribute. The same is true of table rows, using multiple <th> and the `rowspan` attribute.
+If data is grouped, tables may have more than one `<tbody>`. Columns may also have more than one `<th>`, representing a hierarchy of column labels, with the topmost `<th>` elements able to span several secondary headers using the `colspan` attribute. The same is true of table rows, using multiple `<th>` and the `rowspan` attribute.
 
 ```html
 <table>
@@ -167,11 +167,11 @@ Even though HTML5 can automatically close tags, we prefer to close them ourselve
 </ul>
 ```
 
-Do we have a preference for empty tags, e.g. <meta charset="utf-8"> vs. <meta charset="utf-8" />?
+Do we have a preference for empty tags, e.g. `<meta charset="utf-8">` vs. `<meta charset="utf-8" />`?
 
 ### Attribute Values
 
-When writing attribute values, always quote their value, even when writing HTML5. Use double quotation marks (") rather than single quotation marks (').
+When writing attribute values, always quote their value, even when writing HTML5. Use double quotation marks `"` rather than single quotation marks `'`.
 
 ```html
 <!-- NOT Recommended -->
@@ -197,9 +197,9 @@ _Do we want to do something like this? See https://github.com/necolas/idiomatic-
 
 ### Entity Reference
 
-There is no need to use entity references like &mdash;, &rdquo;, &#x263a;, assuming the same encoding is used for all files and editors.
+There is no need to use entity references like `&mdash;`, `&rdquo;`, `&#x263a;`, assuming the same encoding is used for all files and editors.
 
-The exception to this is for characters with special meaning in HTML (like < and &) as well as control or "invisible" characters (like no-break spaces).
+The exception to this is for characters with special meaning in HTML (like `<` and `&`) as well as control or "invisible" characters (like no-break spaces).
 
 ```html
 <!-- NOT recommended -->
