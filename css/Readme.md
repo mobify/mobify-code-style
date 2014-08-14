@@ -83,11 +83,13 @@ ul.button-group li.button {
 
 ## A Note On Attribute Selectors
 
-Attribute selectors are often overlooked, and when they are noticed that are often qualified alongside an element selector. For example `input[type="text"]`.
+A common use case is to target input types. For example `input[type="text"]`.
 
-It's important to realize that the element selector is not necessary and actually increases the specificity!
+It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly.
 
-So for that reason, attribute selectors should be used alone, just like classes.
+All we really need is `[type="text"]`
+
+So for that reason, *attribute selectors should be used alone*, just like classes.
 
 ## Class Naming Convention
 
