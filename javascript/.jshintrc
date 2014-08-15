@@ -48,8 +48,6 @@
     "strict": false,
     // Prevents leaving trailing whitespace in code
     "trailing": true,
-    // Maximum formal parameters per function
-    "maxparams": 10,
     // Maximum nesting depth
     "maxdepth": 5,
     // Maximum statements per function
