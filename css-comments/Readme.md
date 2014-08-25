@@ -371,3 +371,49 @@ breadcrumb link styles. That could be enough to warrant a heading:
 .c-breadcrumbs__link.c--current {
 }
 ```
+
+
+Functions & Mixins
+------------------
+
+`@function` and `@mixin` code have the same rules as most everything mentioned
+above, as well as some unique requirements as well.
+
+
+### Doc Block
+
+In addition to the standard definition documentation, there is what we call a
+doc block section that documents all the parameters: what data type is expected,
+and what purpose they serve.
+
+Lastly, the doc block records the return value; mainly just what the data
+type is.
+
+Parameters and return values are defined in the following format:
+
+`@param` identifies the parameters.
+
+`@return` identifies the return value.
+
+
+### Dependencies
+
+The dependencies section lists any functions, mixins or variables that is
+required. If any of these are missing, then your code will likely not work.
+
+An example of both the doc block and dependencies can be seen here:
+
+```
+// My Function
+// ===========
+//
+// Standard definition section goes here.
+//
+// @param $value [integer] : This is the initial integer that will be modified
+// @param $modifier [integer] : This is the modifying value, added to $value
+// @return [integer]
+
+@function add($value, $modifier) {
+    @return $value + $modifier;
+}
+```
