@@ -298,21 +298,21 @@ use a level 2 heading for each sub-component.
 }
 ```
 
-Note that if there is a relavent sub-component that can't have it's own class,
-then group it together with it's closest related sub-component. Example:
+Note that if there is a relavent sub-component that can't have it's own section
+(perhaps it's a really tiny set of styles, or it's tightly related with an
+existing sub-component) then group it together with it's closest
+related sub-component.
+
+Notice the lack of any "Link Arrow" heading in the following example:
 
 ```
 // Breadcrumbs: Link
 // -----------------
-//
-// Notes:
-//
-// 1. This is the Link Arrow
 
 .c-breadcrumbs__link {
 }
 
-.c-breadcrumbs__link-arrow { // 1
+.c-breadcrumbs__link-arrow {
 
 }
 ```
