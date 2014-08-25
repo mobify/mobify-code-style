@@ -128,6 +128,25 @@ Better example:
 }
 ```
 
+Notice how we can apply the same line comment to multiple lines:
+
+```
+// Modal
+// =====
+//
+// Notes:
+//
+// 1. Absolutely position `.modal__inner` relative to the parent `.modal`
+
+.modal {
+    position: relative;
+}
+
+.modal__inner {
+    position: absolute;
+}
+```
+
 
 Template SCSS Files
 -------------------
@@ -155,19 +174,19 @@ Example:
 // @url http://www.website.com/checkout
 
 .t-checkout {
-    
+
     // Global
     // ------
     //
     // ...
-    
-    
+
+
     // Your Details
     // ------------
     //
     // ...
-    
-    
+
+
     // Credit Card Info
     // ----------------
     //
@@ -294,7 +313,7 @@ then group it together with it's closest related sub-component. Example:
 }
 
 .c-breadcrumbs__link-arrow { // 1
-    
+
 }
 ```
 
@@ -314,7 +333,7 @@ Method 1: Nested
 // -----------------
 
 .c-breadcrumbs__link {
-    
+
     &.c--current {
     }
 }
