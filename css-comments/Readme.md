@@ -139,11 +139,11 @@ Notice how we can apply the same line comment to multiple lines:
 // 1. Absolutely position `.modal__inner` relative to the parent `.modal`
 
 .modal {
-    position: relative;
+    position: relative; // 1
 }
 
 .modal__inner {
-    position: absolute;
+    position: absolute; // 1
 }
 ```
 
