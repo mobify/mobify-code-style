@@ -14,6 +14,26 @@ var showFooter = !$('.shopping-bag').length;
 var showFooter = !$('.shopping-bag').length;
 ````
 
+Place comments that explain conditionals above the condition. This saves you four precious spaces of indent:
+
+````javascript
+
+if (condition) {
+    // BAD! ☠
+    // When `condition` is set we really need to `doSomething()`.
+    doSomething();
+}
+
+// GOOD ☆
+// When `condition` is set we really need to `doSomething()`.
+if (condition) {
+    doSomething();
+}
+````
+
+In general, always favour comment placement that leads to less indenting.
+
+
 Don't commit commented out sections of code back into the repository. Just delete the code. That's what git's history is for!
 
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
