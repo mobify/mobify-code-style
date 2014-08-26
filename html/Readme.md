@@ -57,7 +57,7 @@ If the content being marked up is tabular data (key-value or multidimensional da
 
 ```html
 <table>
-	<caption>Income and Taxes for 2014</caption>
+    <caption>Income and Taxes for 2014</caption>
     <thead>
         <tr>
             <th scope="col">Income</th>
@@ -167,7 +167,7 @@ Even though HTML5 can automatically close tags, we prefer to close them ourselve
 </ul>
 ```
 
-Do we have a preference for empty tags, e.g. `<meta charset="utf-8">` vs. `<meta charset="utf-8" />`?
+Self-contained elements (e.g. `<meta charset="utf-8">`) should not have a trailing slash at the end.
 
 ### Attribute Values
 
@@ -185,7 +185,7 @@ When writing attribute values, always quote their value, even when writing HTML5
 
 ### Attribute Order
 
-_Do we want to do something like this? See https://github.com/necolas/idiomatic-html_
+> _Do we want to do something like this? See https://github.com/necolas/idiomatic-html_
 
 > HTML attributes should be listed in an order that puts the most commonly-used attributes first:
 >
