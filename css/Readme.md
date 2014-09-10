@@ -109,7 +109,7 @@ When authoring CSS, you should be always aware of the selectors that you are cre
 
 Strive to create selectors that actually fully describe where it is authored. Put another way, any given selector should tell you which file and where in the file it is written.
 
-This can be down by following this simple rule: the first class in a selector is the file it can be found
+This can be done by following this simple rule: the first class in a selector is the file it can be found
 
 For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_product.scss`.
 
