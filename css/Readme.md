@@ -109,13 +109,23 @@ When authoring CSS, you should be always aware of the selectors that you are cre
 
 Strive to create selectors that actually fully describe where it is authored. Put another way, any given selector should tell you which file and where in the file it is written.
 
-This can be done by following this simple rule: the first class in a selector is the file it can be found
+This can be done by following this simple rule: __the first class in a selector is the file it can be found__.
 
-For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_product.scss`.
+Examples:
 
-The exception to this rule are when a base or root class is dependant on a global state.
+`.c-product` lives in `_product.scss`
 
-For example `.x-landscape .t-about .c-contact-form` would be found in `_about.scss` and NOT a `_landscape.scss` file (modifier classes alone don't have their own files).
+`.c-product.c--featured` lives in `_product.scss`
+
+`.c-product__link` lives in `_product.scss`
+
+`.t-pdp .c-product` lives in `_pdp.scss` NOT `_product.scss`
+
+The only exception to this rule is when the first class is a global state.
+
+Examples:
+
+`.x-landscape .t-about .c-contact-form` lives in `_about.scss` NOT some kind of `_landscape.scss` file (states and modifier classes don't have their own files).
 
 ## Single Direction Rule
 
