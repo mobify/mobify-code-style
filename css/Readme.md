@@ -2,6 +2,11 @@ This document outlines the way Customer Success team is expected to write their 
 
 We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
 
+# Index
+
+* Base (current page!)
+* [Comments](docs/comments/Readme.md)
+
 # Tools & Frameworks
 
 * [Sass](http://sass-lang.com/)
