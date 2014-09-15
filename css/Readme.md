@@ -5,7 +5,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 # Index
 
 * Base (current page!)
-* [Comments](comments/Readme.md)
+* [Block Comment Documentation Guide](comments/Readme.md)
 
 # Tools & Frameworks
 
