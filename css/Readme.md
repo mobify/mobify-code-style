@@ -101,7 +101,11 @@ We use a modified version of BEM that we call CSM (Component, Sub-component, Mod
 .c-component.c--modifier
 ```
 
-We cover this convention in greater detail [below](#user-content-class-naming-convention-csm).
+One last thing: do __NOT__ style Javascript class!
+
+Anything that starts with `js-` is off limits.
+
+We cover our naming convention in much greater detail [below](#user-content-class-naming-convention-csm).
 
 ## Self Documenting Selectors
 
@@ -109,13 +113,23 @@ When authoring CSS, you should be always aware of the selectors that you are cre
 
 Strive to create selectors that actually fully describe where it is authored. Put another way, any given selector should tell you which file and where in the file it is written.
 
-This can be done by following this simple rule: the first class in a selector is the file it can be found
+This can be done by following this simple rule: __the first class in a selector is the file it can be found__.
 
-For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_product.scss`.
+Examples:
 
-The exception to this rule are when a base or root class is dependant on a global state.
+`.c-product` lives in `_product.scss`
 
-For example `.x-landscape .t-about .c-contact-form` would be found in `_about.scss` and NOT a `_landscape.scss` file (modifier classes alone don't have their own files).
+`.c-product.c--featured` lives in `_product.scss`
+
+`.c-product__link` lives in `_product.scss`
+
+`.t-pdp .c-product` lives in `_pdp.scss` NOT `_product.scss`
+
+The only exception to this rule is when the first class is a global state.
+
+Examples:
+
+`.x-landscape .t-about .c-contact-form` lives in `_about.scss` NOT some kind of `_landscape.scss` file (states and modifier classes don't have their own files).
 
 ## Single Direction Rule
 
@@ -671,16 +685,27 @@ An exception is the use of ARIA roles for styling state. Where an ARIA role maps
 .c-select__option[aria-selected] {} // state, using `[aria-selected]` instead of `.c--is-selected`
 ```
 
+### Avoid Javascript
+
+Don't forget: do __NOT__ style Javascript class!
+
+Again, if a class starts with `js-` then it's off limits.
+
+If there is some kind of interactive state that you need to apply styles to, then make sure to create a class for that style first and have it added to the markup and to the JS interactions.
+
+For example, perhaps we have a `c-nav` component and has `js-nav-back` on its back button. If you want to style it, use `c-nav__back` instead.
+
 # Class Prefix Conventions
 
 You'll have probably noticed by now that our class names have a variety of prefixes. If not, I will describe their usages now:
 
 Prefix | Purpose | Scaffold Directory |
 ------ | ------- | ------------------ |
-`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
-`.t-` | Classes that start with `.t-` are Template and Template Partial specific classes. The names of these classes are most often based on the template names defined by the konf. Example templates might include: `.t-pdp`, `.t-home`, `.t-category`. Example Template Partials might include: `.t-header`, `.t-footer`, `.t-sidebar`. | */src/scss/templates*
-`.x-` | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). [See below](#us-versus-them-aka-theres-an-x-ception-to-every-rule) | */src/scss/globals/*
-`.m-` | This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.c-`  | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
+`.t-`  | Classes that start with `.t-` are Template and Template Partial specific classes. The names of these classes are most often based on the template names defined by the konf. Example templates might include: `.t-pdp`, `.t-home`, `.t-category`. Example Template Partials might include: `.t-header`, `.t-footer`, `.t-sidebar`. | */src/scss/templates*
+`.x-`  | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). [See below](#us-versus-them-aka-theres-an-x-ception-to-every-rule) | */src/scss/globals/*
+`.m-`  | This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.js-` | These classes are to be avoided in our stylesheets. No exceptions! | *n/a*
 
 ## Us versus Them (aka There's an x-ception to every rule)
 
