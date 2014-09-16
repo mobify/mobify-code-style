@@ -4,7 +4,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 
 # Tools & Frameworks
 
-* [Sass](http://sass-lang.com/)
+* [Sass](http://sass-lang.com/)s
 * [Autoprefixer](https://github.com/ai/autoprefixer)
 * [Vellum](https://github.com/mobify/vellum)
 * [Spline](https://github.com/mobify/spline)
@@ -103,7 +103,7 @@ We use a modified version of BEM that we call CSM (Component, Sub-component, Mod
 
 One last thing: do __NOT__ style Javascript class!
 
-Anything that stars with `js-` is off limits.
+Anything that starts with `js-` is off limits.
 
 We cover our naming convention in much greater detail [below](#user-content-class-naming-convention-csm).
 
