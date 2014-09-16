@@ -4,7 +4,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 
 # Tools & Frameworks
 
-* [Sass](http://sass-lang.com/)s
+* [Sass](http://sass-lang.com/)
 * [Autoprefixer](https://github.com/ai/autoprefixer)
 * [Vellum](https://github.com/mobify/vellum)
 * [Spline](https://github.com/mobify/spline)
