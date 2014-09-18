@@ -3,40 +3,40 @@
 
 ## Table of Contents
 
-* Introduction
+* [Introduction](#introduction)
     * [Tools & Frameworks](#tools--frameworks)
     * [Philosophy & Structure](#philosophy--structure)
-* CSS Best Practices
-    * Code Like it's 2020
-    * Selector Specificity
-    * A Note On Attribute Selectors
-    * Class Naming Convention
-    * Self Documenting Selectors
-    * Single Direction Rule
-    * Name Spacing
-    * Size Units
-    * Format
-    * Declaration Order
-* Sass (SCSS) Best Practices
-    * Nest Only When Necessary
-    * Global vs. Local Variables/Mixins
-    * `@extends`
-    * Filename Naming Convention
-    * Note on Partials
-    * Commenting Best Practice
-    * Variable Naming Convention
-* Class Naming Conventions
-    * CSM
-        * Components
-        * Sub-Components
-        * Modifiers
-        * Component modifiers that affect subcomponents
-        * State
-    * Class Prefix Conventions
-    * Us versus Them
-        * When to use our selector naming scheme
-        * When to use their existing selectors
-        * How to use their existing selectors in our components
+* [CSS Best Practices](css-best-practices#css-best-practices)
+    * [Code Like it's 2020](css-best-practices#code-like-its-2020)
+    * [Selector Specificity](css-best-practices#selector-specificity)
+    * [A Note On Attribute Selectors](css-best-practices#a-note-on-attribute-selectors)
+    * [Class Naming Convention](css-best-practices#class-naming-convention)
+    * [Self Documenting Selectors](css-best-practices#self-documenting-selectors)
+    * [Single Direction Rule](css-best-practices#single-direction-rule)
+    * [Name Spacing](css-best-practices#name-spacing)
+    * [Size Units](css-best-practices#size-units)
+    * [Format](css-best-practices#format)
+    * [Declaration Order](css-best-practices#declaration-order)
+* [Sass (SCSS) Best Practices](sass-best-practices)
+    * [Nest Only When Necessary](sass-best-practices#nest-only-when-necessary)
+    * [Global vs. Local Variables/Mixins](sass-best-practices#global-vs-local-variablesmixins)
+    * [`@extends`](sass-best-practices#extends)
+    * [Filename Naming Convention](sass-best-practices#filename-naming-convention)
+    * [Note on Partials](sass-best-practices#note-on-partials)
+    * [Commenting Best Practice](sass-best-practices#commenting-best-practice)
+    * [Variable Naming Convention](sass-best-practices#variable-naming-convention)
+* [Class Naming Conventions](class-naming-conventions)
+    * [CSM](class-naming-conventions#csm)
+        * [Components](class-naming-conventions#components)
+        * [Sub-Components](class-naming-conventions#sub-components)
+        * [Modifiers](class-naming-conventions#modifiers)
+        * [Component modifiers that affect subcomponents](class-naming-conventions#component-modifiers-that-affect-subcomponents)
+        * [State](class-naming-conventions#state)
+    * [Class Prefix Conventions](class-naming-conventions#class-prefix-conventions)
+    * [Us versus Them](class-naming-conventions#us-versus-them-aka-theres-an-x-ception-to-every-rule)
+        * [When to use our selector naming scheme](class-naming-conventions#when-to-use-our-selector-naming-scheme)
+        * [When to use their existing selectors](class-naming-conventions#when-to-use-their-existing-selectors)
+        * [How to use their existing selectors in our components](class-naming-conventions#how-to-use-their-existing-selectors-in-our-components)
 * [Block Comment Documentation Guide](comments/Readme.md)
 
 
