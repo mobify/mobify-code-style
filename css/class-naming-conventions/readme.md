@@ -3,17 +3,17 @@
 
 ## Table of Contents
 
-* CSM
-    * Components
-    * Sub-Components
-    * Modifiers
-    * Component modifiers that affect subcomponents
-    * State
-* Class Prefix Conventions
-* Us versus Them
-    * When to use our selector naming scheme
-    * When to use their existing selectors
-    * How to use their existing selectors in our components
+* [CSM](#csm)
+    * [Components](#components)
+    * [Sub-Components](#sub-components)
+    * [Modifiers](#modifiers)
+    * [Component modifiers that affect subcomponents](#component-modifiers-that-affect-subcomponents)
+    * [State](#state)
+* [Class Prefix Conventions](#class-prefix-conventions)
+* [Us versus Them](#us-versus-them-aka-theres-an-x-ception-to-every-rule)
+    * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
+    * [When to use their existing selectors](#when-to-use-their-existing-selectors)
+    * [How to use their existing selectors in our components](#how-to-use-their-existing-selectors-in-our-components)
 
 
 ## CSM

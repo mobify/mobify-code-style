@@ -5,15 +5,15 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 
 ## Table of Contents
 
-* Nest Only When Necessary
-* Global vs. Local Variables/Mixins
-* `@extends`
-* Filename Naming Convention
-* Note on Partials
-* Commenting Best Practice
-    * Common things to Comment
-* Variable Naming Convention
-    * Exceptions
+* [Nest Only When Necessary](#nest-only-when-necessary)
+* [Global vs. Local Variables/Mixins](#global-vs-local-variablesmixins)
+* [`@extends`](#extends)
+* [Filename Naming Convention](#filename-naming-convention)
+* [Note on Partials](#note-on-partials)
+* [Commenting Best Practice](#commenting-best-practice)
+    * [Common things to Comment](#common-things-to-comment)
+* [Variable Naming Convention](#variable-naming-convention)
+    * [Exceptions](#exceptions)
 
 
 ## Nest Only When Necessary

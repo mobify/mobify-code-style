@@ -3,19 +3,19 @@
 
 ## Table of Contents
 
-* Code Like it's 2020
-* Selector Specificity
-    * Dos
-    * Do Nots
-* A Note On Attribute Selectors
-* Class Naming Convention
-* Self Documenting Selectors
-* Single Direction Rule
-* Name Spacing
-* Size Units
-* Format
-* Declaration Order
-    * Exceptions and variations
+* [Code Like it's 2020](#code-like-its-2020)
+* [Selector Specificity](#selector-specificity)
+    * [Dos](#dos)
+    * [Do Nots](#do-nots)
+* [A Note On Attribute Selectors](#a-note-on-attribute-selectors)
+* [Class Naming Convention](#class-naming-convention)
+* [Self Documenting Selectors](#self-documenting-selectors)
+* [Single Direction Rule](#single-direction-rule)
+* [Name Spacing](#name-spacing)
+* [Size Units](#size-units)
+* [Format](#format)
+* [Declaration Order](#declaration-order)
+    * [Exceptions and variations](#exceptions-and-variations)
 
 
 ## Code Like it's 2020
