@@ -1,14 +1,11 @@
-# CSS
-
-This document outlines the way Customer Success team is expected to write their CSS. Following this document ensures that everyone is writing markup that feels familiar and can be maintained by anyone with little overhead.
-
-We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
+# CSS Code Style
 
 
 ## Table of Contents
 
-* [Tools & Frameworks](#tools--frameworks)
-* [Philosophy & Structure](#philosophy--structure)
+* Introduction
+    * [Tools & Frameworks](#tools--frameworks)
+    * [Philosophy & Structure](#philosophy--structure)
 * CSS Best Practices
     * Code Like it's 2020
     * Selector Specificity
@@ -43,7 +40,13 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 * [Block Comment Documentation Guide](comments/Readme.md)
 
 
-## Tools & Frameworks
+## Introduction
+
+This document outlines the way Customer Success team is expected to write their CSS. Following this document ensures that everyone is writing markup that feels familiar and can be maintained by anyone with little overhead.
+
+We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
+
+### Tools & Frameworks
 
 * [Sass](http://sass-lang.com/)
 * [Autoprefixer](https://github.com/ai/autoprefixer)
@@ -53,7 +56,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 * [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml))
 
 
-## Philosophy & Structure
+### Philosophy & Structure
 
 We strive to write modular, component driven CSS with a clear seperation of concerns, structured so they are reuseable and findable. In the end, our code should be easy to maintain by anyone - even for new people entering a project.
 
