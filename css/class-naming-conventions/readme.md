@@ -312,3 +312,5 @@ Use their modifiers the same way you would use our modifiers. Chain it to the co
 ```
 
 > If they use their modifiers in weird or unexpected ways, consider using the konf or templating to add our modifier classes instead.
+
+Continue on to [Block Comment Documentation Guide →](../comments/Readme.md)

@@ -223,3 +223,5 @@ $grey-50 // 50% greyscale
 ```
 
 Keep in mind that `$grey-10` does not HAVE to be exactly 10% greyscale. The point is only to provide a rough approximation and simplify the need to remember color values.
+
+Continue on to [Class Naming Conventions →](../class-naming-conventions#class-naming-conventions)

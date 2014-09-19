@@ -273,3 +273,5 @@ Sometimes we break out of this convention to add to the readability of our style
         width 0.5s linear;
 }
 ```
+
+Continue on to [Sass (SCSS) Best Practices →](../sass-best-practices#sass-scss-best-practices)
