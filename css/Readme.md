@@ -83,3 +83,5 @@ Note that Vellum represents our "Base" styles.
 > You may notice the heavy influence of methodologies like [SMACSS](http://smacss.com/) and [OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/).
 >
 > Familiarity with these concepts is cruicial! If you are not, then we urge that you at least learn the basics: [Jonathan Snook's "CSS is a Mess"](http://vimeo.com/99877232) and [Andy Hume's "CSS For Grown Ups"](http://lanyrd.com/2012/sxsw-interactive/spmqc/) is a good place to start.
+
+Continue on to [CSS Best Practices →](css-best-practices#css-best-practices)
