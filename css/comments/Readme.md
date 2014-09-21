@@ -1,5 +1,5 @@
-CSS Block Comment Documentation Guide
-=====================================
+Block Comment Documentation Guide
+=================================
 
 This is a guide that outlines how to format comment documentation in SCSS files.
 
