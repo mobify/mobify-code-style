@@ -1,7 +1,7 @@
 <snippet>
     <content><![CDATA[
 // ${1:Mixin name}
-// ---
+// ===
 //
 // ${2:Mixin Description}
 //
