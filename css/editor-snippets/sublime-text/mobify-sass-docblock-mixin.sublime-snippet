@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[
+// ${1:Mixin name}
+// ===
+//
+// ${2:Mixin Description}
+//
+// @param \$${3:param-name} [${4:data type}] : ${5:Description}
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>//mx</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.scss</scope>
+</snippet>
