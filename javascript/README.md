@@ -92,6 +92,9 @@ var name = 'foo';
 
 The function expression is clearly recognisable as what it really is (a variable with a function value). Additionally, it helps organize code so that all variable declarations appear at the top of a file, and invocations follow. This gives some predictablity when others are reading your code, allowing for a more consistent structure.
 
+Function expressions are subject to [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting), and as such declaring functions as expressions will result in their being hoisted to the top of their enclosing function or global code.
+
+
 ````javascript
 // bad
 function foo () {
