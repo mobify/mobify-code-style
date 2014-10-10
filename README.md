@@ -6,7 +6,7 @@ A repo to document code standards for different languages and provide tools for 
 
 ## JavaScript
 
-Typically we lint our javascript files using [Grunt](http://gruntjs.com/). We have two javascript linters with different features. [jshint](https://github.com/gruntjs/grunt-contrib-jshint) and [jscs](https://github.com/gustavohenke/grunt-jscs-checker).
+Typically we lint our javascript files using [Grunt](http://gruntjs.com/). We have two javascript linters with different features. [jshint](https://github.com/gruntjs/grunt-contrib-jshint) and [jscs](https://github.com/gustavohenke/grunt-jscs).
 
 To add javascript linting to your project:
 
