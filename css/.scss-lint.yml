@@ -199,6 +199,7 @@ linters:
             "bottom",
             "left",
             "z-index",
+            "float",
 
             # Display, layout modes & box model
             "display",
@@ -206,7 +207,6 @@ linters:
             "overflow-x",
             "overflow-y",
             "clip",
-            "float",
             "clear",
             "table-layout",
             "empty-cells",
