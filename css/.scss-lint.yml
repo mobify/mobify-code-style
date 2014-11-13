@@ -12,7 +12,7 @@ linters:
 
     # Should selectors be all lowercase?
     CapitalizationInSelector:
-        enabled: true
+        enabled: false
 
     # Prefer hexadecimal color codes over color keywords?
     ColorKeyword:
