@@ -100,7 +100,7 @@ linters:
     # (http://bem.info/method/definitions/).
     NameFormat:
         enabled: true
-        convention: hyphenated_lowercase
+        convention: BEM
 
     # Report @extend unless extending a placeholder?
     PlaceholderInExtend:
