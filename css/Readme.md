@@ -3,9 +3,9 @@
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-    * [Tools & Frameworks](#tools--frameworks)
-    * [Philosophy & Structure](#philosophy--structure)
+* [Introduction](introduction#introduction)
+    * [Tools & Frameworks](introduction#tools--frameworks)
+    * [Philosophy & Structure](introduction#philosophy--structure)
 * [CSS Best Practices](css-best-practices#css-best-practices)
     * [Code Like it's 2020](css-best-practices#code-like-its-2020)
     * [Selector Specificity](css-best-practices#selector-specificity)
