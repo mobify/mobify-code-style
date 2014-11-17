@@ -28,7 +28,7 @@ These guidelines are a summary of our base principles: Our code bases should all
 * Be written like a single person typed it
 * Be components first
 * Be page specific only as a last resort
-* Be written with nesting no deeper than 2 levels
+* Be written with nesting no deeper than 4 levels
 * Be written with selectors that self documents its location
 
 Our seperation of concerns is reflected by our style directory structure as follows:
