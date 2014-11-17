@@ -1,5 +1,5 @@
 # General
-## Comments
+##Comments
 
 Please comment code extensively. More comments are always better than fewer comments. Comments should describe the why of your code - not what the code is doing:
 
@@ -39,7 +39,7 @@ Don't commit commented out sections of code back into the repository. Just delet
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
  
 
-Use single quotes
+##Use single quotes
 
 ````javascript
 // good
@@ -49,7 +49,7 @@ $('.footer')
 $(".footer")
 ````
 
-Don't use magic numbers
+##Don't use magic numbers
 
 ````javascript
 // bad: what was 3 again? Text node? Comment?
@@ -66,7 +66,8 @@ if (el.nodeType === Node.TEXT_NODE) { ... }
 if ($('.blah').length === defaultRoomCount) { ... }
 ````
 
-Declare variables with var
+##Declare variables with var
+
 Separate declarations with a semicolon and a line break.
 
 ````javascript
@@ -87,20 +88,40 @@ var length = items.length;
 var name = 'foo';
 ````
 
-Use a space before the opening curly brace
+##Use function expressions over function declarations
+
+The function expression is clearly recognisable as what it really is (a variable with a function value). Additionally, it helps organize code so that all variable declarations appear at the top of a file, and invocations follow. This gives some predictablity when others are reading your code, allowing for a more consistent structure.
+
+Function expressions are subject to [hoisting](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var#var_hoisting), and as such declaring functions as expressions will result in their being hoisted to the top of their enclosing function or global code.
+
+
+````javascript
+// bad
+function foo () {
+	...
+}
+
+// good 
+var foo = function() {
+	...
+}
+````
+
+##Use a space before the opening curly brace for function calls
+
 But no space before the opening argument parenthesis.
 
 ````javascript
 // bad
-function foo (){...}
+var foo = function(){...}
  
 // good: whitespace improves readability here
-function foo() {
+var foo = function() {
     ...
 }
 ````
 
-No preceding space before the opening parenthesis for function calls
+##No preceding space before the opening parenthesis for function calls
 
 ````javascript
 // bad: we want to differentiate between operations (see below) and function calls
@@ -110,7 +131,7 @@ doStuff ();
 doStuff();
 ````
 
-Cache the length in 'for' loops
+##Cache the length in 'for' loops
 
 ````javascript
 // bad: we are recalculating items.length every time
@@ -120,17 +141,17 @@ for (var i = 0; i < items.length; i++)
 for (var i = 0, length = items.length; i < length; i++)
 ````
 
-Use a space before the opening parenthesis for operations
+##Use a space before the opening parenthesis for conditions
 
 ````javascript
-// bad: we want to differentiate between function calls (see above) and operations
+// bad: we want to differentiate between function calls (see above) and conditions
 if(true)
  
 // good
 if (true)
 ````
 
-Use a space between operands
+##Use a space between operands
 
 ````javascript
 // bad
@@ -140,7 +161,7 @@ var c=a+b;
 var c = a + b;
 ````
 
-Don’t use a newline before 'else' or 'else if' statements
+##Don’t use a newline before 'else' or 'else if' statements
 
 ````javascript
 // bad
@@ -159,7 +180,7 @@ if (true) {
 }
 ````
 
-Use a space after colons
+##Use a space after colons
 
 ````javascript
 // bad
@@ -171,7 +192,7 @@ Use a space after colons
 }
 ````
 
-Use curly braces, even if the block only has one line
+##Use curly braces, even if the block only has one line
 
 ````javascript
 // bad: it's more work to add a line to this block
@@ -183,7 +204,7 @@ if (isVisible) {
 }
 ````
 
-Return early when possible
+##Return early when possible
 
 ````javascript
 if (condition) {
@@ -192,7 +213,8 @@ if (condition) {
 // rest of codes
 ````
 
-Don't use the object type in your variable name
+##Don't use the object type in your variable name
+
 Use a descriptive variable name instead.
 
 ````javascript
@@ -208,7 +230,7 @@ var items = [];
 var computer = {};
 ````
 
-Use camel-case for function names
+##Use camel case for function names
 
 ````javascript
 // bad: underscores shouldn’t be used in identifiers
@@ -221,7 +243,7 @@ function RecalculateItemHeight() { ... }
 function recalculateItemHeight() { ... }
 ````
 
-Use camel-case for variable names
+##Use camel case for variable names
 
 ````javascript
 // bad
@@ -231,7 +253,7 @@ var is_visible = true;
 var isVisible = true;
 ````
 
-Use Pascal case for constructors
+##Use Pascal case for constructors
 
 ````javascript
 // bad
@@ -249,7 +271,7 @@ function AwesomeMovie(options) {
 var fiftyShades = new AwesomeMovie({ title: '50 Shades Of Grey' });
 ````
 
-Declare methods for objects on the prototype, not in the object constructor
+##Declare methods for objects on the prototype, not in the object constructor
 
 ````javascript
 // bad
@@ -275,7 +297,7 @@ GoodExample.prototype.doSomeStuff = function() {
 };
 ```` 
 
-Cache variables if you use them more than once
+##Cache variables if you use them more than once
 
 ````javascript
 // bad: we're creating the same Zepto object multiple times
@@ -292,7 +314,7 @@ $('.items').on('click', function() {
 });
 ````
 
-Prepend jQuery/Zepto variables with $
+##Prepend jQuery/Zepto variables with $
 
 ````javascript
 // bad
