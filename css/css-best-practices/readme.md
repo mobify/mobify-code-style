@@ -64,11 +64,11 @@ ul.button-group li.button {
 
 A common use case is to target input types. For example `input[type="text"]`.
 
-It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly.
+It's important to realize that the element selector is not necessary here. If you think about it, we are actually increasing the specificity needlessly. Attribute selectors have the same specificity as a class. The above example has the same specificity as `input.someClass`
 
-All we really need is `[type="text"]`
+All we really need is `[type="text"]`, because that is sufficient for targeting text inputs.
 
-So for that reason, *attribute selectors should be used alone*, just like classes.
+In summary: *attribute selectors should be used alone*, just like classes.
 
 
 ## Class Naming Convention
