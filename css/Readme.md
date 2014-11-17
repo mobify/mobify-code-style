@@ -39,4 +39,4 @@
         * [How to use their existing selectors in our components](class-naming-conventions#how-to-use-their-existing-selectors-in-our-components)
 * [Block Comment Documentation Guide](comments/Readme.md)
 
-Continue on to [the Introduction →](../introduction#introduction)
+Continue on to [the Introduction →](introduction#introduction)
