@@ -36,7 +36,7 @@ __Avoid extends when possible__. It's always preferable to add a class to the ma
 
 If unavoidable, __never directly extend a standard class__. This can easily lead to enormous bloat in the generated CSS.
 
-When using @extends, __only extend a placeholder class__. This avoids the most problematic issues of Sass `@extend`s.
+When using @extends, __only extend a placeholder class__. This avoids the most problematic issues of Sass `@extend`s. This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
 
 ```scss
 // BAD
