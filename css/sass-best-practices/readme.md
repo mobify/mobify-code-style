@@ -8,6 +8,10 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 * [Nest Only When Necessary](#nest-only-when-necessary)
 * [Global vs. Local Variables/Mixins](#global-vs-local-variablesmixins)
 * [`@extends`](#extends)
+    * [Pitfalls](#pitfalls)
+    * [Workaround](#workaround)
+    * [Caveats](#caveats)
+    * [Genuine Usecases](#genuine-usecases)
 * [Filename Naming Convention](#filename-naming-convention)
 * [Note on Partials](#note-on-partials)
 * [Commenting Best Practice](#commenting-best-practice)
@@ -32,35 +36,144 @@ Any `@mixin` that is used in more than one file should be placed in the `/utilit
 
 ## `@extends`
 
-__Avoid extends when possible__. It's always preferable to add a class to the markup than it is to use an extend.
+As a rule of thumb, try to avoid `@extend`. This isn't too firm of a rule, because there are some genuine use cases (we'll describe them below), but generally we prefer to avoid its dangerous pitfalls.
 
-If unavoidable, __never directly extend a standard class__. This can easily lead to enormous bloat in the generated CSS.
 
-When using @extends, __only extend a placeholder class__. This avoids the most problematic issues of Sass `@extend`s. This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
+### Pitfalls
 
-```scss
-// BAD
+The main problem with `@extend` is that it is easy to bloat your code by using it. When first starting to use it, the code can be very innocent in appearance, such as:
 
-.c-some-class {
-    // ...
+```
+// SCSS code
+.c-button {}
+
+.c-callout {
+    @extend .c-button; // At first glance, this might not look dangerous
 }
 
-.t-pdp .client-class {
-    @extend .c-some-class;
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+```
+
+That does appear pretty innocent. However, what happens if we do this:
+
+```
+// SCSS code
+.c-button {}
+
+.c-callout {
+    @extend .c-button; // At first glance, this might not look dangerous
 }
 
-
-// Better
-
-.c-some-class,   // A placeholder should ALWAYS have a standard class to go with it. Add the placeholder
-%c-some-class {  // AFTER the standard class. This makes the code easier to find based on the compiled selectors.
-    // ...
+.t-home .cta .c-button {
+    // this looks pretty innocent too, right?
 }
 
-.t-pdp .client-class {
-    @extend %c-some-class;
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+.t-home .cta .c-button, .t-home .cta .c-callout {}
+```
+
+Whoa! See what happened? Notice the extra selector that got compiled that we probably didn't expect to happen: `.t-home .cta .c-callout`. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any, and I mean really any instance that `.c-button` is written in a selector, it get's extended by `.t-home .cta .c-button`, which is a massive amount of unwanted code.
+
+
+### Workaround
+
+So there is a workaround for the problem we described above: __never directly extend a standard class__. Instead, __only extend placeholder classes__. Let's see what that looks like using the same example from above:
+
+```
+// SCSS code
+.c-button, %c-button {} // Notice that this is a placeholder class
+
+.c-callout {
+    @extend %c-button;
+}
+
+.t-home .cta .c-button {}
+
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+.t-home .cta .c-button {}
+```
+
+Notice how the bloated CSS from the original example is now gone!
+
+Also notice how we still included the original `.c-button` class in the SCSS. After all, we still want to use that in our HTML, we just never extend it directly.
+
+This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
+
+
+### Caveats
+
+Now it's true that we have a workaround for one of the problems caused by extends in Sass. However, keep in mind that there is still a lot of caution that must go into using `@extend`. You must keep in mind that if you use it too much, then your code can still become extremely bloated.
+
+Take [this example](http://sassmeister.com/gist/c06688abd91d0c255e1c). This can easily happen on a real project if we are not careful. The lesson to take away from here is that if you extend too much, and if you start seeing compiled selectors that are unreadable, then chances are you are doing something wrong. At that point you may want to refactor your code to something more reasonable. Or you should consider adding the class that you have already to your markup instead of allowing your CSS to bloat.
+
+
+### Genuine Usecases
+
+__Scenario 1__: There are situations where you want to have default styles on elements like lists or headings, but you may also need classes for those same styles to use when you can't use the exact markup. Good real life example is when you need a heading to be an `<h3>` but it must look like an `<h1>` or vice versa.
+
+This is how we deal with this scenario using `@extend`:
+
+```
+// In `/vellum`
+// ---
+
+h1 {
+    @extend %c-heading-1;
+}
+
+h2 {
+    @extend %c-heading-2;
+}
+
+// and so on...
+
+
+// In `/components`
+// ---
+
+.c-heading-1,
+%c-heading-1 {
+    font-size: 18px;
+}
+
+.c-heading-2,
+%c-heading-2 {
+    font-size: 16px;
+}
+
+// and so on...
+```
+
+Please note that in Mobify's way of writing CSS, we do not declare classes in vellum (a.k.a. globals) and we do not style elements or tags in components, which is why these two are declared separately in their respective directories.
+
+__Scenario 2__: This scenario is very specific to Mobify and here is why... as you probably know by now, using Mobify's Adaptive.js you are basically transforming a site's DOM and applying new CSS to the new DOM. Typically, we would expect to have full control over the markup, and therefore over all the classes added to the DOM. Unfortunately, there are times when parts of the DOM cannot be changed exactly like you might want, such as when the website is using third-party plugins like BazaarVoice.
+
+What are the consequences of not being able to control parts of the DOM? It means we might not be able to add classes to the DOM reliably, which means that we can't apply our styles as easily as we would like. Instead, we are forced to write some gnarly selectors to ensure these situations can work. Let's use BazaarVoice again as our example:
+
+```
+[id="BVRRContainer"] {
+
+    .BVRRSortSelectWidget {
+        @extend %c-select;
+    }
+
+    .BVRRDisplayContentSubtitle {
+        @extend %c-heading-2;
+    }
+
+    .BVRRContextDataContainer > div {
+        @extend %c-rows;
+    }
 }
 ```
+
+So what is happening here? Well because we can't add classes to the DOM on the BazaarVoice widget, instead we have to directly select the IDs and classes that they are using already. Now because we want BazaarVoice to look like our website, we want to reuse some of the CSS we've written. The solution to this is to use `@extend` on BazaarVoice selectors.
 
 
 ## Filename Naming Convention
