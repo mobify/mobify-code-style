@@ -76,7 +76,7 @@ That does appear pretty innocent. However, what happens if we do this:
 .t-home .cta .c-button, .t-home .cta .c-callout {}
 ```
 
-Whoa! See what happened? Notice the extra selector that got compiled that we probably didn't expect to happen: `.t-home .cta .c-callout`. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any, and I mean really any instance that `.c-button` is written in a selector, it get's extended by `.t-home .cta .c-button`, which is a massive amount of unwanted code.
+Whoa! See what happened? Notice the extra selector that got compiled that we probably didn't expect to happen: `.t-home .cta .c-callout`. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any, and I mean really any instance that `.c-button` is written in a selector, they all get extended by `.c-callout`, which can be a massive amount of unwanted code.
 
 
 ### Workaround
