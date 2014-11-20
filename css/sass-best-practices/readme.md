@@ -27,6 +27,23 @@ Limit nesting as much as possible. Assess every single level of nesting that you
 At most, go no more than 4 levels deep.
 
 
+### Beware Nested Comma Separated Selectors
+
+[This example](http://sassmeister.com/gist/891f2002ef23bf8e4788) demonstrates a real-world scenario that happens when developers recklessly author code to match the markup too closely.
+
+It is a bad habit to nest every or most times an element is appears nested in the markup. CSS is not HTML, so we can't treat it in the same way. We have to be mindful of the selectors that we are compiling.
+
+What strategy do we use to avoid unnecessary nesting? Let's use the above [sassmesiter.com](http://sassmeister.com/gist/891f2002ef23bf8e4788) example and tweak it to show a few ways we could approach it instead. We could...
+
+* [Nest less](http://sassmeister.com/gist/12ca39f4fa72cafc5a75)
+* [Don't nest at all](http://sassmeister.com/gist/67f8fd11522e1d4692a9) and use template classes
+* or, [don't nest at all](http://sassmeister.com/gist/036b0a161a47f321b776) and use component classes
+
+The approach you use depends on many factors. How much control you have over the markup? How reusable are the styles that you are writing? Are the desktop or inline styles that you must account for?
+
+Chances are you will have to use a combination of all these strategies that works based on the state of your project and its markup.
+
+
 ## Global vs. Local Variables/Mixins
 
 Any `$variable` that is used in more than one file should be placed in the `/vellum/variables.scss` file. Others should be placed at the top of the file in which they're used.
