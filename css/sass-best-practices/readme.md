@@ -6,6 +6,7 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 ## Table of Contents
 
 * [Nest Only When Necessary](#nest-only-when-necessary)
+    * [Beware Nested Comma Separated Selectors](#beware-nested-comma-separated-selectors)
 * [Global vs. Local Variables/Mixins](#global-vs-local-variablesmixins)
 * [`@extends`](#extends)
     * [Pitfalls](#pitfalls)
