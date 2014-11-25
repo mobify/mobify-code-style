@@ -27,7 +27,9 @@ That includes things like Flexbox, CSS3 properties, and many more! This also mea
 
 ## Selector Specificity
 
-We strive to write performant, portable, selectors whenever possible.
+We strive to write performant, portable, selectors whenever possible. In short, [keep your CSS selectors short](http://csswizardry.com/2012/05/keep-your-css-selectors-short/).
+
+To help do that, it might be helpful to know how to measure specificity which [Smashing Magazine has an article just for that](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/)!
 
 ### Dos:
 

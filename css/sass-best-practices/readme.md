@@ -6,8 +6,13 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 ## Table of Contents
 
 * [Nest Only When Necessary](#nest-only-when-necessary)
+    * [Beware Nested Comma Separated Selectors](#beware-nested-comma-separated-selectors)
 * [Global vs. Local Variables/Mixins](#global-vs-local-variablesmixins)
 * [`@extends`](#extends)
+    * [Pitfalls](#pitfalls)
+    * [Workaround](#workaround)
+    * [Caveats](#caveats)
+    * [Genuine Usecases](#genuine-usecases)
 * [Filename Naming Convention](#filename-naming-convention)
 * [Note on Partials](#note-on-partials)
 * [Commenting Best Practice](#commenting-best-practice)
@@ -23,6 +28,23 @@ Limit nesting as much as possible. Assess every single level of nesting that you
 At most, go no more than 4 levels deep.
 
 
+### Beware Nested Comma Separated Selectors
+
+[This example](http://sassmeister.com/gist/891f2002ef23bf8e4788) demonstrates a real-world scenario that happens when developers recklessly author code to match the markup too closely.
+
+It is a bad habit to nest every or most times an element is appears nested in the markup. CSS is not HTML, so we can't treat it in the same way. We have to be mindful of the selectors that we are compiling.
+
+What strategy do we use to avoid unnecessary nesting? Let's use the above [sassmesiter.com](http://sassmeister.com/gist/891f2002ef23bf8e4788) example and tweak it to show a few ways we could approach it instead. We could...
+
+* [Nest less](http://sassmeister.com/gist/12ca39f4fa72cafc5a75)
+* [Don't nest at all](http://sassmeister.com/gist/67f8fd11522e1d4692a9) and use template classes
+* or, [don't nest at all](http://sassmeister.com/gist/036b0a161a47f321b776) and use component classes
+
+The approach you use depends on many factors. How much control you have over the markup? How reusable are the styles that you are writing? Are the desktop or inline styles that you must account for?
+
+Chances are you will have to use a combination of all these strategies that works based on the state of your project and its markup.
+
+
 ## Global vs. Local Variables/Mixins
 
 Any `$variable` that is used in more than one file should be placed in the `/vellum/variables.scss` file. Others should be placed at the top of the file in which they're used.
@@ -32,35 +54,148 @@ Any `@mixin` that is used in more than one file should be placed in the `/utilit
 
 ## `@extends`
 
-__Avoid extends when possible__. It's always preferable to add a class to the markup than it is to use an extend.
+As a rule of thumb, try to avoid `@extend`.
 
-If unavoidable, __never directly extend a standard class__. This can easily lead to enormous bloat in the generated CSS.
 
-When using @extends, __only extend a placeholder class__. This avoids the most problematic issues of Sass `@extend`s.
+### Pitfalls
+
+The main problem with `@extend` is that it is easy to bloat your code by using it. When first starting to use it, the code can be very innocent in appearance, such as:
 
 ```scss
-// BAD
+// SCSS code
+.c-button {}
 
-.c-some-class {
-    // ...
+.c-callout {
+    @extend .c-button; // At first glance, this might not look dangerous
 }
 
-.t-pdp .client-class {
-    @extend .c-some-class;
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+```
+
+That does appear pretty innocent. However, what happens if we do this:
+
+```scss
+// SCSS code
+.c-button {}
+
+.c-callout {
+    @extend .c-button; // At first glance, this might not look dangerous
 }
 
-
-// Better
-
-.c-some-class,   // A placeholder should ALWAYS have a standard class to go with it. Add the placeholder
-%c-some-class {  // AFTER the standard class. This makes the code easier to find based on the compiled selectors.
-    // ...
+.t-home .cta .c-button {
+    // this looks pretty innocent too, right?
 }
 
-.t-pdp .client-class {
-    @extend %c-some-class;
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+.t-home .cta .c-button, .t-home .cta .c-callout {}
+```
+
+Whoa! See what happened? Notice the extra selector that got compiled that we probably didn't expect to happen: `.t-home .cta .c-callout`. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any, and I mean really any instance that `.c-button` is written in a selector, they all get extended by `.c-callout`, which can be a massive amount of unwanted code.
+
+
+### Workaround
+
+So there is a workaround for the problem we described above: __never directly extend a standard class__. Instead, __only extend placeholder classes__. Let's see what that looks like using the same example from above:
+
+```scss
+// SCSS code
+.c-button, %c-button {} // Notice that this is a placeholder class
+
+.c-callout {
+    @extend %c-button;
+}
+
+.t-home .cta .c-button {}
+
+// Compiled output
+.c-button, .c-callout {}
+.c-callout {}
+.t-home .cta .c-button {}
+```
+
+Notice how the bloated CSS from the original example is now gone!
+
+Also notice how we still included the original `.c-button` class in the SCSS. After all, we still want to use that in our HTML, we just never extend it directly.
+
+This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
+
+
+### Genuine Usecases
+
+__Scenario 1__: There are situations where you want to have default styles on elements like lists or headings, but you may also need classes for those same styles to use when you can't use the exact markup. Good real life example is when you need a heading to be an `<h3>` but it must look like an `<h1>` or vice versa.
+
+This is how we deal with this scenario using `@extend`:
+
+```scss
+// In `/vellum`
+// ---
+
+h1,
+h2,
+// etc.
+%headings {
+    font-family: sans-serif;
+}
+
+h1,
+%h1 {
+    font-size: 18px;
+}
+
+h2,
+%h2 {
+    font-size: 16px;
+}
+
+// and so on...
+
+
+// In `/components`
+// ---
+
+.c-heading {
+    @extend %headings;
+}
+
+.c-heading.c--1 {
+    @extend %h1;
+}
+
+.c-heading.c--2 {
+    @extend %h2;
+}
+
+// and so on...
+```
+
+Please note that in Mobify's way of writing CSS, we do not declare classes in vellum (a.k.a. globals) and we do not style elements or tags in components, which is why these two are declared separately in their respective directories.
+
+__Scenario 2__: This scenario is very specific to Mobify and here is why... as you probably know by now, using Mobify's Adaptive.js you are basically transforming a site's DOM and applying new CSS to the new DOM. Typically, we would expect to have full control over the markup, and therefore over all the classes added to the DOM. Unfortunately, there are times when parts of the DOM cannot be changed exactly like you might want, such as when the website is using third-party plugins like BazaarVoice.
+
+What are the consequences of not being able to control parts of the DOM? It means we might not be able to add classes to the DOM reliably, which means that we can't apply our styles as easily as we would like. Instead, we are forced to write some gnarly selectors to ensure these situations can work. Let's use BazaarVoice again as our example:
+
+```scss
+[id="BVRRContainer"] {
+
+    .BVRRSortSelectWidget {
+        @extend %c-select;
+    }
+
+    .BVRRDisplayContentSubtitle {
+        @extend %h2;
+    }
+
+    .BVRRContextDataContainer > div {
+        @extend %c-rows;
+    }
 }
 ```
+
+So what is happening here? Well because we can't add classes to the DOM on the BazaarVoice widget, instead we have to directly select the IDs and classes that they are using already. Now because we want BazaarVoice to look like our website, we want to reuse some of the CSS we've written. The solution to this is to use `@extend` on BazaarVoice selectors.
 
 
 ## Filename Naming Convention
@@ -114,7 +249,7 @@ The second aspect of comments are the comments themselves! There are three types
 
 1. General Comments
 
-```
+```scss
 // My Component
 // ============
 //
@@ -131,7 +266,7 @@ Direct comments are those that apply to a single line of code as denoted by the 
 
 Be aware that these notes typically only refer to the code directly beneath it, as far as just before the next section (i.e. the next sub-component). That next section could have it's own Direct Notes, but they will only apply to that section despite using the same numbers.
 
-```
+```scss
 // My Component
 // ============
 //
@@ -171,7 +306,7 @@ So Note A will always refer to the same note.
 
 This is a rare use case, but can be useful sometimes when you have the same set of changes that need to be applied across more than one section of code.
 
-```
+```scss
 // My Component
 // ============
 //
@@ -213,7 +348,7 @@ Do note that variables without modifiers are implicitly the base version of that
 
 For color gradients, we follow a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
 
-```
+```scss
 $grey-10 // 10% greyscale
 $grey-20 // 20% greyscale
 $grey-30 // 30% greyscale
