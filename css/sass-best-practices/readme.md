@@ -61,7 +61,7 @@ As a rule of thumb, try to avoid `@extend`.
 
 The main problem with `@extend` is that it is easy to bloat your code by using it. When first starting to use it, the code can be very innocent in appearance, such as:
 
-```
+```scss
 // SCSS code
 .c-button {}
 
@@ -76,7 +76,7 @@ The main problem with `@extend` is that it is easy to bloat your code by using i
 
 That does appear pretty innocent. However, what happens if we do this:
 
-```
+```scss
 // SCSS code
 .c-button {}
 
@@ -101,7 +101,7 @@ Whoa! See what happened? Notice the extra selector that got compiled that we pro
 
 So there is a workaround for the problem we described above: __never directly extend a standard class__. Instead, __only extend placeholder classes__. Let's see what that looks like using the same example from above:
 
-```
+```scss
 // SCSS code
 .c-button, %c-button {} // Notice that this is a placeholder class
 
@@ -130,7 +130,7 @@ __Scenario 1__: There are situations where you want to have default styles on el
 
 This is how we deal with this scenario using `@extend`:
 
-```
+```scss
 // In `/vellum`
 // ---
 
@@ -167,7 +167,7 @@ __Scenario 2__: This scenario is very specific to Mobify and here is why... as y
 
 What are the consequences of not being able to control parts of the DOM? It means we might not be able to add classes to the DOM reliably, which means that we can't apply our styles as easily as we would like. Instead, we are forced to write some gnarly selectors to ensure these situations can work. Let's use BazaarVoice again as our example:
 
-```
+```scss
 [id="BVRRContainer"] {
 
     .BVRRSortSelectWidget {
@@ -238,7 +238,7 @@ The second aspect of comments are the comments themselves! There are three types
 
 1. General Comments
 
-```
+```scss
 // My Component
 // ============
 //
@@ -255,7 +255,7 @@ Direct comments are those that apply to a single line of code as denoted by the 
 
 Be aware that these notes typically only refer to the code directly beneath it, as far as just before the next section (i.e. the next sub-component). That next section could have it's own Direct Notes, but they will only apply to that section despite using the same numbers.
 
-```
+```scss
 // My Component
 // ============
 //
@@ -295,7 +295,7 @@ So Note A will always refer to the same note.
 
 This is a rare use case, but can be useful sometimes when you have the same set of changes that need to be applied across more than one section of code.
 
-```
+```scss
 // My Component
 // ============
 //
@@ -337,7 +337,7 @@ Do note that variables without modifiers are implicitly the base version of that
 
 For color gradients, we follow a convention that looks like `{modifier}-{name}-{number}` where the number _roughly_ corresponds to some property level of that color, such as the greyscale level.
 
-```
+```scss
 $grey-10 // 10% greyscale
 $grey-20 // 20% greyscale
 $grey-30 // 30% greyscale
