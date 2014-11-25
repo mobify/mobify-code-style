@@ -134,12 +134,21 @@ This is how we deal with this scenario using `@extend`:
 // In `/vellum`
 // ---
 
-h1 {
-    @extend %c-heading-1;
+h1,
+h2,
+// etc.
+%headings {
+    font-family: sans-serif;
 }
 
-h2 {
-    @extend %c-heading-2;
+h1,
+%h1 {
+    font-size: 18px;
+}
+
+h2,
+%h2 {
+    font-size: 16px;
 }
 
 // and so on...
@@ -148,14 +157,16 @@ h2 {
 // In `/components`
 // ---
 
-.c-heading-1,
-%c-heading-1 {
-    font-size: 18px;
+.c-heading {
+    @extend %headings;
 }
 
-.c-heading-2,
-%c-heading-2 {
-    font-size: 16px;
+.c-heading.c--1 {
+    @extend %h1;
+}
+
+.c-heading.c--2 {
+    @extend %h2;
 }
 
 // and so on...
@@ -175,7 +186,7 @@ What are the consequences of not being able to control parts of the DOM? It mean
     }
 
     .BVRRDisplayContentSubtitle {
-        @extend %c-heading-2;
+        @extend %h2;
     }
 
     .BVRRContextDataContainer > div {
