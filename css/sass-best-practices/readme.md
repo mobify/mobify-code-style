@@ -124,13 +124,6 @@ Also notice how we still included the original `.c-button` class in the SCSS. Af
 This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
 
 
-### Caveats
-
-Now it's true that we have a workaround for one of the problems caused by extends in Sass. However, keep in mind that there is still a lot of caution that must go into using `@extend`. You must keep in mind that if you use it too much, then your code can still become extremely bloated.
-
-Take [this example](http://sassmeister.com/gist/c06688abd91d0c255e1c). This can easily happen on a real project if we are not careful. The lesson to take away from here is that if you extend too much, and if you start seeing compiled selectors that are unreadable, then chances are you are doing something wrong. At that point you may want to refactor your code to something more reasonable. Or you should consider adding the class that you have already to your markup instead of allowing your CSS to bloat.
-
-
 ### Genuine Usecases
 
 __Scenario 1__: There are situations where you want to have default styles on elements like lists or headings, but you may also need classes for those same styles to use when you can't use the exact markup. Good real life example is when you need a heading to be an `<h3>` but it must look like an `<h1>` or vice versa.
