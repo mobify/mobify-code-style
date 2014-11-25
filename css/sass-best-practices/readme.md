@@ -54,7 +54,7 @@ Any `@mixin` that is used in more than one file should be placed in the `/utilit
 
 ## `@extends`
 
-As a rule of thumb, try to avoid `@extend`. This isn't too firm of a rule, because there are some genuine use cases (we'll describe them below), but generally we prefer to avoid its dangerous pitfalls.
+As a rule of thumb, try to avoid `@extend`.
 
 
 ### Pitfalls
