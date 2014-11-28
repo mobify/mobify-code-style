@@ -31,20 +31,21 @@ A hybrid project has a stylesheet specific to the OS. So, for example, in a typi
 ``android.css`` will include only the styles from the web that are necessary for the app. Typically removing styles related to high-level navigation and other items that are not controlled with the native code. Then builds on top of whats there with all the styles specific to that OS, extending the same system used to build out ``stylesheet.css``. ``android.css`` would look something like this:
 
 ```scss
-//
-// Including only the necessary styles for the app.
-//
 @charset 'UTF-8';
 
-// Web Defaults
+//
+// Including Only The Relevant Web Styles
+//
+
+// Defaults
 @import 'vellum';
 
-// Web Components
+// Components
 @import 'components/heading';
 @import 'components/link';
 @import 'components/loading-overlay';
 
-// Web Templates
+// Templates
 @import 'templates/root';
 @import 'templates/main';
 @import 'templates/home';
