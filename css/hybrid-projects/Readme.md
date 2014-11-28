@@ -1,8 +1,9 @@
 # Hybrid App Projects
 
+## Structuring Your Styles
+
 CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. Occasionally you will start a hybrid project for a Mobify site that was previously developed using outdated best practices, this page will outline how to start a new project and provide a minimally sized CSS file to the app.
 
-## Structuring Your Styles
 A hybrid project has a stylesheet specific to the OS. So in a typical android app project you might have what looks like this:
 
 ```
@@ -10,41 +11,54 @@ A hybrid project has a stylesheet specific to the OS. So in a typical android ap
     /vellum
     /components
     /partials
-    /pages
+    /templates
 
     /android
         /components
         /partials
-        /pages
+        /templates
 
     stylesheet.scss
     android.scss
 ```
 
-``android.css`` will include only the components, partials, and page styles that are necessary for the app. Typically removing styles related to high-level navigation and other items that are not controlled with the native code, as well as all the styles specific to that OS. ``android.css`` would look something like this:
+``android.css`` will include only the styles from the web that are necessary for the app. Typically removing styles related to high-level navigation and other items that are not controlled with the native code. Then builds on top of whats there with all the styles specific to that OS, extending the same system used to build out ``stylesheet.css``. ``android.css`` would look something like this:
 
 ```scss
 //
 // Including only the necessary styles for the app.
 //
-@charset "UTF-8";
+@charset 'UTF-8';
 
-// Default
-@import “/vellum“;
-@import “/components/componentOne.scss“;
-@import “/components/componentTwo.scss“;
-@import “/pages/pageOne.scss”;
-@import “/pages/pageTwo.scss”;
+// Web Defaults
+@import 'vellum';
 
-// Modules
-@import “/android/components/_loginModal.scss";
-@import “/android/components/_pushModal.scss";
-@import “/android/components/_contextNav.scss";
-@import “/android/components/_checkoutCards.scss";
+// Web Components
+@import 'components/heading';
+@import 'components/link';
+@import 'components/loading-overlay';
 
-// Pages
-@import “/android/pages/_cart.scss";
-@import “/android/pages/_pdp.scss";
+// Web Templates
+@import 'templates/root';
+@import 'templates/main';
+@import 'templates/home';
+
+
+//
+// Android Styles
+//
+
+// Components
+@import 'android/components/arrange';
+@import 'android/components/card';
+@import 'android/components/stack';
+
+// Templates
+@import 'android/templates/login';
+@import 'android/templates/store-finder';
+@import 'android/templates/store-details';
+@import 'android/templates/search-error';
+
 ```
 
-``android.css`` will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``.
+Stylesheets will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``, etc.
