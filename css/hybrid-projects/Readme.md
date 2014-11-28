@@ -2,9 +2,9 @@
 
 ## Structuring Your Styles
 
-CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. Occasionally you will start a hybrid project for a Mobify site that was previously developed using outdated best practices, this page will outline how to start a new project and provide a minimally sized CSS file to the app.
+CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the app.
 
-A hybrid project has a stylesheet specific to the OS. So in a typical android app project you might have what looks like this:
+A hybrid project has a stylesheet specific to the OS. So, for example, in a typical android app project, you might have what looks like this:
 
 ```
 /styles
