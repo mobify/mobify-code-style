@@ -33,8 +33,8 @@ A hybrid project has a stylesheet specific to the OS. So in a typical android ap
 @import “/vellum“;
 @import “/components/componentOne.scss“;
 @import “/components/componentTwo.scss“;
-@import “/pages/pageOne.scss”
-@import “/pages/pageTwo.scss”
+@import “/pages/pageOne.scss”;
+@import “/pages/pageTwo.scss”;
 
 // Modules
 @import “android/components/_loginModal.scss";
