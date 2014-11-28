@@ -418,3 +418,5 @@ An example of both the doc block and dependencies can be seen here:
     @return $value + $modifier;
 }
 ```
+
+Continue on to [Hybrid App Projects →](../hybrid-projects#hybrid-app-projects)
