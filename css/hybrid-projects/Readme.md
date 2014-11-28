@@ -37,14 +37,14 @@ A hybrid project has a stylesheet specific to the OS. So in a typical android ap
 @import “/pages/pageTwo.scss”;
 
 // Modules
-@import “android/components/_loginModal.scss";
-@import “android/components/_pushModal.scss";
-@import “android/components/_contextNav.scss";
-@import “android/components/_checkoutCards.scss";
+@import “/android/components/_loginModal.scss";
+@import “/android/components/_pushModal.scss";
+@import “/android/components/_contextNav.scss";
+@import “/android/components/_checkoutCards.scss";
 
 // Pages
-@import “android/pages/_cart.scss";
-@import “android/pages/_pdp.scss";
+@import “/android/pages/_cart.scss";
+@import “/android/pages/_pdp.scss";
 ```
 
 ``android.css`` will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``.
