@@ -13,12 +13,18 @@ A hybrid project has a stylesheet specific to the OS. So in a typical android ap
     /partials
     /templates
 
+    /ios
+        /components
+        /partials
+        /templates
+
     /android
         /components
         /partials
         /templates
 
     stylesheet.scss
+    ios.scss
     android.scss
 ```
 
