@@ -1,10 +1,10 @@
 # Hybrid App Projects
 
-## Structuring Your Styles
+## Structuring Your Styles For a Legacy Mobify Site
 
-CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the app.
+CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the web.
 
-A hybrid project has a stylesheet specific to the OS. So, for example, in a typical android app project, you might have what looks like this:
+A hybrid project has a stylesheet specific to the OS. So a typical app project for a legacy Mobify project would be structured as such:
 
 ```
 /styles
@@ -28,28 +28,11 @@ A hybrid project has a stylesheet specific to the OS. So, for example, in a typi
     android.scss
 ```
 
-``android.css`` will include only the styles from the web that are necessary for the app. Typically removing styles related to high-level navigation and other items that are not controlled with the native code. Then builds on top of whats there with all the styles specific to that OS, extending the same system used to build out ``stylesheet.css``. ``android.css`` would look something like this:
+``android.css`` will include all of the web styles and override them as needed. Building on top of whats there with all the styles specific to that OS will help in keeping the system maintainable. The system used to build out an example ``android.css`` would look something like this:
 
 ```scss
-@charset 'UTF-8';
-
-//
-// Including Only The Relevant Web Styles
-//
-
-// Defaults
-@import 'vellum';
-
-// Components
-@import 'components/heading';
-@import 'components/link';
-@import 'components/loading-overlay';
-
-// Templates
-@import 'templates/root';
-@import 'templates/main';
-@import 'templates/home';
-
+// Web Styles
+@import stylesheet.scss
 
 //
 // Android Styles
@@ -65,7 +48,8 @@ A hybrid project has a stylesheet specific to the OS. So, for example, in a typi
 @import 'android/templates/store-finder';
 @import 'android/templates/store-details';
 @import 'android/templates/search-error';
-
 ```
 
 Stylesheets will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``, etc.
+
+> Stay tuned for what to do on brand new projects
