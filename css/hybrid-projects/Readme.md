@@ -2,7 +2,7 @@
 
 ## Structuring App Styles For a Legacy Mobify Site
 
-CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the web.
+CSS written specifically for webviews contained in a Native application should follow all normally prescribed [best practices](https://github.com/mobify/mobify-code-style/tree/master/css/css-best-practices). This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the web.
 
 A hybrid project has a stylesheet specific to the OS. So a typical app project for a legacy Mobify project would be structured as such:
 
