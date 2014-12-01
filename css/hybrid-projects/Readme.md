@@ -1,6 +1,6 @@
 # Hybrid App Projects
 
-## Structuring Your Styles For a Legacy Mobify Site
+## Structuring App Styles For a Legacy Mobify Site
 
 CSS written specifically for webviews contained in a Native application should follow all normally prescribed best practices. This page will outline how to start a new app project, avoid adhering to legacy CSS code style, and provide a minimally sized CSS file to the web.
 
@@ -50,6 +50,10 @@ A hybrid project has a stylesheet specific to the OS. So a typical app project f
 @import 'android/templates/search-error';
 ```
 
-Stylesheets will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``, etc.
+Stylesheets will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``, etc. 
 
-> Stay tuned for what to do on brand new projects
+## Structuring App Styles For a Legacy Mobify Site
+
+The current intended strategy in mind for future new builds is to have a single stylesheet for all platforms. Incorporating platform-specific theming and components into our existing CSS system.
+
+This could serve to decrease the complexity associated with the system we use for legacy Mobify sites and potentially make hybrid projects easier to maintain.
