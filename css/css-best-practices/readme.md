@@ -83,7 +83,7 @@ We use a modified version of BEM that we call CSM (Component, Sub-component, Mod
 .c-component.c--modifier
 ```
 
-We cover this convention in greater detail [here](#user-content-class-naming-convention-csm).
+We cover this convention in greater detail [here](../class-naming-conventions#class-naming-conventions).
 
 
 ## Self Documenting Selectors
@@ -114,7 +114,7 @@ This principle is talked about in depth by [Harry Roberts on csswizardy.com](htt
 
 ## Name Spacing
 
-The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning `_component_` or `_template_` respectively. See the [below table](#class-prefix-conventions) for more details on Mobify's namespacing practices.
+The first thing you'll notice when going through Customer Success's CSS is that all of our class names are prefixed (aka: name-spaced) to one of two letters: `c-` or `t-`, meaning `_component_` or `_template_` respectively. See the [below table](../class-naming-conventions#class-prefix-conventions) for more details on Mobify's namespacing practices.
 
 Because we work on top of our client's markup and javascript, we need to make sure our class names will never conflict with their class names. By prefixing/namespacing our classes with `c-` or `t-`, we can be assured that 99.9% of those situations are avoided.
 
