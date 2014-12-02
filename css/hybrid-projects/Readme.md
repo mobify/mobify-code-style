@@ -60,7 +60,7 @@ A hybrid project has a stylesheet specific to the OS. So a typical app project f
 
 Stylesheets will be generated and served to the page depending on the context. If it’s an android app it gets ``android.css``, if its a website it gets ``stylesheet.css``, etc. 
 
-## Structuring App Styles For a Legacy Mobify Site
+## Structuring App Styles For a New Mobify Site
 
 The current intended strategy in mind for future new builds is to have a single stylesheet for all platforms. Incorporating platform-specific theming and components into our existing CSS system.
 
