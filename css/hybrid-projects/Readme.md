@@ -31,19 +31,27 @@ A hybrid project has a stylesheet specific to the OS. So a typical app project f
 ``android.css`` will include all of the web styles and override them as needed. Building on top of whats there with all the styles specific to that OS will help in keeping the system maintainable. The system used to build out an example ``android.css`` would look something like this:
 
 ```scss
-// Web Styles
+// Android Styles
+// ===
+
+
+// Web Base Styles
+// ---
+
 @import stylesheet.scss
 
-//
-// Android Styles
-//
 
 // Components
+// ---
+
 @import 'android/components/arrange';
 @import 'android/components/card';
 @import 'android/components/stack';
 
+
 // Templates
+// ---
+
 @import 'android/templates/login';
 @import 'android/templates/store-finder';
 @import 'android/templates/store-details';
