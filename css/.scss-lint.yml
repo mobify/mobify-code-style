@@ -12,7 +12,7 @@ linters:
 
     # Should selectors be all lowercase?
     CapitalizationInSelector:
-        enabled: true
+        enabled: false
 
     # Prefer hexadecimal color codes over color keywords?
     ColorKeyword:
@@ -100,7 +100,7 @@ linters:
     # (http://bem.info/method/definitions/).
     NameFormat:
         enabled: true
-        convention: hyphenated_lowercase
+        convention: BEM
 
     # Report @extend unless extending a placeholder?
     PlaceholderInExtend:
@@ -199,6 +199,7 @@ linters:
             "bottom",
             "left",
             "z-index",
+            "float",
 
             # Display, layout modes & box model
             "display",
@@ -206,7 +207,6 @@ linters:
             "overflow-x",
             "overflow-y",
             "clip",
-            "float",
             "clear",
             "table-layout",
             "empty-cells",
