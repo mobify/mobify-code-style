@@ -74,9 +74,6 @@
         // Disallow spacing around non-word unary operators: -, +, --, ++, !, !!
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
 
-        // Disallow declaration of variables that are not used
-        "no-unused-vars": 2,
-
         // Disallow undeclared variables (unless mentioned in /*global ...*/ comment)
         "no-undef": 2,
 
@@ -106,12 +103,12 @@
 
         // Enforces a maximum of 100 characters in a single line; adjusts tabs
         // to equal 4 characters
-        "max-len": [2, "100", "4"],
+        "max-len": [2, "300", "4"],
 
         // Enforces semicolons at the end of statements
         "semi": 2,
 
-        // Disallow function definitions of the form 'var f = function() {'
-        "func-style": [2, "declaration"]
+        // Disallow function definitions of the form 'function myFunc() {'
+        "func-style": [2, "expression"]
     }
 }
