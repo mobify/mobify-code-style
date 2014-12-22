@@ -19,3 +19,6 @@ Use Javadoc comments for **classes**, and **nontrivial public** methods.
 ## Member Variables
 Do **not** prefix member variables with 'm'. Member variables should be declared at the top of the class if they are used often, otherwise they should be declared right before they are used.
 
+## Methods
+Methods should be kept as shorts as possible. There is no hard limit. Methods should do one thing, and do it well. If a function starts to creep over 30 lines, this is a sign that it may have too many responsiblities and be broken up.
+
