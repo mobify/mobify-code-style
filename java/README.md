@@ -9,3 +9,13 @@ You can import the provided AndroidStyle.xml file into Android Studio by:
     5. Choose the AndroidStyle option under the scheme drop down at the top.
     6. Click apply, and OK
 
+
+# Rules
+
+## Comments
+
+Use Javadoc comments for **classes**, and **nontrivial public** methods.
+
+## Member Variables
+Do **not** prefix member variables with 'm'. Member variables should be declared at the top of the class if they are used often, otherwise they should be declared right before they are used.
+
