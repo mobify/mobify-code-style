@@ -1,4 +1,4 @@
-Almost all of our Java is written for android, so we're following the android developer java code style.
+Almost all of our Java is written for android, so we're using the [android platform development](https://github.com/android/platform_development) android studio config. You can also read more about the java style guide for android contributors [here](http://source.android.com/source/code-style.html)
 
 You can import the provided AndroidStyle.xml file into Android Studio by:
 
