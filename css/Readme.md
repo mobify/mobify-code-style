@@ -38,5 +38,6 @@
         * [When to use their existing selectors](class-naming-conventions#when-to-use-their-existing-selectors)
         * [How to use their existing selectors in our components](class-naming-conventions#how-to-use-their-existing-selectors-in-our-components)
 * [Block Comment Documentation Guide](comments/Readme.md)
+* [Hybrid Projects Best Practices](hybrid-projects/Readme.md)
 
 Continue on to [the Introduction →](introduction#introduction)
