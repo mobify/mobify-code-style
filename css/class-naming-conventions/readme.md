@@ -3,6 +3,7 @@
 
 ## Table of Contents
 
+* [Basic Conventions](#basic-conventions)
 * [CSM](#csm)
     * [Components](#components)
     * [Sub-Components](#sub-components)
@@ -14,6 +15,12 @@
     * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
     * [When to use their existing selectors](#when-to-use-their-existing-selectors)
     * [How to use their existing selectors in our components](#how-to-use-their-existing-selectors-in-our-components)
+
+
+## Basic Conventions
+
+* Class names are kebab-case (*words-are-dash-separated*)
+* Each class is prefixed with either `c-`, `t-` or `x-` ([consult this table](#class-prefix-conventions) for details)
 
 
 ## CSM
@@ -201,8 +208,9 @@ Prefix | Purpose | Scaffold Directory |
 ------ | ------- | ------------------ |
 `.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
 `.t-` | Classes that start with `.t-` are Template and Template Partial specific classes. The names of these classes are most often based on the template names defined by the konf. Example templates might include: `.t-pdp`, `.t-home`, `.t-category`. Example Template Partials might include: `.t-header`, `.t-footer`, `.t-sidebar`. | */src/scss/templates*
-`.x-` | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). [See below](#us-versus-them-aka-theres-an-x-ception-to-every-rule) | */src/scss/globals/*
-`.m-` | This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | */src/scss/globals/*
+`.m-` | **Deprecated** This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
 
 ## Us versus Them (aka There's an x-ception to every rule)
