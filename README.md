@@ -6,38 +6,27 @@ A repo to document code standards for different languages and provide tools for 
 
 ## JavaScript
 
-Typically we lint our javascript files using [Grunt](http://gruntjs.com/). We have two javascript linters with different features. [jshint](https://github.com/gruntjs/grunt-contrib-jshint) and [jscs](https://github.com/gustavohenke/grunt-jscs).
+Typically, we lint our javascript files using [Grunt](http://gruntjs.com/) and [grunt-eslint](https://github.com/sindresorhus/grunt-eslint). grunt-eslint is a Grunt helper for the [ESLint](http://eslint.org/) linter.
 
 To add javascript linting to your project:
 
- 1. Install the NPM `mobify-code-style`, `grunt-contrib-jshint`, and `grunt-contrib-jscs` modules.
+ 1. Install the NPM `mobify-code-style` and `grunt-eslint` modules.
  2. Create a [Gruntfile](http://gruntjs.com/sample-gruntfile) if you don't have one already.
- 3. In the initConfig of your gruntfile, add sections for jshint and/or jscs pointing to the correct linting file.
+ 3. In the initConfig of your gruntfile, add a section for eslint pointing to the correct linting file.
 
-Sample jshint config:
+Sample eslint config:
 
 ```javascript
-jshint:{
+eslint:{
     dev: {
         src: ['src/**/*.js'],
         options: {
-            // The task fails if force is set to false. With true, it shows the
-            // linting errors, but continues
-            force: false,
-            jshintrc: 'node_modules/mobify-code-style/javascript/.jshintrc'
+            // When true, eslint will test _only_ the rules set in the provided
+            // configuration file
+            reset: false,
+            config: 'node_modules/mobify-code-style/javascript/.eslintrc'
         }
     }
-}
-```
-
-Sample jscs config:
-
-```javascript
-jscs: {
-    options: {
-        config: 'node_modules/mobify-code-style/javascript/.jscsrc'
-    },
-    src: ['src/**/*.js']
 }
 ```
 ## CSS

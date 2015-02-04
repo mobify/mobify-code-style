@@ -1,0 +1,114 @@
+{
+    "env": {
+        "node": true,
+        "browser": true,
+        "amd": true,
+        "mocha": true,
+        "jquery": true
+    },
+    "globals": {
+        "Mobify": true,
+        "Zepto": true,
+        "Adaptive": true
+    },
+    "rules": {
+        // Enforce === instead of ==; !== instead of !=
+        "eqeqeq": 2,
+
+        // Enforce if statement within 'for in'
+        "guard-for-in": 2,
+
+        // Disallow overwriting native types like 'Array' or 'Date'
+        "no-extend-native": 2,
+
+        // Enforce wrapping immediate invocations in parentheses
+        "wrap-iife": 2,
+
+        // Disallow usage of a variable before declaration; ignores functions
+        "no-use-before-define": [2, "nofunc"],
+
+        // Enforce capitalization of constructor functions
+        "new-cap": 2,
+
+        // Disallow creation of dense arrays using the Array constructor
+        "no-array-constructor": 2,
+
+        // Disallow use of the Object constructor
+        "no-new-object": 2,
+
+        // Disallow use of argument.caller and argument.callee
+        "no-caller": 2,
+
+        // Disallow empty block statements
+        "no-empty": 2,
+
+        // Disallow use of the with statement
+        "no-with": 2,
+
+        // Disallow mixed spaces and tabs for indentation
+        "no-mixed-spaces-and-tabs": 2,
+
+        // Disallow use of multiline strings
+        "no-multi-str": 2,
+
+        // Warn if variables are not named with camelCase
+        "camelcase": 1,
+
+        // Disallow trailing whitespace at the end of lines
+        "no-trailing-spaces": 2,
+
+        // Disallow spacing before commas; enforce spacing after commas
+        "comma-spacing": [2, { "before": false, "after": true }],
+
+        // Enforce spacing after keywords: if, else, for, while, do, switch, try,
+        // catch, and finally
+        "space-after-keywords": 2,
+
+        // Enforce spacing before opening brace of block statements
+        "space-before-blocks": [2, "always"],
+
+        // Enforce spaceing around infix operators: +, -, :, ?
+        "space-infix-ops": 2,
+
+        // Enforce spacing around word unary operators: new, delete, typeof, void
+        // Disallow spacing around non-word unary operators: -, +, --, ++, !, !!
+        "space-unary-ops": [2, { "words": true, "nonwords": false }],
+
+        // Disallow undeclared variables (unless mentioned in /*global ...*/ comment)
+        "no-undef": 2,
+
+        // Warn if single newline at end of file is missing
+        "eol-last": 1,
+
+        // Enforce single quotes for string literals
+        "quotes": [2, "single"],
+
+        // Disallow unnecessary parentheses
+        "no-extra-parens": 2,
+
+        // Disallow unnecessary semicolons
+        "no-extra-semi": 2,
+
+        // Disallow function or variable declarations in nested blocks
+        "no-inner-declarations": 2,
+
+        // Disallows the nesting of blocks more than 5 deep
+        "max-depth": [2, "5"],
+
+        // Enforces a maximum of 10 parameters in a function declaration
+        "max-params": [2, "10"],
+
+        // Enforces a maximum of 25 statements within a single function
+        "max-statements": [2, "25"],
+
+        // Enforces a maximum of 100 characters in a single line; adjusts tabs
+        // to equal 4 characters
+        "max-len": [2, "300", "4"],
+
+        // Enforces semicolons at the end of statements
+        "semi": 2,
+
+        // Disallow function definitions of the form 'function myFunc() {'
+        "func-style": [2, "expression"]
+    }
+}
