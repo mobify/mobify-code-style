@@ -31,3 +31,8 @@ eslint:{
 ```
 ## CSS
 Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
+
+## Python
+
+See the `python` directory of this repo for a standardized `pylintrc` file and
+instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
