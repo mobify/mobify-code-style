@@ -2,6 +2,18 @@
 
 Our Python coding style is [PEP8](http://www.python.org/dev/peps/pep-0008/).
 
+We have an additional standard for import order:
+
+    # Standard libs first in alpha order.
+    import abc
+    import urlparse
+
+    # Third party modules.
+    import requests
+
+    # Project modules (using relative paths where necessary)
+    from . import mymodule
+
 It's easy to check your code for PEP8 compliance:
 
 **Checking from the command line**

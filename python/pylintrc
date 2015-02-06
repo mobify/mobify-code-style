@@ -91,7 +91,7 @@ msg-template='{path}:line {line}: {obj}: {msg_id}:{symbol}:{msg}'
 required-attributes=
 
 # List of builtins function names that should not be used, separated by a comma
-bad-functions=map,filter,input
+bad-functions=input
 
 # Good variable names which should always be accepted, separated by a comma
 good-names=i,j,k,ex,Run,_
