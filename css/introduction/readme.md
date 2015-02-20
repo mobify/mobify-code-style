@@ -16,7 +16,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 * [Vellum](https://github.com/mobify/vellum)
 * [Spline](https://github.com/mobify/spline)
 * [Stencil](https://github.com/mobify/stencil)
-* [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml))
+* [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.scss-lint.yml))
 
 
 ## Philosophy & Structure
