@@ -233,15 +233,24 @@ linters:
 
     # Reports the use of literals for properties where variables are preferred.
     VariableForProperty:
-        enabled: false
-        properties: []
+        enabled: true
+        properties: [
+            color,
+            font,
+            background-color
+        ]
 
     # Checks for vendor prefixes.
     VendorPrefixes:
         enabled: true
         identifier_list: base
         include: []
-        exclude: []
+        exclude: [
+            -webkit-appearance,
+            -webkit-overflow-scrolling,
+            -webkit-tap-highlight-color,
+            -webkit-text-fill-color
+        ]
 
     # Report units on zero values?
     ZeroUnit:
