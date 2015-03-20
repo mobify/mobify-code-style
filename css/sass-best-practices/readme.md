@@ -155,7 +155,7 @@ h4,
 }
 ```
 
-If modifier should be extended use the following name convention:
+If modifier is extended use the following name convention:
 
 ```
 .c-component.c--modifier,
