@@ -143,6 +143,15 @@ h1,
 
 In some cases placeholder class can be named more general if it shares some general styles between different selectors. See the example of this case in the next section **Genuine Usecases**.
 
+If modifier should be extended use the following name convention:
+
+```
+.c-component.c--modifier,
+%c-component--modifier {
+    ...
+}
+```
+
 
 ### Genuine Usecases
 
