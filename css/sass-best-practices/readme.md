@@ -127,7 +127,7 @@ This technique is described in detail in Chris Lamb's article [Mastering Sass Ex
 
 Extended selector always goes after regular selector.
 
-In the most cases placeholder class should be named after existing selector:
+In the most cases placeholder class is named after existing selector:
 
 ```
 h1,
