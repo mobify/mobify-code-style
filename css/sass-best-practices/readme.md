@@ -127,23 +127,21 @@ This technique is described in detail in Chris Lamb's article [Mastering Sass Ex
 
 Extended selector always goes after regular selector.
 
-In the most cases extended selector should be named after existing selector.
+In the most cases placeholder class should be named after existing selector:
 
 ```
 .c-component,
 %c-component {
     ...
 }
-```
 
-If modifier should be extended use the following name convention:
-
-```
-.c-component.c--modifier,
-%c-component--modifier {
+h1,
+%h1 {
     ...
 }
 ```
+
+In some cases placeholder class can be named more general if it shares some general styles between different selectors. See the example of this case in the next section **Genuine Usecases**.
 
 
 ### Genuine Usecases
