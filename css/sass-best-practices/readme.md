@@ -130,18 +130,30 @@ Extended selector always goes after regular selector.
 In the most cases placeholder class should be named after existing selector:
 
 ```
+h1,
+%h1 {
+    ...
+}
+
 .c-component,
 %c-component {
     ...
 }
 
-h1,
-%h1 {
-    ...
-}
 ```
 
-In some cases placeholder class can be named more general if it shares some general styles between different selectors. See the example of this case in the next section [Genuine Usecases](#genuine-usecases).
+In some cases placeholder class can be named more general if it shares some general styles between different selectors (see more detailed example in the next section [Genuine Usecases](#genuine-usecases)):
+
+```
+h1,
+h2,
+h3,
+h4,
+%heading {
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+```
 
 If modifier should be extended use the following name convention:
 
