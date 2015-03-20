@@ -134,7 +134,6 @@ We want our CSS to be written consistently no matter who the code author is. In 
 Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
 
 * One selector per line
-* Declaration of extended selector always goes last
 * Use a soft indent of four spaces
 * Use one space between selector and first brackets
 * Use one space between property and value after :
@@ -150,8 +149,7 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 
 ```scss
 .c-selector1,
-.c-selector2,
-%c-selector {
+.c-selector2 {
     // This is a comment
     display: block;
     margin: 0 auto;

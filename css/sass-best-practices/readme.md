@@ -123,6 +123,28 @@ Also notice how we still included the original `.c-button` class in the SCSS. Af
 
 This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
 
+### Declaration order and Placeholders class names
+
+Extended selector always goes after regular selector.
+
+In the most cases `%extend`ed selector should be named after existing selector.
+
+```
+.c-component,
+%c-component {
+    ...
+}
+```
+
+If modifier should be extended use the following name convention:
+
+```
+.c-component.c--modifier,
+%c-component--modifier {
+    ...
+}
+```
+
 
 ### Genuine Usecases
 
