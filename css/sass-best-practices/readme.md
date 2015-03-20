@@ -11,7 +11,7 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 * [`@extends`](#extends)
     * [Pitfalls](#pitfalls)
     * [Workaround](#workaround)
-    * [Caveats](#caveats)
+    * [Declaration order and Placeholders class names](#declaration-order-and-placeholders-class-names)
     * [Genuine Usecases](#genuine-usecases)
 * [Filename Naming Convention](#filename-naming-convention)
 * [Note on Partials](#note-on-partials)
@@ -127,7 +127,7 @@ This technique is described in detail in Chris Lamb's article [Mastering Sass Ex
 
 Extended selector always goes after regular selector.
 
-In the most cases `%extend`ed selector should be named after existing selector.
+In the most cases extended selector should be named after existing selector.
 
 ```
 .c-component,
