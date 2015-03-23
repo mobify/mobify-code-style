@@ -11,7 +11,7 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 * [`@extends`](#extends)
     * [Pitfalls](#pitfalls)
     * [Workaround](#workaround)
-    * [Declaration Order And Placeholders Class Names](#declaration-order-and-placeholders-class-names)
+    * [Declaration Order And Placeholders Class Names](#declaration-order-and-placeholder-class-names)
     * [Genuine Usecases](#genuine-usecases)
 * [Filename Naming Convention](#filename-naming-convention)
 * [Note on Partials](#note-on-partials)
