@@ -125,7 +125,7 @@ This technique is described in detail in Chris Lamb's article [Mastering Sass Ex
 
 ### Declaration Order And Placeholder Class Names
 
-The placeholder class always goes after the regular selectors. In other works, make the placeholder class the last selector in a chain of comma separated selectors.
+The placeholder class always goes after the regular selectors. In other words, make the placeholder class the last selector in a chain of comma separated selectors.
 
 In most cases, the placeholder class is named after the element or component class it is related to:
 
