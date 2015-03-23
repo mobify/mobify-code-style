@@ -123,11 +123,11 @@ Also notice how we still included the original `.c-button` class in the SCSS. Af
 
 This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
 
-### Declaration order and Placeholders class names
+### Declaration Order And Placeholder Class Names
 
-Extended selector always goes after regular selector.
+The placeholder class always goes after the regular selectors. In other works, make the placeholder class the last selector in a chain of comma separated selectors.
 
-In the most cases placeholder class is named after existing selector:
+In most cases, the placeholder class is named after the element or component class it is related to:
 
 ```
 h1,
@@ -139,10 +139,9 @@ h1,
 %c-component {
     ...
 }
-
 ```
 
-In some cases placeholder class can be named more general if it shares some general styles between different selectors (see more detailed example in the next section [Genuine Usecases](#genuine-usecases)):
+In some cases the placeholder class can be named more generally if it shares styles across multiple selectors (see more detailed example in the next section [Genuine Usecases](#genuine-usecases)):
 
 ```
 h1,
@@ -155,7 +154,7 @@ h4,
 }
 ```
 
-If modifier is extended use the following name convention:
+If the placeholder selector is for a modifier class, use the following name convention:
 
 ```
 .c-component.c--modifier,
