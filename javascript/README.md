@@ -253,7 +253,18 @@ var is_visible = true;
 var isVisible = true;
 ````
 
-##Use Pascal case for constructors
+##Use PascalCase only for constructors or modules
+
+
+### Constructors
+
+````javascript
+// bad
+var Router = new Router();
+
+// good
+var router = new Router();
+````
 
 ````javascript
 // bad
@@ -269,6 +280,23 @@ function AwesomeMovie(options) {
 }
  
 var fiftyShades = new AwesomeMovie({ title: '50 Shades Of Grey' });
+````
+
+### Modules
+
+[What is a module pattern?](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript)
+
+````javascript
+// bad
+var utils = {
+    foo: function(){ return "bar" }
+};
+
+// good
+var Utils = {
+    foo: function(){ return "bar" }
+};
+
 ````
 
 ##Declare methods for objects on the prototype, not in the object constructor
