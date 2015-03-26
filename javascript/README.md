@@ -253,7 +253,12 @@ var is_visible = true;
 var isVisible = true;
 ````
 
-##Use Pascal case for constructors or modules
+##Use PascalCase only for constructors or modules
+
+````javascript
+// bad
+var Router = new Router();
+````
 
 ### Constructors
 
