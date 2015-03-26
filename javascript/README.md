@@ -261,10 +261,8 @@ var isVisible = true;
 ````javascript
 // bad
 var Router = new Router();
-````
 
-````javascript
-// bad
+// good
 var router = new Router();
 ````
 
