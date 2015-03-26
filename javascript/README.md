@@ -279,7 +279,7 @@ var fiftyShades = new AwesomeMovie({ title: '50 Shades Of Grey' });
 
 ````javascript
 // bad
-var Utils = {
+var utils = {
     foo: function(){ return "bar" }
 };
 
