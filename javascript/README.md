@@ -255,12 +255,18 @@ var isVisible = true;
 
 ##Use PascalCase only for constructors or modules
 
+
+### Constructors
+
 ````javascript
 // bad
 var Router = new Router();
 ````
 
-### Constructors
+````javascript
+// bad
+var router = new Router();
+````
 
 ````javascript
 // bad
