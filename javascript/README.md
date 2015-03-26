@@ -275,7 +275,7 @@ var fiftyShades = new AwesomeMovie({ title: '50 Shades Of Grey' });
 
 ### Modules
 
-http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript
+[What is a module pattern?](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript)
 
 ````javascript
 // bad
