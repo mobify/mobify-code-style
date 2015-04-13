@@ -37,6 +37,7 @@
         * [When to use our selector naming scheme](class-naming-conventions#when-to-use-our-selector-naming-scheme)
         * [When to use their existing selectors](class-naming-conventions#when-to-use-their-existing-selectors)
         * [How to use their existing selectors in our components](class-naming-conventions#how-to-use-their-existing-selectors-in-our-components)
+* [Localization and Theming Best Practices](localization-and-theming-best-practices/readme.md)
 * [Block Comment Documentation Guide](comments/Readme.md)
 * [Hybrid Projects Best Practices](hybrid-projects/Readme.md)
 
