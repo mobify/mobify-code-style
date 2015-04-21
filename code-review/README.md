@@ -34,20 +34,25 @@ When reviewing code that changes user facing components it is important that rev
 Everyone
 --------
 
-* Accept that many programming decisions are opinions. Discuss tradeoffs, which
-  you prefer, and reach a resolution quickly.
-* Ask questions; don't make demands. ("What do you think about naming this
-  `:user_id`?")
-* Ask for clarification. ("I didn't understand. Can you clarify?")
-* Avoid selective ownership of code. ("mine", "not mine", "yours")
-* Avoid using terms that could be seen as referring to personal traits. ("dumb",
-  "stupid"). Assume everyone is attractive, intelligent, and well-meaning.
+* Accept that many programming decisions are opinions. Discuss tradeoffs
+  which you prefer, and reach a resolution quickly.
+* Ask questions; don't make demands.
+    * *What do you think about naming this `:user_id`?*
+* Ask for clarification. 
+    * *I didn't understand. Can you clarify?*
+* Avoid selective ownership of code. 
+    * Avoid these words: "mine", "not mine", "yours"
+* Avoid using terms that could be seen as referring to personal traits.
+  ("dumb", "stupid"). Assume everyone is attractive, intelligent, and
+  well-meaning.
 * Be explicit. Remember people don't always understand your intentions online.
-* Be humble. ("I'm not sure - let's look it up.")
-* Don't use hyperbole. ("always", "never", "endlessly", "nothing")
+* Be humble. 
+    * *I'm not sure - let's look it up.*
+* Don't use hyperbole. 
+    * Avoid "always", "never", "endlessly", "nothing"
 * Don't use sarcasm.
-* Keep it real. If emoji, animated gifs, or humor aren't you, don't force them.
-  If they are, use them with aplomb.
+* Keep it real. If emoji, animated gifs, or humor aren't you, don't force
+  them. If they are, use them with aplomb.
 * Talk in person if there are too many "I didn't understand" or "Alternative
   solution:" comments. Post a follow-up comment summarizing offline discussion.
 
@@ -81,8 +86,8 @@ Understand why the code is necessary (bug, user experience, refactoring). Then:
 * If discussions threaten progress on the PR then move it offline. Usually
   disagreement can be resolved quickly if the involved parties discuss things in
   front of a whiteboard.
-* Offer alternative implementations, but assume the author already considered
-  them. ("What do you think about using a custom validator here?")
+* Offer alternative implementations, but assume the author already considered them.
+    * *What do you think about using a custom validator here?*
 * Seek to understand the author's perspective.
 * Sign off on the pull request with a :thumbsup: or "Ready to merge" comment.
 
