@@ -53,8 +53,9 @@ Understand why the code is necessary (bug, user experience, refactoring). Then:
 
 * Communicate which ideas you feel strongly about and those you don't.
 * Identify ways to simplify the code while still solving the problem.
-* If discussions turn too philosophical or academic, move the discussion offline.
-  In the meantime, let the author make the final decision on alternative implementations.
+* If discussions threaten progress on the PR then move it offline. Usually
+  disagreement can be resolved quickly if the involved parties discuss things in
+  front of a whiteboard.
 * Offer alternative implementations, but assume the author already considered
   them. ("What do you think about using a custom validator here?")
 * Seek to understand the author's perspective.
@@ -63,12 +64,13 @@ Understand why the code is necessary (bug, user experience, refactoring). Then:
 Style Comments
 --------------
 
-Reviewers should comment on missed [style](../style)
-guidelines. Example comment:
+Reviewers should comment on missed style guidelines. Ideally you should add
+a link to the relevant section in the style guide. That way you don't have to
+repeat the reasoning of a particular guideline in your comment.
 
-    [Style](../style):
+Example comment:
 
-    > Order resourceful routes alphabetically by name.
+    [Return early when possible](https://github.com/mobify/mobify-code-style/tree/master/javascript#return-early-when-possible)
 
 An example response to style comments:
 
