@@ -68,9 +68,13 @@ Reviewers should comment on missed style guidelines. Ideally you should add
 a link to the relevant section in the style guide. That way you don't have to
 repeat the reasoning of a particular guideline in your comment.
 
-Example comment:
+Example comment (markdown):
 
     [Return early when possible](https://github.com/mobify/mobify-code-style/tree/master/javascript#return-early-when-possible)
+    
+Which renders as:
+
+> [Return early when possible](https://github.com/mobify/mobify-code-style/tree/master/javascript#return-early-when-possible)
 
 An example response to style comments:
 
