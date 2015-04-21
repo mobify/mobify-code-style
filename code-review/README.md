@@ -6,6 +6,29 @@ This is forked/stolen from ^W^W inspired by
 
 A guide for reviewing code and having your code reviewed.
 
+Why code reviews?
+-----------------
+Code is reviewed before being merged into `master`. The goal of review is to ensure that changes are delivering business value to our customers - not to perfect our code.
+
+When reviewing, consider whether a change:
+
+* Delivers business value. Understand why it is being made and why it is required.
+* Does what it says it does. Try to break it.
+* Can be maintained by the most junior member of our team.
+* Meets our standards and is well written.
+
+Don't let minor technical issues block shipping.
+
+A reviewer may give +1 on a review. Small fixes need +1, complex fixes and large features +2. A branch should have at least +1 before you hit the green button.
+
+It's important to separate our self-worth from the code we write so that we are always open to feedback that will help us improve.
+
+When reviewing code that changes user facing components it is important that reviews play the role of a User Advocate and consider how the change will impact our users.
+
+Is the copy written in such a way that it would be understand by someone who has learned English as their second language?
+
+Is the change consistent with the user's mental model of our system?
+
 Everyone
 --------
 
@@ -82,3 +105,8 @@ An example response to style comments:
 
 If you disagree with a guideline, open an issue on the guides repo rather than
 debating it within the code review. In the meantime, apply the guideline.
+
+Reading material
+----------------
+* http://blogs.atlassian.com/2009/11/code_review_in_agile_teams_part_i/
+* https://blogs.atlassian.com/2010/03/code_review_in_agile_teams_part_ii/
