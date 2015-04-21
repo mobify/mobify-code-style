@@ -53,9 +53,8 @@ Understand why the code is necessary (bug, user experience, refactoring). Then:
 
 * Communicate which ideas you feel strongly about and those you don't.
 * Identify ways to simplify the code while still solving the problem.
-* If discussions turn too philosophical or academic, move the discussion offline
-  to a regular Friday afternoon technique discussion. In the meantime, let the
-  author make the final decision on alternative implementations.
+* If discussions turn too philosophical or academic, move the discussion offline.
+  In the meantime, let the author make the final decision on alternative implementations.
 * Offer alternative implementations, but assume the author already considered
   them. ("What do you think about using a custom validator here?")
 * Seek to understand the author's perspective.
