@@ -8,6 +8,7 @@ A guide for reviewing code and having your code reviewed.
 
 Why code reviews?
 -----------------
+
 Code is reviewed before being merged into `master`. The goal of review is to ensure that changes are delivering business value to our customers - not to perfect our code.
 
 When reviewing, consider whether a change:
@@ -21,13 +22,14 @@ Don't let minor technical issues block shipping.
 
 A reviewer may give +1 on a review. Small fixes need +1, complex fixes and large features +2. A branch should have at least +1 before you hit the green button.
 
+Code Review Mindset
+-------------------
+
 It's important to separate our self-worth from the code we write so that we are always open to feedback that will help us improve.
 
-When reviewing code that changes user facing components it is important that reviews play the role of a User Advocate and consider how the change will impact our users.
-
-Is the copy written in such a way that it would be understand by someone who has learned English as their second language?
-
-Is the change consistent with the user's mental model of our system?
+When reviewing code that changes user facing components it is important that reviews play the role of a User Advocate and consider how the change will impact our users, for example:
+* Is the copy written in such a way that it would be understand by someone who has learned English as their second language?
+* Is the change consistent with the user's mental model of our system?
 
 Everyone
 --------
@@ -52,20 +54,20 @@ Everyone
 Having Your Code Reviewed
 -------------------------
 
-* Be grateful for the reviewer's suggestions. ("Good call. I'll make that
-  change.")
+* Be grateful for the reviewer's suggestions.
+  * *Good call. I'll make that change.*
 * Don't take it personally. The review is of the code, not you.
-* Explain why the code exists. ("It's like that because of these reasons. Would
-  it be more clear if I rename this class/file/method/variable?")
+* Explain why the code exists. 
+  * *It's like that because of these reasons. Would it be more clear if I rename this class/file/method/variable?*
 * Extract some changes and refactorings into future tickets/stories.
-* Link to the code review from the ticket/story. ("Ready for review:
-  https://github.com/organization/project/pull/1")
+* Link to the code review from the ticket/story.
+  * *Ready for review: https://github.com/organization/project/pull/1*
 * Push commits based on earlier rounds of feedback as isolated commits to the
   branch. Do not squash until the branch is ready to merge. Reviewers should be
   able to read individual updates based on their earlier feedback.
 * Seek to understand the reviewer's perspective.
 * Try to respond to every comment.
-* Wait to merge the branch until Continuous Integration (TDDium, TravisCI, etc.)
+* Wait to merge the branch until Continuous Integration (CircleCI)
   tells you the test suite is green in the branch.
 * Merge once you feel confident in the code and its impact on the project.
 
