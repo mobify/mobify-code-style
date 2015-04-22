@@ -118,6 +118,11 @@ linters:
         enabled: true
         max_depth: 3
 
+    # Lint selector format?
+    # Configure: `hyphenated_lowercase`, `snake_case`, `camel_case`, `strict_BEM`, or `hyphenated_BEM` 
+    SelectorFormat:
+        convention: hyphenated_BEM
+
     # Prefer the shortest possible shorthand?
     Shorthand:
         enabled: true
