@@ -114,6 +114,7 @@ if i & (i-1) == 0:        # true iff i is a power of 2
 
 – Phil Karlton
 
+
 ## Use intention-revealing names
 
 Harmful:
@@ -161,7 +162,7 @@ class XYZControllerForEfficientStorageOfStrings(object):
 # Also bad:
 get_account()
 get_accounts()
-i = 1 + l 
+i = 1 + l
 ```
 
 
@@ -289,5 +290,203 @@ widget.y += WIDGET_VERTICAL_OFFSET
 
 - Don't be afraid of renaming things later
 - Iterate on naming as you would on other aspects of the code
-- Ask other people to converge on a common mental model
+- Explain your problem to other engineers to converge on a common mental model
 - Discuss naming in code reviews
+
+
+# Writing *Functions*
+
+## Small!
+
+> "Functions should hardly ever be 20 lines long." – Bob Martin
+
+
+## Do One Thing
+
+Harmful:
+
+```python
+def generate_and_print_report():
+    # Load the data
+    with open('file.dat') as f:
+        data = f.read()
+
+    # Generate the report
+    # ...
+
+    # Print the report
+    for line in report:
+        print(line)
+```
+
+Better:
+
+```python
+def generate_and_print_report():
+    data = load_data()
+    report = process_data()
+    report.print()
+```
+
+
+## Keep the number of parameters small
+
+* Bad: `foo('hello', customer, 42, True)`
+* Meh: `foo('hello', customer, 42)`
+* So-so: `foo('hello', 42)`
+* Better: `foo('hello')`
+* Best: `foo()`
+
+
+## Use keyword arguments
+
+Harmful:
+
+```python
+search_tweets('@mobify', False, 20, True)
+```
+
+Better:
+
+```python
+search_tweets(
+    '@mobify',
+    include_retweets=False,
+    result_limit=20,
+    popular_only=True
+)
+```
+
+
+## Strive for purity: Avoid side effects
+
+Harmful:
+
+```python
+def count_elements(stack):
+    num_elements = 0
+    while not stack.is_empty:
+        num_elements += 1
+        stack.pop()
+    return num_elements
+```
+
+
+## Flat is better than nested
+
+Bad:
+
+```python
+def write_report(section, content):
+    if section == 'header':
+        if content:
+            buffer.write('<h1>%s</h1>' % content)
+        else:
+            buffer.write('<h1>(empty)</h1>')
+    else:
+        if not content:
+            if section == 'appendix':
+                buffer.write('<h1>Appendix</h1>')
+```
+
+Good:
+
+```python
+def write_report(section, content):
+    if section == 'header':
+        write_header(content)
+    else:
+        write_other(section, content)
+
+def write_header(content):
+    text = content or '(empty)'
+    buffer.write('<h1>%s</h1>' % text)
+
+def write_other(section, content):
+    if section == 'appendix':
+        buffer.write('<h1>Appendix</h1>')
+```
+
+## Early out to avoid deep nesting
+
+Harmful:
+
+```python
+if condition:
+    do_stuff()
+    if other_condition:
+        do_more_stuff()
+```
+
+Better:
+
+```python
+if not condition:
+    return
+
+do_stuff()
+
+if other_condition:
+    do_more_stuff()
+```
+
+## Prefer exceptions to returning error codes
+
+Harmful:
+
+```python
+ERROR_INVALID_ELEMENT = -1
+
+def process_element(e):
+    if not e.is_valid:
+        return ERROR_INVALID_ELEMENT
+    e.process()
+```
+
+Better:
+
+```python
+def process_element(e):
+    if not e.is_valid:
+        raise ValueError('Invalid element')
+    e.process()
+```
+
+## Extract your `main` function
+
+Harmful:
+
+```python
+if __name__ == '__main__':
+    if not sys.argv:
+        sys.exit(1)
+    do_something()
+    sys.exit(0)
+```
+
+Better:
+
+```python
+def main(argv):
+    if not argv:
+        return 1
+    do_something()
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))
+```
+
+
+## Optimize for testability
+
+* Avoid global state
+* Avoid side effects
+* Loose coupling
+
+
+## How do you write functions like this?
+* **Successive refinement**
+    * Iterate and refactor relentlessly
+    * *Make it run, make it right, make it fast*
+* Write tests and optimize for testability
