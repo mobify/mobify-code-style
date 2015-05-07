@@ -6,7 +6,7 @@ Documentation
 
 * We use doc strings for package, module, class and function documentation.
     * A doc string is a string that is the first statement in a package, module, class or function.
-    * These strings can be extracted automatically through the __doc__ member of the object. 
+    * These strings can be extracted automatically through the __doc__ member of the object.
 
 * We always use the three double-quote `"""` format for doc strings.
     * This is defined in [PEP 257](https://www.python.org/dev/peps/pep-0257/)
@@ -26,7 +26,7 @@ Documentation
 
 ### Example
 
-* Function or method comments: 
+* Function or method comments:
 ```python
 def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
     """
@@ -106,3 +106,188 @@ if i & (i-1) == 0:        # true iff i is a power of 2
 
 * [Documentation examples](https://pythonhosted.org/an_example_pypi_project/sphinx.html#full-code-example)
 * [Google Style Guide: Comments](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html?showone=Comments#Comments)
+
+
+# Naming things
+
+> "There are only two hard problems in Computer Science: cache invalidation and naming things."
+
+– Phil Karlton
+
+## Use intention-revealing names
+
+Harmful:
+
+```python
+d = 0  # Elapsed time in days
+```
+
+Better:
+
+```python
+elapsed_time_in_days = 0
+days_elapsed = 0
+```
+
+
+## Avoid disinformation:
+### Don't lie
+
+Harmful:
+
+```python
+account_list = 'Ronald McDonald'
+# or
+account_list = set('bob', 'alice')
+```
+
+Better:
+
+```python
+accounts = []
+```
+
+### Don't be subtle
+
+Harmful:
+
+```python
+class XYZControllerForEfficientHandlingOfStrings(object):
+    pass
+
+class XYZControllerForEfficientStorageOfStrings(object):
+    pass
+
+# Also bad:
+get_account()
+get_accounts()
+i = 1 + l 
+```
+
+
+## Use pronouncable names
+
+Harmful:
+
+```python
+class DtaRcrd102(object):
+    gnymdhms = None
+    modymdhms = None
+    irec = None
+```
+
+Better:
+
+```python
+class Customer(object):
+    generation_timestamp = None
+    modification_timestamp = None
+    record_id = None
+```
+
+
+## Use consistent names:
+### One word per concept
+
+Harmful:
+
+```python
+get_customer()
+fetch_customer()
+retrieve_customer()
+```
+
+Better:
+
+```python
+get_customer()
+```
+
+### Define terminology
+
+* Define a vocabulary of commonly used terms in your program
+* Use consistent naming across systems
+* Put it in module docstrings, README, ...
+
+
+## Naming classes and functions
+
+**Classes & Modules** → nouns
+```
+Customer, WikiPage, Account, Currency
+```
+
+**Functions & Methods** → verbs
+```
+send_payment(), delete_page(), save()
+```
+
+
+## Naming variables
+### *Sometimes* it's useful to be explicit about the type:
+
+Harmful:
+
+```python
+account_list = set()
+account_list = True
+```
+
+Better:
+
+```python
+account_list = []
+```
+
+### Prefix booleans with `is_` or `has_`:
+
+```python
+is_active = True
+has_valid_data = False
+```
+
+### Counters:
+
+```python
+num_active_users = 42
+active_user_count = 42
+```
+
+### Naming schemes for dictionaries:
+
+```python
+email_for_account = {
+    'mobify': 'teamvr@mobify.com',
+    'dropbox': 'guido@dropbox.com'
+}
+
+# Could also work:
+account_to_email_map = ...
+```
+
+
+## Avoid magic numbers
+
+Harmful:
+
+```python
+widget.y += 233
+```
+
+Better:
+
+```python
+# Vertical space needed so that we
+# are placed below the foobar widget
+WIDGET_VERTICAL_OFFSET = 233
+
+widget.y += WIDGET_VERTICAL_OFFSET
+```
+
+
+## A few tips
+
+- Don't be afraid of renaming things later
+- Iterate on naming as you would on other aspects of the code
+- Ask other people to converge on a common mental model
+- Discuss naming in code reviews
