@@ -12,6 +12,9 @@
         "Adaptive": true
     },
     "rules": {
+        // K&R brace style, e.g. `if (x) {` <-- no new line before {
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+
         // Enforce === instead of ==; !== instead of !=
         "eqeqeq": 2,
 
@@ -48,6 +51,9 @@
         // Disallow mixed spaces and tabs for indentation
         "no-mixed-spaces-and-tabs": 2,
 
+        // Enforce 4 spaces indentation
+        "indent": [2, 4, {"indentSwitchCase": true}],
+
         // Disallow use of multiline strings
         "no-multi-str": 2,
 
@@ -66,6 +72,9 @@
 
         // Enforce spacing before opening brace of block statements
         "space-before-blocks": [2, "always"],
+
+        // Disallow spaces before function parentheses
+        "space-before-function-paren": [2, "never"],
 
         // Enforce spaceing around infix operators: +, -, :, ?
         "space-infix-ops": 2,
