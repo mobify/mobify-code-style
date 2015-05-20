@@ -1,0 +1,7 @@
+2.1.0
+    - Add new rules to .eslintrc to closer match our JS style
+      guidelines.
+2.0.1
+    - Adds .eslintrc to allow usage of ESLint
+    - Adds Java code style guide
+    - Updates to CSS hybrid project conventions
