@@ -1,3 +1,5 @@
+2.1.1
+    - Re-publish to work-around NPM issue
 2.1.0
     - Add new rules to .eslintrc to closer match our JS style
       guidelines.
