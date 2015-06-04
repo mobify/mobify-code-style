@@ -112,7 +112,7 @@ These are used to modify components or subcomponents. They are always chained to
 
 ### Component modifiers that affect subcomponents
 
-Sometimes you'll write a modifier for a component and you want that modifier to affect the subcomponents in that component. There's a standard way to write this that will ensure compiled styles are easy to find while maintaining consistent selector placement.
+Sometimes a component modifier will affect its sub-components. There are a few methods you can use to accomplish this. Try to pick one and stick to it throughout the project, adding comments as needed.
 
 ```html
 <div class="c-blog-post c--featured">
@@ -123,21 +123,80 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 </div>
 ```
 
+
+#### Nested inside the component
+Nest the `c-component__sub-component` elements inside the `c-component` SCSS.
+
 ```scss
 .c-blog-post {
     &.c--featured {
-        [STYLES]
+        ...
+
+        .c-blog-post__title {
+            ...
+        }
     }
 }
+```  
 
-.c-blog-post__title {
-    .c-blog-post.c--featured & {
-        [STYLES]
+
+#### Below the component as a selector chain
+Use a selector chain with `.c-component.c--modifier`, and nest the `c-component__sub-component` elements within it.
+
+```scss
+.c-blog-post.c--featured {
+    ...
+
+    .c-blog-post__title {
+        ...
     }
 }
 ```
 
-This might look a little weird at the outset but it's the best way to ensure that all of a components styles stay in the same place. It also ensures that no modifier styles are accidentally inherited where they shouldn't be.
+When using the above methods in larger files, add a comment to the `c-component__sub-component` like so:
+```
+// Blog Post Title
+// ---
+//
+// Modifier styles can be found in:
+// .c-blog-post.c--featured
+
+.c-blog-post__title {
+    ...
+}
+```
+
+#### Nested inside the sub-component
+Nest the modifier code inside the subcomponent using `.c-component.c--modifier &`.
+
+```scss
+.c-blog-post__title {
+    ...
+
+    .c-blog-post.c--featured & {
+        ...
+    }
+}
+```
+
+When using the above method in larger files, add a comment to the `c-component` like so:
+```
+// Blog Post
+// ===
+.c-blog-post {
+    ...
+
+    // Featured Post
+    // ---
+    //
+    // Also modifies:
+    // .c-blog-post__title
+
+    .c--featured {
+        ...
+    }
+}
+```
 
 ### State
 
