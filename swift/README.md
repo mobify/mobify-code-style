@@ -13,7 +13,7 @@ Optionals
 
 Use `as` for type coercion if possible (this is enforced statically). Otherwise use `as?`.
 
-DO NOT use `as!` or `value!` because Xcode told you so. Stop. Think. You probably want to use `if let value = value`
+DO NOT use `as!` or `value!` because Xcode told you so. Stop. Think. You probably want to use `if let value = value`.
 
 You should use `!` only if you just assigned to an object, you know initialization can not fail, or you are initializing an object during init() but need to pass `self` to another object's init():
 
