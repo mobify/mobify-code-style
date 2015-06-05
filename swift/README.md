@@ -23,7 +23,7 @@ let regex = NSRegularExpression(pattern: "[a-z]", options: NSRegularExpressionOp
 
 init() example:
 ```swift
-class Component: NSObject {
+class Component {
     var controller: CustomViewController! // We want to use it as a non-optional but have to initialize after super.init()
     
     init() {
@@ -48,7 +48,7 @@ We typically use an enumeration type:
 
 ```swift
 public enum ParseResult {
-    case Result(NSObject)
+    case Result(AST)
     case Error(String)
 }
 ```
