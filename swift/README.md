@@ -93,7 +93,8 @@ White space
 
 Indent: 4 spaces
 
-In Xcode preferences under "Text Editing" select "Automatically trim trailing whitespace" and "Including whitespace-only lines".
+In Xcode preferences under "Text Editing" select "Automatically trim trailing
+whitespace" and "Including whitespace-only lines".
 
 Line lengths
 ============
@@ -155,7 +156,8 @@ Use the `weak` modifier `delegate` properties
 Protocols
 =========
 
-Protocols are awesome. Use them to restrict the API surface area of an object being passed around.
+Protocols are awesome. Use them to restrict the API surface area of an object
+being passed around.
 
 typealiases
 ===========
@@ -175,13 +177,15 @@ typealias RpcMethodCallback = (RpcMethodResult) -> Void
 Access Control
 ==============
 
-Use either `private` or nothing (which defaults to module/framework internal). Only use `public` once you've written a feature and need to expose it outside of a module. Most things do not need to be exposed.
+Use either `private` or nothing (which defaults to module/framework internal).
+Only use `public` once you've written a feature and need to expose it outside
+of a module. Most things do not need to be exposed.
 
 Comments
 ========
 
-If you want your comments to be picked up by the documentation generation tool, jazzy, you
-must use a triple slash comment: `///`
+If you want your comments to be picked up by the documentation generation tool,
+jazzy, you must use a triple slash comment: `///`
 
 Tests
 =====
