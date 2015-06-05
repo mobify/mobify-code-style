@@ -3,7 +3,7 @@ Strings
 
 Prefer interpolation over concatenation:
 
-```
+```swift
 let name = "John"
 let messsage = "Hello \(name)"
 ```
@@ -15,10 +15,23 @@ Use `as` for type coercion if possible (this is enforced statically). Otherwise 
 
 DO NOT use `as!` or `value!` because Xcode told you so. Stop. Think. You probably want to use `if let value = value`
 
-You should use `!` only if you just assigned to an object or you know initialization can not fail:
+You should use `!` only if you just assigned to an object, you know initialization can not fail, or you are initializing an object during init() but need to pass `self` to another object's init():
 
-```
+```swift
 let regex = NSRegularExpression(pattern: "[a-z]", options: NSRegularExpressionOptions.allZeros, error: nil)!
+```
+
+init() example:
+```swift
+class Component: NSObject {
+    var controller: CustomViewController! // We want to use it as a non-optional but have to initialize after super.init()
+    
+    init() {
+        // controller = CustomViewController(component: self) <-- compiler error
+        super.init()
+        controller = CustomViewController(component: self) 
+    }
+}
 ```
 
 How do I handle errors in Swift?
@@ -33,23 +46,23 @@ You have a couple options:
 
 We typically use an enumeration type:
 
-```
+```swift
 public enum ParseResult {
     case Result(NSObject)
     case Error(String)
 }
 ```
 
-```
+```swift
 func parse(string: String) -> ParseResult
 ```
 
 Properties
 ==========
 
-Initializes values when defining properties, if possible:
+Use `let` and initialize values when defining properties, if possible:
 
-```
+```swift
 class Component {
     let viewController = UIViewController()  // Assign here instead of the in the initializer
 }
@@ -57,7 +70,7 @@ class Component {
 
 Use calculated properies instead of getter and setter functions:
 
-```
+```swift
 class Component {
     let viewController = UIViewController()
 
@@ -72,19 +85,19 @@ Dictionary and Array types
 
 Use shorthand type specifications:
 
-```
+```swift
 let names: [String]
-var names = [String]()  // Creates the string as well
+var names = [String]()  // Creates the array of String as well
 ```
 
-```
-let populations = [String: Int]
+```swift
+let populations: [String: Int]
 var populations = [String: Int]()
 ```
 
 Instead of:
 
-```
+```swift
 let names: Array<String>  // No!
 ```
 
@@ -105,7 +118,7 @@ Try to wrap comments to 100 characters, though.
 
 For Dictionary and Array literals, use python-style indentation:
 
-```
+```swift
 let nameMap: [String: String] = [
     "George": "Jetson",
     "Astro": "Boy",
@@ -120,18 +133,26 @@ The common iOS name is "block".
 
 Don't use types for parameters if not required:
 
-```
+```swift
 let callback: RpcMethodCallback = { result in
     // Do something with the result here
 }
 ```
 
+Place the block outside of the parenthesis when it is the last argument:
+
+```swift
+// Calling UIView.animateWithDuration(duration: NSTimeInterval, animations: () -> Void)
+UIView.animateWithDuration(1.0) {
+    label.alpha = 0.0 // Fade out the label
+}
+```
+
 Place the closing `}` on the same line if the body of the block if empty:
 
-```
+```swift
 let callback: RpcMethodCallback = { result in }  // Do nothing
 ```
-
 
 Objective-C interop
 ===================
@@ -141,20 +162,22 @@ Do not use `@objc` or inherit from `NSObject` unless absolutely necessary.
 Singletons
 ==========
 
-Avoid this design pattern
+Avoid this design pattern.
 
 `let` vs `var`
 ==============
 
-Use `let` unless the variable will be mutated
+Use `let` unless the variable will be mutated.
 
 delegates
 =========
 
-Use the `weak` modifier `delegate` properties
+Use the `weak` modifier for `delegate` properties.  
 
-Protocols
-=========
+Name the delegate property `delegate` unless your class supports multiple different delegates.  
+
+Protocols (aka Interfaces)
+==========================
 
 Protocols are awesome. Use them to restrict the API surface area of an object
 being passed around.
@@ -162,15 +185,15 @@ being passed around.
 typealiases
 ===========
 
-typealias standard types if used in specific contexts.
+`typealias` standard types if used in specific contexts.
 
-```
+```swift
 typealias MessageAddress = String
 ```
 
 Also, you will often find it useful to typealias function types:
 
-```
+```swift
 typealias RpcMethodCallback = (RpcMethodResult) -> Void
 ```
 
@@ -179,29 +202,30 @@ Access Control
 
 Use either `private` or nothing (which defaults to module/framework internal).
 Only use `public` once you've written a feature and need to expose it outside
-of a module. Most things do not need to be exposed.
+of a module. Most things do not need to be exposed.  Let the compiler guide
+you on what to make `public`.
 
 Comments
 ========
 
 If you want your comments to be picked up by the documentation generation tool,
-jazzy, you must use a triple slash comment: `///`
+[jazzy](https://github.com/Realm/jazzy), you must use a triple slash comment: `///`
 
 Tests
 =====
 
 This is the order of actual and expected values:
 
-```
+```swift
 XCTAssertEqual(actualValue, expectedValue)
 ```
 
-`if`/`else` braces
-==================
+`if`/`else`braces
+=================
 
 This is the style:
 
-```
+```swift
 if condition {
 
 } else {
@@ -214,7 +238,7 @@ if condition {
 
 Use shadowing:
 
-```
+```swift
 let message: String?
 
 if let message = message {
@@ -225,6 +249,26 @@ if let message = message {
 
 **Don't** use variable names like `optionalMessage` or `unwrappedMessage`.
 
+Global variables and functions
+==============================
+
+Swift allows variables and functions to be defined in global scope.  DO NOT USE THEM...unless you really need to.
+
+Helper functions
+================
+
+Group helper functions into a `struct` rather than a `class`.  
+
+Extensions
+==========
+
+Create `extension`s to classes when you will use those functions in alot of places.  Otherwise use [Helper functions](#Helper functions).  
+
+Layout
+======
+
+Prefer Autolayout over springs+struts (autoresizing mask).  Autolayout automatically handles many things that springs+struts doesn't (status bar hiding/showing, device rotation)
+
 Other useful patterns
 =====================
 
@@ -232,7 +276,7 @@ Generic functions:
 
 https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID181
 
-```
+```swift
 func getValue<T>(dictionary: [String: AnyObject], key: String, errorHandler: String -> Void)) -> T? {
     if let value = dictionary[key] {
         if let value = value as? T {
@@ -248,7 +292,9 @@ func getValue<T>(dictionary: [String: AnyObject], key: String, errorHandler: Str
 }
 ```
 
-```
+Note that the type T is inferred by what you assign `getValue()` to.  So in this case getValue() infers String? because `message` is a String?.
+
+```swift
 let message: String? = getValue(dictionary, "message") { error in
     println(error)
 }
