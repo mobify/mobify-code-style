@@ -220,7 +220,7 @@ This is the order of actual and expected values:
 XCTAssertEqual(actualValue, expectedValue)
 ```
 
-`if`/`else`braces
+`if`/`else` style
 =================
 
 This is the style:
