@@ -124,8 +124,10 @@ Sometimes a component modifier will affect its sub-components. There are a few m
 ```
 
 
-#### Nested inside the component
-Nest the `c-component__sub-component` elements inside the `c-component` SCSS.
+#### 1. Nested inside the component
+Nest the `.c-component__sub-component` elements inside the `.c-component` SCSS.
+
+This method works well when a modifier requires simple changes to a small number of sub-components.
 
 ```scss
 .c-blog-post {
@@ -137,11 +139,13 @@ Nest the `c-component__sub-component` elements inside the `c-component` SCSS.
         }
     }
 }
-```  
+```
 
 
-#### Below the component as a selector chain
-Use a selector chain with `.c-component.c--modifier`, and nest the `c-component__sub-component` elements within it.
+#### 2. Root level as a selector chain
+Use a selector chain with `.c-component.c--modifier`, and nest the `.c-component__sub-component` elements within it.
+
+This method works especially well when a component has multiple modifiers or state classes that can be coupled with it.
 
 ```scss
 .c-blog-post.c--featured {
@@ -153,8 +157,8 @@ Use a selector chain with `.c-component.c--modifier`, and nest the `c-component_
 }
 ```
 
-When using the above methods in larger files, add a comment to the `c-component__sub-component` like so:
-```
+When using the above methods in larger files, add a comment to the `.c-component__sub-component` like so:
+```scss
 // Blog Post Title
 // ---
 //
@@ -166,8 +170,10 @@ When using the above methods in larger files, add a comment to the `c-component_
 }
 ```
 
-#### Nested inside the sub-component
+#### 3. Nested inside the sub-component
 Nest the modifier code inside the subcomponent using `.c-component.c--modifier &`.
+
+This method works well when a root-level modifier affects multiple sub-components, or when you are working with complicated/intricate sub-components.
 
 ```scss
 .c-blog-post__title {
@@ -179,8 +185,8 @@ Nest the modifier code inside the subcomponent using `.c-component.c--modifier &
 }
 ```
 
-When using the above method in larger files, add a comment to the `c-component` like so:
-```
+When using the above method in larger files, add a comment to the `.c-component` like so:
+```scss
 // Blog Post
 // ===
 .c-blog-post {
