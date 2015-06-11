@@ -12,6 +12,11 @@ linters:
         space_before_bang: true
         space_after_bang: false
 
+    # Checks for BEM selectors with more elements than a specified maximum number.
+    BemDepth:
+        enabled: false
+        max_elements: 1
+
     # Prefer border: 0 over border: none?
     # Configure: `zero` or `none`
     BorderZero:
@@ -56,6 +61,10 @@ linters:
 
     # Report empty rulesets?
     EmptyRule:
+        enabled: false
+
+    # Checks that `@extend` is never used.
+    ExtendDirective:
         enabled: false
 
     # Lint end-of-file newline?
@@ -112,15 +121,12 @@ linters:
         enabled: true
         force_nesting: false
 
-    # Lint format for variable, mixin and function names?
-    # Configure: `hyphenated_lowercase`, a regex pattern or `BEM`.
-    #
-    # Note that the `BEM` value refers to the original Yandex BEM convention
-    # (http://bem.info/method/definitions/).
+    # Checks the format of declared names of functions, mixins, and variables.
+    # Configure: 'hyphenated_lowercase', or 'camel_case', or 'snake_case', or a regex pattern
     NameFormat:
         enabled: true
         allow_leading_underscore: true
-        convention: BEM
+        convention: hyphenated_lowercase
 
     # Checks for rule sets nested deeper than a specified maximum depth.
     NestingDepth:
@@ -136,6 +142,20 @@ linters:
         enabled: false
         include_nested: false
         max_properties: 10
+
+    # Check for allowed units
+    PropertyUnits:
+        enabled: false
+        global: [
+          'ch', 'em', 'ex', 'rem',                 # Font-relative lengths
+          'cm', 'in', 'mm', 'pc', 'pt', 'px', 'q', # Absolute lengths
+          'vh', 'vw', 'vmin', 'vmax',              # Viewport-percentage lengths
+          'deg', 'grad', 'rad', 'turn',            # Angle
+          'ms', 's',                               # Duration
+          'Hz', 'kHz',                             # Frequency
+          'dpi', 'dpcm', 'dppx',                   # Resolution
+          '%']                                     # Other
+        properties: {}
 
     # Report unknown CSS properties? (Ignores vendor prefixes.)
     PropertySpelling:
@@ -162,9 +182,10 @@ linters:
         enabled: true
         convention: hyphenated_BEM
 
-    # Prefer the shortest possible shorthand?
+    # Checks for the use of the shortest form for properties that can be written in shorthand.
     Shorthand:
         enabled: true
+        allowed_shorthands: [1, 2, 3]
 
     # Checks that all properties in a rule set are on their own distinct lines.
     SingleLinePerProperty:
@@ -211,6 +232,10 @@ linters:
     TrailingSemicolon:
         enabled: true
 
+    # Checks for trailing whitespace on a line.
+    TrailingWhitespace:
+        enabled: true
+
     # Checks for unnecessary trailing zeros in numeric values with decimal points.
     TrailingZero:
         enabled: true
@@ -244,8 +269,8 @@ linters:
     VendorPrefixes:
         enabled: true
         identifier_list: base
-        include: []
-        exclude: [
+        additional_identifiers: []
+        excluded_identifiers: [
             -webkit-appearance,
             -webkit-overflow-scrolling,
             -webkit-tap-highlight-color,
@@ -265,6 +290,7 @@ linters:
     PropertySortOrder:
         enabled: true
         ignore_unspecified: false
+        min_properties: 1
         order:
             - content
             - quotes
