@@ -14,7 +14,7 @@ linters:
 
     # Checks for BEM selectors with more elements than a specified maximum number.
     BemDepth:
-        enabled: false
+        enabled: true
         max_elements: 1
 
     # Prefer border: 0 over border: none?
@@ -290,7 +290,7 @@ linters:
     PropertySortOrder:
         enabled: true
         ignore_unspecified: false
-        min_properties: 1
+        min_properties: 2
         order:
             - content
             - quotes
