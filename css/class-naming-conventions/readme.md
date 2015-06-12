@@ -112,7 +112,7 @@ These are used to modify components or subcomponents. They are always chained to
 
 ### Component modifiers that affect subcomponents
 
-Sometimes a component modifier will affect its sub-components. There are a few methods you can use to accomplish this. Try to pick one and stick to it throughout the project, adding comments as needed.
+Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
 
 ```html
 <div class="c-blog-post c--featured">
@@ -124,10 +124,10 @@ Sometimes a component modifier will affect its sub-components. There are a few m
 ```
 
 
-#### 1. Nested inside the component
+#### 1. Styles grouped with modifier
 Nest the `.c-component__sub-component` elements inside the `.c-component` SCSS.
 
-This method works well when a modifier requires simple changes to a small number of sub-components.
+This method allows you to quickly update or edit the styles for all elements affected by a modifier.
 
 ```scss
 .c-blog-post {
@@ -141,11 +141,8 @@ This method works well when a modifier requires simple changes to a small number
 }
 ```
 
+*or*
 
-#### 2. Root level as a selector chain
-Use a selector chain with `.c-component.c--modifier`, and nest the `.c-component__sub-component` elements within it.
-
-This method works especially well when a component has multiple modifiers or state classes that can be coupled with it.
 
 ```scss
 .c-blog-post.c--featured {
@@ -157,23 +154,22 @@ This method works especially well when a component has multiple modifiers or sta
 }
 ```
 
-When using the above methods in larger files, add a comment to the `.c-component__sub-component` like so:
+In larger files, adding a comment in the `.c-component__sub-component` notes can be helpful:
 ```scss
 // Blog Post Title
 // ---
 //
-// Modifier styles can be found in:
-// .c-blog-post.c--featured
+// Modified by .c-blog-post.c--featured
 
 .c-blog-post__title {
     ...
 }
 ```
 
-#### 3. Nested inside the sub-component
-Nest the modifier code inside the subcomponent using `.c-component.c--modifier &`.
+#### 2. Styles grouped with sub-component
+Nest the modifier code inside the sub-component using `.c-component.c--modifier &`.
 
-This method works well when a root-level modifier affects multiple sub-components, or when you are working with complicated/intricate sub-components.
+This method makes it easier to visualize the differences between a sub-component and its modified states.
 
 ```scss
 .c-blog-post__title {
@@ -185,7 +181,7 @@ This method works well when a root-level modifier affects multiple sub-component
 }
 ```
 
-When using the above method in larger files, add a comment to the `.c-component` like so:
+In larger files, adding a comment in the `.c--modifier` notes can be helpful:
 ```scss
 // Blog Post
 // ===
@@ -195,8 +191,7 @@ When using the above method in larger files, add a comment to the `.c-component`
     // Featured Post
     // ---
     //
-    // Also modifies:
-    // .c-blog-post__title
+    // Also modifies .c-blog-post__title
 
     .c--featured {
         ...
