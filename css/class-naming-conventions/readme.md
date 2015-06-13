@@ -112,7 +112,7 @@ These are used to modify components or subcomponents. They are always chained to
 
 ### Component modifiers that affect subcomponents
 
-Sometimes you'll write a modifier for a component and you want that modifier to affect the subcomponents in that component. There's a standard way to write this that will ensure compiled styles are easy to find while maintaining consistent selector placement.
+Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
 
 ```html
 <div class="c-blog-post c--featured">
@@ -123,21 +123,81 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 </div>
 ```
 
+
+#### 1. Styles grouped with modifier
+Nest the `.c-component__sub-component` elements inside the `.c-component` SCSS.
+
+This method allows you to quickly update or edit the styles for all elements affected by a modifier.
+
 ```scss
 .c-blog-post {
     &.c--featured {
-        [STYLES]
-    }
-}
+        ...
 
-.c-blog-post__title {
-    .c-blog-post.c--featured & {
-        [STYLES]
+        .c-blog-post__title {
+            ...
+        }
     }
 }
 ```
 
-This might look a little weird at the outset but it's the best way to ensure that all of a components styles stay in the same place. It also ensures that no modifier styles are accidentally inherited where they shouldn't be.
+*or*
+
+
+```scss
+.c-blog-post.c--featured {
+    ...
+
+    .c-blog-post__title {
+        ...
+    }
+}
+```
+
+In larger files, adding a comment in the `.c-component__sub-component` notes can be helpful:
+```scss
+// Blog Post Title
+// ---
+//
+// Modified by .c-blog-post.c--featured
+
+.c-blog-post__title {
+    ...
+}
+```
+
+#### 2. Styles grouped with sub-component
+Nest the modifier code inside the sub-component using `.c-component.c--modifier &`.
+
+This method makes it easier to visualize the differences between a sub-component and its modified states.
+
+```scss
+.c-blog-post__title {
+    ...
+
+    .c-blog-post.c--featured & {
+        ...
+    }
+}
+```
+
+In larger files, adding a comment in the `.c--modifier` notes can be helpful:
+```scss
+// Blog Post
+// ===
+.c-blog-post {
+    ...
+
+    // Featured Post
+    // ---
+    //
+    // Also modifies .c-blog-post__title
+
+    .c--featured {
+        ...
+    }
+}
+```
 
 ### State
 
