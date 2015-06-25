@@ -102,17 +102,17 @@
         "no-inner-declarations": 2,
 
         // Disallows the nesting of blocks more than 5 deep
-        "max-depth": [2, "5"],
+        "max-depth": [2, 5],
 
         // Enforces a maximum of 10 parameters in a function declaration
-        "max-params": [2, "10"],
+        "max-params": [2, 1"],
 
         // Enforces a maximum of 25 statements within a single function
-        "max-statements": [2, "25"],
+        "max-statements": [2, 25],
 
         // Enforces a maximum of 100 characters in a single line; adjusts tabs
         // to equal 4 characters
-        "max-len": [2, "300", "4"],
+        "max-len": [2, 300, 4],
 
         // Enforces semicolons at the end of statements
         "semi": 2,
