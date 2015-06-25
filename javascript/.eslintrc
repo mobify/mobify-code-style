@@ -105,7 +105,7 @@
         "max-depth": [2, 5],
 
         // Enforces a maximum of 10 parameters in a function declaration
-        "max-params": [2, 1"],
+        "max-params": [2, 10],
 
         // Enforces a maximum of 25 statements within a single function
         "max-statements": [2, 25],
