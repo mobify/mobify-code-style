@@ -193,7 +193,7 @@ In larger files, adding a comment in the `.c--modifier` notes can be helpful:
     //
     // Also modifies .c-blog-post__title
 
-    .c--featured {
+    &.c--featured {
         ...
     }
 }
