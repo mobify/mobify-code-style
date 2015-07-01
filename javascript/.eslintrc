@@ -1,5 +1,5 @@
 {
-    "extends": "../base-eslint/.eslintrc",
+    "extends": "./eslintrc-defaults",
     "env": {
         "node": true,
         "browser": true,
