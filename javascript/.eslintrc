@@ -1,5 +1,5 @@
 {
-    "extends": "./.eslintrc-defaults",
+    "extends": "./.eslintrc-reset",
     "env": {
         "node": true,
         "browser": true,
