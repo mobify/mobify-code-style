@@ -26,7 +26,7 @@
         "no-extend-native": 2,
 
         // Enforce wrapping immediate invocations in parentheses
-        "wrap-iife": 2,
+        "wrap-iife": [2, "inside"],
 
         // Disallow usage of a variable before declaration; ignores functions
         "no-use-before-define": [2, "nofunc"],
