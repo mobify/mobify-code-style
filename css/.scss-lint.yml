@@ -43,6 +43,10 @@ linters:
     DeclarationOrder:
         enabled: true
 
+    # Checks for "reason" comments above linter-disabling comments.
+    DisableLinterReason:
+        enabled: false
+
     # Report the same property twice in a single rule set?
     DuplicateProperty:
         enabled: true
@@ -143,6 +147,11 @@ linters:
         include_nested: false
         max_properties: 10
 
+    # Report unknown CSS properties? (Ignores vendor prefixes.)
+    PropertySpelling:
+        enabled: true
+        extra_properties: []
+
     # Check for allowed units
     PropertyUnits:
         enabled: false
@@ -156,11 +165,6 @@ linters:
           'dpi', 'dpcm', 'dppx',                   # Resolution
           '%']                                     # Other
         properties: {}
-
-    # Report unknown CSS properties? (Ignores vendor prefixes.)
-    PropertySpelling:
-        enabled: true
-        extra_properties: []
 
     # Checks for element selectors qualifying id, classe, or attribute selectors.
     QualifyingElement:
@@ -177,7 +181,7 @@ linters:
         max_depth: 3
 
     # Checks that selector names use a specified convention
-    # Configure: 'hyphenated_lowercase', or 'BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    # Configure: 'hyphenated_lowercase', or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
     SelectorFormat:
         enabled: true
         convention: hyphenated_BEM
@@ -208,6 +212,11 @@ linters:
 
     # Report presence of whitespace between property name and colon?
     SpaceAfterPropertyName:
+        enabled: true
+
+    # Checks for spaces following the name of a variable and before the colon
+    # separating the variables's name from its value.
+    SpaceAfterVariableName:
         enabled: true
 
     # Report lack of space between selector and opening brace?
