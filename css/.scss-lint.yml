@@ -205,7 +205,7 @@ linters:
         enabled: true
 
     # Lint whitespace between property colon and value?
-    # Configure: `no_space`, `at_least_one_space`, or `aligned`
+    # Configure: `no_space`, `one_space`, `at_least_one_space`, `one_space_or_newline`, or `aligned`
     SpaceAfterPropertyColon:
         enabled: true
         style: one_space
@@ -214,8 +214,8 @@ linters:
     SpaceAfterPropertyName:
         enabled: true
 
-    # Checks for spaces following the name of a variable and before the colon
-    # separating the variables's name from its value.
+    # Warns if any space present between the name of a variable and the colon in
+    # variable assignments.
     SpaceAfterVariableName:
         enabled: true
 
