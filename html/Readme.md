@@ -16,7 +16,7 @@
     * [Formatting a Table](tables#formatting-a-table)
     * [Multiple <tbody> Elements](tables#multiple-tbody-elements)
 
-These documents outlines how the Mobify team is expected to write their HTML markup. Following these guidelines ensures that everyone writing HTML is using best practices and keeping accessibility in mind.
+These documents outline how the Mobify team is expected to write their HTML markup. Following these guidelines ensures that everyone is using best practices and keeping accessibility in mind.
 
 This document borrows ideas and rules from Google's HTML Style Guide and Github's Markup & Template Styleguide.
 
