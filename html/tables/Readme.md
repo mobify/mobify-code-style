@@ -1,10 +1,10 @@
 # Table Markup
 
-## When to Use a <table>
+## When to Use a `<table>`
 
 If the content being marked up is tabular data (key-value or multidimensional data), use a table.
 
-## Formatting a <table>
+## Formatting a `<table>``
 Make use of the caption, `<thead>`, `<tfoot>`, `<tbody>` and `<th>` tags when necessary. In general, all `<th>` elements should always have a scope attribute associating them with a row or column, for accessibility reasons.
 
 ```html
