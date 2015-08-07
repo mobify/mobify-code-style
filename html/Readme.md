@@ -2,19 +2,19 @@
 
 ## Table of Contents
 
-* [HTML Formatting](#)
-    * [General Formatting](#)
-    * [Doctype](#)
-    * [HTML Tags](#)
-    * [Entity Reference](#)
-* [Attributes and Tags](#)
-    * [Values](#)
-    * [Attribute Order](#)
-    * [Type Attributes](#)
-* [Tables](#)
-    * [When to Use a Table](#)
-    * [Formatting a Table](#)
-    * [Multiple <tbody> Elements](#)
+* [HTML Formatting](html#html-formatting)
+    * [General Formatting](html#general-formatting)
+    * [Doctype](html#doctype)
+    * [HTML Tags](html#close-all-the-html-tags)
+    * [Entity Reference](html#entity-reference)
+* [Attributes and Tags](attributes-and-tags#attributes-and-tags)
+    * [Values](attributes-and-tags#values)
+    * [Attribute Order](attributes-and-tags#attribute-order)
+    * [Type Attributes](attributes-and-tags#omit-type-on-link-and-script)
+* [Tables](tables#table-markup)
+    * [When to Use a Table](tables#when-to-use-a-table)
+    * [Formatting a Table](tables#formatting-a-table)
+    * [Multiple <tbody> Elements](tables#multiple-tbody-elements)
 
 These documents outlines how the Mobify team is expected to write their HTML markup. Following these guidelines ensures that everyone writing HTML is using best practices and keeping accessibility in mind.
 
@@ -77,7 +77,7 @@ Self-contained elements (e.g. `<meta charset='utf-8'> or <img src='...'>`) don't
 
 
 ### Entity Reference
-There is no need to use entity references like `&mdash;`, `&rdquo;`, `&#x263a;`, since we should be using the [same encoding](link to ...) for all files and editors.
+There is no need to use entity references like `&mdash;`, `&rdquo;`, `&#x263a;`, since we should be using the [same encoding](http://editorconfig.org/) for all files and editors.
 
 The exception to this is for characters with special meaning in HTML such as `<` and `&`, and "invisible" characters like `&nbsp;`.
 
