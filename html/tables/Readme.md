@@ -31,7 +31,7 @@ Make use of the caption, `<thead>`, `<tfoot>`, `<tbody>` and `<th>` tags when ne
 </table>
 ```
 
-## Multiple <tbody> Elements
+## Multiple `<tbody>` Elements
 If data is grouped, tables may have more than one `<tbody>`. Columns may also have more than one `<th>`, representing a hierarchy of column labels, with the topmost `<th>` elements able to span several secondary headers using the `colspan` attribute. The same is true of table rows, using multiple `<th>` and the `rowspan` attribute.
 
 ```html
