@@ -2,11 +2,11 @@
 
 ## Table of Contents
 
-* [HTML Formatting](html#html-formatting)
-    * [General Formatting](html#general-formatting)
-    * [Doctype](html#doctype)
-    * [HTML Tags](html#close-all-the-html-tags)
-    * [Entity Reference](html#entity-reference)
+* [HTML Formatting](#html-formatting)
+    * [General Formatting](#general-formatting)
+    * [Doctype](#doctype)
+    * [HTML Tags](#close-all-the-html-tags)
+    * [Entity Reference](#entity-reference)
 * [Attributes and Tags](attributes-and-tags#attributes-and-tags)
     * [Values](attributes-and-tags#values)
     * [Attribute Order](attributes-and-tags#attribute-order)
