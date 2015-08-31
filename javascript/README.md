@@ -90,7 +90,7 @@ var name = 'foo';
 
 ##Use semi-colons
 
-There are many more ways that things can break *without* semi-colons then *with* semi-colons.
+There are many more ways that things can break *without* semi-colons than *with* semi-colons.
 Use semi-colons!
 
 ```javascript
