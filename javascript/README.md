@@ -95,12 +95,14 @@ Use semi-colons!
 
 ```javascript
 // bad
+var x
 a = b
-f() // this will evaluate to `a = b f()`, which will be a parse error
+(f()) // this will evaluate to `a = b(f())`, which is not what we intended.
 
 // good
+var x;
 a = b;
-f();
+(f());
 ```
 
 ##Use function expressions over function declarations
