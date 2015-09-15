@@ -1,5 +1,6 @@
 2.2.1
     - Cumulative patch release
+    - Update SCSS-lint to 0.40.1
 2.2.0
     - Fixes eslint config to play nicely with Atom's linter-eslint package
     - Adds an eslint config reset file so that our ruleset is an override
