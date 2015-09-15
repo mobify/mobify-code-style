@@ -1,6 +1,6 @@
 {
   "name": "mobify-code-style",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Code style guide and linting tools for Mobify",
   "main": "index.js",
   "scripts": {
