@@ -93,9 +93,6 @@
         // Enforce single quotes for string literals
         "quotes": [2, "single"],
 
-        // Disallow unnecessary parentheses
-        "no-extra-parens": 2,
-
         // Disallow unnecessary semicolons
         "no-extra-semi": 2,
 
