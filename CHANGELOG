@@ -1,3 +1,5 @@
+2.2.3
+    - Restrict the unnecessary parens rule to functions
 2.2.2
     - Remove enforcement of 'max-statements' and 'max-params' JS rules
 2.2.1
