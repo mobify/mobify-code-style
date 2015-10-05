@@ -390,7 +390,9 @@ is array-like).
 
 ###Prefer using methods from `[]` over `Array.prototype`
 
-[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach). Prefer the short, more succinct version.
+Prefer the short, more succinct version.
+
+[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach). 
 
 ```javascript
 // Good
