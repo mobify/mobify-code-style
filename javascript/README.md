@@ -385,7 +385,7 @@ if ("0" === false) {console.log('foo')}
 
 ##Calling array methods on array-like objects
 
-Use functions on Array.prototype on array-like objects. (eg. 'arguments' is not an array, but 
+Use functions on Array.prototype for array-like objects. (eg. 'arguments' is not an array, but 
 is array-like).
 
 ###Prefer using methods from `[]` over `Array.prototype`
