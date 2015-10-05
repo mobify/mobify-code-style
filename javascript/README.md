@@ -388,10 +388,9 @@ if ("0" === false) {console.log('foo')}
 Use functions on Array.prototype on array-like objects. (eg. 'arguments' is not an array, but 
 is array-like).
 
-###Prefer [].forEach(obj) over Array.prototype.forEach(obj)
+###Prefer using methods from `[]` over `Array.prototype`
 
-Both `[].forEach` and `Array.prototype.forEach` resolve to the same function. Performance
-between the two is almost identical. Prefer the short, more succinct version.
+Performance between the two styles is almost identical. Prefer the short, more succinct version.
 
 ```javascript
 // Good
