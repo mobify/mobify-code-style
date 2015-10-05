@@ -382,3 +382,23 @@ if ("0" == false) {console.log('foo')} // this will console log! bad!
 // good
 if ("0" === false) {console.log('foo')}
 ```
+
+##Calling array methods on array-like objects
+
+You can use functions from `Array.prototype` on array-like objects. (eg. 'arguments' is not an array, but 
+is array-like).
+
+###Prefer using methods from `[]` over `Array.prototype`
+
+Prefer the short, more succinct version.
+
+[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach). 
+
+```javascript
+// Good
+[].forEach.call(arguments, function(arg) { console.log(arg); });
+
+// Bad!
+Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
+```
+
