@@ -385,7 +385,7 @@ if ("0" === false) {console.log('foo')}
 
 ##Calling array methods on array-like objects
 
-Use functions on Array.prototype for array-like objects. (eg. 'arguments' is not an array, but 
+You can use functions from `Array.prototype` on array-like objects. (eg. 'arguments' is not an array, but 
 is array-like).
 
 ###Prefer using methods from `[]` over `Array.prototype`
@@ -394,9 +394,9 @@ is array-like).
 
 ```javascript
 // Good
-[].slice.call(arguments); 
+[].forEach.call(arguments, function(arg) { console.log(arg); });
 
 // Bad!
-Array.prototype.slice.call(arguments);
+Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
 ```
 
