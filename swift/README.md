@@ -154,6 +154,30 @@ Place the closing `}` on the same line if the body of the block if empty:
 let callback: RpcMethodCallback = { result in }  // Do nothing
 ```
 
+Place bodies of a block on a new line
+=====================================
+
+No single line `if...else` statements
+
+```swift
+// bad
+if condition { return }
+
+// good
+if condition {
+    return
+}
+
+// bad
+guard let x = x else { return }
+
+// good
+guard let x = x else {
+    return
+}
+```
+
+
 Objective-C interop
 ===================
 
@@ -278,10 +302,16 @@ func myFunc(optionalKey: String?) {
         // log an error
         return
     }
-    guard let queue = dict[key] else { return }
+    guard let queue = dict[key] else {
+        return
+    }
     for queueMessage in queue {
-        guard let address = queueMessage["address"] as? MessageAddress else { continue }
-        guard let requestJson = queueMessage["requestJson"] as? String else { continue }
+        guard let address = queueMessage["address"] as? MessageAddress else {
+            continue
+        }
+        guard let requestJson = queueMessage["requestJson"] as? String else {
+            continue
+        }
         // do stuff with everything we unwrapped
     }
 }
