@@ -37,7 +37,7 @@ class Component {
 How do I handle errors in Swift?
 ================================
 
-As of Swift 2.0 exceptions have been introduced into the language and many of the built-in APIs make use of them. We have decided to stick with our existing pattern of returning errors.
+As of Swift 2.0 exceptions have been introduced into the language and the APIs that formerly used `someMethod(..., error: *NSError)` make use of them. We have decided to stick with our existing pattern for returning errors.
 
 You have a couple options:
 
