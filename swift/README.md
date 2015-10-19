@@ -177,7 +177,6 @@ guard let x = x else {
 }
 ```
 
-
 Objective-C interop
 ===================
 
