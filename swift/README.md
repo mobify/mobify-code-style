@@ -37,7 +37,7 @@ class Component {
 How do I handle errors in Swift?
 ================================
 
-Swift doesn't have exceptions, so errors must somehow be returned to your caller.
+As of Swift 2.0 exceptions have been introduced into the language and the APIs that formerly used `someMethod(..., error: *NSError)` make use of them. We have decided to stick with our existing pattern for returning errors.
 
 You have a couple options:
 
@@ -154,6 +154,29 @@ Place the closing `}` on the same line if the body of the block if empty:
 let callback: RpcMethodCallback = { result in }  // Do nothing
 ```
 
+Place bodies of a block on a new line
+=====================================
+
+No single line `if...else` statements
+
+```swift
+// bad
+if condition { return }
+
+// good
+if condition {
+    return
+}
+
+// bad
+guard let x = x else { return }
+
+// good
+guard let x = x else {
+    return
+}
+```
+
 Objective-C interop
 ===================
 
@@ -248,6 +271,50 @@ if let message = message {
 ```
 
 **Don't** use variable names like `optionalMessage` or `unwrappedMessage`.
+
+Favour `guard...else` to nested `if...let`
+==============================================
+Swift allows use of the `guard` keyword to leave a scope quickly if a required condition isn't met. Everything you unwrap with a `guard` is then available for the rest of the block. This pattern allows for easier to read code with less nesting.
+
+```swift
+// Bad (pre Swift 2.0 way)
+func myFunc(key: String?) {
+    if let key = key {
+        if let queue = dict[key] {
+            for queueMessage in queue {
+                if let address = queueMessage["address"] as? MessageAddress,
+                    requestJson = queueMessage["requestJson"] as? String {
+                        // do stuff with everything we unwrapped
+                }
+            }
+        }
+    } else {
+        // log an error
+    }
+}
+```
+
+```swift
+// Good (Swift 2.0 way using guards)
+func myFunc(optionalKey: String?) {
+    guard let key = key else {
+        // log an error
+        return
+    }
+    guard let queue = dict[key] else {
+        return
+    }
+    for queueMessage in queue {
+        guard let address = queueMessage["address"] as? MessageAddress else {
+            continue
+        }
+        guard let requestJson = queueMessage["requestJson"] as? String else {
+            continue
+        }
+        // do stuff with everything we unwrapped
+    }
+}
+```
 
 Global variables and functions
 ==============================
