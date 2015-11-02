@@ -224,7 +224,7 @@ linters:
     # Configure: `one_space` or `no_space`
     SpaceAroundOperator:
         enabled: true
-        style: one_space
+        style: no_space
 
     # Report lack of space between selector and opening brace?
     SpaceBeforeBrace:
