@@ -52,7 +52,7 @@ linters:
         enabled: true
 
     # Lint position of @else statements?
-    # Configure: `same_line` or `new_line`.
+    # Configure: `same_line` or `new_line`
     ElsePlacement:
         enabled: true
         style: same_line
@@ -71,8 +71,7 @@ linters:
     ExtendDirective:
         enabled: false
 
-    # Lint end-of-file newline?
-    # Configure: must be present?
+    # Checks for final newlines at the end of a file.
     FinalNewline:
         enabled: true
         present: true
@@ -84,7 +83,7 @@ linters:
         style: short
 
     # Lint case of hex colors?
-    # Configure: `lowercase` or `uppercase`.
+    # Configure: `lowercase` or `uppercase`
     HexNotation:
         enabled: true
         style: lowercase
@@ -126,7 +125,7 @@ linters:
         force_nesting: false
 
     # Checks the format of declared names of functions, mixins, and variables.
-    # Configure: 'hyphenated_lowercase', or 'camel_case', or 'snake_case', or a regex pattern
+    # Configure: 'hyphenated_lowercase', 'camel_case', 'snake_case' or a regex pattern
     NameFormat:
         enabled: true
         allow_leading_underscore: true
@@ -166,7 +165,7 @@ linters:
           '%']                                     # Other
         properties: {}
 
-    # Checks for element selectors qualifying id, classe, or attribute selectors.
+    # Checks for element selectors qualifying id, classes, or attribute selectors.
     QualifyingElement:
         enabled: true
         allow_element_with_attribute: true
@@ -181,7 +180,7 @@ linters:
         max_depth: 3
 
     # Checks that selector names use a specified convention
-    # Configure: 'hyphenated_lowercase', or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    # Configure: 'hyphenated_lowercase', 'strict_BEM', 'hyphenated_BEM', 'snake_case', 'camel_case' or a regex pattern
     SelectorFormat:
         enabled: true
         convention: hyphenated_BEM
@@ -200,12 +199,14 @@ linters:
     SingleLinePerSelector:
         enabled: true
 
-    # Report lack of space after commas in lists?
+    # Checks for spaces after commas in argument lists.
+    # Configure: `one_space`, `no_space` or `at_least_one_space`
     SpaceAfterComma:
         enabled: true
+        style: one_space
 
     # Lint whitespace between property colon and value?
-    # Configure: `no_space`, `one_space`, `at_least_one_space`, `one_space_or_newline`, or `aligned`
+    # Configure: `no_space`, `one_space`, `at_least_one_space`, `one_space_or_newline` or `aligned`
     SpaceAfterPropertyColon:
         enabled: true
         style: one_space
@@ -219,13 +220,19 @@ linters:
     SpaceAfterVariableName:
         enabled: true
 
+    # Checks for space around operators on values.
+    # Configure: `one_space` or `no_space`
+    SpaceAroundOperator:
+        enabled: true
+        style: no_space
+
     # Report lack of space between selector and opening brace?
     SpaceBeforeBrace:
         enabled: true
         style: space # or 'new_line'
         allow_single_line_padding: false
 
-    # Lint whitespace padding within parens?
+    # Checks for the presence of spaces between parentheses.
     # Configure: number of spaces
     SpaceBetweenParens:
         enabled: true
@@ -248,6 +255,10 @@ linters:
     # Checks for unnecessary trailing zeros in numeric values with decimal points.
     TrailingZero:
         enabled: true
+
+    # Checks for explicitly transitioned properties instead of transition all.
+    TransitionAll:
+        enabled: false
 
     # Report numeric values with unnecessary fractional portions?
     UnnecessaryMantissa:
