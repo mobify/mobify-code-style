@@ -1,3 +1,7 @@
+2.3.0
+    - Add CSSComb
+    - Update documentation
+    - Update SCSS-lint to 0.42.2
 2.2.4
     - Remove the unnecessary parens rule
 2.2.3
