@@ -1,3 +1,5 @@
+2.3.1
+    - Add an eslint config file for production-ready JS
 2.3.0
     - Add CSSComb
     - Update documentation
