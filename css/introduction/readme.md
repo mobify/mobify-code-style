@@ -4,19 +4,22 @@ This document outlines the way Customer Success team is expected to write their 
 
 We follow a mixture of various methodologies include, but not limited to: SMACSS' seperation of concerns, OOCSS' modularity, Topcoat's coding guidelines, BEM-ish naming conventions, and others.
 
+
 ## Table of Contents
 
 * [Tools & Frameworks](#tools--frameworks)
 * [Philosophy & Structure](#philosophy--structure)
 
+
 ## Tools & Frameworks
 
-* [Sass](http://sass-lang.com/)
-* [Autoprefixer](https://github.com/ai/autoprefixer)
-* [Vellum](https://github.com/mobify/vellum)
-* [Spline](https://github.com/mobify/spline)
-* [Stencil](https://github.com/mobify/stencil)
-* [SCSS-Lint](https://github.com/causes/scss-lint) (Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.scss-lint.yml))
+* [Sass](http://sass-lang.com/) is our preprocessor of choice
+* [PostCSS](https://github.com/postcss/postcss) for its [Autoprefixer](https://github.com/postcss/autoprefixer) plugin
+* [Vellum](https://github.com/mobify/vellum) is our starting point for base styles on Customer Success projects at Mobify
+* [Spline](https://github.com/mobify/spline) is our library of Sass mixins and functions
+* [Stencil](https://github.com/mobify/stencil) (Deprecated – but a new 2.0 version is coming soon!) is our library or reusable UI patterns
+* [SCSS-Lint](https://github.com/causes/scss-lint) is our preferred linter for `SCSS`. See our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.scss-lint.yml))
+* [CSScomb](http://csscomb.com/) is a tool that can be plugged into most popular text editors that automatically formats your code! Our formatting ruleset can be found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.csscomb.json)
 
 
 ## Philosophy & Structure
