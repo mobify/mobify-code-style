@@ -110,6 +110,10 @@
         "semi": 2,
 
         // Disallow function definitions of the form 'function myFunc() {'
-        "func-style": [2, "expression"]
+        "func-style": [2, "expression"],
+
+        // Disallow unused variables/expressions
+        "no-unused-vars": 2,
+        "no-unused-expressions": 2
     }
 }

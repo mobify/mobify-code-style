@@ -88,6 +88,21 @@ var length = items.length;
 var name = 'foo';
 ````
 
+## Don't have unused variables/expressions
+```javascript
+// Bad: Many of these variables/expressions are useless
+{} // object - not used
+var newArray = []; // newArray - not used
+['1', '2', '3', '4'].forEach(function(num, index) { // index - not used
+    return num++;
+});
+
+// Good: Delete things you no longer need
+['1', '2', '3', '4'].forEach(function(num) {
+    return num++;
+});
+```
+
 ##Use semi-colons
 
 There are many more ways that things can break *without* semi-colons than *with* semi-colons.
