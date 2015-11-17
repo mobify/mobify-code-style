@@ -1,6 +1,6 @@
 2.3.3
-    - Change scss-lint rule: require double quotes
-    - Change CSScomb rule: require double quotes
+    - Change scss-lint rule: disable the quotes rules
+    - Change CSScomb rule: disable the quotes rules
 2.3.2
     - Update documentation: "Tools & Frameworks" section in the CSS introduction
 2.3.1
