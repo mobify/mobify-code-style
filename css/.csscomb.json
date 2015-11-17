@@ -17,7 +17,7 @@
     "rule-indent": "    ",
     "stick-brace": " ",
     "unitless-zero": true,
-    "quotes": "double",
+    "quotes": false,
     "remove-empty-rulesets": true,
     "space-before-closing-brace": "\n",
     "space-before-colon": "",
