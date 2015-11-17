@@ -242,7 +242,7 @@ linters:
     # Configure: `single_quotes` or `double_quotes`
     StringQuotes:
         enabled: true
-        style: single_quotes
+        style: double_quotes
 
     # Report lack of semicolon at the end of the last rule in a ruleset?
     TrailingSemicolon:
