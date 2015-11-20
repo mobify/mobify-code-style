@@ -129,7 +129,8 @@ linters:
     NameFormat:
         enabled: true
         allow_leading_underscore: true
-        convention: hyphenated_lowercase
+        convention: '[a-z]|-{3}|_{3}|[^_]_[^_]'
+        # BEM regex from SelectorFormat src
 
     # Checks for rule sets nested deeper than a specified maximum depth.
     NestingDepth:
