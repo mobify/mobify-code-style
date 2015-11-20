@@ -325,13 +325,13 @@ linters:
             - left
             - z-index
             - float
+            - clear
             - # Display, layout modes & box model
             - display
             - overflow
             - overflow-x
             - overflow-y
             - clip
-            - clear
             - table-layout
             - empty-cells
             - caption-side

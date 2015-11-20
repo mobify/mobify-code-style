@@ -50,7 +50,9 @@
             "right",
             "bottom",
             "left",
-            "z-index"
+            "z-index",
+            "float",
+            "clear"
         ],
         [
             "display",
@@ -58,8 +60,6 @@
             "overflow-x",
             "overflow-y",
             "clip",
-            "float",
-            "clear",
             "table-layout",
             "empty-cells",
             "caption-side",
