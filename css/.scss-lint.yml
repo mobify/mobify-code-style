@@ -223,7 +223,7 @@ linters:
     # Checks for space around operators on values.
     # Configure: `one_space` or `no_space`
     SpaceAroundOperator:
-        enabled: true
+        enabled: false
         style: no_space
 
     # Report lack of space between selector and opening brace?
