@@ -1,3 +1,10 @@
+2.3.4
+    - Patch CSSComb and scss-lint rules for compatibility
+    - LeadingZero aligned to enabled
+    - Tweaked property ordering
+    - NameFormat to match BEM
+    - NestingDepth upped to 4
+    - color and background-color properties no longer require explicit Sass variables
 2.3.3
     - Change scss-lint rule: disable the quotes rules
     - Change CSScomb rule: disable the quotes rules

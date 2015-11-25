@@ -129,12 +129,13 @@ linters:
     NameFormat:
         enabled: true
         allow_leading_underscore: true
-        convention: hyphenated_lowercase
+        convention: '[a-z]|-{3}|_{3}|[^_]_[^_]'
+        # BEM regex from SelectorFormat src
 
     # Checks for rule sets nested deeper than a specified maximum depth.
     NestingDepth:
         enabled: true
-        max_depth: 3
+        max_depth: 4
 
     # Report @extend unless extending a placeholder?
     PlaceholderInExtend:
@@ -223,7 +224,7 @@ linters:
     # Checks for space around operators on values.
     # Configure: `one_space` or `no_space`
     SpaceAroundOperator:
-        enabled: true
+        enabled: false
         style: no_space
 
     # Report lack of space between selector and opening brace?
@@ -280,9 +281,7 @@ linters:
     VariableForProperty:
         enabled: true
         properties: [
-            color,
-            font,
-            background-color
+            font
         ]
 
     # Checks for vendor prefixes.
@@ -324,13 +323,13 @@ linters:
             - left
             - z-index
             - float
+            - clear
             - # Display, layout modes & box model
             - display
             - overflow
             - overflow-x
             - overflow-y
             - clip
-            - clear
             - table-layout
             - empty-cells
             - caption-side
