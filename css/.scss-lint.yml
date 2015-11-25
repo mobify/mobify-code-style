@@ -281,9 +281,7 @@ linters:
     VariableForProperty:
         enabled: true
         properties: [
-            color,
-            font,
-            background-color
+            font
         ]
 
     # Checks for vendor prefixes.
