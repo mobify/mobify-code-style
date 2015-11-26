@@ -11,7 +11,7 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 * [`@extends`](#extends)
     * [Pitfalls](#pitfalls)
     * [Workaround](#workaround)
-    * [Caveats](#caveats)
+    * [Declaration Order And Placeholder Class Names](#declaration-order-and-placeholder-class-names)
     * [Genuine Usecases](#genuine-usecases)
 * [Filename Naming Convention](#filename-naming-convention)
 * [Note on Partials](#note-on-partials)
@@ -122,6 +122,46 @@ Notice how the bloated CSS from the original example is now gone!
 Also notice how we still included the original `.c-button` class in the SCSS. After all, we still want to use that in our HTML, we just never extend it directly.
 
 This technique is described in detail in Chris Lamb's article [Mastering Sass Extends and Placeholders](http://8gramgorilla.com/mastering-sass-extends-and-placeholders/).
+
+### Declaration Order And Placeholder Class Names
+
+The placeholder class always goes after the regular selectors. In other words, make the placeholder class the last selector in a chain of comma separated selectors.
+
+In most cases, the placeholder class is named after the element or component class it is related to:
+
+```
+h1,
+%h1 {
+    ...
+}
+
+.c-component,
+%c-component {
+    ...
+}
+```
+
+In some cases the placeholder class can be named more generally if it shares styles across multiple selectors (see more detailed example in the next section [Genuine Usecases](#genuine-usecases)):
+
+```
+h1,
+h2,
+h3,
+h4,
+%heading {
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+```
+
+If the placeholder selector is for a modifier class, use the following name convention:
+
+```
+.c-component.c--modifier,
+%c-component--modifier {
+    ...
+}
+```
 
 
 ### Genuine Usecases
