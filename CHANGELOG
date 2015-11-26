@@ -1,3 +1,5 @@
+2.3.5
+    - Add Sass documentation about placeholders and `@extends`
 2.3.4
     - Patch CSSComb and scss-lint rules for compatibility
     - LeadingZero aligned to enabled
