@@ -13,6 +13,7 @@
 * [Single Direction Rule](#single-direction-rule)
 * [Name Spacing](#name-spacing)
 * [Size Units](#size-units)
+* [Context Sensitivity](#context-sensitivity)
 * [Format](#format)
 * [Declaration Order](#declaration-order)
     * [Exceptions and variations](#exceptions-and-variations)
@@ -125,6 +126,51 @@ Because we work on top of our client's markup and javascript, we need to make su
 * Use percentages for fluid-width elements.
 * Use pixels for font-size because it offers absolute control over text.
 * Use unitless line-height in conjunction with font-size because it acts as a multiplier of the pixel value.
+
+
+## Context Sensitivity
+
+There are certain types of styles that are context sensitive, but tend to be written with no regard to that context. As an example, `absolute` positioning:
+
+```
+// Action Bar
+// ===
+
+.c-action-bar {
+    position: absolute;
+    bottom: 0;
+}
+```
+
+This is difficult to maintain because this CSS does not communicate anything about what's happening. What is this class absolutely positioned relative to? Good luck trying to figure that out, because chances are you're going to have to manually load up the page that this component exists on and inspect it to find it. That's assuming you know what page this component is used.
+
+A better approach is to build code that is contextual aware. For example:
+
+```
+// PDP
+// ===
+
+// ...
+
+
+// PDP: Summary
+// ---
+//
+// 1. Absolutely position the action bar relative to the PDP Summary section
+
+.t-pdp__summary {
+    position: relative; // 1
+
+    .c-action-bar {
+        position: absolute; // 1
+        bottom: 0;
+    }
+}
+```
+
+Not only is the code written in a way that clearly informs a reader how these context sensitive styles relate, we use documentation to make it perfectly explicit. There is no ambiguity here.
+
+Another benefit is that this keeps our code isolated really well. Action Bar can be put anywhere and still work.
 
 
 ## Format

@@ -88,6 +88,23 @@ var length = items.length;
 var name = 'foo';
 ````
 
+##Use semi-colons
+
+There are many more ways that things can break *without* semi-colons than *with* semi-colons.
+Use semi-colons!
+
+```javascript
+// bad
+var x
+a = b
+(f()) // this will evaluate to `a = b(f())`, which is not what we intended.
+
+// good
+var x;
+a = b;
+(f());
+```
+
 ##Use function expressions over function declarations
 
 The function expression is clearly recognisable as what it really is (a variable with a function value). Additionally, it helps organize code so that all variable declarations appear at the top of a file, and invocations follow. This gives some predictablity when others are reading your code, allowing for a more consistent structure.
@@ -351,3 +368,37 @@ var title = $('h1');
 // good: later on in the code, people will know that they can use jQuery/Zepto on this object
 var $title = $('h1');
 ````
+
+##Always use `===` over `==`
+
+`==` does [implicit coercions](http://dorey.github.io/JavaScript-Equality-Table/), which can
+cause a number of unexpected issues.
+We always prefer `===` over `==`
+
+```javascript
+// bad
+if ("0" == false) {console.log('foo')} // this will console log! bad!
+
+// good
+if ("0" === false) {console.log('foo')}
+```
+
+##Calling array methods on array-like objects
+
+You can use functions from `Array.prototype` on array-like objects. (eg. 'arguments' is not an array, but 
+is array-like).
+
+###Prefer using methods from `[]` over `Array.prototype`
+
+Prefer the short, more succinct version.
+
+[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach). 
+
+```javascript
+// Good
+[].forEach.call(arguments, function(arg) { console.log(arg); });
+
+// Bad!
+Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
+```
+

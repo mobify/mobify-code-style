@@ -1,4 +1,5 @@
 {
+    "extends": "./.eslintrc-reset",
     "env": {
         "node": true,
         "browser": true,
@@ -12,6 +13,9 @@
         "Adaptive": true
     },
     "rules": {
+        // K&R brace style, e.g. `if (x) {` <-- no new line before {
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+
         // Enforce === instead of ==; !== instead of !=
         "eqeqeq": 2,
 
@@ -22,7 +26,7 @@
         "no-extend-native": 2,
 
         // Enforce wrapping immediate invocations in parentheses
-        "wrap-iife": 2,
+        "wrap-iife": [2, "inside"],
 
         // Disallow usage of a variable before declaration; ignores functions
         "no-use-before-define": [2, "nofunc"],
@@ -48,6 +52,9 @@
         // Disallow mixed spaces and tabs for indentation
         "no-mixed-spaces-and-tabs": 2,
 
+        // Enforce 4 spaces indentation
+        "indent": [2, 4, {"SwitchCase": 1}],
+
         // Disallow use of multiline strings
         "no-multi-str": 2,
 
@@ -67,6 +74,9 @@
         // Enforce spacing before opening brace of block statements
         "space-before-blocks": [2, "always"],
 
+        // Disallow spaces before function parentheses
+        "space-before-function-paren": [2, "never"],
+
         // Enforce spaceing around infix operators: +, -, :, ?
         "space-infix-ops": 2,
 
@@ -83,9 +93,6 @@
         // Enforce single quotes for string literals
         "quotes": [2, "single"],
 
-        // Disallow unnecessary parentheses
-        "no-extra-parens": 2,
-
         // Disallow unnecessary semicolons
         "no-extra-semi": 2,
 
@@ -93,17 +100,11 @@
         "no-inner-declarations": 2,
 
         // Disallows the nesting of blocks more than 5 deep
-        "max-depth": [2, "5"],
-
-        // Enforces a maximum of 10 parameters in a function declaration
-        "max-params": [2, "10"],
-
-        // Enforces a maximum of 25 statements within a single function
-        "max-statements": [2, "25"],
+        "max-depth": [2, 5],
 
         // Enforces a maximum of 100 characters in a single line; adjusts tabs
         // to equal 4 characters
-        "max-len": [2, "300", "4"],
+        "max-len": [2, 300, 4],
 
         // Enforces semicolons at the end of statements
         "semi": 2,
