@@ -3,6 +3,7 @@
 
 ## Table of Contents
 
+* [Basic Conventions](#basic-conventions)
 * [CSM](#csm)
     * [Components](#components)
     * [Sub-Components](#sub-components)
@@ -14,6 +15,12 @@
     * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
     * [When to use their existing selectors](#when-to-use-their-existing-selectors)
     * [How to use their existing selectors in our components](#how-to-use-their-existing-selectors-in-our-components)
+
+
+## Basic Conventions
+
+* Class names are kebab-case (*words-are-dash-separated*)
+* Each class is prefixed with either `c-`, `t-` or `x-` ([consult this table](#class-prefix-conventions) for details)
 
 
 ## CSM
@@ -112,7 +119,7 @@ These are used to modify components or subcomponents. They are always chained to
 
 ### Component modifiers that affect subcomponents
 
-Sometimes you'll write a modifier for a component and you want that modifier to affect the subcomponents in that component. There's a standard way to write this that will ensure compiled styles are easy to find while maintaining consistent selector placement.
+Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
 
 ```html
 <div class="c-blog-post c--featured">
@@ -123,21 +130,81 @@ Sometimes you'll write a modifier for a component and you want that modifier to 
 </div>
 ```
 
+
+#### 1. Styles grouped with modifier
+Nest the `.c-component__sub-component` elements inside the `.c-component` SCSS.
+
+This method allows you to quickly update or edit the styles for all elements affected by a modifier.
+
 ```scss
 .c-blog-post {
     &.c--featured {
-        [STYLES]
-    }
-}
+        ...
 
-.c-blog-post__title {
-    .c-blog-post.c--featured & {
-        [STYLES]
+        .c-blog-post__title {
+            ...
+        }
     }
 }
 ```
 
-This might look a little weird at the outset but it's the best way to ensure that all of a components styles stay in the same place. It also ensures that no modifier styles are accidentally inherited where they shouldn't be.
+*or*
+
+
+```scss
+.c-blog-post.c--featured {
+    ...
+
+    .c-blog-post__title {
+        ...
+    }
+}
+```
+
+In larger files, adding a comment in the `.c-component__sub-component` notes can be helpful:
+```scss
+// Blog Post Title
+// ---
+//
+// Modified by .c-blog-post.c--featured
+
+.c-blog-post__title {
+    ...
+}
+```
+
+#### 2. Styles grouped with sub-component
+Nest the modifier code inside the sub-component using `.c-component.c--modifier &`.
+
+This method makes it easier to visualize the differences between a sub-component and its modified states.
+
+```scss
+.c-blog-post__title {
+    ...
+
+    .c-blog-post.c--featured & {
+        ...
+    }
+}
+```
+
+In larger files, adding a comment in the `.c--modifier` notes can be helpful:
+```scss
+// Blog Post
+// ===
+.c-blog-post {
+    ...
+
+    // Featured Post
+    // ---
+    //
+    // Also modifies .c-blog-post__title
+
+    &.c--featured {
+        ...
+    }
+}
+```
 
 ### State
 
@@ -200,9 +267,10 @@ You'll have probably noticed by now that our class names have a variety of prefi
 Prefix | Purpose | Scaffold Directory |
 ------ | ------- | ------------------ |
 `.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
-`.t-` | Classes that start with `.t-` are Template and Template Partial specific classes. The names of these classes are most often based on the template names defined by the konf. Example templates might include: `.t-pdp`, `.t-home`, `.t-category`. Example Template Partials might include: `.t-header`, `.t-footer`, `.t-sidebar`. | */src/scss/templates*
-`.x-` | Classes that start with `.x-` are generic class names that are neither a component or template. Most commonly these classes are used to identify Mobify defined states (i.e. `.x-hide`) or a generic entity that is not a component or template (i.e. `.x-base-h1`). [See below](#us-versus-them-aka-theres-an-x-ception-to-every-rule) | */src/scss/globals/*
-`.m-` | This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.t-` | Classes that start with `.t-` are Template specific classes. These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */src/scss/templates*
+`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | */src/scss/globals/*
+`.m-` | **Deprecated** This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
 
 ## Us versus Them (aka There's an x-ception to every rule)

@@ -1,0 +1,8 @@
+{
+    // Keep all dev rules
+    "extends": "./.eslintrc",
+    "rules": {
+        // Disallow use of debugger statements in production code
+        "no-debugger": 2
+    }
+}
