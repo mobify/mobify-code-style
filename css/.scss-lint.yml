@@ -116,7 +116,7 @@ linters:
     # Lint leading zero on dimension values?
     # Configure: `exclude_zero` or `include_zero`
     LeadingZero:
-        enabled: false
+        enabled: true
         style: include_zero
 
     # Report same selector used twice in a single stylesheet?
