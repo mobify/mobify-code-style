@@ -13,7 +13,7 @@
     "combinator-space": [" ", " "],
     "element-case": "lower",
     "eof-newline": true,
-    "leading-zero": true,
+    "leading-zero": false,
     "rule-indent": "    ",
     "stick-brace": " ",
     "unitless-zero": true,
