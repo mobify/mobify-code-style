@@ -1,6 +1,5 @@
 2.3.6
     - Change CSScomb rule: disable leading-zero rule due to CSScomb bug
-    - Change scss-lint rule: disable LeadingZero rule to work with CSSComb leading-zero rule
 2.3.5
     - Add Sass documentation about placeholders and `@extends`
     - Add CSS documentation on l10n and i18n best practices
