@@ -1,3 +1,5 @@
+2.3.6
+    - Change CSScomb rule: null leading-zero rule due to CSScomb bug
 2.3.5
     - Add Sass documentation about placeholders and `@extends`
     - Add CSS documentation on l10n and i18n best practices
