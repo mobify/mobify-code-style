@@ -437,7 +437,7 @@ use of the API to split them up.
 functionThatReturnsAPromise()
     .then(function() {
         // code here!
-    }), function() {
+    }, function() {
         // other code here!
     });
 
