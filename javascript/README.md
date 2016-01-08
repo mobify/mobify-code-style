@@ -408,10 +408,11 @@ With method-chaining or promise APIs, we may have a long chain of
 method calls in a single statement. It is important to format these so
 that they are readable and flow as clearly as possible.
 
-###Place each call on its own line, beginning with the period
+###Place each call on its own line, beginning with the period, and indented
 
 The sequence of operations is clearer if each 'step' in the process
-begins at the start of the line.
+begins at the start of the line. Indenting relative to the previous
+line makes the chain distinct.
 
 ```javascript
 // Good
