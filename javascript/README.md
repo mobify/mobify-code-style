@@ -402,6 +402,51 @@ Prefer the short, more succinct version.
 Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
 ```
 
+##Prefer `self` to `bind(this)`
+
+```javascript
+// Good
+AiBot.prototype.answer = function(questionPromise) {
+    var self = this;
+    return questionPromise.then(function(question) {
+        return self.determineResponse(question);
+    });
+};
+
+// Bad
+AiBot.prototype.answer = function(questionPromise) {
+    return questionPromise.then(function(question) {
+        return this.determineResponse(question);
+    }.bind(this));
+};
+```
+
+###Don't mix `bind(this)` and `self`
+
+```javascript
+// Good
+UIService.prototype.addEventing = function(eventEmitter) {
+    var self = this;
+
+    eventEmitter.on('someEvent', function() {
+        self.uiController.once('uiEvent', function() {
+            self.handleUiEvent();
+        });
+    });
+};
+
+// Bad - too confusing
+UIService.prototype.addEventing = function(eventEmitter) {
+    var self = this;
+
+    eventEmitter.on('someEvent', function() {
+        this.uiController.once('uiEvent', function() {
+            self.handleUiEvent();
+        });
+    }.bind(this));
+};
+```
+
 ##Method and promise chains
 
 With method-chaining or promise APIs, we may have a long chain of
