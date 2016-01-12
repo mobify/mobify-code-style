@@ -21,5 +21,4 @@ What kind of document best meets your goal?
 **After writing**
 
 * [ ] 👍 Reviewer
-* [ ] 👍 John Boxall
 * [ ] 🍻 Celeberate
