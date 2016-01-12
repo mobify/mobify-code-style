@@ -404,7 +404,6 @@ Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
 
 ##Prefer `self` to `bind(this)`
 
-
 ```javascript
 // Good
 AiBot.prototype.answer = function(questionPromise) {
