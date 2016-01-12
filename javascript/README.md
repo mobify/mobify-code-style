@@ -445,6 +445,7 @@ UIService.prototype.addEventing = function(eventEmitter) {
         });
     }.bind(this));
 };
+```
 
 ##Method and promise chains
 
