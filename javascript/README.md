@@ -7,9 +7,9 @@ Please comment code extensively. More comments are always better than fewer comm
 // bad!
 // Shows footer if shopping bag is absent
 var showFooter = !$('.shopping-bag').length;
- 
+
 // good
-// PROJ-12: As per client request, we hide the footer if 
+// PROJ-12: As per client request, we hide the footer if
 // the shopping bag is not visible on the page.
 var showFooter = !$('.shopping-bag').length;
 ````
@@ -37,14 +37,14 @@ In general, always favour comment placement that leads to less indenting.
 Don't commit commented out sections of code back into the repository. Just delete the code. That's what git's history is for!
 
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
- 
+
 
 ##Use single quotes
 
 ````javascript
 // good
 $('.footer')
- 
+
 // bad
 $(".footer")
 ````
@@ -54,14 +54,14 @@ $(".footer")
 ````javascript
 // bad: what was 3 again? Text node? Comment?
 if (el.nodeType === 3) { ... }
- 
+
 // bad: The reader doesn't know why we chose 7, and if we change 7 with 8, we'll have to carefully search and replace all occurrences
 if ($('.blah').length === 7) { ... }
- 
+
 // good
- 
+
 if (el.nodeType === Node.TEXT_NODE) { ... }
- 
+
 // good
 if ($('.blah').length === defaultRoomCount) { ... }
 ````
@@ -73,14 +73,14 @@ Separate declarations with a semicolon and a line break.
 ````javascript
 // bad: these are all in the global scope and is hard to read
 items = {}, length = items.length, name = 'foo';
- 
+
 // bad: if you comment out the first line, the subsequent declarations
 // become global variables
 // additionally, these do not beautify in DevTools nicely (semi-colons do)
 var items = {},
     length = items.length,
     name = 'foo';
- 
+
 // good: easiest to read/edit, and because we run our code through uglify,
 // it will be optimized at compile-time anyways
 var items = {};
@@ -133,7 +133,7 @@ function foo () {
 	...
 }
 
-// good 
+// good
 var foo = function() {
 	...
 }
@@ -146,7 +146,7 @@ But no space before the opening argument parenthesis.
 ````javascript
 // bad
 var foo = function(){...}
- 
+
 // good: whitespace improves readability here
 var foo = function() {
     ...
@@ -158,7 +158,7 @@ var foo = function() {
 ````javascript
 // bad: we want to differentiate between operations (see below) and function calls
 doStuff ();
- 
+
 // good
 doStuff();
 ````
@@ -168,7 +168,7 @@ doStuff();
 ````javascript
 // bad: we are recalculating items.length every time
 for (var i = 0; i < items.length; i++)
- 
+
 // good
 for (var i = 0, length = items.length; i < length; i++)
 ````
@@ -178,7 +178,7 @@ for (var i = 0, length = items.length; i < length; i++)
 ````javascript
 // bad: we want to differentiate between function calls (see above) and conditions
 if(true)
- 
+
 // good
 if (true)
 ````
@@ -188,7 +188,7 @@ if (true)
 ````javascript
 // bad
 var c=a+b;
- 
+
 // good: yay whitespace!
 var c = a + b;
 ````
@@ -203,7 +203,7 @@ if (true) {
 else {
     ...
 }
- 
+
 // good
 if (true) {
     ...
@@ -218,7 +218,7 @@ if (true) {
 // bad
 'footer':{
 }
- 
+
 // good
 'footer': {
 }
@@ -229,7 +229,7 @@ if (true) {
 ````javascript
 // bad: it's more work to add a line to this block
 if (isVisible) return true;
- 
+
 // good: this will get minified anyways
 if (isVisible) {
     return true;
@@ -252,11 +252,11 @@ Use a descriptive variable name instead.
 ````javascript
 // bad: what is this supposed to be?
 var arr = [];
- 
+
 // bad: why is the object type so important that it needs to be in the name?
 var itemsArray = [];
 var computerObj = {};
- 
+
 // good
 var items = [];
 var computer = {};
@@ -267,10 +267,10 @@ var computer = {};
 ````javascript
 // bad: underscores shouldn’t be used in identifiers
 function recalculate_item_height() { ... }
- 
+
 // bad: this is our constructor name convention
 function RecalculateItemHeight() { ... }
- 
+
 // good
 function recalculateItemHeight() { ... }
 ````
@@ -280,7 +280,7 @@ function recalculateItemHeight() { ... }
 ````javascript
 // bad
 var is_visible = true;
- 
+
 // good
 var isVisible = true;
 ````
@@ -303,14 +303,14 @@ var router = new Router();
 function awesomemovie(options) {
     this.title = options.title;
 }
- 
+
 var titanic = new awesomemovie({ title: 'Titanic' });
- 
+
 // good
 function AwesomeMovie(options) {
     this.title = options.title;
 }
- 
+
 var fiftyShades = new AwesomeMovie({ title: '50 Shades Of Grey' });
 ````
 
@@ -339,23 +339,23 @@ var Utils = {
 function BadExample(name, value) {
     this.name = name;
     this.value = value;
- 
+
     this.doSomeStuff = function() {
         // some stuff done
     }
 }
- 
+
 // good
 // methods declared with the prototype will be shared across all instances, reducing memory footprint
 function GoodExample(name, value) {
     this.name = name;
     this.value = value;
 }
- 
+
 GoodExample.prototype.doSomeStuff = function() {
     // some stuff done
 };
-```` 
+````
 
 ##Cache variables if you use them more than once
 
@@ -365,7 +365,7 @@ $('.items').on('click', function() {
     $(this).addClass('active');
     $(this).find('h3').remove();
 });
- 
+
 // good
 $('.items').on('click', function() {
     var $items = $(this);
@@ -379,7 +379,7 @@ $('.items').on('click', function() {
 ````javascript
 // bad
 var title = $('h1');
- 
+
 // good: later on in the code, people will know that they can use jQuery/Zepto on this object
 var $title = $('h1');
 ````
@@ -400,14 +400,14 @@ if ("0" === false) {console.log('foo')}
 
 ##Calling array methods on array-like objects
 
-You can use functions from `Array.prototype` on array-like objects. (eg. 'arguments' is not an array, but 
+You can use functions from `Array.prototype` on array-like objects. (eg. 'arguments' is not an array, but
 is array-like).
 
 ###Prefer using methods from `[]` over `Array.prototype`
 
 Prefer the short, more succinct version.
 
-[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach). 
+[Performance between the two styles is almost identical](http://jsperf.com/foreach-vs-array-prototype-foreach).
 
 ```javascript
 // Good
@@ -417,3 +417,106 @@ Prefer the short, more succinct version.
 Array.prototype.forEach.call(arguments, function(arg) { console.log(arg); });
 ```
 
+##Prefer `self` to `bind(this)`
+
+```javascript
+// Good
+AiBot.prototype.answer = function(questionPromise) {
+    var self = this;
+    return questionPromise.then(function(question) {
+        return self.determineResponse(question);
+    });
+};
+
+// Bad
+AiBot.prototype.answer = function(questionPromise) {
+    return questionPromise.then(function(question) {
+        return this.determineResponse(question);
+    }.bind(this));
+};
+```
+
+###Don't mix `bind(this)` and `self`
+
+```javascript
+// Good
+UIService.prototype.addEventing = function(eventEmitter) {
+    var self = this;
+
+    eventEmitter.on('someEvent', function() {
+        self.uiController.once('uiEvent', function() {
+            self.handleUiEvent();
+        });
+    });
+};
+
+// Bad - too confusing
+UIService.prototype.addEventing = function(eventEmitter) {
+    var self = this;
+
+    eventEmitter.on('someEvent', function() {
+        this.uiController.once('uiEvent', function() {
+            self.handleUiEvent();
+        });
+    }.bind(this));
+};
+```
+
+##Method and promise chains
+
+With method-chaining or promise APIs, we may have a long chain of
+method calls in a single statement. It is important to format these so
+that they are readable and flow as clearly as possible.
+
+###Place each call on its own line, beginning with the period, and indented
+
+The sequence of operations is clearer if each 'step' in the process
+begins at the start of the line. Indenting relative to the previous
+line makes the chain distinct.
+
+```javascript
+// Good
+return functionThatReturnsAPromise()
+    .then(preprocessTheResult)
+    .catch(handleErrors)
+    .then(logSomething);
+
+// Bad
+return functionThatReturnsAPromise.then(preprocessTheResult)
+    .catch(handleErrors).then(logSomething);
+```
+
+###Avoid multiple function expressions in a single function call
+
+The break between two function expressions passed as arguments can be
+quite awkward. It is clearer to use named functions, or to change your
+use of the API to split them up.
+
+```javascript
+// Bad
+functionThatReturnsAPromise()
+    .then(function() {
+        // code here!
+    }, function() {
+        // other code here!
+    });
+
+// Good
+var resolveFunction = function() {
+    // code here!
+};
+var rejectFunction = function() {
+    // other code here!
+};
+
+functionThatReturnsAPromise().then(resolveFunction, rejectFunction);
+
+// Also Good
+functionThatReturnsAPromise()
+    .then(function() {
+        // code here!
+    })
+    .catch(function() {
+        // other code here!
+    });
+```
