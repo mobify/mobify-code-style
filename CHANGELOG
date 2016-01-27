@@ -1,3 +1,7 @@
+2.3.7
+    - Add Writing Checklist
+    - Fix doc error wrt function expression hoisting
+    - Add some more JS code style to the docs
 2.3.6
     - Change CSScomb rule: null leading-zero rule due to CSScomb bug
 2.3.5
