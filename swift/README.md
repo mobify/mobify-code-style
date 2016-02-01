@@ -1,4 +1,4 @@
-The Mobify style guide for Swift is largely embodied in the [Astro](mobify/astro) Swift code. Think of that codebase as "canonical" Swift code.
+The Mobify style guide for Swift is largely embodied in the [Astro](github.com/mobify/astro) Swift code. Think of that codebase as "canonical" Swift code.
 
 We also follow the [Swift API design guidelines](https://swift.org/documentation/api-design-guidelines/) in all of the code we write.
 
