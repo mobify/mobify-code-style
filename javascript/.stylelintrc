@@ -1,0 +1,12 @@
+{
+    "rules": {
+        "color-hex-case": "lower",
+        "color-hex-length": "short",
+        "indentation": 4,
+        "max-empty-lines": 2,
+        "no-eol-whitespace": true,
+        "no-missing-eof-newline": true,
+        "number-leading-zero": "always",
+        "rule-trailing-semicolon": "always"
+    }
+}
