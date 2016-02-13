@@ -23,7 +23,7 @@
         "number-no-trailing-zeros": true,
         "number-zero-length-no-unit": true,
         "property-no-vendor-prefix": true,
-        "rule-no-deplicate-properties": true,
+        "rule-no-duplicate-properties": true,
         "rule-no-shorthand-property-overrides": true,
         "rule-properties-order": [
             {
