@@ -14,6 +14,9 @@
 
 files:
   include: '**/*.s+(a|c)ss'
+  ignore:
+      - 'node_modules/**/*.scss'
+      - 'app/global/styles/base/**/*.scss'
 options:
   formatter: stylish
   merge-default-rules: false
