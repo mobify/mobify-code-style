@@ -1,3 +1,5 @@
+2.4.0
+    - Add a sass-lint config file
 2.3.7
     - Add Writing Checklist
     - Fix doc error wrt function expression hoisting
