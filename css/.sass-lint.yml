@@ -109,7 +109,6 @@ rules:
         - quotes
         - counter-reset
         - counter-increment
-        - null
         - position
         - top
         - right
@@ -118,7 +117,6 @@ rules:
         - z-index
         - float
         - clear
-        - null
         - display
         - overflow
         - overflow-x
@@ -178,7 +176,6 @@ rules:
         - border-left-width
         - border-left-style
         - border-left-color
-        - null
         - visibility
         - opacity
         - border-radius
@@ -210,7 +207,6 @@ rules:
         - outline-style
         - outline-color
         - filter
-        - null
         - color
         - font
         - font-family
@@ -243,7 +239,6 @@ rules:
         - list-style-position
         - list-style-type
         - list-style-image
-        - null
         - transform
         - transform-function
         - transform-origin
@@ -251,7 +246,6 @@ rules:
         - perspective
         - perspective-origin
         - backface-visibility
-        - null
         - transition
         - transition-property
         - transition-duration
@@ -266,12 +260,10 @@ rules:
         - animation-direction
         - animation-fill-mode
         - animation-play-state
-        - null
         - cursor
         - user-select
         - resize
         - pointer-events
-        - null
         - '-webkit-appearance'
         - '-moz-appearance'
         - '-webkit-overflow-scrolling'
