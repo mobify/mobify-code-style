@@ -508,7 +508,7 @@ functionThatReturnsAPromise()
 
 ## Module Definition
 
-When building a module that can be consumed by a number of different libraries, we prefer
+When building a module that can be consumed by a number of different sources, we prefer
 to use [Universal Module Definition (UMD)](https://github.com/umdjs/umd), so that the
 module will be compatible with AMD, CommonJS, or plain script inclusion.
 
