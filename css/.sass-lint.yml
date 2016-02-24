@@ -2,8 +2,9 @@
 
 files:
   include: '**/*.s+(a|c)ss'
-  ignore:
-      - 'node_modules/**/*.scss'
+  ignore: # standard ignores for Adaptive.js projects
+      - '**/node_modules/**/*.scss'
+      - '**/bower_components/**/*.scss'
       - 'app/global/styles/base/**/*.scss'
 options:
   formatter: stylish
@@ -14,7 +15,7 @@ rules:
     - max-depth: 1
   border-zero:
     - 2
-    - convention: zero
+    - convention: '0'
   brace-style:
     - 2
     - allow-single-line: false
@@ -48,12 +49,12 @@ rules:
     - style: lowercase
   id-name-format:
     - 2
-    - convention: hyphenatedbem
+    - convention: '[a-z]|-{3}|_{3}|[^_]_[^_]'
   indentation:
     - 2
     - size: 4
-  leading-zero:
-    - 2
+  leading-zero: # this seems to conflict with spacing around operators
+    - 0
     - include: true
   mixin-name-format:
     - 2
@@ -73,10 +74,12 @@ rules:
   no-ids: 0
   no-important: 0
   no-invalid-hex: 2
-  no-mergeable-selectors: 2
-  no-misspelled-properties:
+  no-mergeable-selectors:
     - 2
-    - extra-properties: []
+    - whitelist: ['from', 'to']
+  no-misspelled-properties: # only warn: sass-lint's list of properties needs updating
+    - 1
+    - extra-properties: ['tap-highlight', 'overflow-scrolling']
   no-qualifying-elements:
     - 2
     - allow-element-with-attribute: true
@@ -88,7 +91,7 @@ rules:
   placeholder-in-extend: 2
   placeholder-name-format:
     - 2
-    - convention: hyphenatedbem
+    - convention: '[a-z]|-{3}|_{3}|[^_]_[^_]'
   property-sort-order:
     - 2
     - ignore-custom-properties: false
@@ -318,7 +321,7 @@ rules:
     - 2
     - include: false
   trailing-semicolon: 2
-  url-quotes: 2
+  url-quotes: 1 # Only warn here, since sass-lint doesn't understand helpers in urls
   variable-for-property:
     - 2
     - properties:
