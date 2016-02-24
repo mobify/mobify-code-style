@@ -534,3 +534,6 @@ For example:
     return LibFoo;
 }));
 ```
+
+If it's not intended to be used in multiple sources (for example if it's a project-specific
+utils file), please follow the module definition that the project follows. 
