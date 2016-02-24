@@ -1,3 +1,5 @@
+2.4.1
+    - Fix some bugs with sass-lint config
 2.4.0
     - Add a sass-lint config file
 2.3.7
