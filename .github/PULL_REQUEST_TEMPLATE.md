@@ -1,5 +1,3 @@
-(brief description / PR title)
-
 Status: **Ready for Review** or **Open for Visibility**
 Reviewers: <reviewers here>
 
@@ -7,6 +5,7 @@ Reviewers: <reviewers here>
 - <changes here>
 
 ## Todos:
+- [ ] +1
 - [ ] Updated README
 - [ ] Updated CHANGELOG
 - [ ] <Other applicable TODOs>
