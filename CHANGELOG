@@ -1,3 +1,6 @@
+Pending Release:
+    - Add some templates for code-style contributing, issues, and PRs
+    - Go meta! Add some templates of GitHub templates for contributing, issues, and PRs
 2.4.1
     - Fix some bugs with sass-lint config
 2.4.0
