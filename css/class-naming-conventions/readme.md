@@ -264,27 +264,32 @@ An exception is the use of ARIA roles for styling state. Where an ARIA role maps
 
 You'll have probably noticed by now that our class names have a variety of prefixes. If not, I will describe their usages now:
 
-Prefix | Purpose | Scaffold Directory |
+Prefix | Purpose | Location |
 ------ | ------- | ------------------ |
-`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
-`.t-` | Classes that start with `.t-` are Template specific classes. These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */src/scss/templates*
-`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | */src/scss/globals/*
-`.m-` | **Deprecated** This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.c-` | Component classes: this includes the root component (typically the class that defines the component itself), sub-component class, and the modifier class. [See above](#component-oriented-naming) | */app/components/[component-name]/_[component-name].scss* |
+`.t-` | Template classes: These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */app/pages/[page-name]/_[page-name].scss* |
+`.u-` | Utility classes: these are meant as one-off, strongly opinionated, high specificity overrides for very narrowly defined styles. | */app/global/styles/utilities/_[utility-name].scss* |
+`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | *varies* |
+`.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
+> * The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with plugins, and are treated as third party libraries with their own conventions.
 
-## Us versus Them (aka There's an x-ception to every rule)
 
-It's important to remember that we don't write our own markup. We write a bastardized version of existing markup. In many cases, we're simply adding wrappers or class names to markup that already exists. Rarely, we'll completely re-template something.
+## Parsing vs. Decorating
 
-Knowing that, how do we make the decision to use our class names or their class names in our styling and how does that affect the way we write our CSS? If we're using their class names, we obviously can't follow the CEM/BEM syntax laid out above. We've laid out some situational advice below on when to use their class names and when to use ours. We also talk about ways to adjust the code style laid out above when using their class names.
+It's important to understand that we have a few different ways of authoring our CSS, and the way we do this is depends a lot on how we convert the desktop markup for mobile. On one hand, we parse the desktop markup and take full control of the final HTML. On the other hand, sometimes we just output the desktop markup as is, untouched or perhaps wrapping certain chunks, and instead control the appearance entirely through CSS.
 
-### When to use our selector naming scheme
+If you find yourself wondering "should I be adding a new class, or should I use the classes from desktop?" consider the following: If we're using their class names, we obviously can't follow our CSM syntax. But that said, sometimes we just have no choice; perhaps there are engineering requirements that force us to retain the markup structure. Under such circumstances, we must stick to the desktop classes.
 
-* Whenever you're writing your own markup in a template.
-* Whenever you're remixing or adding markup through the konf.
-* Whenever you're adding classes to existing markup.
-* Whenever you find yourself using @extend.
+Below is laid out some situational advice that should clarify when to use desktop classes and when to author our own. We also talk about ways to adjust the code style when using their class names.
+
+### When to use our class naming convention
+
+* When writing your own markup in a template
+* When decorating (adding, moving, or wrapping) markup in a View, Parser, Decorator or UI-Script
+* When adding custom classes to existing markup
+* When you find yourself using @extend
 
 ### When to use their existing selectors
 
@@ -296,7 +301,7 @@ Knowing that, how do we make the decision to use our class names or their class 
 
 This is a list of rules to use when you're using their selectors within our modules section.
 
-> Remember, it's okay to mix our selector naming scheme with their selector naming scheme. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
+> Remember, it's okay to mix our class naming convention with the desktop selectors. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
 
 Always wrap the module with our naming scheme
 
