@@ -8,7 +8,7 @@
     * [Components](#components)
     * [Sub-Components](#sub-components)
     * [Modifiers](#modifiers)
-    * [Component modifiers that affect subcomponents](#component-modifiers-that-affect-subcomponents)
+    * [Component modifiers that affect sub-components](#component-modifiers-that-affect-sub-components)
     * [State](#state)
 * [Class Prefix Conventions](#class-prefix-conventions)
 * [Us versus Them](#us-versus-them-aka-theres-an-x-ception-to-every-rule)
@@ -20,14 +20,15 @@
 ## Basic Conventions
 
 * Class names are kebab-case (*words-are-dash-separated*)
-* Each class is prefixed with either `c-`, `t-` or `x-` ([consult this table](#class-prefix-conventions) for details)
+* Subclasses are indicated with double underscore, such as `root__subclass`
+* Each class is prefixed with either `c-`, `t-` or `u-` ([consult this table](#class-prefix-conventions) for details and other rarer prefixes)
 
 
 ## CSM
 
-Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+Our CSS class naming convention (which we call CSM or Component, Sub-Component, Modifier) uses the principles as popularized by [BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
-> BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Subcomponent instead.
+> BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Sub-Component instead.
 
 ```html
 <div class="c-blog">
@@ -43,23 +44,23 @@ Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [B
 
 This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
 
-`.c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
 
-`.c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
 
-`.c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
+`c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
 
-`.c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
+`c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying the `c-blog-post` component.
 
-`.c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a subcomponent even though it is not a direct child of the component.
+`c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a sub-component even though it is not a direct child of the component.
 
 ### Components
 
-The highest level of a module — it should describe an independent module that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
+The highest level of a module — it should describe an independent, self-contained module. Components should be able to exist on their own or within other components. They are only responsible for itself or for what is within itself, never for anything external to itself. Component classes live at the root level of a file.
 
-* Prefixed with our component namespace `c`.
-* Hyphenated naming.
-* Not nested.
+* Prefixed with our component namespace `c-`
+* Kebab-cased
+* Not nested
 
 ```scss
 .c-blog-post {
@@ -68,14 +69,13 @@ The highest level of a module — it should describe an independent module that 
 
 ### Sub-components
 
-This is a secondary element inside of a component. It is always written as a chain of its parent component to avoid any inheritance issues. Your subcomponents should be named in a way that keeps them from having to have subcomponents of their own. If you find you need to write a subcomponent for a subcomponent, consider breaking the parent out into its own component.
+This is a secondary element that is child to its parent component. The classname should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component – sub-components are only ever child to the parent component.
 
-Like components these should always live at the root level of a file. Do not nest these within the parent component or another subcomponent. The class name should do all the work necessary.
+Like components these should always live at the root level of a file. Avoid nesting these within the parent component or another sub-component.
 
-* Prefixed by the parent component and two underscores `c-component-name__`.
-* Live below the parent component in the root of the file. Not nested.
-* Are declared in the order they appear.
-* Subcomponents do not have to be direct children of the component in the markup. They can be any descendent.
+* Prefixed by the parent component and two underscores `c-[component-name]__[sub-component-name]`
+* Lives below the parent component in the root of the file, un-nested
+* Subcomponents do not have to be direct children of the component in the markup. They can be any descendent
 
 ```scss
 // Good!
@@ -89,15 +89,23 @@ Like components these should always live at the root level of a file. Do not nes
     .c-blog-post__title {
     }
 }
+
+// Bad!
+.c-blog-post__title__emote {
+}
+
+// Good!
+.c-blog-post__emote {
+}
 ```
 
 ### Modifiers
 
-These are used to modify components or subcomponents. They are always chained to a specific component and are declared in the component or subcomponent that they affect.
+Modifiers, as their name suggests, modify components or sub-components. They are always chained to the component or sub-component they belong to.
 
 * Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`)
 * Contained to the scope of a single component
-* Always declared as a chained selector to a component or subcomponent.
+* Always declared as a chained selector to a component or sub-component.
 * Never declared as a stand-alone rule.
 
 ```scss
@@ -109,6 +117,13 @@ These are used to modify components or subcomponents. They are always chained to
     }
 }
 
+// Also Good!
+//
+// Use your discretion and decide for yourself whether this option, or the above
+// option makes most sense. See below for more some common scenarios.
+.c-blog-post.c--featured {
+}
+
 // Bad!
 //
 // Note how .c--featured is a selector all by itself? That's bad! It
@@ -117,7 +132,7 @@ These are used to modify components or subcomponents. They are always chained to
 }
 ```
 
-### Component modifiers that affect subcomponents
+### Component modifiers that affect sub-components
 
 Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
 
@@ -293,15 +308,16 @@ Below is laid out some situational advice that should clarify when to use deskto
 
 ### When to use their existing selectors
 
-* Whenever possible — when you're not required to do any of the things above. It's faster and easier to use their markup than it is to add our own.
-* When their markup allows for it. For example, if they don't use classes or they don't use them with any consistency, it doesn't make sense to use their selectors.
-* When their markup isn't easily changed. AJAXed content or content added after a page is loaded is an example of this.
+* When it's fastest, easiest or most efficient to use their markup than it is to add our own.
+* When their markup is too inconsistent, or makes parsing too difficult.
+* When desktop functionality is tightly coupled to desktop's markup structure.
+* When intercepting AJAXed content or content added after a page is too costly, unperformant, or inefficent.
 
 ### How to use their existing selectors in our components
 
 This is a list of rules to use when you're using their selectors within our modules section.
 
-> Remember, it's okay to mix our class naming convention with the desktop selectors. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
+> Remember, it's okay to mix our class naming convention with the desktop selectors. If you have to add a class to a sub-component, use our sub-component naming scheme and place it in the standard spot in the file.
 
 Always wrap the module with our naming scheme
 
@@ -320,7 +336,7 @@ Always wrap the module with our naming scheme
 }
 ```
 
-Subcomponents can be directly inside their parent component, but adding your own classes should be your FIRST approach so as to avoid nesting.
+Desktop classes can be added inside their parent component, but adding our own classes should be your FIRST approach so as to avoid nesting.
 
 Constantly evaluate your nesting in situation like this.
 
@@ -346,7 +362,7 @@ Constantly evaluate your nesting in situation like this.
 }
 
 
-// Don't
+// Bad!
 .c-blog-post {
     .content {
         .image {
@@ -355,7 +371,7 @@ Constantly evaluate your nesting in situation like this.
 }
 ```
 
-Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
+Use their modifiers the same way you would use our modifiers. Chain it to the component or sub-component it directly affects.
 
 ```scss
 // Okay
@@ -383,7 +399,5 @@ Use their modifiers the same way you would use our modifiers. Chain it to the co
     }
 }
 ```
-
-> If they use their modifiers in weird or unexpected ways, consider using the konf or templating to add our modifier classes instead.
 
 Continue on to [Block Comment Documentation Guide →](../localization-and-theming-best-practices/readme.md)
