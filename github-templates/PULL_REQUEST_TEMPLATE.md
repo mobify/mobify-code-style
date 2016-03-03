@@ -1,9 +1,8 @@
-(brief description / PR title)
-
 Status: **Ready for Review** or **Open for Visibility**
-Reviewers: <reviewers here>
+Reviewers: GitHub @<name>s of all reviewers
 
 JIRA: <link to applicable JIRA ticket>
+Linked PRs: <links to corresponding PRs, optional>
 
 ## Changes
 - <changes here>
@@ -19,4 +18,9 @@ JIRA: <link to applicable JIRA ticket>
 _none so far_
 
 ## How To Test
-- <testing steps here>
+- <necessary config changes>
+- <necessary corresponding PRs>
+- <how to access the new / changed functionality -- fixtures, URLs>
+
+## Applicable Research Resources
+- <links, optional>

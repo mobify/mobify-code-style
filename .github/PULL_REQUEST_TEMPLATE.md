@@ -1,5 +1,7 @@
 Status: **Ready for Review** or **Open for Visibility**
-Reviewers: <reviewers here>
+Reviewers: GitHub @<name>s of all reviewers
+
+Linked PRs: <links to corresponding PRs, optional>
 
 ## Changes
 - <changes here>
@@ -14,4 +16,9 @@ Reviewers: <reviewers here>
 _none so far_
 
 ## How To Test
-- <testing steps here>
+- <necessary config changes>
+- <necessary corresponding PRs>
+- <how to access the new / changed functionality -- fixtures, URLs>
+
+## Applicable Research Resources
+- <links, optional>
