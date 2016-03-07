@@ -11,9 +11,7 @@ Linked PRs: <links to corresponding PRs, optional>
 - [ ] Updated README
 - [ ] Updated CHANGELOG
 - [ ] <Other applicable TODOs>
-
-### Feedback:
-_none so far_
+- [ ] <Feedback from reviewers>
 
 ## How To Test
 - <necessary config changes>
