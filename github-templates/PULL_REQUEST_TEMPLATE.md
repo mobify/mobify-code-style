@@ -1,4 +1,3 @@
-Status: **Ready for Review** or **Open for Visibility**
 Reviewers: GitHub @<name>s of all reviewers
 
 JIRA: <link to applicable JIRA ticket>
