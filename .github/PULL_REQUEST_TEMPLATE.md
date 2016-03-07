@@ -5,7 +5,7 @@ Linked PRs: <links to corresponding PRs, optional>
 ## Changes
 - <changes here>
 
-## Todos:
+## TODOs:
 - [ ] +1
 - [ ] Updated README
 - [ ] Updated CHANGELOG

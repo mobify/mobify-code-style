@@ -6,12 +6,12 @@ Linked PRs: <links to corresponding PRs, optional>
 ## Changes
 - <changes here>
 
-## Todos:
+## TODOs:
 - [ ] +1
 - [ ] Passes tests
 - [ ] Updated README
 - [ ] Updated CHANGELOG
-- [ ] <Other TODOs>
+- [ ] <Other TODOs applicable to your team/project>
 - [ ] <Feedback from reviewers>
 
 ## How To Test
