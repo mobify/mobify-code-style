@@ -1,5 +1,16 @@
 # Python Coding Style 🐍
 
+**TLDR**: Configure your text editor to use [`flake8`](https://flake8.readthedocs.org/en/latest/):
+
+**Sublime Text**
+
+Install [`flake8`](https://flake8.readthedocs.org/en/latest/#quickstart) then
+using [Package Control](https://packagecontrol.io/installation),
+install [SublimeLinter](http://www.sublimelinter.com/en/latest/installation.html)
+and [SublimeLinter-flake8](https://github.com/SublimeLinter/SublimeLinter-flake8).
+
+## [PEP8](https://www.python.org/dev/peps/pep-0008/)
+
 We follow [PEP8](http://www.python.org/dev/peps/pep-0008/) with an additional
 standard for ordering imports:
 
@@ -14,8 +25,6 @@ import requests
 # Third, project libraries, using using relative paths where applicable.
 from . import mymodule
 ```
-
-## [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
 ### PEP8 on the Command Line
 
