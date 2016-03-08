@@ -1,17 +1,17 @@
 # Python Coding Style 🐍
 
 We follow [PEP8](http://www.python.org/dev/peps/pep-0008/) with an additional
-standard for import ordering:
+standard for ordering imports:
 
 ```python
-# Standard libraries ordered alphabetically.
+# First, standard libraries ordered alphabetically.
 import abc
 import urlparse
 
-# Third party libraries.
+# Second, third-party libraries.
 import requests
 
-# Project libraries, using using relative paths where applicable.
+# Third, project libraries, using using relative paths where applicable.
 from . import mymodule
 ```
 
@@ -24,28 +24,25 @@ one or more directories or files:
 
 ```bash
 pip install pep8
+
 pep8 portal/core/admin.py  # Check a file
 pep8 portal/mailers        # Check a folder
 ```
 
 ### PEP8 in Editors
 
-**PyCharm**
-
-Enable `PEP8 Coding Style violation` and `PEP8 Naming Convention violation`
-inspection rules.
-
-**Sublime Text**
-
-Install a PEP8 plugins: [PEP8 Autoformat](https://packagecontrol.io/packages/Python%20PEP8%20Autoformat) or
-[Sublime Linter PEP8](https://packagecontrol.io/packages/SublimeLinter-pep8).
+* **PyCharm**: Enable `PEP8 Coding Style violation` and `PEP8 Naming Convention violation`
+  inspection rules.
+* **Sublime Text**: Install a PEP8 plugins: [PEP8 Autoformat](https://packagecontrol.io/packages/Python%20PEP8%20Autoformat) or
+  [Sublime Linter PEP8](https://packagecontrol.io/packages/SublimeLinter-pep8).
 
 ### Resolving PEP8 Errors 🛠
 
-Probably the best solution is [`autopep8`](https://pypi.python.org/pypi/autopep8):
+Use [`autopep8`](https://pypi.python.org/pypi/autopep8):
 
 ```bash
 pip install autopep8
+
 autopep8 --diff portal/core/admin.py      # Spot issues and generate a diff
 autopep8 --in-place portal/core/admin.py  # Fix issues in a file
 autopep8 -i portal/core/*                 # Fix issues in a folder
@@ -54,17 +51,17 @@ autopep8 -i portal/core/*                 # Fix issues in a folder
 find portal/core -name '*.py' -print -exec autopep8 --in-place {} \;
 ```
 
-If fixing PEP8 issues obscures changes from reviewers, use
-[`pep8radius`](https://pypi.python.org/pypi/pep8radius) to apply `autopep8` to
-only modified areas:
+Use [`pep8radius`](https://pypi.python.org/pypi/pep8radius) limit fixes to areas
+that were modified:
 
 ```bash
 pip install pep8radius
+
 pep8radius -vv --in-place
 ```
 
-`pep8radius` uses `git` to check files which have been modified but not commited
-so make sure to use it *before* you commit.
+`pep8radius` uses `git` to find changes in files that were modified but not
+commited. Use it *before* you commit.
 
 ## Code Inspection 🕵
 
@@ -99,7 +96,7 @@ and it will be used when `pylint` is run from there:
 pylint --rcfile=pylint.rc mystuff/myapp/myfile.py
 ```
 
-### Fixing PyLint Messages
+#### Fixing PyLint Messages
 
 Fix the message or disable:
 
@@ -120,7 +117,7 @@ Message codes can be found [here](http://pylint-messages.wikidot.com/all-codes).
 Disable works for the block in which they are found, so include it at the module
 level to disable a message for a module or file.
 
-## Pyflakes
+### Pyflakes
 
 Pyflakes is another pip-installable code analysis tool that focuses on
 identifying coding issues (and less on code layout and formatting). _"Pyflakes
