@@ -15,93 +15,79 @@ import requests
 from . import mymodule
 ```
 
-# PEP8
+## [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
-## PEP8 on the Command Line
+### PEP8 on the Command Line
 
 Install the [`pep8`](https://pypi.python.org/pypi/pep8) package and run it on
 one or more directories or files:
 
 ```bash
 pip install pep8
-
-# Check a file
-pep8 portal/core/admin.py
-# Check a folder
-pep8 portal/mailers
+pep8 portal/core/admin.py  # Check a file
+pep8 portal/mailers        # Check a folder
 ```
 
-## PEP8 in Editors
+### PEP8 in Editors
 
 **PyCharm**
 
 Enable `PEP8 Coding Style violation` and `PEP8 Naming Convention violation`
-inspection rules to mark PEP8 issues.
+inspection rules.
 
 **Sublime Text**
 
-Install one of the PEP8 plugins:
-* [PEP8 Autoformat](https://packagecontrol.io/packages/Python%20PEP8%20Autoformat)
-* [Sublime Linter PEP8](https://packagecontrol.io/packages/SublimeLinter-pep8).
+Install a PEP8 plugins: [PEP8 Autoformat](https://packagecontrol.io/packages/Python%20PEP8%20Autoformat) or
+[Sublime Linter PEP8](https://packagecontrol.io/packages/SublimeLinter-pep8).
 
-## Resolving PEP8 Errors 🛠
+### Resolving PEP8 Errors 🛠
 
 Probably the best solution is [`autopep8`](https://pypi.python.org/pypi/autopep8):
 
 ```bash
 pip install autopep8
+autopep8 --diff portal/core/admin.py      # Spot issues and generate a diff
+autopep8 --in-place portal/core/admin.py  # Fix issues in a file
+autopep8 -i portal/core/*                 # Fix issues in a folder
 
-# Spot issues and generate a diff
-autopep8 --diff portal/core/admin.py
-# Fix issues in a file
-autopep8 --in-place portal/core/admin.py
-# Fix issues in a folder
-autopep8 -i portal/core/*
 # Fix issues in all files in a directory tree, recursively
 find portal/core -name '*.py' -print -exec autopep8 --in-place {} \;
 ```
 
-If fixing all PEP8 issues in a file obscures your change, use
-[`pep8radius`](https://pypi.python.org/pypi/pep8radius). This will apply
-`autopep8` to just the areas of any files that you have changed using `git`:
+If fixing PEP8 issues obscures changes from reviewers, use
+[`pep8radius`](https://pypi.python.org/pypi/pep8radius) to apply `autopep8` to
+only modified areas:
 
 ```bash
 pip install pep8radius
-
-# Use pep8radius to fix issues in the code changed. The -vv sets verbose mode so
-# that the output shows progress.
 pep8radius -vv --in-place
-
-# Now rerun tests, then commit!
 ```
 
-Note `pep8radius` only looks at files modified but not yet committed,
-so your workflow should include it *before* commit.
+`pep8radius` uses `git` to check files which have been modified but not commited
+so make sure to use it *before* you commit.
 
-# Code Inspection 🕵
+## Code Inspection 🕵
 
 There are a number of tools that can be used to check Python code for potential
-errors. You should run these on code that's already been checked for PEP8
-compliance, so that PEP8 issues don't get flagged.
+errors. Run these on code that passes PEP8!
 
-## PyCharm
+### PyCharm
 
 The PyCharm IDE has built-in support for Python checking using the *Inspect
-Code...* tool. The default set of inspections (all of them) is suitable for use
-on our code.
+Code...* tool. The default set of inspections is suitable for use on our code.
 
-## [PyLint](https://docs.pylint.org/)
+### [PyLint](https://docs.pylint.org/)
 
 PyLint is a Python package for Python source code linting:
 
 ```bash
 pip install pylint
 
-# Lint a file
-pylint portal/core/admin.py
-# Lint a folder
-pylint portal/core
-# Lints a file and output detailed linting results to HTML
+
+pylint portal/core/admin.py  # Lint a file
+pylint portal/core           # Lint a folder
+
+# Lint a file and output details to HTML
 pylint -f html portal/core/admin.py > pylint.html
 ```
 
@@ -143,10 +129,9 @@ very, very hard to never emit false positives."_
 
 ```bash
 pip install pyflakes
-# Check one file
-pyflakes portal/core/admin.py
-# Check all the files in a tree
-pyflakes portal/core
+
+pyflakes portal/core/admin.py  # Check one file
+pyflakes portal/core           # Check all the files in a tree
 ```
 
 Pyflakes has no configuration, and there is no way to suppress a warning by
