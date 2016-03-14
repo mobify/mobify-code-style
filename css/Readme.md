@@ -42,5 +42,8 @@
 * [Localization and Theming Best Practices](localization-and-theming-best-practices/readme.md)
 * [Block Comment Documentation Guide](comments/Readme.md)
 * [Hybrid Projects Best Practices](hybrid-projects/Readme.md)
+* [Sass-Lint](sass-lint/readme.md)
+    * [Using Sass-Lint with Atom](sass-lint/readme.md#using-sass-lint-with-atom)
+    * [Using Sass-Lint with Sublime Text](sass-lint/readme.md#using-sass-lint-with-sublime-text)
 
 Continue on to [the Introduction →](introduction#introduction)
