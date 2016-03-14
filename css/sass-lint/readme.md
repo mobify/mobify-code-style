@@ -1,6 +1,6 @@
 # Sass-Lint
 
-Sass-Lint is a pure node.js-only tool to help you write clean and consistent SCSS and Sass. You can run it manually from the command line, which will output any problems with your SCSS, including the filename and line number(s). Newly generated Adaptive.js projects use this tool by default, leveraging a Grunt task wrapper to invoke it.
+Sass-Lint is a pure node.js-only tool to help you write clean and consistent SCSS and Sass. Newly generated Adaptive.js projects use this tool by default, leveraging a Grunt task wrapper to invoke it. You can also run it manually from the command line, which will output any problems with your SCSS, including the filename and line number(s).
 
 When enabled in an Adaptive.js project, Sass files may be linted by invoking `grunt sasslint` or `grunt scsslint`.
 
