@@ -12,7 +12,7 @@ When enabled in an Adaptive.js project, Sass files may be linted by invoking `gr
 
 [Sass-Lint GitHub Repo](https://github.com/sasstools/sass-lint)
 
-[Mobify Code Style GitHub Repo](https://github.com/mobify/mobify-code-style)
+[Mobify's Sass-Lint rules in the Code Style GitHub Repo](https://github.com/mobify/mobify-code-style/blob/master/css/.sass-lint.yml)
 
 ## Getting Started
 Make sure you have all the requirements.
@@ -24,7 +24,7 @@ Install the Mobify Code Style by running this command in your Terminal:
 
 `npm install -g mobify-code-style`
 
-Note that the above npm install commands shouldn't need 'sudo' if you are using NVM (as recommended in the Adaptive.js docs)
+Note that the above npm install commands shouldn't need `sudo` if you are using NVM (as recommended in the [Adaptive.js docs](http://adaptivejs.mobify.com/v2.0/docs/install/))
 
 Follow the steps below for your preferred text editor.
 
