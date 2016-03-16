@@ -19,7 +19,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 * [Spline](https://github.com/mobify/spline) is our library of Sass mixins and functions
 * [Stencil](https://github.com/mobify/stencil) (Deprecated – but a new 2.0 version is coming soon!) is our library or reusable UI patterns
 * [Sass-Lint](https://github.com/sasstools/sass-lint) is our preferred linter for `SCSS`. Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.sass-lint.yml)). Find out how to integrate Sass-Lint with your text editor [here](../sass-lint/readme.md).
-* [CSScomb](http://csscomb.com/) is a tool that can be plugged into most popular text editors that automatically formats your code! Our formatting ruleset can be found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.csscomb.json)
+* [CSScomb](http://csscomb.com/) is a tool that can be plugged into most popular text editors that automatically formats your code! Our formatting ruleset can be found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.csscomb.json). Find out how to integrate CSSComb with your text editor [here](../csscomb/readme.md).
 
 
 ## Philosophy & Structure

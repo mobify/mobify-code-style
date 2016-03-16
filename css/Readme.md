@@ -45,5 +45,8 @@
 * [Sass-Lint](sass-lint/readme.md)
     * [Using Sass-Lint with Atom](sass-lint/readme.md#using-sass-lint-with-atom)
     * [Using Sass-Lint with Sublime Text](sass-lint/readme.md#using-sass-lint-with-sublime-text)
+* [CSSComb](csscomb/readme.md)
+    * [Using CSSComb with Atom](csscomb/readme.md#atom)
+    * [Using CSSComb with Sublime Text](csscomb/readme.md#sublime-text)
 
 Continue on to [the Introduction →](introduction#introduction)
