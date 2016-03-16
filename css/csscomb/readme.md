@@ -1,6 +1,6 @@
 # CSSComb
 
-A [CSS-beautifier utility](http://csscomb.com/) which will correctly layout your written Sass according to our [code style](https://github.com/mobify/mobify-code-style/blob/develop/css/.csscomb.json).
+A [CSS-beautifier utility](http://csscomb.com/) which will ensure that your SCSS is consistent with our [code style](https://github.com/mobify/mobify-code-style/blob/develop/css/.csscomb.json).
 
 ## How to Install CSSComb
 
