@@ -2,6 +2,8 @@
 
 A [CSS-beautifier utility](http://csscomb.com/) which will ensure that your SCSS is consistent with our [code style](https://github.com/mobify/mobify-code-style/blob/develop/css/.csscomb.json).
 
+![CSSComb in action](../../assets/csscomb.gif "CSSComb in action")
+
 ## How to Install CSSComb
 
 ### Prerequisites
