@@ -110,6 +110,9 @@
         "semi": 2,
 
         // Disallow function definitions of the form 'function myFunc() {'
-        "func-style": [2, "expression"]
+        "func-style": [2, "expression"],
+
+        // Enforce trailing comma style
+        "comma-style": [2, "last"]
     }
 }
