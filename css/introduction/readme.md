@@ -18,7 +18,7 @@ We follow a mixture of various methodologies include, but not limited to: SMACSS
 * [Vellum](https://github.com/mobify/vellum) is our starting point for base styles on Customer Success projects at Mobify
 * [Spline](https://github.com/mobify/spline) is our library of Sass mixins and functions
 * [Stencil](https://github.com/mobify/stencil) (Deprecated – but a new 2.0 version is coming soon!) is our library or reusable UI patterns
-* [SCSS-Lint](https://github.com/causes/scss-lint) is our preferred linter for `SCSS`. See our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.scss-lint.yml))
+* [Sass-Lint](https://github.com/sasstools/sass-lint) is our preferred linter for `SCSS`. Our custom linting rules are found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.sass-lint.yml)). Find out how to integrate Sass-Lint with your text editor [here](../sass-lint/readme.md).
 * [CSScomb](http://csscomb.com/) is a tool that can be plugged into most popular text editors that automatically formats your code! Our formatting ruleset can be found [here](https://github.com/mobify/mobify-code-style/blob/master/css/.csscomb.json)
 
 
