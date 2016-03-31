@@ -1,3 +1,5 @@
+2.4.3
+    - Add eslint rule + doc entry regarding trailing commas
 2.4.2
     - Add/update documentation for Sass-Lint
 2.4.1

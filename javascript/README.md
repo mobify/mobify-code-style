@@ -105,6 +105,32 @@ a = b;
 (f());
 ```
 
+##Use trailing commas
+
+For multi-line lists or object properties place the commas separating items at the end of the line of the previous item.
+
+```javascript
+// bad
+var foo = ["apples"
+           , "oranges"
+           , "bananas"];
+
+var foo = {
+    "fruit": "apple"
+    , "vegetable": "arugula"
+};
+
+// good
+var foo = ["apples",
+           "oranges",
+           "bananas"];
+
+var foo = {
+    "fruit": "apple",
+    "vegetable": "arugula"
+};
+```
+
 ##Use function expressions over function declarations
 
 The function expression is clearly recognisable as what it really is (a variable with a function value). Additionally, it helps organize code so that all variable declarations appear at the top of a file, and invocations follow. This gives some predictablity when others are reading your code, allowing for a more consistent structure.
