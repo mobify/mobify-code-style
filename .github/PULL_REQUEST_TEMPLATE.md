@@ -8,7 +8,6 @@ Linked PRs: (links to corresponding PRs, optional)
 - [ ] Updated README
 - [ ] Updated CHANGELOG
 - [ ] (Other applicable TODOs)
-- [ ] (Feedback from reviewers)
 
 ## How To Test
 - (necessary config changes)
