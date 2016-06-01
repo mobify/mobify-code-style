@@ -1,4 +1,4 @@
-**Feature Request** or **Bug Report**
+(Apply appropriate *Feature Request* or *Bug* label)
 
 (feature request here, if applicable)
 
