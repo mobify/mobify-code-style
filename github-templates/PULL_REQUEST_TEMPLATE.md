@@ -1,5 +1,3 @@
-Reviewers: GitHub @(name)s of all reviewers
-
 JIRA: (link to applicable JIRA ticket)
 Linked PRs: (links to corresponding PRs, optional)
 

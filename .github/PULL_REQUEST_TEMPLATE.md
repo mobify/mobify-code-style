@@ -1,5 +1,3 @@
-Reviewers: GitHub @(name)s of all reviewers
-
 Linked PRs: (links to corresponding PRs, optional)
 
 ## Changes
