@@ -1,12 +1,13 @@
-(Apply appropriate *Feature Request* or *Bug* label)
+**Apply appropriate *Feature Request* or *Bug* label**
 
-(feature request here, if applicable)
+### Feature Description
+(remove the above headline if you're reporting a bug)
 
-(bug report here, if applicable)
-### Summary
+### Bug Report Summary
+(remove this section if you're reporting a feature request)
 
-### Expected behaviour
+#### Expected behaviour
 
-### Actual behaviour
+#### Actual behaviour
 
-### Steps to reproduce
+#### Steps to reproduce
