@@ -511,6 +511,7 @@ functionThatReturnsAPromise()
 When building a module that can be consumed by a number of different sources, we prefer
 to use [Universal Module Definition (UMD)](https://github.com/umdjs/umd), so that the
 module will be compatible with AMD, CommonJS, or plain script inclusion.
+For modules that are not shared across projects, UMD is not required.
 
 For example:
 
@@ -536,4 +537,4 @@ For example:
 ```
 
 If it's not intended to be used in multiple sources (for example if it's a project-specific
-utils file), please follow the module definition that the project follows. 
+utils file), please follow the module definition that the project follows.
