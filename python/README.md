@@ -28,14 +28,14 @@ from . import mymodule
 
 ### PEP8 on the Command Line
 
-Install the [`pep8`](https://pypi.python.org/pypi/pep8) package and run it on
-one or more directories or files:
+Install the [`pycodestyle`](https://github.com/PyCQA/pycodestyle) package and
+run it on one or more directories or files:
 
 ```bash
-pip install pep8
+pip install pycodestyle
 
-pep8 portal/core/admin.py  # Check a file
-pep8 portal/mailers        # Check a folder
+pycodestyle portal/core/admin.py  # Check a file
+pycodestyle portal/mailers        # Check a folder
 ```
 
 ### PEP8 in Editors
