@@ -3,12 +3,6 @@ Linked PRs: (links to corresponding PRs, optional)
 ## Changes
 - (changes here)
 
-## TODOs:
-- [ ] +1
-- [ ] Updated README
-- [ ] Updated CHANGELOG
-- [ ] (Other applicable TODOs)
-
 ## How To Test
 - (necessary config changes)
 - (necessary corresponding PRs)
@@ -16,3 +10,9 @@ Linked PRs: (links to corresponding PRs, optional)
 
 ## Applicable Research Resources
 - (links, optional)
+
+## TODOs:
+- [ ] +1
+- [ ] Updated README
+- [ ] Updated CHANGELOG
+- [ ] (Other applicable TODOs)
