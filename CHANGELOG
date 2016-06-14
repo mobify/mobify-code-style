@@ -1,3 +1,6 @@
+Pending Release:
+    - Add a template for code-style PRs
+    - Go meta! Add some templates of GitHub templates for contributing, issues, and PRs that can be used on other Mobify repos
 2.4.3
     - Add eslint rule + doc entry regarding trailing commas
 2.4.2
