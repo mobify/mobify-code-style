@@ -531,3 +531,36 @@ functionThatReturnsAPromise()
         // other code here!
     });
 ```
+
+## Module Definition
+
+When building a module that can be consumed by a number of different sources, we prefer
+to use [Universal Module Definition (UMD)](https://github.com/umdjs/umd), so that the
+module will be compatible with AMD, CommonJS, or plain script inclusion.
+For modules that are not shared across projects, UMD is not required.
+
+For example:
+
+```
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.LibFoo = factory();
+    }
+}(this, function() {
+
+    var LibFoo = {};
+    return LibFoo;
+}));
+```
+
+If it's not intended to be used in multiple sources (for example if it's a project-specific
+utils file), please follow the module definition that the project follows.
