@@ -32,7 +32,14 @@ eslint:{
 
 ## ES6/JSX
 
-We use [ESLint](http://eslint.org/) to lint ES6 and React/JSX code. If ESLint is installed in a project, we can use the configuration from this module by creating a file in the project root named `.eslintrc.yml` with the contents:
+We use [ESLint](http://eslint.org/) to lint ES6 and React/JSX code. If ESLint is installed in a project, we can use the configuration from this module by creating a file in the project root named `.eslintrc.yml`. If the project does not use JSX, the file contents should be
+
+```yaml
+extends:
+  - 'node_modules/mobify-code-style/es6/mobify-es6.yml'
+```  
+
+and for a React/JSX project:
 
 ```yaml
 extends:
