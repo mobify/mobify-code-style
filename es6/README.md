@@ -1,18 +1,19 @@
 # Linting
 
-Included is a default ESLint configuration, written for ESLint 3.x. It requires the additional modules:
+Included is a default ESLint configuration, `mobify-es6.yml` written for ESLint 3.x. It requires the additional modules:
 
-- `eslint-plugin-react`
 - `eslint-plugin-import`
 - `eslint-import-resolver-webpack`
 
 The lint configuration is the definitive source for rules; this document explains the most notable ones. `eslint <source-files> --fix` will fix most formatting issues, such as spacing. 
 
+If React/JSX is in use, use the React default configuration `mobify-es6-react.yml`, which also requires the `eslint-plugin-react` module.
+
 ## Overriding Lint Rules
 
 Some of the lint rules disallow uncommon but valid behaviour that is easily confused with/typoed from much more common behaviour. If you need to use the disallowed behaviour on purpose, use an explicit lint override in the source.
 
-For example, the `no-bitwise` rule disallows the bitwise operators `&` and `|` due to their unpredictable (but valid!) behaviour when substituted for the logical operators `&&` and `|`. To use bitwise operations in a situation that's approprate, do the following:
+For example, the `no-bitwise` rule disallows the bitwise operators `&` and `|` due to their unpredictable (but valid!) behaviour when substituted for the logical operators `&&` and `||`. To use bitwise operations in a situation that's approprate, do the following:
 
 ```javascript
 // Mask off the bottom four bits of the octet
@@ -23,7 +24,7 @@ let maskedValue = rawValue & 0xf0
 
 ## Removing Lint Rules
 
-These rules are extensive and a work in progress. If you find any of the rules to be a hindrance in your own work, you can disable them in the `.eslintrc.yml` file. 
+These rules are extensive and a work in progress. If you find any of the rules to be a hindrance in your own work, open an issue in the `mobify-code-style` repository to discuss its removal or modification.
 
 # Base Language
 
@@ -128,13 +129,6 @@ module.exports = {
 }
 
 // Good
-const func1 = () => { console.log(1) }
-const func2 = () => { console.log(2) }
-const func3 = () => { console.log(3) }
-
-export {func1, func2, func3}
-
-// Better
 
 export const func1 = () => { console.log(1) }
 export const func2 = () => { console.log(2) }
@@ -156,7 +150,7 @@ return 'We saw ' + count + ' errors in the ' + category + ' category'
 
 // Good
 
-return `We saw ${count} errors in the ${category} category'
+return `We saw ${count} errors in the ${category} category`
 ```
 
 ## Do not nest ternary expressions
@@ -285,21 +279,33 @@ let z = 100
 
 ## Prefer rest parameters to `arguments`
 
+ES6 provides rest parameter syntax as a Python-like method for collecting unbound function arguments into an array. This supersedes the `arguments` object which is not an `Array` and thus does not have any standard array methods.
+
 ```javascript
 // Bad
-// Notice that the `arguments` object has no `reduce` method
-const mySum = () => {
-	let sum = 0
+// Notice that the `arguments` object has no `forEach` method
+const myLogger = () => {
 	for (let i = 0; i < arguments.length; i++) {
-		sum += arguments[i]
+		console.log(arguments[i])
 	}
-	return sum
+}
+// Good
+// values is an Array so it has all the array methods
+const myLogger = (...values) => {
+	values.forEach((value) => console.log(value))
+}
+
+
+// Bad
+// Any bound arguments remain in the `arguments` object
+const myLogger2 = (name) => {
+	let values = Array.prototype.slice.call(arguments, 1)
+	values.forEach((value) => console.log(`${name}: ${value}`)
 }
 
 // Good
-// values is an Array so it has all the array methods
-const mySum = (...values) => {
-	return values.reduce((sum, value) => sum + value)
+const myLogger2 = (name, ...values) => {
+	values.forEach((value) => console.log(`${name}: ${value}`)
 }
 ```
 
@@ -372,15 +378,6 @@ class MyComponent extends React.Component {
 }
 
 // Good
-const MyComponent = (props) => {
-	return (
-		<ul> 
-			{props.items.map((item) => <li>{item.content}</li>}
-		</ul>
-	)
-}
-
-// Better
 const MyComponent = ({items}) => {
 	return (
 		<ul>
