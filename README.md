@@ -4,7 +4,7 @@ A repo to document code standards for different languages and provide tools for 
 
 [![NPM version](https://badge.fury.io/js/mobify-code-style.svg)](http://badge.fury.io/js/mobify-code-style)
 
-## JavaScript
+## JavaScript (ES5)
 
 Typically, we lint our javascript files using [Grunt](http://gruntjs.com/) and [grunt-eslint](https://github.com/sindresorhus/grunt-eslint). grunt-eslint is a Grunt helper for the [ESLint](http://eslint.org/) linter.
 
@@ -29,6 +29,16 @@ eslint:{
     }
 }
 ```
+
+## ES6/JSX
+
+We use [ESLint](http://eslint.org/) to lint ES6 and React/JSX code. If ESLint is installed in a project, we can use the configuration from this module by creating a file in the project root named `.eslintrc.yml` with the contents:
+
+```yaml
+extends:
+  - 'node_modules/mobify-code-style/es6/mobify-es6-react.yml'
+```  
+
 ## CSS
 Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
 
