@@ -44,7 +44,13 @@ and for a React/JSX project:
 ```yaml
 extends:
   - './node_modules/mobify-code-style/es6/mobify-es6-react.yml'
-```  
+```
+
+Make sure to install the following NPM modules:
+ - `eslint` > 3.0
+ - `eslint-plugin-import`
+ - `eslint-import-resolver-webpack`
+ - `eslint-plugin-react` (for React/JSX linting only)
 
 ## CSS
 Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
