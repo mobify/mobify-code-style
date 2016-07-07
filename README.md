@@ -36,14 +36,14 @@ We use [ESLint](http://eslint.org/) to lint ES6 and React/JSX code. If ESLint is
 
 ```yaml
 extends:
-  - 'node_modules/mobify-code-style/es6/mobify-es6.yml'
+  - './node_modules/mobify-code-style/es6/mobify-es6.yml'
 ```  
 
 and for a React/JSX project:
 
 ```yaml
 extends:
-  - 'node_modules/mobify-code-style/es6/mobify-es6-react.yml'
+  - './node_modules/mobify-code-style/es6/mobify-es6-react.yml'
 ```  
 
 ## CSS
