@@ -1,3 +1,5 @@
+2.5.0
+    - Add an ES6 and JSX standard with lint rules.
 2.4.4
     - Add a template for code-style PRs
     - Go meta! Add some templates of GitHub templates for contributing, issues, and PRs that can be used on other Mobify repos
