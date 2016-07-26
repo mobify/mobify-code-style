@@ -18,4 +18,5 @@ Linked PRs: (links to corresponding PRs, optional)
 - [ ] Updated README
 - [ ] Updated CHANGELOG
 - [ ] (Other TODOs applicable to your team/project)
-- [ ] (Feedback from reviewers)
+
+Reminder: [Be excellent to each other](https://github.com/mobify/developer-values#be-excellent-to-each-other). Follow [these guidelines](https://www.djangoproject.com/conduct/) to help you do that when giving feedback!
