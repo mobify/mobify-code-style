@@ -15,7 +15,6 @@ Linked PRs: (links to corresponding PRs, optional)
 ## TODOs:
 - [ ] +1
 - [ ] Passes tests
-- [ ] "How to test" steps have been run through
 - [ ] Updated README
 - [ ] Updated CHANGELOG
 - [ ] (Other TODOs applicable to your team/project)
