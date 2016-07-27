@@ -141,9 +141,6 @@ rules:
   max-depth:
     - error
     - max: 5
-  max-len:
-    - error
-    - code: 100
   max-nested-callbacks:
     - error
     - max: 3
@@ -188,7 +185,6 @@ rules:
   space-infix-ops: error
   space-unary-ops: error
   spaced-comment: error
-  strict: error
   template-curly-spacing: error
   unicode-bom:
     - error
