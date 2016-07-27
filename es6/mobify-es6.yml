@@ -141,6 +141,9 @@ rules:
   max-depth:
     - error
     - max: 5
+  max-len:
+    - error
+    - code: 200
   max-nested-callbacks:
     - error
     - max: 3
