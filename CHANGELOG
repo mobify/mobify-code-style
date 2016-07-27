@@ -1,5 +1,5 @@
 2.5.1
-    - Remove line length restriction
+    - Update line length to 200
     - Remove 'strict' rule for modules
 2.5.0
     - Add an ES6 and JSX standard with lint rules.
