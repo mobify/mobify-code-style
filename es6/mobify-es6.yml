@@ -18,6 +18,7 @@ rules:
   # Avoid possible import problems:
   import/no-extraneous-dependencies: error
   import/no-duplicates: error
+  import/no-unresolved: 'off'
   no-duplicate-imports: error
 
   # Stick with ES6 module syntax
