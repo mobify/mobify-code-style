@@ -1,3 +1,7 @@
+2.5.1
+    - Update line length to 200
+    - Remove rule for no-unresolved import
+    - Remove 'strict' rule for modules
 2.5.0
     - Add an ES6 and JSX standard with lint rules.
 2.4.4
