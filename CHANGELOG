@@ -1,3 +1,5 @@
+Pending Release:
+    - Fix #114 by removing invalid options from CSSComb config file
 2.5.1
     - Update line length to 200
     - Remove 'strict' rule for modules
