@@ -11,6 +11,9 @@ parserOptions:
   sourceType: module
 settings:
   import/resolver: webpack
+  import/ignore:
+    - node_modules
+    - \.(scss|css|html)$
 rules:
   # Allow logging for debug purposes
   no-console: 'off'

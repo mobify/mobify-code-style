@@ -1,6 +1,7 @@
 2.5.2
     - Update ES6 indent rule on switch statements
     - Add ignore patterns for unused vars/args to the React configuration
+    - Ignore non-JS files and node_modules in the ES6 import module
 2.5.1
     - Update line length to 200
     - Remove 'strict' rule for modules
