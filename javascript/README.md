@@ -1,3 +1,10 @@
+# DEPRECATION WARNING
+
+**The contents of this directory are only applicable to ES5 linting
+with ESLint 1.x or lower.**
+
+**For new projects or ESLint 2.x and up, use the contents of the `mobify-code-style/es5` directory**
+
 # General
 ##Comments
 
