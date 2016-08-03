@@ -1,3 +1,5 @@
+2.5.2
+    - Add a new ES5 configuration ported to ESLint 2 and up
 2.5.1
     - Update line length to 200
     - Remove 'strict' rule for modules
