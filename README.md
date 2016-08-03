@@ -37,7 +37,7 @@ We use [ESLint](http://eslint.org/) to lint ES6 and React/JSX code. If ESLint is
 ```yaml
 extends:
   - './node_modules/mobify-code-style/es6/mobify-es6.yml'
-```  
+```
 
 and for a React/JSX project:
 
@@ -45,6 +45,15 @@ and for a React/JSX project:
 extends:
   - './node_modules/mobify-code-style/es6/mobify-es6-react.yml'
 ```
+
+If using a custom Webpack configuration, add the lines:
+```yaml
+settings:
+  import/resolver:
+    webpack:
+      config: '<path-to-webpack-config>'
+```
+to the `.eslintrc.yml`
 
 Make sure to install the following NPM modules:
  - `eslint` > 3.0
