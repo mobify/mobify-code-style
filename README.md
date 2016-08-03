@@ -36,7 +36,7 @@ eslint:{
             // When true, eslint will test _only_ the rules set in the provided
             // configuration file
             reset: false,
-            config: './.eslintrc.yml'
+            configFile: './.eslintrc.yml'
         }
     }
 }

@@ -64,4 +64,4 @@ rules:
       tabWidth: 4
   semi: error
   func-style: error
-  comma: error
+  comma-style: error
