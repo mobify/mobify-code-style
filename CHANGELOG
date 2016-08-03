@@ -1,5 +1,6 @@
 2.5.2
     - Update ES6 indent rule on switch statements
+    - Add ignore patterns for unused vars/args to the React configuration
 2.5.1
     - Update line length to 200
     - Remove 'strict' rule for modules
