@@ -1,5 +1,6 @@
 2.5.2
     - Fix #114 by removing invalid options from CSSComb config file
+    - Add a React rule to make sure propTypes are ordered, required ones declared first and callbacks (e.g. onChange) declared last.
     - Update ES6 indent rule on switch statements
     - Add ignore patterns for unused vars/args to the React configuration
     - Ignore non-JS files and node_modules in the ES6 import module
