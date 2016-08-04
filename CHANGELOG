@@ -1,3 +1,5 @@
+2.5.2
+    - Add a React rule to make sure propTypes are ordered, required ones declared first and callbacks (e.g. onChange) declared last.
 2.5.1
     - Update line length to 200
     - Remove 'strict' rule for modules
