@@ -11,6 +11,9 @@ parserOptions:
   sourceType: module
 settings:
   import/resolver: webpack
+  import/ignore:
+    - node_modules
+    - \.(scss|css|html)$
 rules:
   # Allow logging for debug purposes
   no-console: 'off'
@@ -132,7 +135,10 @@ rules:
   dot-notation: error
   eol-last: error
   generator-star-spacing: error
-  indent: error
+  indent:
+    - error
+    - 4
+    - SwitchCase: 1
   jsx-quotes: error
   key-spacing: error
   keyword-spacing: error

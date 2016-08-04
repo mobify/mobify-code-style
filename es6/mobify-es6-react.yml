@@ -34,3 +34,9 @@ rules:
   react/jsx-indent-props: error
   react/jsx-space-before-closing: error
   react/wrap-multilines: error
+
+  # Ignore common unused vars and args in React projects
+  no-unused-vars:
+    - error
+    - varsIgnorePattern: '^(styles)$'
+      argsIgnorePattern: '^(props|dispatch|state)$'

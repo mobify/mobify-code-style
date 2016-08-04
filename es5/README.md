@@ -1,11 +1,9 @@
-# DEPRECATION WARNING
+# Linting
 
-**The contents of this directory are only applicable to ES5 linting
-with ESLint 1.x or lower.**
-
-**For new projects or ESLint 2.x and up, use the contents of the `mobify-code-style/es5` directory**
+This folder includes a default ESLint configuration, `mobify-es5.yml`, compatible with ESLint 2.x and 3.x. Many of the formatting issues identified by ESLint can be fixed automatically with `eslint <source-files> --fix`.
 
 # General
+
 ##Comments
 
 Please comment code extensively. More comments are always better than fewer comments. Comments should describe the why of your code - not what the code is doing:
