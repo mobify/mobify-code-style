@@ -13,11 +13,9 @@
     "combinator-space": [" ", " "],
     "element-case": "lower",
     "eof-newline": true,
-    "leading-zero": null,
     "rule-indent": "    ",
     "stick-brace": " ",
     "unitless-zero": true,
-    "quotes": false,
     "remove-empty-rulesets": true,
     "space-before-closing-brace": "\n",
     "space-before-colon": "",
@@ -29,7 +27,7 @@
     "space-after-selector-delimiter": "\n",
     "space-before-selector-delimiter": "",
     "strip-spaces": true,
-    "tab-size": true,
+    "tab-size": 4,
     "unitless-zero": true,
     "sort-order": [
         [
