@@ -291,7 +291,7 @@ The second aspect of comments are the comments themselves! There are three types
 
 ```scss
 // My Component
-// ============
+// ===
 //
 // This is a general comment that applies to the whole of this section. It can contain
 // any information that is important to the file, styles and classes inside.
@@ -308,7 +308,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 
 ```scss
 // My Component
-// ============
+// ===
 //
 // Notes:
 //
@@ -326,7 +326,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 
 
 // My Component: Inner
-// -------------------
+// ---
 //
 // Notes:
 //
@@ -348,7 +348,7 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 
 ```scss
 // My Component
-// ============
+// ===
 //
 // Notes:
 //
@@ -360,7 +360,7 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 
 
 // My Component: Inner
-// -------------------
+// ---
 
 .c-my-component__inner {
     display: none; // A
