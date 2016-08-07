@@ -1,3 +1,5 @@
+Pending Release
+    - Fix #123 by using react/jsx-wrap-multilines rule
 2.5.2
     - Fix #43 by updating all underlines in Sass code examples
     - Fix #114 by removing invalid options from CSSComb config file
