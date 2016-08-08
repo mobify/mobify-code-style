@@ -8,6 +8,7 @@
     - Add a new ES5 configuration ported to ESLint 2 and up
 2.5.1
     - Update line length to 200
+    - Remove rule for no-unresolved import
     - Remove 'strict' rule for modules
 2.5.0
     - Add an ES6 and JSX standard with lint rules.
