@@ -25,6 +25,10 @@ rules:
   react/no-string-refs: error
   react/prefer-es6-class: error
   react/prefer-stateless-function: error
+  react/sort-prop-types:
+    - error
+    - callbacksLast: true
+      requiredFirst: true
 
   # JSX formatting preferences
   react/self-closing-comp: error
@@ -34,3 +38,9 @@ rules:
   react/jsx-indent-props: error
   react/jsx-space-before-closing: error
   react/wrap-multilines: error
+
+  # Ignore common unused vars and args in React projects
+  no-unused-vars:
+    - error
+    - varsIgnorePattern: '^(styles)$'
+      argsIgnorePattern: '^(props|dispatch|state)$'
