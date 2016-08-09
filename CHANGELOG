@@ -1,4 +1,4 @@
-Pending Release
+2.5.3
     - Fix #123 by using react/jsx-wrap-multilines rule
 2.5.2
     - Fix #43 by updating all underlines in Sass code examples
