@@ -323,9 +323,7 @@ rules:
   trailing-semicolon: 2
   url-quotes: 1 # Only warn here, since sass-lint doesn't understand helpers in urls
   variable-for-property:
-    - 2
-    - properties:
-        - font
+    - 0
   variable-name-format:
     - 2
     - allow-leading-underscore: true
