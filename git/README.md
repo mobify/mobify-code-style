@@ -33,3 +33,13 @@ Tests                  | 🚨 `:rotating_light:`
 Tooling                | 🔧 `:wrench:`
 Version Tag            | 🔖 `:bookmark:`
 Work In Progress (WIP) | 🚧 `:construction:`
+
+## Integrating Emoji into your Git Workflow
+### Atom
+Install [autocomplete-emojis](https://atom.io/packages/autocomplete-emojis)
+
+### Sublime
+Install [GithubEmoji](https://github.com/akatopo/GithubEmoji)
+
+### Mac OS X Emoji Keyboard
+<kbd>^</kbd>+<kbd>⌘</kbd>+<kbd>space</kbd>
