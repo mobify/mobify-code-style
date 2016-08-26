@@ -9,8 +9,7 @@ At Mobify, we recommend a few standards regarding git commit messages:
   - The JIRA/GitHub integration is case-sensitive
 - Next choose a [relevant emoji](#emoji-list) to categorize your commit
 - Finally, your main message content should follow the [git convention](http://git.kernel.org/cgit/git/git.git/tree/Documentation/SubmittingPatches#n117) of present-tense, imperative mood
-  - "...as if you are giving orders to the codebase to change
-its behaviour."
+  - "...as if you are giving orders to the codebase to change its behaviour."
 
 E.g. `ABC-123: 🐛 Make feature X work by doing Y`
 
