@@ -2,6 +2,7 @@ Pending Release
     - Remove `variable-for-property` rule from sass-lint
     - Update Python docs
     - Add "Global Names and Environments" section for ES6
+    - Add a git standards doc
 2.5.3
     - Fix #123 by using react/jsx-wrap-multilines rule
     - Migrate CSSComb documentation from Confluence to code style repo
