@@ -23,6 +23,7 @@ Bugfix                 | 🐛 `:bug:`
 Deprecation            | 💩 `:poop:`
 Documentation          | 📚 `:books:`
 Initial Commit         | 🎉 `:tada:`
+Linting Fix            | 👕 `:shirt:`
 Merge                  | 🐙 `:octopus:`
 New Feature            | ✨ `:sparkles:`
 Performance            | 🐎 `:racehorse:`
