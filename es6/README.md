@@ -4,6 +4,7 @@ Included is a default ESLint configuration, `mobify-es6.yml` written for ESLint 
 
 - `eslint-plugin-import`
 - `eslint-import-resolver-webpack`
+- `eslint-plugin-jsx-a11y`
 
 The lint configuration is the definitive source for rules; this document explains the most notable ones. `eslint <source-files> --fix` will fix most formatting issues, such as spacing.
 

@@ -1,6 +1,7 @@
 extends:
   - './mobify-es6.yml'
   - 'plugin:react/recommended'
+  - 'plugin:jsx-a11y/recommended'
 globals:
   React: false
 parserOptions:
@@ -9,6 +10,7 @@ parserOptions:
     jsx: true
 plugins:
   - react
+  - jsx-a11y
 rules:
   # React error checking (beyond the default):
   react/no-render-return-value: error
