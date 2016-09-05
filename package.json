@@ -2,10 +2,6 @@
   "name": "mobify-code-style",
   "version": "2.4.3",
   "description": "Code style guide and linting tools for Mobify",
-  "main": "index.js",
-  "scripts": {
-    "test": "grunt test"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/mobify/mobify-code-style.git"
@@ -15,5 +11,13 @@
   "bugs": {
     "url": "https://github.com/mobify/mobify-code-style/issues"
   },
-  "homepage": "https://github.com/mobify/mobify-code-style"
+  "homepage": "https://github.com/mobify/mobify-code-style",
+  "scripts": {
+    "test": "bash docs/test/test.sh"
+  },
+  "dependencies": {
+    "remark-cli": "2.0.0",
+    "remark-lint": "5.0.1",
+    "remark-preset-lint-recommended": "1.0.0"
+  }
 }
