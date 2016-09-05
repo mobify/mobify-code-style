@@ -11,6 +11,9 @@
   "bugs": {
     "url": "https://github.com/mobify/mobify-code-style/issues"
   },
+  "bin": {
+    "lint-md": "./bin/lint-md"
+  },
   "homepage": "https://github.com/mobify/mobify-code-style",
   "scripts": {
     "test": "bash docs/test/test.sh"

@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+# Lint markdown files using Mobify's .remarkrc configuration.
+
+# FIXME: Brittle :|
+BIN_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+CODE_STYLE_DIR="$BIN_DIR/../mobify-code-style"
+REMARK_RC="$CODE_STYLE_DIR/.remarkrc"
+REMARK_CLI="$CODE_STYLE_DIR/node_modules/.bin/remark"
+
+$REMARK_CLI --rc-path $REMARK_RC "$@"
