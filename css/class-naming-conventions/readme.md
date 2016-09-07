@@ -20,13 +20,13 @@
 ## Basic Conventions
 
 * Class names are kebab-case (*words-are-dash-separated*)
-* Subclasses are indicated with double underscore, such as `root__subclass`
+* Subclasses are indicated with double underscore, such as `root-name__sub-component-name`
 * Each class is prefixed with either `c-`, `t-` or `u-` ([consult this table](#class-prefix-conventions) for details and other rarer prefixes)
 
 
 ## CSM
 
-Our CSS class naming convention (which we call CSM or Component, Sub-Component, Modifier) uses the principles as popularized by [BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+Our CSS class naming convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
 > BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Sub-Component instead.
 
@@ -44,23 +44,23 @@ Our CSS class naming convention (which we call CSM or Component, Sub-Component, 
 
 This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
 
-`c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`.c-blog` This is a high-level component. In this example, it describes a wrapper that may contain blog content.
 
-`c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`.c-blog__title` This is a sub-component. In this example, it is a title for a blog.
 
-`c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
+`.c-blog-post` This is another high-level component. In this example, it describes the blog post itself. Notice that it is its own component instead of a sub-component of `c-blog` because a blog post does not need to be child of the blog container. This way the component is able to live anywhere.
 
-`c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying the `c-blog-post` component.
+`c-blog-post.c--featured` This is a modifier. Notice that the `c--featured` class is paired with the component or sub-component it belongs to. In this example, it describes a different way of displaying the `c-blog-post` component.
 
-`c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a sub-component even though it is not a direct child of the component.
+`.c-blog-post__time` Like before, this is another sub-component this time belonging to the `c-blog-post` component. It is still a sub-component even though it is not a **direct** child of the component. In other words, sub-components are not required to be direct children of its parent component.
 
 ### Components
 
-The highest level of a module — it should describe an independent, self-contained module. Components should be able to exist on their own or within other components. They are only responsible for itself or for what is within itself, never for anything external to itself. Component classes live at the root level of a file.
+Components are independent and self-contained units of UI. Styles belonging to a component should only affect the component itself, and any of its sub-components. They should not affect anything external to them, or any other components that might be nested within them.
 
 * Prefixed with our component namespace `c-`
 * Kebab-cased
-* Not nested
+* Not nested, these classes should be declared at the root level of the file
 
 ```scss
 .c-blog-post {
@@ -69,13 +69,13 @@ The highest level of a module — it should describe an independent, self-contai
 
 ### Sub-components
 
-This is a secondary element that is child to its parent component. The classname should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component – sub-components are only ever child to the parent component.
+Sub-components are elements that are child to its parent component. The classname should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component – sub-components are only ever child to the parent component.
 
-Like components these should always live at the root level of a file. Avoid nesting these within the parent component or another sub-component.
+Like components, these should always live at the root level of a file. Avoid nesting these within the parent component or another sub-component.
 
 * Prefixed by the parent component and two underscores `c-[component-name]__[sub-component-name]`
 * Lives below the parent component in the root of the file, un-nested
-* Subcomponents do not have to be direct children of the component in the markup. They can be any descendent
+* Subcomponents do not have to be direct children of the component in the markup
 
 ```scss
 // Good!
@@ -84,7 +84,8 @@ Like components these should always live at the root level of a file. Avoid nest
 
 // Bad!
 //
-// Note how .c-blog-post__title is nested inside it's parent class
+// Note how .c-blog-post__title is nested inside it's parent class? It should
+// not be nested, instead it should live at the root level of the file
 .c-blog-post {
     .c-blog-post__title {
     }
@@ -288,12 +289,12 @@ Prefix | Purpose | Location |
 `.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
-> * The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with plugins, and are treated as third party libraries with their own conventions.
+> * The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
 
 
 ## Parsing vs. Decorating
 
-It's important to understand that we have a few different ways of authoring our CSS, and the way we do this is depends a lot on how we convert the desktop markup for mobile. On one hand, we parse the desktop markup and take full control of the final HTML. On the other hand, sometimes we just output the desktop markup as is, untouched or perhaps wrapping certain chunks, and instead control the appearance entirely through CSS.
+It's important to understand that we have a few different ways of authoring our CSS, and the way we do this is depends a lot on how we convert the desktop markup for mobile. Ideally, we parse the desktop markup and take full control of the final HTML. However, this isn't always possible, and sometimes we just output the desktop markup as is: untouched, or perhaps partially wrapped in order to control the appearance entirely through CSS.
 
 If you find yourself wondering "should I be adding a new class, or should I use the classes from desktop?" consider the following: If we're using their class names, we obviously can't follow our CSM syntax. But that said, sometimes we just have no choice; perhaps there are engineering requirements that force us to retain the markup structure. Under such circumstances, we must stick to the desktop classes.
 
@@ -310,16 +311,16 @@ Below is laid out some situational advice that should clarify when to use deskto
 
 * When it's fastest, easiest or most efficient to use their markup than it is to add our own.
 * When their markup is too inconsistent, or makes parsing too difficult.
-* When desktop functionality is tightly coupled to desktop's markup structure.
+* When mobile functionality is tightly coupled to desktop's markup structure.
 * When intercepting AJAXed content or content added after a page is too costly, unperformant, or inefficent.
 
 ### How to use their existing selectors in our components
 
-This is a list of rules to use when you're using their selectors within our modules section.
+This is a list of rules to use when you're mixing desktop selectors with our selectors.
 
 > Remember, it's okay to mix our class naming convention with the desktop selectors. If you have to add a class to a sub-component, use our sub-component naming scheme and place it in the standard spot in the file.
 
-Always wrap the module with our naming scheme
+Always component classes should always be structured with our naming conventions.
 
 ```scss
 // Do
