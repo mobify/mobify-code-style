@@ -177,7 +177,7 @@ Another benefit is that this keeps our code isolated really well. Action Bar can
 
 We want our CSS to be written consistently no matter who the code author is. In order to do so, please follow these below rules.
 
-Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
+Note that we use [Sass-Lint](https://github.com/sasstools/sass-lint) to make this easier — see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/develop/css/.sass-lint.yml). Find out how to integrate Sass-Lint with your text editor [here](../sass-lint/readme.md).
 
 * One selector per line
 * Use a soft indent of four spaces
@@ -216,7 +216,7 @@ Note that we use [SCSS-Lint](https://github.com/causes/scss-lint) to make this e
 
 Following our practice of writing consistent code, we also want all properties to be consistently ordered according to the bellow standard.
 
-And as before, we use [SCSS-Lint](https://github.com/causes/scss-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/update-css-style/css/.scss-lint.yml).
+And as before, we use [Sass-Lint](https://github.com/sasstools/sass-lint) to help ensure property order is consistent - see our linting rules [here](https://github.com/mobify/mobify-code-style/blob/develop/css/.sass-lint.yml).
 
 1. Extends
 1. Mixins/Includes (except for property specific mixins)

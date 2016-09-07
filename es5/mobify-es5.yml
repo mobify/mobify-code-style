@@ -1,0 +1,65 @@
+env:
+  node: true
+  browser: true
+  amd: true
+  mocha: true
+  jquery: true
+
+globals:
+  Mobify: true
+  Zepto: true
+  Adaptive: true
+
+rules:
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: true
+  eqeqeq: error
+  guard-for-in: error
+  no-extend-native: error
+  wrap-iife:
+    - error
+    - inside
+  no-use-before-define:
+    - error
+    - nofunc
+  new-cap: error
+  no-array-constructor: error
+  no-new-object: error
+  no-caller: error
+  no-empty: error
+  no-with: error
+  no-mixed-spaces-and-tabs: error
+  indent:
+    - error
+    - 4
+    - SwitchCase: 1
+  no-multi-str: error
+  camelcase: warn
+  no-trailing-spaces: error
+  comma-spacing: error
+  keyword-spacing: error
+  space-before-blocks: error
+  space-before-function-paren:
+    - error
+    - never
+  space-infix-ops: error
+  space-unary-ops: error
+  no-undef: error
+  eol-last: warn
+  quotes:
+    - error
+    - single
+  no-extra-semi: error
+  no-inner-declarations: error
+  max-depth:
+    - error
+    - max: 5
+  max-len:
+    - error
+    - code: 300
+      tabWidth: 4
+  semi: error
+  func-style: error
+  comma-style: error

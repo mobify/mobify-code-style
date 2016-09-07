@@ -1,0 +1,203 @@
+env:
+  browser: true
+  commonjs: true
+  es6: true
+extends:
+  - 'eslint:recommended'
+  - 'plugin:import/errors'
+globals:
+  Mobify: false
+parserOptions:
+  sourceType: module
+settings:
+  import/resolver: webpack
+  import/ignore:
+    - node_modules
+    - \.(scss|css|html)$
+rules:
+  # Allow logging for debug purposes
+  no-console: 'off'
+
+  # Avoid possible import problems:
+  import/no-extraneous-dependencies: error
+  import/no-duplicates: error
+  import/no-unresolved: 'off'
+  no-duplicate-imports: error
+
+  # Stick with ES6 module syntax
+  import/no-amd: error
+  import/no-commonjs: error
+
+  # JS error checking
+  accessor-pairs: error
+  array-callback-return: error
+  block-scoped-var: error
+  consistent-return: error
+  curly: error
+  eqeqeq:
+    - error
+    - smart
+  guard-for-in: error
+  no-array-constructor: error
+  no-bitwise: error
+  no-caller: error
+  no-confusing-arrow: error
+  no-div-regex: error
+  no-empty:
+    - error
+    - allowEmptyCatch: true
+  no-eq-null: error
+  no-extend-native: error
+  no-extra-bind: error
+  no-eval: error
+  no-implied-eval: error
+  no-iterator: error
+  no-loop-func: error
+  no-multi-str: error
+  no-native-reassign: error
+  no-new: error
+  no-new-func: error
+  no-new-object: error
+  no-new-wrappers: error
+  no-octal-escape: error
+  no-proto: error
+  no-return-assign: error
+  no-self-compare: error
+  no-sequences: error
+  no-shadow-restricted-names: error
+  no-unmodified-loop-condition: error
+  no-unsafe-finally: error
+  no-use-before-define: error
+  no-void: error
+  no-with: error
+  require-yield: error
+
+  # JS stylistic preferences
+  func-style:
+    - error
+    - expression
+  new-parens: error
+  no-alert: error
+  no-labels: error
+  no-lone-blocks: error
+  no-nested-ternary: error
+  no-new-require: error
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
+  no-useless-call: error
+  no-useless-computed-key: error
+  no-useless-concat: error
+  no-useless-constructor: error
+  no-useless-rename: error
+  no-undef-init: error
+  no-unneeded-ternary: error
+  no-useless-escape: error
+  no-var: error
+  object-shorthand: error
+  one-var:
+    - error
+    - never
+  prefer-arrow-callback: error
+  prefer-const: error
+  prefer-rest-params: error
+  prefer-spread: error
+  prefer-template: error
+  yoda: error
+
+  # JS formatting preferences
+  array-bracket-spacing: error
+  arrow-parens:
+    - error
+    - always
+  arrow-spacing: error
+  block-spacing: error
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: true
+  camelcase:
+    - error
+    - properties: never
+  comma-dangle:
+    - error
+    - only-multiline
+  comma-spacing: error
+  comma-style:
+    - error
+    - last
+  computed-property-spacing:
+    - error
+    - never
+  dot-location:
+    - error
+    - property
+  dot-notation: error
+  eol-last: error
+  generator-star-spacing: error
+  indent:
+    - error
+    - 4
+    - SwitchCase: 1
+  jsx-quotes: error
+  key-spacing: error
+  keyword-spacing: error
+  linebreak-style:
+    - error
+    - unix
+  max-depth:
+    - error
+    - max: 5
+  max-len:
+    - error
+    - code: 200
+  max-nested-callbacks:
+    - error
+    - max: 3
+  max-statements-per-line:
+    - error
+    - max: 2
+  newline-per-chained-call: error
+  no-multi-spaces: error
+  no-spaced-func: error
+  no-trailing-spaces: error
+  no-whitespace-before-property: error
+  object-curly-spacing: error
+  operator-linebreak:
+    - error
+    - after
+    - overrides:
+        ?: ignore
+        ':': ignore
+  quotes:
+    - error
+    - single
+    - allowTemplateLiterals: true
+  quote-props:
+    - error
+    - as-needed
+  rest-spread-spacing:
+    - error
+    - never
+  semi:
+    - error
+    - never
+  semi-spacing: error
+  space-before-blocks:
+    - error
+    - always
+  space-before-function-paren:
+    - error
+    - never
+  space-in-parens:
+    - error
+    - never
+  space-infix-ops: error
+  space-unary-ops: error
+  spaced-comment: error
+  template-curly-spacing: error
+  unicode-bom:
+    - error
+    - never
+  wrap-iife: error
+  yield-star-spacing: error
