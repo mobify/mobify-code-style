@@ -46,6 +46,22 @@ Don't commit commented out sections of code back into the repository. Just delet
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
 
 
+Comments should have whitespace beginning the comment:
+
+````javascript
+//This is a bad comment 👎
+
+// This is a good comment 👍
+
+/*This is
+*a bad multi-
+*line comment 👎 */
+
+/* This is a good
+* multi-line comment 👍 */
+````
+
+
 ##Use single quotes
 
 ````javascript
