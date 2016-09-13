@@ -1,5 +1,25 @@
-2.4.4
+Pending Release
+    - Remove `variable-for-property` rule from sass-lint
     - Adds markdown linting
+2.5.3
+    - Fix #123 by using react/jsx-wrap-multilines rule
+    - Migrate CSSComb documentation from Confluence to code style repo
+2.5.2
+    - Fix #43 by updating all underlines in Sass code examples
+    - Fix #114 by removing invalid options from CSSComb config file
+    - Add a React rule to make sure propTypes are ordered, required ones declared first and callbacks (e.g. onChange) declared last.
+    - Update ES6 indent rule on switch statements
+    - Add ignore patterns for unused vars/args to the React configuration
+    - Ignore non-JS files and node_modules in the ES6 import module
+    - Add a new ES5 configuration ported to ESLint 2 and up
+2.5.1
+    - Update line length to 200
+    - Remove rule for no-unresolved import
+    - Remove 'strict' rule for modules
+2.5.0
+    - Add an ES6 and JSX standard with lint rules.
+2.4.4
+(??)
 2.4.3
     - Add eslint rule + doc entry regarding trailing commas
 2.4.2

@@ -15,10 +15,10 @@ Headings in CSS comments should follow the following format:
 
 ```
 // Heading Level 1
-// ===============
+// ===
 //
 // Heading Level 2
-// ---------------
+// ---
 //
 // ### Heading Level 3 and beyond
 ```
@@ -36,16 +36,16 @@ For example...
 
 ```
 // Documentation Headings Example
-// ==============================
+// ===
 //
 // The First Example
-// -----------------
+// ---
 //
 // Notice how there is only a single line between the level 1 and 2 headings above.
 
 
 // The Second Example
-// ------------------
+// ---
 //
 // All headings that don't immediately follow another heading will have two spaces
 // above, like the heading directly above.
@@ -100,7 +100,7 @@ Bad example:
 
 ```
 // Buttons
-// =======
+// ===
 
 .button {
     display: block; // This must be a block because reasons. Reasons like because
@@ -114,7 +114,7 @@ Better example:
 
 ```
 // Buttons
-// =======
+// ===
 //
 // Notes:
 //
@@ -132,7 +132,7 @@ Notice how we can apply the same line comment to multiple lines:
 
 ```
 // Modal
-// =====
+// ===
 //
 // Notes:
 //
@@ -157,7 +157,7 @@ Example:
 
 ```
 // Checkout
-// ========
+// ===
 //
 // @url http://www.website.com/checkout
 ```
@@ -169,26 +169,26 @@ Example:
 
 ```
 // Checkout
-// ========
+// ===
 //
 // @url http://www.website.com/checkout
 
 .t-checkout {
 
     // Global
-    // ------
+    // ---
     //
     // ...
 
 
     // Your Details
-    // ------------
+    // ---
     //
     // ...
 
 
     // Credit Card Info
-    // ----------------
+    // ---
     //
     // ...
 }
@@ -198,13 +198,13 @@ Alternatively:
 
 ```
 // Checkout
-// ========
+// ===
 //
 // @url http://www.website.com/checkout
 
 
 // Global
-// ------
+// ---
 //
 // ...
 
@@ -213,7 +213,7 @@ Alternatively:
 
 
 // Your Details
-// ------------
+// ---
 //
 // ...
 
@@ -222,7 +222,7 @@ Alternatively:
 
 
 // Credit Card Info
-// ----------------
+// ---
 //
 // ...
 
@@ -235,7 +235,7 @@ the base template scope and with a level 2 heading. Example:
 
 ```
 // Checkout
-// ========
+// ===
 //
 // @url http://www.website.com/checkout
 
@@ -244,14 +244,14 @@ the base template scope and with a level 2 heading. Example:
 
 
 // Checkout: Form
-// --------------
+// ---
 
 .t-checkout__form {
 }
 
 
 // Checkout: Sidebar
-// -----------------
+// ---
 
 .t-checkout__sidebar {
 }
@@ -278,7 +278,7 @@ SCSS file.
 
 ```
 // Breadcrumbs
-// ===========
+// ===
 
 .c-breadcrumbs {
 }
@@ -293,7 +293,7 @@ use a level 2 heading for each sub-component.
 
 ```
 // Breadcrumbs: Link
-// -----------------
+// ---
 
 .c-breadcrumbs__link {
 }
@@ -308,7 +308,7 @@ Notice the lack of any "Link Arrow" heading in the following example:
 
 ```
 // Breadcrumbs: Link
-// -----------------
+// ---
 
 .c-breadcrumbs__link {
 }
@@ -331,7 +331,7 @@ Method 1: Nested
 
 ```
 // Breadcrumbs: Link
-// -----------------
+// ---
 
 .c-breadcrumbs__link {
 
@@ -344,7 +344,7 @@ Method 2: Unnested
 
 ```
 // Breadcrumbs: Link
-// -----------------
+// ---
 
 .c-breadcrumbs__link {
 }
@@ -360,14 +360,14 @@ breadcrumb link styles. That could be enough to warrant a heading:
 
 ```
 // Breadcrumbs: Link
-// -----------------
+// ---
 
 .c-breadcrumbs__link {
 }
 
 
 // Breadcrumbs: Current Link
-// -------------------------
+// ---
 
 .c-breadcrumbs__link.c--current {
 }
@@ -406,7 +406,7 @@ An example of both the doc block and dependencies can be seen here:
 
 ```
 // My Function
-// ===========
+// ===
 //
 // Standard definition section goes here.
 //
