@@ -283,9 +283,9 @@ You'll have probably noticed by now that our class names have a variety of prefi
 
 Prefix | Purpose | Location |
 ------ | ------- | ------------------ |
-`.c-` | Component classes: this includes the root component (typically the class that defines the component itself), sub-component class, and the modifier class. [See above](#component-oriented-naming) | */app/components/[component-name]/_[component-name].scss* |
-`.t-` | Template classes: These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */app/pages/[page-name]/_[page-name].scss* |
-`.u-` | Utility classes: these are meant as one-off, strongly opinionated, high specificity overrides for very narrowly defined styles. | */app/global/styles/utilities/_[utility-name].scss* |
+`.c-` | Component classes: this includes the root component (typically the class that defines the component itself), sub-component class, and the modifier class. [See above](#component-oriented-naming) | Project's component directory |
+`.t-` | Template classes: These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | Project's template directory |
+`.u-` | Utility classes: these are meant as one-off, strongly opinionated, high specificity overrides for very narrowly defined styles. | Project's `/styles/utilities` directory |
 `.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | *varies* |
 `.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
