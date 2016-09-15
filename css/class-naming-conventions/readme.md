@@ -289,7 +289,7 @@ Prefix | Purpose | Location |
 `.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
-> * The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
+> \* The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
 
 
 ## Parsing vs. Decorating
