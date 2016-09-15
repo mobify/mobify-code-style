@@ -10,6 +10,7 @@
     * [Modifiers](#modifiers)
     * [Component modifiers that affect sub-components](#component-modifiers-that-affect-sub-components)
     * [State](#state)
+    * [Components That Style Components](#components-that-style-components)
 * [Class Prefix Conventions](#class-prefix-conventions)
 * [Us versus Them](#us-versus-them-aka-theres-an-x-ception-to-every-rule)
     * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
@@ -290,6 +291,58 @@ Prefix | Purpose | Location |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
 > \* The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
+
+
+## Components That Style Components
+
+Sometimes there are situations when a component makes use of other components, and in so doing needs to style them for within its context. Let's take a simple example of a button and icon component being tightly coupled in this manner:
+
+> **Note:** the examples in this section will use React JSX syntax for sake of brevity.
+
+```jsx
+<button className="c-button">
+    <Icon name={icon} />
+    {children}
+</button>
+```
+
+In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it should be unaware of anything external to itself. Continuing with this example, the Icon is an external component, therefore the Button component should be completely unaware there there is even such thing as icon classes, like `c-icon`.
+
+The solution to this challenge is to instead give the external component a new class that our new component can know about, like `c-button__icon`. By doing it in this way the external Icon component is, for all intents and purposes, being treated as a sub-component of the Button component. This method also has the benefit of being free of any (tight) coupling between the components. Both components can change, be added or removed, without really effecting the other in an unpredictable way.
+
+So, to summarize...
+
+```jsx
+/* Bad! */
+<button className="c-button">
+    <Icon name={icon} />
+    {children}
+</button>
+```
+
+```scss
+// Bad!
+.c-button .c-icon {
+    // ...
+}
+```
+
+### Good Practice
+
+```jsx
+/* Good! */
+<button className="c-button">
+    <Icon className="c-button__icon" name={icon} />
+    {children}
+</button>
+```
+
+```scss
+// Good!
+.c-button__icon {
+    // ...
+}
+```
 
 
 ## Parsing vs. Decorating
