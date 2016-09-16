@@ -46,3 +46,6 @@ rules:
     - error
     - varsIgnorePattern: '^(styles)$'
       argsIgnorePattern: '^(props|dispatch|state)$'
+
+  # JSX A11y rules
+  jsx-a11y/no-static-element-interactions: off
