@@ -19,6 +19,7 @@ Commit Type            | Emoji
 ---                    | ---
 App/Astro              | 🚀 `:rocket:`
 Bugfix                 | 🐛 `:bug:`
+Dependency Changes     | 📦 `:package:`
 Deprecation            | 💩 `:poop:`
 Documentation          | 📚 `:books:`
 Initial Commit         | 🎉 `:tada:`
