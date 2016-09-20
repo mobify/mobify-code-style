@@ -46,3 +46,7 @@ rules:
     - error
     - varsIgnorePattern: '^(styles)$'
       argsIgnorePattern: '^(props|dispatch|state)$'
+
+  # JSX A11y rules
+  jsx-a11y/href-no-hash: ['Link']
+  jsx-a11y/img-has-alt: ['Image']
