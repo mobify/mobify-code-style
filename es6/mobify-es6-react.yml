@@ -48,5 +48,5 @@ rules:
       argsIgnorePattern: '^(props|dispatch|state)$'
 
   # JSX A11y rules
-  jsx-a11y/href-no-hash: ['Link']
-  jsx-a11y/img-has-alt: ['Image']
+  jsx-a11y/href-no-hash: [1, 'Link']
+  jsx-a11y/img-has-alt: [1, 'Image']
