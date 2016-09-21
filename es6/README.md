@@ -9,6 +9,11 @@ The lint configuration is the definitive source for rules; this document explain
 
 If React/JSX is in use, use the React default configuration `mobify-es6-react.yml`, which also requires the `eslint-plugin-react` module.
 
+JSX accessibility linting is available with the `mobify-es6-react-a11y.yml` configuration. It requires the additional modules:
+
+- `eslint-plugin-react`
+- `eslint-plugin-jsx-a11y`
+
 ## Global Names and Environments
 
 By default, the lint configuration only assumes the standard set of
