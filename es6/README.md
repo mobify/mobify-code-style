@@ -5,9 +5,43 @@ Included is a default ESLint configuration, `mobify-es6.yml` written for ESLint 
 - `eslint-plugin-import`
 - `eslint-import-resolver-webpack`
 
-The lint configuration is the definitive source for rules; this document explains the most notable ones. `eslint <source-files> --fix` will fix most formatting issues, such as spacing. 
+The lint configuration is the definitive source for rules; this document explains the most notable ones. `eslint <source-files> --fix` will fix most formatting issues, such as spacing.
 
 If React/JSX is in use, use the React default configuration `mobify-es6-react.yml`, which also requires the `eslint-plugin-react` module.
+
+JSX accessibility linting is available with the `mobify-es6-react-a11y.yml` configuration. It requires the additional modules:
+
+- `eslint-plugin-react`
+- `eslint-plugin-jsx-a11y`
+
+## Global Names and Environments
+
+By default, the lint configuration only assumes the standard set of
+global names in the browser environment are defined. If writing a
+script that runs in a different environment, such as a worker or Node,
+add an `eslint-env` directive at the top of the file, e.g.:
+```javascript
+/* eslint-env node */
+```
+
+If you have defined or are using a global that is not associated with
+any environment, you can define it for the linter in one of two
+ways. If the global is only used in a single file or single place,
+define it in that file by inserting a `global` directive at the top of
+the file:
+```javascript
+/* global myGlobal anotherGlobal Mobify */
+```
+
+If, instead, it is used throughout your project, add it to the
+`.eslintrc.yml` file for that project, with
+```yaml
+globals:
+    myGlobal: true
+    anotherGlobal: false
+```
+The boolean value indicates whether the global is to be treated as
+read-only (`false`) or read-write (`true`).
 
 ## Overriding Lint Rules
 
@@ -35,21 +69,21 @@ if (x > y)
     return x - y
 else
     return y - x
-    
-for (let item of cartItems) 
+
+for (let item of cartItems)
     console.log(item)
-    
+
 //good!
 if (x > y) {
     return x - y
 } else {
     return y - x
 }
-    
+
 for (let item of cartItems) {
     console.log(item)
 }
-   
+
 ```
 
 ## Avoid 'Yoda' conditions
@@ -91,12 +125,12 @@ return {
 It is clearer to use dot notation instead of bracket notation when it is available (i.e. when the property name is a constant, identifier-legal string).
 
 ```javascript
-// Bad 
+// Bad
 console.log(myObj['prop'])
 
 // Good
 console.log(myObj.prop)
-``` 
+```
 
 ## Use ES6 `import` rather than `require`
 
@@ -138,7 +172,7 @@ export const func3 = () => { console.log(3) }
 
 ## Don't use semicolons
 
-With ES6 (and the current lint rules!) we have finally arrived at an environment where automatic semicolon insertion won't cause problems. So don't use them. 
+With ES6 (and the current lint rules!) we have finally arrived at an environment where automatic semicolon insertion won't cause problems. So don't use them.
 
 ## Prefer template strings to string concatenation
 
@@ -159,9 +193,9 @@ Ternary expressions can be helpful, but can also lead to unclear code. If multip
 
 ```javascript
 // Bad
-let name = (item 
-	? item.name 
-	: (defaultItem 
+let name = (item
+	? item.name
+	: (defaultItem
 		? defaultItem.name
 		: defaultName
 	)
@@ -222,7 +256,7 @@ return fetch('http://mysite.com/api')
     .then(function(response) {
         return response.json()
     })
-    
+
 // Good
 return fetch('http://mysite.com/api')
     .then((response) => {
@@ -232,7 +266,7 @@ return fetch('http://mysite.com/api')
 // Also good
 return fetch('http://mysite.com/api')
     .then((response) => response.json())
-    
+
 // Still fine
 element.addEventListener('click', function(event) {
 	console.log(this.id)
@@ -270,7 +304,7 @@ This is more readable and prevents unexpected results when commenting out lines.
 let x = 5,
     y = 10,
     z = 100
-    
+
 // Good
 let x = 5
 let y = 10
@@ -354,11 +388,11 @@ class MyComponent extends React.Component {
 	componentDidMount() {
 		this.props.sendAnalytics()
 	}
-	
+
 	render() {
 		return <div>{this.props.content}</div>
 	}
-}	
+}
 ```
 
 ## Use plain functions for stateless components
@@ -370,7 +404,7 @@ React now allows stateless components to be implemented as pure functions rather
 class MyComponent extends React.Component {
 	render() {
 		return (
-			<ul> 
+			<ul>
 				{this.props.items.map((item) => <li>{item.content}</li>}
 			</ul>
 		)
@@ -390,7 +424,7 @@ const MyComponent = ({items}) => {
 
 # JSX
 
-## Self-close component elements if possible 
+## Self-close component elements if possible
 
 ```javascript
 // Bad
@@ -400,4 +434,3 @@ const MyComponent = ({items}) => {
 // Good
 <MyComponent prop1="test" prop2={10+2} />
 ```
-
