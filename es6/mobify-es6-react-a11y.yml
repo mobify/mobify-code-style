@@ -1,0 +1,9 @@
+extends:
+  - './mobify-es6-react.yml'
+  - 'plugin:jsx-a11y/recommended'
+plugins:
+  - jsx-a11y
+rules:
+  # JSX A11y rules
+  jsx-a11y/href-no-hash: [1, 'Link']
+  jsx-a11y/img-has-alt: [1, 'Image']

@@ -1,7 +1,6 @@
 extends:
   - './mobify-es6.yml'
   - 'plugin:react/recommended'
-  - 'plugin:jsx-a11y/recommended'
 globals:
   React: false
 parserOptions:
@@ -10,7 +9,6 @@ parserOptions:
     jsx: true
 plugins:
   - react
-  - jsx-a11y
 rules:
   # React error checking (beyond the default):
   react/no-render-return-value: error
@@ -46,7 +44,3 @@ rules:
     - error
     - varsIgnorePattern: '^(styles)$'
       argsIgnorePattern: '^(props|dispatch|state)$'
-
-  # JSX A11y rules
-  jsx-a11y/href-no-hash: [1, 'Link']
-  jsx-a11y/img-has-alt: [1, 'Image']
