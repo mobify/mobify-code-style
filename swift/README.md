@@ -9,7 +9,8 @@ Prefer interpolation over concatenation:
 
 ```swift
 let name = "John"
-let messsage = "Hello \(name)"
+let messsage = "Hello \(name)" //YES
+let greeting = "Hello " + name //NO
 ```
 
 Optionals
@@ -19,21 +20,46 @@ Use `as` for type coercion if possible (this is enforced statically). Otherwise 
 
 DO NOT use `as!` or `value!` because Xcode told you so. Stop. Think. You probably want to use `if let value = value`.
 
-You should use `!` only if you just assigned to an object, you know initialization can not fail, or you are initializing an object during init() but need to pass `self` to another object's init():
+You should use `!` only if:
+
+- You just assigned to an object where you know initialization can not fail:
 
 ```swift
-let regex = NSRegularExpression(pattern: "[a-z]", options: NSRegularExpressionOptions.allZeros, error: nil)!
+let numberSeven = Int("7")! //Don't do this.
 ```
 
-init() example:
+In this case, wrap this into a static function and write a test for it:
+
 ```swift
-class Component {
+extension Int {
+    static func seven() -> Int {
+        return Int("7")!
+    }
+}
+```
+
+```swift
+import XCTest
+
+class IntegerTests: XCTestCase {
+    func testSeven() {
+        XCTAssertNotNil(Int.seven())
+    }
+}
+```
+
+Although the test might seem redundant, because `seven()` returns a non-optional, this ensures that even if in the future someone changes the implementation of `seven()`, it won't get past CI if the explicit unwrapping would fail.
+
+- You are creating an object during initialization but need to pass `self` to that object's initializer:
+
+```swift
+class Component: ParentComponent {
     var controller: CustomViewController! // We want to use it as a non-optional but have to initialize after super.init()
-    
-    init() {
+
+    override init() {
         // controller = CustomViewController(component: self) <-- compiler error
         super.init()
-        controller = CustomViewController(component: self) 
+        controller = CustomViewController(component: self)
     }
 }
 ```
@@ -42,11 +68,6 @@ How do I handle errors in Swift?
 ================================
 
 As of Swift 2.0 exceptions have been introduced into the language and the APIs that formerly used `someMethod(..., error: *NSError)` make use of them. We have decided to stick with our existing pattern for returning errors.
-
-You have a couple options:
-
-- Return a tuple (similar to Go)
-- Use a result/error enumeration type
 
 We typically use an enumeration type:
 
