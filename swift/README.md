@@ -93,7 +93,7 @@ class Component {
 }
 ```
 
-Use calculated properies instead of getter and setter functions:
+Use computed properties instead of getter and setter functions:
 
 ```swift
 class Component {
@@ -144,7 +144,7 @@ Try to wrap comments to 100 characters, though.
 For Dictionary and Array literals, use python-style indentation:
 
 ```swift
-let nameMap: [String: String] = [
+let nameMap = [
     "George": "Jetson",
     "Astro": "Boy",
     // etc.
@@ -217,7 +217,7 @@ Avoid this design pattern.
 
 Use `let` unless the variable will be mutated.
 
-delegates
+Delegates
 =========
 
 Use the `weak` modifier for `delegate` properties.  
@@ -354,12 +354,12 @@ Group helper functions into a `struct` rather than a `class`.
 Extensions
 ==========
 
-Create `extension`s to classes when you will use those functions in alot of places.  Otherwise use [Helper functions](#Helper functions).  
+Create `extension`s to classes when you will use those functions in a lot of places. Otherwise use [Helper functions](#Helper functions).  
 
 Layout
 ======
 
-Prefer Autolayout over springs+struts (autoresizing mask).  Autolayout automatically handles many things that springs+struts doesn't (status bar hiding/showing, device rotation)
+Prefer Autolayout over springs+struts (autoresizing mask). Autolayout automatically handles many things that springs+struts doesn't (status bar hiding/showing, device rotation)
 
 Other useful patterns
 =====================
@@ -369,25 +369,25 @@ Generic functions:
 https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-ID181
 
 ```swift
-func getValue<T>(dictionary: [String: AnyObject], key: String, errorHandler: String -> Void)) -> T? {
-    if let value = dictionary[key] {
-        if let value = value as? T {
-            return value
-        } else {
-            errorHandler("\(key) is not a \(T.self)")
-        }
-    } else {
+func getValue<T>(dictionary: [String: AnyObject], key: String, errorHandler: String -> Void) -> T? {
+    guard let value = dictionary[key] else {
         errorHandler("\(key) is not present")
+        return nil
     }
 
-    return nil
+    guard let rightType = value as? T else {
+        errorHandler("\(key) is not a \(T.self)")
+        return nil
+    }
+
+    return rightType
 }
 ```
 
-Note that the type T is inferred by what you assign `getValue()` to.  So in this case getValue() infers String? because `message` is a String?.
+Note that the type `T` is inferred by what you assign `getValue()` to.  So in this case getValue() infers `String?` because `message` is a `String?`.
 
 ```swift
 let message: String? = getValue(dictionary, "message") { error in
-    println(error)
+    print(error)
 }
 ```
