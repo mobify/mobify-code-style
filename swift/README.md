@@ -384,7 +384,7 @@ func getValue<T>(dictionary: [String: AnyObject], key: String, errorHandler: Str
 }
 ```
 
-Note that the type `T` is inferred by what you assign `getValue()` to.  So in this case getValue() infers `String?` because `message` is a `String?`.
+Note that the type `T` is inferred by what you assign `getValue()` to. So in this case getValue() infers `String?` because `message` is a `String?`.
 
 ```swift
 let message: String? = getValue(dictionary, "message") { error in
