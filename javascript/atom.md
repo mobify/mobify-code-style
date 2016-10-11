@@ -1,6 +1,6 @@
 # ESLint and Atom Text
 
-![Linting in Atom](../../assets/linting-in-atom.gif "Linting in Atom")
+![Linting in Atom](../assets/linting-in-atom.gif "Linting in Atom")
 
 Instead of relying on your project's linting tasks (`grunt lint` or `npm run lint`), wouldn't it be better to have Atom proactively linting your JS as you compose it, using Mobify's code style as a ruleset? Here's how!
 
@@ -26,7 +26,7 @@ npm install -g mobify-code-style
         * Find this by running `npm get prefix` in a terminal
 
 Your Atom settings will look something like this:
-![Atom Linter Settings](../../assets/atom-linter-settings.png "Atom Linter Settings")
+![Atom Linter Settings](../assets/atom-linter-settings.png "Atom Linter Settings")
 
 1. Restart Atom
 1. Open a JS file and see if it works!
