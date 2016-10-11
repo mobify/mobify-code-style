@@ -6,6 +6,11 @@ with ESLint 1.x or lower.**
 **For new projects or ESLint 2.x and up, use the contents of the `mobify-code-style/es5` directory**
 
 # General
+
+## ESLint and Atom
+
+Find out how to integrate [ESLint and Atom Text](./atom.md).
+
 ##Comments
 
 Please comment code extensively. More comments are always better than fewer comments. Comments should describe the why of your code - not what the code is doing:
