@@ -28,6 +28,7 @@ npm install -g mobify-code-style
 Your Atom settings will look something like this:
 ![Atom Linter Settings](../assets/atom-linter-settings.png "Atom Linter Settings")
 
-1. Restart Atom
-1. Open a JS file and see if it works!
-1. Profit!
+Now restart Atom and open a JS file to see it in action.
+
+*Tip*: When working on a project that does not need to conform to this code style,
+toggle the linter off/on by opening the command palette with <kbd>shift</kbd>+<kbd>⌘</kbd>+<kbd>p</kbd> (Mac) or <kbd>shift</kbd>+<kbd>ctrl</kbd>+<kbd>p</kbd> (PC) and type + select `Linter: Toggle`
