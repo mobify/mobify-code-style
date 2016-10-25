@@ -43,7 +43,7 @@ import XCTest
 
 class IntegerTests: XCTestCase {
     func testSeven() {
-        XCTAssertNotNil(Int.seven())
+        XCTAssertEqual(7, Int.seven())
     }
 }
 ```
