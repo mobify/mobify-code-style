@@ -58,7 +58,6 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 Consider warnings to be errors. This rule informs many stylistic decisions such as not to use deprecated methods, C-style for loops, or strings as selectors.
 
-
 ## Naming
 
 Clarity at the point of use is your most important goal. Entities such as methods and properties are declared only once but used repeatedly. Design APIs to make those uses clear and concise. When evaluating a design, reading a declaration is seldom sufficient; always examine a use case to make sure it looks clear in context.
