@@ -1,5 +1,5 @@
 Pending Release
-    -
+    - Add ESLint and Atom Text integration how-to doc
 2.6.0
     - Remove `variable-for-property` rule from sass-lint [#126](https://github.com/mobify/mobify-code-style/pull/126)
     - Add the eslint jsx-a11y plugin through a new `mobify-es6-react-a11y` configuration [#129](https://github.com/mobify/mobify-code-style/pull/129)
