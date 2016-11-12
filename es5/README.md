@@ -4,6 +4,10 @@ This folder includes a default ESLint configuration, `mobify-es5.yml`, compatibl
 
 # General
 
+## ESLint and Atom
+
+Find out how to integrate [ESLint and Atom Text](../javascript/atom.md).
+
 ##Comments
 
 Please comment code extensively. More comments are always better than fewer comments. Comments should describe the why of your code - not what the code is doing:
