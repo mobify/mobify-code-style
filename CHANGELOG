@@ -1,5 +1,5 @@
 Pending Release
-    - Add `spaced-comment` rule enforcement to ES5
+    - Add `spaced-comment` rule enforcement to ES5 and legacy (ESLint 1.x or lower) linting
     - Add ESLint and Atom Text integration how-to doc
 2.6.0
     - Remove `variable-for-property` rule from sass-lint [#126](https://github.com/mobify/mobify-code-style/pull/126)
