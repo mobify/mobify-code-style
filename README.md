@@ -89,6 +89,10 @@ Make sure to install the following NPM modules:
  - `eslint-import-resolver-webpack`
  - `eslint-plugin-react` (for React/JSX linting only)
 
+## ESLint and Atom
+
+Find out how to integrate [ESLint and Atom Text](./javascript/atom.md).
+
 ## CSS
 Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot of tender care by @kpeatt and @jeffkamo.
 
