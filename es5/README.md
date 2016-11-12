@@ -42,11 +42,9 @@ if (condition) {
 
 In general, always favour comment placement that leads to less indenting.
 
-
 Don't commit commented out sections of code back into the repository. Just delete the code. That's what git's history is for!
 
 If a piece of code is very temporarily being removed, and will be reinserted shortly, you might decide to do this anyway. Please leave a detailed comment explaining exactly why. Sorta like those post-its we leave on boxes in the fridge with our name and date so that we know when to chuck 'em out!
-
 
 Comments should have whitespace beginning the comment:
 
@@ -62,7 +60,6 @@ Comments should have whitespace beginning the comment:
 /* This is a good
 * multi-line comment 👍 */
 ````
-
 
 ##Use single quotes
 
