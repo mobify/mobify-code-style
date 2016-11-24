@@ -1,4 +1,4 @@
-Pending Release
+2.7.0
     - Remove `variable-for-property` rule from sass-lint
     - Adds markdown linting via `lint-md` script
     - Add ESLint and Atom Text integration how-to doc
