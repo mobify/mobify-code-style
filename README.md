@@ -100,3 +100,7 @@ Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot
 
 See the `python` directory of this repo for a standardized `pylintrc` file and
 instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
+
+## Documentation
+
+See the [`docs`](docs) directory for setup and configuration of Markdown linting.
