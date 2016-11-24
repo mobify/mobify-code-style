@@ -11,5 +11,16 @@
   "bugs": {
     "url": "https://github.com/mobify/mobify-code-style/issues"
   },
-  "homepage": "https://github.com/mobify/mobify-code-style"
+  "bin": {
+    "lint-md": "./bin/lint-md"
+  },
+  "homepage": "https://github.com/mobify/mobify-code-style",
+  "scripts": {
+    "test": "bash docs/test/test.sh"
+  },
+  "dependencies": {
+    "remark-cli": "2.0.0",
+    "remark-lint": "5.0.1",
+    "remark-preset-lint-recommended": "1.0.0"
+  }
 }
