@@ -8,8 +8,9 @@
     * [Components](#components)
     * [Sub-Components](#sub-components)
     * [Modifiers](#modifiers)
-    * [Component modifiers that affect subcomponents](#component-modifiers-that-affect-subcomponents)
+    * [Component modifiers that affect sub-components](#component-modifiers-that-affect-sub-components)
     * [State](#state)
+    * [Components That Style Components](#components-that-style-components)
 * [Class Prefix Conventions](#class-prefix-conventions)
 * [Us versus Them](#us-versus-them-aka-theres-an-x-ception-to-every-rule)
     * [When to use our selector naming scheme](#when-to-use-our-selector-naming-scheme)
@@ -20,14 +21,15 @@
 ## Basic Conventions
 
 * Class names are kebab-case (*words-are-dash-separated*)
-* Each class is prefixed with either `c-`, `t-` or `x-` ([consult this table](#class-prefix-conventions) for details)
+* Subclasses are indicated with double underscore, such as `root-name__sub-component-name`
+* Each class is prefixed with either `c-`, `t-` or `u-` ([consult this table](#class-prefix-conventions) for details and other rarer prefixes)
 
 
 ## CSM
 
-Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
+Our CSS class naming convention (which we call CSM or Component, Sub-Component, Modifier) uses [BEM principles](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) to denote types of classes while still maintaining full use of the cascade.
 
-> BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Subcomponent instead.
+> BEM stands for Block, Element, Modifier. Because Block and Element already have meaning in CSS, we use the terms Component and Sub-Component instead.
 
 ```html
 <div class="c-blog">
@@ -43,23 +45,23 @@ Our convention (which we call CSM or Component, Sub-Component, Modifier) uses [B
 
 This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
 
-`.c-blog` This is a component. It describes a high level module or component. In this instance, it describes the container for all of our blog posts.
+`.c-blog` This is a high-level component. In this example, it describes a wrapper that may contain blog content.
 
-`.c-blog__title` This is a sub-component. It's always a child of a module or component. In this instance, it is a title for our blog post container
+`.c-blog__title` This is a sub-component. In this example, it is a title for a blog.
 
-`.c-blog-post` This is another component. This one describes a specific blog post. We make this its own component because a blog post is not necessarily a child of the blog container. It can and should be able to live independently.
+`.c-blog-post` This is another high-level component. In this example, it describes the blog post itself. Notice that it is its own component instead of a sub-component of `c-blog` because a blog post does not need to be child of the blog container. This way the component is able to live anywhere.
 
-`.c--featured` This is a modifier. It is always chained to a component or sub-component. In this instance, it describes a different way of displaying a component.
+`c-blog-post.c--featured` This is a modifier. Notice that the `c--featured` class is paired with the component or sub-component it belongs to. In this example, it describes a different way of displaying the `c-blog-post` component.
 
-`.c-blog-post__time` Like before, this is another sub-component. This time it belongs to the c-blog-post. It's still a subcomponent even though it is not a direct child of the component.
+`.c-blog-post__time` Like before, this is another sub-component this time belonging to the `c-blog-post` component. It is still a sub-component even though it is not a **direct** child of the component. In other words, sub-components are not required to be direct children of its parent component.
 
 ### Components
 
-The highest level of a module — it should describe an independent module that you are creating. Components should be able to exist on their own or within other components. They should always live at the root level of a file.
+Components are independent and self-contained units of UI. Styles belonging to a component should only affect the component itself, and any of its sub-components. They should not affect anything external to them, or any other components that might be nested within them.
 
-* Prefixed with our component namespace `c`.
-* Hyphenated naming.
-* Not nested.
+* Prefixed with our component namespace `c-`
+* Kebab-cased
+* Not nested, these classes should be declared at the root level of the file
 
 ```scss
 .c-blog-post {
@@ -68,14 +70,13 @@ The highest level of a module — it should describe an independent module that 
 
 ### Sub-components
 
-This is a secondary element inside of a component. It is always written as a chain of its parent component to avoid any inheritance issues. Your subcomponents should be named in a way that keeps them from having to have subcomponents of their own. If you find you need to write a subcomponent for a subcomponent, consider breaking the parent out into its own component.
+Sub-components are elements that are child to its parent component. The classname should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component – sub-components are only ever child to the parent component.
 
-Like components these should always live at the root level of a file. Do not nest these within the parent component or another subcomponent. The class name should do all the work necessary.
+Like components, these should always live at the root level of a file. Avoid nesting these within the parent component or another sub-component.
 
-* Prefixed by the parent component and two underscores `c-component-name__`.
-* Live below the parent component in the root of the file. Not nested.
-* Are declared in the order they appear.
-* Subcomponents do not have to be direct children of the component in the markup. They can be any descendent.
+* Prefixed by the parent component and two underscores `c-[component-name]__[sub-component-name]`
+* Lives below the parent component in the root of the file, un-nested
+* Subcomponents do not have to be direct children of the component in the markup
 
 ```scss
 // Good!
@@ -84,20 +85,29 @@ Like components these should always live at the root level of a file. Do not nes
 
 // Bad!
 //
-// Note how .c-blog-post__title is nested inside it's parent class
+// Note how .c-blog-post__title is nested inside it's parent class? It should
+// not be nested, instead it should live at the root level of the file
 .c-blog-post {
     .c-blog-post__title {
     }
+}
+
+// Bad!
+.c-blog-post__title__emote {
+}
+
+// Good!
+.c-blog-post__emote {
 }
 ```
 
 ### Modifiers
 
-These are used to modify components or subcomponents. They are always chained to a specific component and are declared in the component or subcomponent that they affect.
+Modifiers, as their name suggests, modify components or sub-components. They are always chained to the component or sub-component they belong to.
 
 * Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`)
 * Contained to the scope of a single component
-* Always declared as a chained selector to a component or subcomponent.
+* Always declared as a chained selector to a component or sub-component.
 * Never declared as a stand-alone rule.
 
 ```scss
@@ -109,6 +119,13 @@ These are used to modify components or subcomponents. They are always chained to
     }
 }
 
+// Also Good!
+//
+// Use your discretion and decide for yourself whether this option, or the above
+// option makes most sense. See below for more some common scenarios.
+.c-blog-post.c--featured {
+}
+
 // Bad!
 //
 // Note how .c--featured is a selector all by itself? That's bad! It
@@ -117,7 +134,7 @@ These are used to modify components or subcomponents. They are always chained to
 }
 ```
 
-### Component modifiers that affect subcomponents
+### Component modifiers that affect sub-components
 
 Sometimes a component modifier will affect its sub-components. There are several methods you can use to accomplish this. As much as possible, stick to one method in your project.
 
@@ -264,41 +281,99 @@ An exception is the use of ARIA roles for styling state. Where an ARIA role maps
 
 You'll have probably noticed by now that our class names have a variety of prefixes. If not, I will describe their usages now:
 
-Prefix | Purpose | Scaffold Directory |
+Prefix | Purpose | Location |
 ------ | ------- | ------------------ |
-`.c-` | Classes that start with `.c-` are one of the three possible Component classes: `Component Class` (typically the class that defines the component itself), `Sub-Component Class`, `Modifier Class`. [See above](#component-oriented-naming) | */src/scss/components* |
-`.t-` | Classes that start with `.t-` are Template specific classes. These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | */src/scss/templates*
-`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | */src/scss/globals/*
-`.m-` | **Deprecated** This class prefix is currently reserved for Mobify Modules. However, eventually we intend to deprecate this prefix entirely. At that time, our Mobify Modules will instead be prefixed by their module name. | */src/scss/components/vendor*
+`.c-` | Component classes: this includes the root component (typically the class that defines the component itself), sub-component class, and the modifier class. [See above](#component-oriented-naming) | Project's component directory |
+`.t-` | Template classes: These class names are declared as the `template` in the corresponding [view](https://mobify.atlassian.net/wiki/display/PLAT/Views). Example template classes include: `.t-pdp`, `.t-home`, `.t-category`. | Project's template directory |
+`.u-` | Utility classes: these are meant as one-off, strongly opinionated, high specificity overrides for very narrowly defined styles. | Project's `/styles/utilities` directory |
+`.x-` | Classes that start with `x-` are considered global states or document states. That means these classes should only be applied to the `html` or `body` element. Example states include `x-ios`, `x-portrait`, `x-retina`, `x-header-is-sticky`, etc. | *varies* |
+`.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
+> \* The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
 
-## Us versus Them (aka There's an x-ception to every rule)
 
-It's important to remember that we don't write our own markup. We write a bastardized version of existing markup. In many cases, we're simply adding wrappers or class names to markup that already exists. Rarely, we'll completely re-template something.
+## Components That Style Components
 
-Knowing that, how do we make the decision to use our class names or their class names in our styling and how does that affect the way we write our CSS? If we're using their class names, we obviously can't follow the CEM/BEM syntax laid out above. We've laid out some situational advice below on when to use their class names and when to use ours. We also talk about ways to adjust the code style laid out above when using their class names.
+Sometimes there are situations when a component makes use of other components, and in so doing needs to style them for within its context. Let's take a simple example of a button and icon component being tightly coupled in this manner:
 
-### When to use our selector naming scheme
+> **Note:** the examples in this section will use React JSX syntax for sake of brevity.
 
-* Whenever you're writing your own markup in a template.
-* Whenever you're remixing or adding markup through the konf.
-* Whenever you're adding classes to existing markup.
-* Whenever you find yourself using @extend.
+```jsx
+<button className="c-button">
+    <Icon name={icon} />
+    {children}
+</button>
+```
+
+In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it should be unaware of anything external to itself. Continuing with this example, the Icon is an external component, therefore the Button component should be completely unaware there there is even such thing as icon classes, like `c-icon`.
+
+The solution to this challenge is to instead give the external component a new class that our new component can know about, like `c-button__icon`. By doing it in this way the external Icon component is, for all intents and purposes, being treated as a sub-component of the Button component. This method also has the benefit of being free of any (tight) coupling between the components. Both components can change, be added or removed, without really effecting the other in an unpredictable way.
+
+So, to summarize...
+
+```jsx
+/* Bad! */
+<button className="c-button">
+    <Icon name={icon} />
+    {children}
+</button>
+```
+
+```scss
+// Bad!
+.c-button .c-icon {
+    // ...
+}
+```
+
+### Good Practice
+
+```jsx
+/* Good! */
+<button className="c-button">
+    <Icon className="c-button__icon" name={icon} />
+    {children}
+</button>
+```
+
+```scss
+// Good!
+.c-button__icon {
+    // ...
+}
+```
+
+
+## Parsing vs. Decorating
+
+It's important to understand that we have a few different ways of authoring our CSS, and the way we do this is depends a lot on how we convert the desktop markup for mobile. Ideally, we parse the desktop markup and take full control of the final HTML. However, this isn't always possible, and sometimes we just output the desktop markup as is: untouched, or perhaps partially wrapped in order to control the appearance entirely through CSS.
+
+If you find yourself wondering "should I be adding a new class, or should I use the classes from desktop?" consider the following: If we're using their class names, we obviously can't follow our CSM syntax. But that said, sometimes we just have no choice; perhaps there are engineering requirements that force us to retain the markup structure. Under such circumstances, we must stick to the desktop classes.
+
+Below is laid out some situational advice that should clarify when to use desktop classes and when to author our own. We also talk about ways to adjust the code style when using their class names.
+
+### When to use our class naming convention
+
+* When writing your own markup in a template
+* When decorating (adding, moving, or wrapping) markup in a View, Parser, Decorator or UI-Script
+* When adding custom classes to existing markup
+* When you find yourself using @extend
 
 ### When to use their existing selectors
 
-* Whenever possible — when you're not required to do any of the things above. It's faster and easier to use their markup than it is to add our own.
-* When their markup allows for it. For example, if they don't use classes or they don't use them with any consistency, it doesn't make sense to use their selectors.
-* When their markup isn't easily changed. AJAXed content or content added after a page is loaded is an example of this.
+* When it's fastest, easiest or most efficient to use their markup than it is to add our own.
+* When their markup is too inconsistent, or makes parsing too difficult.
+* When mobile functionality is tightly coupled to desktop's markup structure.
+* When intercepting AJAXed content or content added after a page is too costly, unperformant, or inefficent.
 
 ### How to use their existing selectors in our components
 
-This is a list of rules to use when you're using their selectors within our modules section.
+This is a list of rules to use when you're mixing desktop selectors with our selectors.
 
-> Remember, it's okay to mix our selector naming scheme with their selector naming scheme. If you have to add a class to a subcomponent, use our subcomponent naming scheme and place it in the standard spot in the file.
+> Remember, it's okay to mix our class naming convention with the desktop selectors. If you have to add a class to a sub-component, use our sub-component naming scheme and place it in the standard spot in the file.
 
-Always wrap the module with our naming scheme
+Always component classes should always be structured with our naming conventions.
 
 ```scss
 // Do
@@ -315,7 +390,7 @@ Always wrap the module with our naming scheme
 }
 ```
 
-Subcomponents can be directly inside their parent component, but adding your own classes should be your FIRST approach so as to avoid nesting.
+Desktop classes can be added inside their parent component, but adding our own classes should be your FIRST approach so as to avoid nesting.
 
 Constantly evaluate your nesting in situation like this.
 
@@ -341,7 +416,7 @@ Constantly evaluate your nesting in situation like this.
 }
 
 
-// Don't
+// Bad!
 .c-blog-post {
     .content {
         .image {
@@ -350,7 +425,7 @@ Constantly evaluate your nesting in situation like this.
 }
 ```
 
-Use their modifiers the same way you would use our modifiers. Chain it to the component or subcomponent it directly affects.
+Use their modifiers the same way you would use our modifiers. Chain it to the component or sub-component it directly affects.
 
 ```scss
 // Okay
@@ -378,7 +453,5 @@ Use their modifiers the same way you would use our modifiers. Chain it to the co
     }
 }
 ```
-
-> If they use their modifiers in weird or unexpected ways, consider using the konf or templating to add our modifier classes instead.
 
 Continue on to [Block Comment Documentation Guide →](../localization-and-theming-best-practices/readme.md)

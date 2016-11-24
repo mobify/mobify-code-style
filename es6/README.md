@@ -14,6 +14,14 @@ JSX accessibility linting is available with the `mobify-es6-react-a11y.yml` conf
 - `eslint-plugin-react`
 - `eslint-plugin-jsx-a11y`
 
+## ESLint and Atom
+
+Find out how to integrate [ESLint and Atom Text](../javascript/atom.md).
+
+*NOTE*: While these instructions use the code style's ES5 config file, an ES6 file may be alternatively
+substituted. Mobify's ES6-compatible projects will have their own `.eslintrc.yml` config file, which
+will be enforced by Atom and `linter-eslint`.
+
 ## Global Names and Environments
 
 By default, the lint configuration only assumes the standard set of
