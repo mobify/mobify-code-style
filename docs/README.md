@@ -15,7 +15,7 @@ To make writing document easier, we provide:
 ### Markdown Linting
 
 ```bash
-npm install --save mobify-code-style
+npm install --save-dev mobify-code-style
 
 # 🏃 the linter markdown files in the `docs` folder:
 ./node_modules/.bin/lint-md docs
