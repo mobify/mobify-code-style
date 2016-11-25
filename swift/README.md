@@ -15,7 +15,6 @@ Our overarching goals are conciseness, readability, and simplicity.
   * [Prose](#prose)
   * [Selectors](#selectors)
   * [Generics](#generics)
-  * [Class Prefixes](#class-prefixes)
   * [Language](#language)
 * [Code Organization](#code-organization)
   * [Protocol Conformance](#protocol-conformance)
@@ -43,6 +42,7 @@ Our overarching goals are conciseness, readability, and simplicity.
   * [Extending Lifetime](#extending-lifetime)
 * [Access Control](#access-control)
 * [Control Flow](#control-flow)
+* [Error Handling](#error-handling)
 * [Golden Path](#golden-path)
   * [Failing Guards](#failing-guards)
 * [Semicolons](#semicolons)
@@ -59,10 +59,6 @@ Our overarching goals are conciseness, readability, and simplicity.
 Consider warnings to be errors. This rule informs many stylistic decisions such as not to use deprecated methods, C-style for loops, or strings as selectors.
 
 ## Naming
-
-Clarity at the point of use is your most important goal. Entities such as methods and properties are declared only once but used repeatedly. Design APIs to make those uses clear and concise. When evaluating a design, reading a declaration is seldom sufficient; always examine a use case to make sure it looks clear in context.
-
-Clarity is more important than brevity. Although Swift code can be compact, it is a non-goal to enable the smallest possible code with the fewest characters. Brevity in Swift code, where it occurs, is a side-effect of the strong type system and features that naturally reduce boilerplate.
 
 Use descriptive names with camel case for classes, methods, variables, etc. Type names (classes, structures, enumerations and protocols) should be capitalized, while method names and variables should start with a lower case letter.
 
@@ -92,15 +88,15 @@ Abbreviations and acronyms should generally be avoided. Following the [API Desig
 
 **Preferred**
 ```swift
-let utf8String: String
-let urlString: URLString
+let utf8Text: String
+let targetURL: URL
 let userID: UserID
 ```
 
 **Not Preferred**
 ```swift
-let UTF8String: String
-let uRLString: UrlString
+let UTF8Text: String
+let uRLText: UrlString
 let userId: UserId
 ```
 
@@ -156,16 +152,6 @@ When referring to functions in comments include the required parameter names fro
 > You shouldn't call the data source method `tableView(_:cellForRowAtIndexPath:)` directly.
 
 This is the same as the `#selector` syntax. When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.
-
-### Class Prefixes
-
-Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as MOB. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
-
-```swift
-import SomeModule
-
-let myClass = MyModule.UsefulClass()
-```
 
 ### Selectors
 
@@ -254,6 +240,13 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 Unused (dead) code, including Xcode template code and placeholder comments should be removed. Aspirational methods whose implementation simply calls the super class should also be removed.
 
+**Preferred:**
+```swift
+override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  return Database.contacts.count
+}
+```
+
 **Not Preferred:**
 ```swift
 override func didReceiveMemoryWarning() {
@@ -271,13 +264,6 @@ override func tableView(tableView: UITableView, numberOfRowsInSection section: I
   return Database.contacts.count
 }
 
-```
-
-**Preferred:**
-```swift
-override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-  return Database.contacts.count
-}
 ```
 
 ### Minimal Imports
@@ -360,7 +346,8 @@ Here's an example of a well-styled class definition:
 
 ```swift
 class Circle: Shape {
-  var x: Int, y: Int
+  var x: Int
+  var y: Int
   var radius: Double
   var diameter: Double {
     get {
@@ -406,7 +393,7 @@ The example above demonstrates the following style guidelines:
 
 For conciseness, avoid using `self` since Swift does not require it to access an object's properties or invoke its methods.
 
-Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):
+Use `self` when required to differentiate between property names and arguments in initializers, and when referencing properties or methods in closure expressions (as required by the compiler):
 
 ```swift
 class BoardLocation {
@@ -576,14 +563,14 @@ Always use Swift's native types when available. Swift offers bridging to Objecti
 
 **Preferred:**
 ```swift
-let width = 120.0                                    // Double
-let widthString = (width as NSNumber).stringValue    // String
+let width = 120.0                                  // Double
+let labelText = (width as NSNumber).stringValue    // String
 ```
 
 **Not Preferred:**
 ```swift
-let width: NSNumber = 120.0                          // NSNumber
-let widthString: NSString = width.stringValue        // NSString
+let width: NSNumber = 120.0                        // NSNumber
+let labelText: NSString = width.stringValue        // NSString
 ```
 
 ### Constants
@@ -602,7 +589,6 @@ enum Math {
 }
 
 radius * Math.pi * 2 // circumference
-
 ```
 **Note:** The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
 
@@ -624,55 +610,55 @@ class Component {
 
 ### Static Methods and Variable Type Properties
 
-Static methods and type properties work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
+Static methods and type properties work similarly to free functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
 
 ### Optionals
 
 Declare variables and function return types as optional with `?` where a nil value is acceptable.
 
-Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`. Other cases you shoudl use `!` are:
+Use implicitly unwrapped types declared with `!` only for instance variables that you know will be initialized later before use, such as subviews that will be set up in `viewDidLoad`. Other cases you should use `!` are:
 
 - You just assigned to an object where you know initialization can not fail:
 
-```swift
-let numberSeven = Int("7")! //Don't do this.
-```
+  ```swift
+  let numberSeven = Int("7")! //Don't do this.
+  ```
 
-In this case, wrap this into a static function and write a test for it:
+  In this case, wrap this into a static function and write a test for it:
 
-```swift
-extension Int {
-    static func seven() -> Int {
-        return Int("7")!
-    }
-}
-```
+  ```swift
+      extension Int {
+          static func seven() -> Int {
+              return Int("7")!
+          }
+      }
+  ```
 
-```swift
-import XCTest
+  ```swift
+      import XCTest
 
-class IntegerTests: XCTestCase {
-    func testSeven() {
-        XCTAssertEqual(7, Int.seven())
-    }
-}
-```
+      class IntegerTests: XCTestCase {
+          func testSeven() {
+              XCTAssertEqual(7, Int.seven())
+          }
+      }
+  ```
 
-Although the test might seem redundant, because `seven()` returns a non-optional, this ensures that even if in the future someone changes the implementation of `seven()`, it won't get past CI if the explicit unwrapping would fail.
+  Although the test might seem redundant, because `seven()` returns a non-optional, this ensures that even if in the future someone changes the implementation of `seven()`, it won't get past CI if the explicit unwrapping would fail.
 
 - You are creating an object during initialization but need to pass `self` to that object's initializer:
 
-```swift
-class Component: ParentComponent {
-    var controller: CustomViewController! // We want to use it as a non-optional but have to initialize after super.init()
+  ```swift
+  class Component: ParentComponent {
+      var controller: CustomViewController! // We want to use it as a non-optional but have to initialize after super.init()
 
-    override init() {
-        // controller = CustomViewController(component: self) <-- compiler error
-        super.init()
-        controller = CustomViewController(component: self)
-    }
-}
-```
+      override init() {
+          // controller = CustomViewController(component: self) <-- compiler error
+          super.init()
+          controller = CustomViewController(component: self)
+      }
+  }
+  ```
 
 When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:
 
@@ -771,12 +757,12 @@ let maximumWidth: CGFloat = 106.5
 ```swift
 let message: String = "Click the button"
 let currentBounds: CGRect = computeViewBounds()
-let names = [String]()
+let names: [String] = ["Mic", "Sam", "Christine"]
 ```
 
 #### Type Annotation for Empty Arrays and Dictionaries
 
-For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation.)
+For empty arrays and dictionaries, use type annotation. (For an array or dictionary assigned to a large, multi-line literal, use type annotation to make it clear what type(s) the array/dictionary contains)
 
 **Preferred:**
 ```swift
@@ -873,7 +859,9 @@ resource.request().onComplete { [weak self] response in
 
 ## Access Control
 
-Full access control annotation in tutorials can distract from the main topic and is not required. Using `private` appropriately, however, adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
+Using `private` appropriately adds clarity and promotes encapsulation. Use `private` as the leading property specifier. The only things that should come before access control are the `static` specifier or attributes such as `@IBAction` and `@IBOutlet`.
+
+An exception to this is RPC methods within Astro, which should be marked as `internal`.
 
 **Preferred:**
 ```swift
@@ -928,6 +916,8 @@ while i < attendeeList.count {
   i += 1
 }
 ```
+
+## Error Handling
 
 As of Swift 2.0 exceptions have been introduced into the language and the APIs that formerly used `someMethod(..., error: *NSError)` make use of them. We have decided to stick with our existing pattern for returning errors.
 
@@ -1023,8 +1013,6 @@ Guard statements are required to exit in some way. Generally, this should be sim
 Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.
 
 Do not write multiple statements on a single line separated with semicolons.
-
-The only exception to this rule is the `for-conditional-increment` construct, which requires semicolons. However, alternative `for-in` constructs should be used where possible.
 
 **Preferred:**
 ```swift
