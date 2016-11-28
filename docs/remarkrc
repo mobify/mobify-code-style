@@ -16,7 +16,7 @@
         "maximum-heading-length": 60,
         "maximum-line-length": 80,
         "no-consecutive-blank-lines": true,
-        "no-duplicate-headings": true,
+        "no-duplicate-headings-in-section": true,
         "no-file-name-articles": true,
         "no-file-name-articles": true,
         "no-file-name-consecutive-dashes": true,
