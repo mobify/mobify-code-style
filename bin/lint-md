@@ -1,7 +1,1 @@
-#!/bin/bash -eu
-# Lints Markdown files using Mobify's `.remarkrc` configuration.
-NPM_BIN=$(npm bin)
-REMARK_RC="$NPM_BIN/../mobify-code-style/.remarkrc"
-REMARK_CLI="$NPM_BIN/remark"
-
-$REMARK_CLI --rc-path $REMARK_RC "$@"
+../docs/bin/lint-md

@@ -1,0 +1,10 @@
+#!/bin/bash -eu
+# Lints Markdown files using Mobify's `.remarkrc` configuration.
+FILE="$(readlink ${BASH_SOURCE[0]})"
+DIR="$(cd "$(dirname "$0")" && pwd)"
+REMARK_RC="$(dirname "$DIR/$FILE")/../remarkrc"
+
+NPM_BIN=$(npm bin)
+REMARK_CLI="$NPM_BIN/remark"
+
+$REMARK_CLI --rc-path $REMARK_RC "$@"
