@@ -25,7 +25,6 @@ extends:
   - './node_modules/mobify-code-style/es5/mobify-es5.yml'
 ```
 
-
 Sample eslint Grunt config:
 
 ```javascript
