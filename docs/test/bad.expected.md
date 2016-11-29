@@ -1,4 +1,3 @@
-{}
 Used to test violations of style.
 
 ## BAD: Starting with wrong level heading.

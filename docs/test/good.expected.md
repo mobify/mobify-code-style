@@ -1,4 +1,3 @@
-{}
 Used to test style.
 
 # GOOD: Starting level one heading.
