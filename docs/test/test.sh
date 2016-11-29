@@ -6,8 +6,6 @@
 # `.expected` files. If we change our configuration, a new output will be
 # expected and these files must be re-generated.
 
-echo $(node -v) 
-
 TEST_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 LINT_MD="$TEST_DIR/../bin/lint-md"
 
@@ -18,8 +16,11 @@ LINT_MD="$TEST_DIR/../bin/lint-md"
 # Compare remark output with expected output. Fail on diff.
 diff <("$LINT_MD" "$TEST_DIR/good.md" --no-color 2>&1) "$TEST_DIR/good.expected.md"
 EXIT_GOOD=$?
+echo "Good: $EXIT_GOOD"
+
 diff <("$LINT_MD" "$TEST_DIR/bad.md" --no-color 2>&1) "$TEST_DIR/bad.expected.md"
 EXIT_BAD=$?
+echo "Bad: $EXIT_BAD"
 
 # Fail if either diff failed
 exit $EXIT_GOOD || $EXIT_BAD
