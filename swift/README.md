@@ -828,7 +828,19 @@ Variables that are delegates should be `weak`.
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
+Use `[weak self]` to avoid retain cycles. Within a closure, extend object lifetime using the `[weak self]` and `guard let strongSelf = self else { return }` idiom. For example:
+
+```swift
+func doSomething() {
+   self.test.asyncTask() { [weak self] bar in
+     guard let strongSelf = self else { return } // gives self local scope, self will be retained for as long as 'strongSelf' is in scope
+     let x = bar.doThis()
+     strongSelf.foo = x // safe
+   }
+}
+```
+
+`[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional unwrapping.
 
 **Preferred**
 ```swift
