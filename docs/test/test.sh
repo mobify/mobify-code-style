@@ -5,6 +5,9 @@
 # The result of running our remark configuration on them is commited as
 # `.expected` files. If we change our configuration, a new output will be
 # expected and these files must be re-generated.
+
+echo $(node -v) 
+
 TEST_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 LINT_MD="$TEST_DIR/../bin/lint-md"
 
