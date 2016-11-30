@@ -7,7 +7,7 @@ Git is pretty awesome. Here's some reasonable standards when it comes to using i
 At Mobify, we recommend a few standards regarding git commit messages:
 - If the commit is related to a JIRA ticket, prefix the case-sensitive ticket number to the start of the message
   - The JIRA/GitHub integration is case-sensitive
-- Next choose a [relevant emoji](#emoji-list) to categorize your commit
+- Optionally, choose a [relevant emoji](#emoji-list) to categorize your commit
 - Finally, your main message content should follow the [git convention](http://git.kernel.org/cgit/git/git.git/tree/Documentation/SubmittingPatches#n117) of present-tense, imperative mood
   - "...as if you are giving orders to the codebase to change its behaviour."
 
