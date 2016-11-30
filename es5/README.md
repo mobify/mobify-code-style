@@ -58,7 +58,7 @@ Comments should have whitespace beginning the comment:
 *line comment 👎 */
 
 /* This is a good
-* multi-line comment 👍 */
+ * multi-line comment 👍 */
 ````
 
 ##Use single quotes
