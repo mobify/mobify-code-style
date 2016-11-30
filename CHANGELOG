@@ -1,3 +1,7 @@
+# To be released
+    - Re-organized and cleaned up markdown linting files
+    - Switched to using `no-duplicate-headings-in-section` (instead of `no-duplicate-headings`)
+
 2.7.0
     - Remove `variable-for-property` rule from sass-lint
     - Adds markdown linting via `lint-md` script

@@ -3,6 +3,7 @@
 A repo to document code standards for different languages and provide tools for linting Mobify projects.
 
 [![NPM version](https://badge.fury.io/js/mobify-code-style.svg)](http://badge.fury.io/js/mobify-code-style)
+[![CircleCI](https://circleci.com/gh/mobify/mobify-code-style/tree/develop.svg?style=svg)](https://circleci.com/gh/mobify/mobify-code-style/tree/develop)
 
 ## JavaScript (ES5) with Grunt
 
@@ -24,7 +25,6 @@ The `.eslintrc.yml` file should contain, to begin with:
 extends:
   - './node_modules/mobify-code-style/es5/mobify-es5.yml'
 ```
-
 
 Sample eslint Grunt config:
 
