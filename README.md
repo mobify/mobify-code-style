@@ -3,6 +3,7 @@
 A repo to document code standards for different languages and provide tools for linting Mobify projects.
 
 [![NPM version](https://badge.fury.io/js/mobify-code-style.svg)](http://badge.fury.io/js/mobify-code-style)
+[![CircleCI](https://circleci.com/gh/mobify/mobify-code-style/tree/develop.svg?style=svg)](https://circleci.com/gh/mobify/mobify-code-style/tree/develop)
 
 ## JavaScript (ES5) with Grunt
 
@@ -24,7 +25,6 @@ The `.eslintrc.yml` file should contain, to begin with:
 extends:
   - './node_modules/mobify-code-style/es5/mobify-es5.yml'
 ```
-
 
 Sample eslint Grunt config:
 
@@ -100,3 +100,7 @@ Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot
 
 See the `python` directory of this repo for a standardized `pylintrc` file and
 instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
+
+## Documentation
+
+See the [`docs`](docs) directory for setup and configuration of Markdown linting.

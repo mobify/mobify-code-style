@@ -1,0 +1,19 @@
+#!/bin/bash -eu
+
+# Lints Markdown files using Mobify's `.remarkrc` configuration.
+BIN="${BASH_SOURCE[0]}"
+BIN_DIR="$(cd "$(dirname "$BIN")" && pwd)"
+
+# We jump through some hoops here because we symlink the node module's
+# bin into the docs/bin/ directory and we want to support invoking
+# via the symlink and directly via `/docs/bin/lint-md`
+if [ -h "$BIN" ]; then
+    # Dereference the symlink
+    BIN="$BIN_DIR/$(readlink "$BIN")"
+fi
+BIN_DIR="$(cd "$(dirname "$BIN")" && pwd)"
+
+REMARK_RC="$BIN_DIR/../remarkrc"
+REMARK_CLI="$(npm bin)/remark"
+
+$REMARK_CLI --rc-path $REMARK_RC "$@"
