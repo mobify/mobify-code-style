@@ -82,9 +82,31 @@ errors. Run these on code that passes PEP8!
 The PyCharm IDE has built-in support for Python checking using the *Inspect
 Code...* tool. The default set of inspections is suitable for use on our code.
 
+### Pyflakes
+
+Pyflakes is another pip-installable code analysis tool that focuses on
+identifying coding issues (and less on code layout and formatting). _"Pyflakes
+makes a simple promise: it will never complain about style, and it will try
+very, very hard to never emit false positives."_
+
+```bash
+pip install pyflakes
+
+pyflakes portal/core/admin.py  # Check one file
+pyflakes portal/core           # Check all the files in a tree
+```
+
+Pyflakes has no configuration, and there is no way to suppress a warning by
+adding comments. However, it spots a smaller set of issues than PyLint (for
+example, it doesn't spot unused arguments). This does mean that anything it
+spots is worth checking.
+
 ### [PyLint](https://docs.pylint.org/)
 
-PyLint is a Python package for Python source code linting:
+PyLint is a Python package for Python source code linting. It is **extremely**
+thorough, but can also become very slow on large projects. In general, you
+will get acceptable results in much less time by using 'flake8'. If you
+do want to install PyLint:
 
 ```bash
 pip install pylint
@@ -126,21 +148,3 @@ Message codes can be found [here](http://pylint-messages.wikidot.com/all-codes).
 Disable works for the block in which they are found, so include it at the module
 level to disable a message for a module or file.
 
-### Pyflakes
-
-Pyflakes is another pip-installable code analysis tool that focuses on
-identifying coding issues (and less on code layout and formatting). _"Pyflakes
-makes a simple promise: it will never complain about style, and it will try
-very, very hard to never emit false positives."_
-
-```bash
-pip install pyflakes
-
-pyflakes portal/core/admin.py  # Check one file
-pyflakes portal/core           # Check all the files in a tree
-```
-
-Pyflakes has no configuration, and there is no way to suppress a warning by
-adding comments. However, it spots a smaller set of issues than PyLint (for
-example, it doesn't spot unused arguments). This does mean that anything it
-spots is worth checking.
