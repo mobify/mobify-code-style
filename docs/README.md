@@ -1,4 +1,4 @@
-> Write great documentation! – * [_Mobify Developer Values_](https://github.com/mobify/developer-values#️-write-great-documentation)
+> Write great documentation! – \* [_Mobify Developer Values_](https://github.com/mobify/developer-values#️-write-great-documentation)
 
 At Mobify, documentation is written in markdown.
 
