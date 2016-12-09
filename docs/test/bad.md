@@ -14,7 +14,7 @@ Used to test violations of style.
 
 BAD: Really, really long lines of text that should probably be wrapped to a more sane length that this.
 
-BAD: List immedidately following text.
+BAD: List immediately following text.
 -   list
 
 BAD: One space indents in lists.

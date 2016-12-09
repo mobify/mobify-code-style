@@ -84,6 +84,9 @@
         // Disallow spacing around non-word unary operators: -, +, --, ++, !, !!
         "space-unary-ops": [2, { "words": true, "nonwords": false }],
 
+        // Enforce whitespace after the start of a comment (// or /*)
+        "spaced-comment": 2,
+
         // Disallow undeclared variables (unless mentioned in /*global ...*/ comment)
         "no-undef": 2,
 
