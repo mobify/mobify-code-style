@@ -1,4 +1,4 @@
-# To be released
+2.7.1
     - Re-organized and cleaned up markdown linting files
     - Switched to using `no-duplicate-headings-in-section` (instead of `no-duplicate-headings`)
     - Add `spaced-comment` rule enforcement to ES5 and legacy (ESLint 1.x or lower) linting [#132](https://github.com/mobify/mobify-code-style/pull/132)
