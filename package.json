@@ -12,7 +12,7 @@
     "url": "https://github.com/mobify/mobify-code-style/issues"
   },
   "bin": {
-    "lint-md": "./bin/lint-md"
+    "lint-md": "docs/bin/lint-md"
   },
   "homepage": "https://github.com/mobify/mobify-code-style",
   "scripts": {
