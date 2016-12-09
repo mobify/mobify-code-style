@@ -1,0 +1,7 @@
+deployment:
+    master:
+        branch: master
+        commands:
+            # Push to npm on merges to `master`
+            - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+            - npm publish
