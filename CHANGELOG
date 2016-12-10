@@ -1,3 +1,5 @@
+2.7.2
+    - Temporarily downgrade `spaced-comment` errors to warning level, until Astro release builds comply with this rule.
 2.7.1
     - Re-organized and cleaned up markdown linting files
     - Switched to using `no-duplicate-headings-in-section` (instead of `no-duplicate-headings`)
