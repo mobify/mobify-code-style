@@ -34,3 +34,9 @@ Before you start, make sure you have [Package Control](https://packagecontrol.io
   (Find your local path by running `npm config get prefix` and append `/lib/node_modules/mobify-code-style/css/.csscomb.json` to the result)
 1. Restart Sublime
 1. Start combing your Sass!
+
+### Other Text Editors
+
+* [CSSComb for VIM](https://github.com/csscomb/vim-csscomb)
+* [jetbrains-csscomb](https://github.com/csscomb/jetbrains-csscomb) which should work for all JetBrains IDEs, such as IDEA, PyCharm, WebStorm, PhpStorm, RubyMine, and perhaps others.
+* [CSSComb for Emacs](https://github.com/channikhabra/css-comb.el), including Aquamacs
