@@ -8,10 +8,9 @@ Our overarching goals are conciseness, readability, and simplicity.
 
 ## Linting
 
+Included is a default Mobify Swift Style Guide SwiftLint configuration,`.swiftlint.yml`.
 
-    Included is a default Mobify Swift Style Guide SwiftLint configuration,`.swiftlint.yml`.
-
-    You can install [SwiftLint](https://github.com/realm/SwiftLint) by command `brew install swiftlint`
+You can install [SwiftLint](https://github.com/realm/SwiftLint) by command `brew install swiftlint`
 
 ### Integration
     Integrate SwiftLint into Xcode to get warnings and errors displayed. You can add a new "Run Script" with:
