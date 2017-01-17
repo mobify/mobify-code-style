@@ -1,0 +1,22 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+  - control_statement
+  - trailing_comma
+  - file_length
+  - unused_closure_parameter
+  - function_body_length
+  - todo
+  - cyclomatic_complexity
+  - variable_name
+  - type_name
+  - empty_parentheses_with_trailing_closure
+  - force_cast
+  - nesting
+  - function_parameter_count
+  - force_try
+  - legacy_constructor
+
+type_body_length:
+  - 480 # warning
+  - 500 # error
