@@ -6,6 +6,26 @@ We also follow the [Swift API design guidelines](https://swift.org/documentation
 
 Our overarching goals are conciseness, readability, and simplicity.
 
+## Linting
+    Included is a default Mobify Swift Style Guide SwiftLint configuration,`.swiftlint.yml`.
+
+    You can install [SwiftLint](https://github.com/realm/SwiftLint) by command `brew install swiftlint`
+
+### Integration
+    Integrate SwiftLint into Xcode to get warnings and errors displayed. You can add a new "Run Script" with:
+
+    ```bash
+    if which swiftlint >/dev/null; then
+      swiftlint
+    else
+      echo "warning: SwiftLint not installed, install using 'brew install swiftlint'"
+    fi
+    ```
+
+    autocorrect is available by command `swiftlint autocorrect`
+
+    for more information on this linter you can visit [this](https://github.com/realm/SwiftLint) page
+
 ## Table of Contents
 
 * [Correctness](#correctness)
@@ -353,7 +373,7 @@ class BoardLocation {
   init(row: Int, column: Int) {
     self.row = row
     self.column = column
-    
+
     let closure = {
       print(self.row)
     }
@@ -418,7 +438,7 @@ Mark classes `final` when inheritance is not intended. Example:
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T 
+  let value: T
   init(_ value: T) {
     self.value = value
   }
@@ -440,7 +460,7 @@ func reticulateSplines(spline: [Double]) -> Bool {
 For functions with long signatures, add line breaks after each parameter and indent them on the same level as the first parameter.
 
 ```swift
-func reticulateSplines(spline: [Double], 
+func reticulateSplines(spline: [Double],
                        adjustmentFactor: Double,
                        translateConstant: Int,
                        comment: String) -> Bool {
@@ -906,15 +926,15 @@ When coding with conditionals, the left hand margin of the code should be the "g
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
 
-  guard let context = context else { 
-      throw FFTError.noContext 
+  guard let context = context else {
+      throw FFTError.noContext
   }
-  guard let inputData = inputData else { 
-      throw FFTError.noInputData 
+  guard let inputData = inputData else {
+      throw FFTError.noInputData
   }
-    
+
   // use context and input to compute the frequencies
-    
+
   return frequencies
 }
 ```
@@ -1048,4 +1068,3 @@ Prefer Autolayout over springs+struts (autoresizing mask). Autolayout automatica
 ## Credits
 
 Heavily based on [The Official raywenderlich.com Swift Style Guide](https://github.com/raywenderlich/swift-style-guide/blob/master/README.markdown)
-

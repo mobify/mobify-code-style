@@ -1,3 +1,5 @@
+2.7.5
+    - Added .swiftlint.yml that enforces Mobify code style
 2.7.4
     - Add links to alternative CSSComb text editor plugins
 2.7.3
