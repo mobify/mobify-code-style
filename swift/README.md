@@ -13,19 +13,19 @@ Included is a default Mobify Swift Style Guide SwiftLint configuration,`.swiftli
 You can install [SwiftLint](https://github.com/realm/SwiftLint) by command `brew install swiftlint`
 
 ### Integration
-    Integrate SwiftLint into Xcode to get warnings and errors displayed. You can add a new "Run Script" with:
+Integrate SwiftLint into Xcode to get warnings and errors displayed. You can add a new "Run Script" with:
 
-    ```bash
-    if which swiftlint >/dev/null; then
-      swiftlint
-    else
-      echo "warning: SwiftLint not installed, install using 'brew install swiftlint'"
-    fi
-    ```
+```bash
+if which swiftlint >/dev/null; then
+  swiftlint
+else
+  echo "warning: SwiftLint not installed, install using 'brew install swiftlint'"
+fi
+```
 
-    autocorrect is available by command `swiftlint autocorrect`
+autocorrect is available by command `swiftlint autocorrect`
 
-    for more information on this linter you can visit [this](https://github.com/realm/SwiftLint) page
+for more information on this linter you can visit [this](https://github.com/realm/SwiftLint) page
 
 ## Table of Contents
 
