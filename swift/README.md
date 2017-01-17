@@ -7,6 +7,8 @@ We also follow the [Swift API design guidelines](https://swift.org/documentation
 Our overarching goals are conciseness, readability, and simplicity.
 
 ## Linting
+
+
     Included is a default Mobify Swift Style Guide SwiftLint configuration,`.swiftlint.yml`.
 
     You can install [SwiftLint](https://github.com/realm/SwiftLint) by command `brew install swiftlint`
