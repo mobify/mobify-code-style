@@ -14,11 +14,16 @@ done
 DOCS_DIR="$(cd "$(dirname "$BIN")/.." && pwd)"
 REMARK_RC="$DOCS_DIR/remarkrc"
 
-# This is tricky. `remark` is a dep of mobify-code-style
-# and so won't show up in `node_modules/.bin` of a project
-# that uses mobify-code-style. We have to move into the
-# the mobify-code-style /docs directory and find the npm
-# bin directory relative that _that_ to find remark!
-REMARK_CLI="$(cd "$DOCS_DIR" && npm bin)/remark"
+if [[ $(node -v) =~ ^v4 ]]; then
+	# Node v4!!
+	# This is tricky. `remark` is a dep of mobify-code-style
+	# and so won't show up in `node_modules/.bin` of a project
+	# that uses mobify-code-style. We have to move into the
+	# the mobify-code-style /docs directory and find the npm
+	# bin directory relative that _that_ to find remark!
+    REMARK_CLI="$(cd "$DOCS_DIR" && npm bin)/remark"
+else
+    REMARK_CLI="$(npm bin)/remark"
+fi
 
 $REMARK_CLI --rc-path $REMARK_RC "$@"
