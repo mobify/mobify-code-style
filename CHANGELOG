@@ -1,6 +1,5 @@
-# To Be Released
+2.7.4 (February 2, 2017)
     - Add new classname prefixes to CSS documentation: `pw-` and `qa-`
-2.7.4
     - Add links to alternative CSSComb text editor plugins
 2.7.3
     - Temporarily disable `spaced-comment` errors, until Astro release builds comply with this rule.
