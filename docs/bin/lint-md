@@ -14,7 +14,7 @@ done
 DOCS_DIR="$(cd "$(dirname "$BIN")/.." && pwd)"
 REMARK_RC="$DOCS_DIR/remarkrc"
 
-if [[ $(node -v) =~ ^v4 ]]; then
+if [[ $(node -v) =~ ^v[0-4] ]]; then
 	# Node v4!!
 	# This is tricky. `remark` is a dep of mobify-code-style
 	# and so won't show up in `node_modules/.bin` of a project
