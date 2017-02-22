@@ -51,6 +51,35 @@ globals:
 The boolean value indicates whether the global is to be treated as
 read-only (`false`) or read-write (`true`).
 
+## Naming
+
+Classes and constructor functions should be TitleCased
+
+```javascript
+// GOOD
+class DatePicker { }
+
+var LinkLabel = function() { }
+
+// BAD
+class linkLabel { }
+```
+
+All other symbols (methods, variables, even constants) should be camelCased!
+
+```javascript
+// GOOD
+const defaultName = 'Element'
+
+class MyClass {
+    const name = 'Button'
+    render() { ... }
+}
+
+// BAD - ES6 has `const` now. The compiler/interpreter will warn you if you re-assign a const.
+const DEFAULT_NAME = 'Element'
+```
+
 ## Overriding Lint Rules
 
 Some of the lint rules disallow uncommon but valid behaviour that is easily confused with/typoed from much more common behaviour. If you need to use the disallowed behaviour on purpose, use an explicit lint override in the source.
