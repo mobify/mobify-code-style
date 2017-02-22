@@ -65,19 +65,38 @@ var LinkLabel = function() { }
 class linkLabel { }
 ```
 
-All other symbols (methods, variables, even constants) should be camelCased!
+Constant values that appear outside of a method scope should be in ALL_CAPS
 
 ```javascript
 // GOOD
-const defaultName = 'Element'
+export DEFAULT_NAME = 'Element'
 
+const STATE_CALLBACKS {
+    pending: sendPendingResponse,
+    completed: sendCompletedResponse,
+    archived: sendArchivedResponse
+}
+
+// BAD
+class DatePicker {
+    render() {
+        // WRONG: constant is within a method
+        const DEFAULT_VALUE = 0
+    }
+}
+```
+
+All other symbols (methods, variables, constants within a method) should be camelCased!
+
+```javascript
+// GOOD
 class MyClass {
     const name = 'Button'
     render() { ... }
 }
 
-// BAD - ES6 has `const` now. The compiler/interpreter will warn you if you re-assign a const.
-const DEFAULT_NAME = 'Element'
+// BAD - `const` outside of a method should be ALL_CAPS
+const defaultName = 'Element'
 ```
 
 ## Overriding Lint Rules
