@@ -73,7 +73,8 @@ rules:
   require-yield: error
 
   # JS stylistic preferences
-  camel-case: always
+  camel-case: 
+    - properties: always
   func-style:
     - error
     - expression
