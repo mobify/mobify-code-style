@@ -73,15 +73,15 @@ rules:
   require-yield: error
 
   # JS stylistic preferences
-  camel-case: 
-    - properties: always
   func-style:
     - error
     - expression
   new-cap:
-    - newIsCap: true
-    - capIsNew: true
-    - properties: false
+    - error
+    - 
+      newIsCap: true
+      capIsNew: true
+      properties: false
   new-parens: error
   no-alert: error
   no-labels: error
