@@ -69,15 +69,17 @@ Constant values that appear outside of a method scope should be in ALL_CAPS
 
 ```javascript
 // GOOD
-export DEFAULT_NAME = 'Element'
+export const DEFAULT_NAME = 'Element'
 
-const STATE_CALLBACKS {
+const STATE_CALLBACKS = {
     pending: sendPendingResponse,
     completed: sendCompletedResponse,
     archived: sendArchivedResponse
 }
 
 // BAD
+export const defaultName = 'Element'
+
 class DatePicker {
     render() {
         // WRONG: constant is within a method
