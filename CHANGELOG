@@ -1,7 +1,9 @@
 2.7.5
     - Added .swiftlint.yml that enforces Mobify code style
-2.7.4
+2.7.4 (February 2, 2017)
+    - Add new classname prefixes to CSS documentation: `pw-` and `qa-`
     - Add links to alternative CSSComb text editor plugins
+    - Fix `lint-md` to work properly on Node.js v6+
 2.7.3
     - Temporarily disable `spaced-comment` errors, until Astro release builds comply with this rule.
 2.7.2
