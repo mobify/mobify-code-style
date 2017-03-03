@@ -23,9 +23,9 @@ else
 fi
 ```
 
-autocorrect is available by command `swiftlint autocorrect`
+Autocorrect is available by command `swiftlint autocorrect`
 
-for more information on this linter you can visit [this](https://github.com/realm/SwiftLint) page
+For more information on this linter you can visit [this](https://github.com/realm/SwiftLint) page
 
 ## Table of Contents
 
