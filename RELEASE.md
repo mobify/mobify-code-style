@@ -2,4 +2,4 @@
 
 Use Slack to release new versions of the Mobify Code Style. 
 
-`@mobitron release mobify-code-style [major|minor|patch]`
+`@mobitron release mobify-code-style [minor|patch]`
