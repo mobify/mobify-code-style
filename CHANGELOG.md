@@ -1,4 +1,19 @@
 ## To be released
+
+## v2.7.4 (February 2, 2017)
+- Add new classname prefixes to CSS documentation: `pw-` and `qa-`
+- Add links to alternative CSSComb text editor plugins
+- Fix `lint-md` to work properly on Node.js v6+
+
+## v2.7.3
+- Temporarily disable `spaced-comment` errors, until Astro release builds comply
+  with this rule.
+
+## v2.7.2
+- Temporarily downgrade `spaced-comment` errors to warning level, until Astro
+  release builds comply with this rule.
+
+## v2.7.1
 - Re-organized and cleaned up markdown linting files
 - Switched to using `no-duplicate-headings-in-section` (instead of
   `no-duplicate-headings`)
