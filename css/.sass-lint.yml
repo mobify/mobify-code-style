@@ -6,7 +6,7 @@ files:
       - '**/node_modules/**/*.scss'
       - '**/bower_components/**/*.scss'
       - 'app/global/styles/base/**/*.scss'
-      - 'app/global/styles/vendor.scss'
+      - 'app/styles/_vendor.scss'
 options:
   formatter: stylish
   merge-default-rules: false
