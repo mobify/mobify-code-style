@@ -101,12 +101,6 @@ Our Client Services team's [CSS Style Guide](/css/Readme.md). Written with a lot
 See the `python` directory of this repo for a standardized `pylintrc` file and
 instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
 
-## License Headers
-
-To import license headers across all source files, `bash` version `4.0+` is required. Then simply run `./license.sh` or `bash license.sh` from your terminal and follow the instructions to import license headers.
-
-Note that this script requires Bash 4+, to upgrade simply run `brew install bash`
-
 ## Documentation
 
 See the [`docs`](docs) directory for setup and configuration of Markdown linting.
