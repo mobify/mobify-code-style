@@ -1,6 +1,5 @@
 const glob = require('glob')
 const fs = require('fs')
-const colors = require('colors')
 
 // dev:
 // node --inspect --debug-brk copyright.js ../../progressive-web-sdk/bin/**/*.js
@@ -18,7 +17,7 @@ const copyright = {
             fs.readFile(item, (err, data) => {
                 if (!this.hasCopyrightHeader(data)) {
                     if (this.lintMode === true) {
-                        console.log('ERROR: Missing Copyright Headers - Please run the copyright header tool in this project'.red)
+                        console.log('\x1b[31m', 'ERROR: Missing Copyright Headers - Please run the copyright header tool in this project')
                         process.exit(1)
                     } else {
                         this.writeHeader(item, data)
@@ -57,8 +56,8 @@ const copyright = {
         // Need to add case for when the user does not provide any glob strings
         // i.e. node copyright.js
         if (process.argv.length <= 2) {
-            console.log('Please enter a list of globs to add copyrights to, followed by an optional --lint command'.cyan)
-            console.log('example - "node copyright.js src/**/*.js --lint"'.yellow)
+            console.log('\x1b[36m', 'Please enter a list of globs to add copyrights to, followed by an optional --lint command')
+            console.log('\x1b[33m', 'example - "node copyright.js src/**/*.js --lint"')
         }
 
         let argumentsProcessed = 0
