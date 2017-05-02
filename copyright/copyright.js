@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*
 "sdk-copyright-lint": "bin/copyright.js",
-    "lint:copyright": "node bin/copyright.js src bin --verify",
+    "lint:copyright": "node bin/copyright.js src bin --lint",
     */
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
 /* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
@@ -9,20 +9,17 @@
 
 const glob = require('glob')
 const fs = require('fs')
-/* eslint-disable */
 const colors = require('colors')
-/* eslint-enable */
 
 // example
-// node copyright.js src bin --verify .js
+// node copyright.js src bin --lint
 
 // debug mode
-// node --inspect --debug-brk copyright.js src bin --verify .js
+// node --inspect --debug-brk copyright.js src bin --lint
 
-const getCopyrightHeader = () => {
+const getCopyrightHeader = (ext) => {
     return fs.readFileSync('headers/copyright.js.txt')
 }
-var copyright = fs.readFileSync('headers/copyright.js.txt');
 
 const isCopyrightHeader = (data) => {
     if (data.indexOf('Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.') >= 0) {
@@ -39,8 +36,8 @@ const writeCopyrightHeader = (file, data) => {
     })
 }
 
-const updateHeaders = (folder, ext) => {
-    glob(`../../progressive-web-sdk/${folder}/**/*${ext}`, (err, files) => {
+const updateHeaders = (globString) => {
+    glob(`${globString}`, (err, files) => {
         if (err) {
             console.log(err)
         }
@@ -50,7 +47,8 @@ const updateHeaders = (folder, ext) => {
                     console.log(err)
                 }
                 if (!isCopyrightHeader(data)) {
-                    debugger;
+                    // right now this is reading the file each iteration
+                    // TODO store in memory
                     const newData = getCopyrightHeader() + data
                     writeCopyrightHeader(file, newData)
                 }
@@ -60,8 +58,8 @@ const updateHeaders = (folder, ext) => {
 
 }
 
-const checkHeaders = (folder, ext) => {
-    glob(`../../progressive-web-sdk/${folder}/**/*${ext}`, (err, files) => {
+const checkHeaders = (globString) => {
+    glob(`${globString}`, (err, files) => {
         let failed = false
 
         if (err) {
@@ -83,18 +81,22 @@ const checkHeaders = (folder, ext) => {
     })
 }
 
-if (process.argv.indexOf('--verify') >= 0) {
-    process.argv.splice(process.argv.indexOf('--verify'), 1)
+if (process.argv.indexOf('--lint') >= 0) {
 
+    process.argv.splice(process.argv.indexOf('--lint'), 1)
+
+    // first 2 args are always `node copyright.js`
     for (let i = 2; i < process.argv.length; i++) {
-        let dir = process.argv[i]
-        let lang = process.argv[process.argv.length - 1]
-        checkHeaders(dir, lang)
+        checkHeaders(globString)
     }
 
     console.log('Copyright headers successful'.green);
+} else if (process.argv.length === 2) {
+    console.log('Please enter a list of globs to add copyrights to, followed by an optional --lint command'.cyan);
+    console.log('example - node copyright.js src/**/*.js --lint'.yellow);
 } else {
-    process.argv.forEach((dir) => {
-        updateHeaders(dir, process.argv[process.argv.length - 1]) // TODO make .ext variable from cli
-    })
+    // first 2 args are always `node copyright.js`
+    for (let i = 2; i < process.argv.length; i++) {
+        updateHeaders(globString)
+    }
 }
