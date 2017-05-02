@@ -1,9 +1,17 @@
 #!/usr/bin/env node
-
+/*
+"sdk-copyright-lint": "bin/copyright.js",
+    "lint:copyright": "node bin/copyright.js src bin --verify",
+    */
+/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
+/* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
+/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
 
 const glob = require('glob')
 const fs = require('fs')
+/* eslint-disable */
 const colors = require('colors')
+/* eslint-enable */
 
 // example
 // node copyright.js src bin --verify
@@ -12,23 +20,18 @@ const colors = require('colors')
 // node --inspect --debug-brk copyright.js src bin --verify
 
 const getCopyrightHeader = () => {
-    // TODO - read copyright headers from .txt files instead of hardcoding
-    // or allow for dynamic changing of comment types (per language) (""" for python, etc)
-    return `/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
-/* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
-/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
-\n`
+    return fs.readFileSync('headers/copyright.js.txt')
 }
 
 const isCopyrightHeader = (data) => {
-    if (data.indexOf('Copyright') >= 0) {
+    if (data.indexOf('Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.') >= 0) {
         return true
     }
     return false
 }
 
-const writeCopyrightHeader = (pathName, data) => {
-    fs.writeFile(pathName, data, (err) => {
+const writeCopyrightHeader = (path, data) => {
+    fs.writeFile(path, data, (err) => {
         if (err) {
             console.log(err)
         }
@@ -36,9 +39,9 @@ const writeCopyrightHeader = (pathName, data) => {
 }
 
 const checkHeaders = (dir) => {
-    const filetype = '.js' // TODO - get extension from user input / command line arg
+    const ext = '.js' // TODO - get extension from user input / command line arg
 
-    glob(`../${dir}/**/*${filetype}`, (err, files) => {
+    glob(`../${dir}/**/*${ext}`, (err, files) => {
 
         if (err) {
             console.log(err)
@@ -54,16 +57,17 @@ const checkHeaders = (dir) => {
                         /* eslint-disable */
                         console.log('Missing copyright headers in '.yellow + file.green)
                         /* eslint-enable */
-                        console.log('ERROR: Please add Copyright headers to all source files'.red)
-                        process.exit(1)
+                        arr.push(file);
                     } else {
                         const newData = getCopyrightHeader() + data
+                        debugger
                         writeCopyrightHeader(file, newData)
                     }
                 }
             })
         })
     })
+
 }
 
 process.argv.forEach((dir) => {
