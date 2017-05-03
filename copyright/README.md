@@ -9,13 +9,13 @@ This tool reads from the `headers/copyright.extension.txt` text files to select 
 
 ## Example
 
-If this repo was cloned in the same directory as `progressive-web-sdk`
+If this repo was cloned in the same directory as `some-project`
 
 ```bash
-node copyright.js ../../progressive-web-sdk/bin/**/*.js
+node copyright.js ../../some-project/bin/**/*.js
 ```
 
-This command would add the copyright header from `headers/copyright.js.txt` to all `.js` files in the  `progressive-web-sdk/bin` directory
+This command would add the copyright header from `headers/copyright.js.txt` to all `.js` files in the  `some-project/bin` directory
 
 ## Lint Mode
 
@@ -27,4 +27,4 @@ With lint mode enabled, the process will exit if any of the target directories c
 
 ### Developing
 
-`node --inspect --debug-brk copyright.js ../../progressive-web-sdk/bin/**/*.js`
+`node --inspect --debug-brk copyright.js ../../some-project/source-folder/**/*.js`
