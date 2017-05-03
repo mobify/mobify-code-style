@@ -4,8 +4,15 @@ This tool reads from the `headers/copyright.extension.txt` text files to select 
 
 ## Quick Start
 
+Add the following to your `package.json`
+
+```json
+"copyright:lint": "copyright.js PATH --lint",
+"copyright:fix" "copyright.js PATH"
+```
+
 ```bash
-npm install mobify-code-style
+npm install mobify-code-style --save
 npm run lint:copyright
 ```
 

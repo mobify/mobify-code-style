@@ -20,14 +20,10 @@ const args = process.argv.filter((arg) => {
 })
 
 const copyright = {
-    lintMode: {
-        enabled: false,
-        passed: true
-    },
-    '.js': 'headers/copyright.js.txt', // hardcode these?
-    '.py':  'headers/copyright.py.txt',
-    '.jsx': 'headers/copyright.js.txt',
+    lintMode: false,
+    langs: {},
     run() {
+        this.buildSupportedExtensions()
         const processedGlobs = args.map((folder) => {
             return new Promise((resolve) => {
                 glob(`${folder}`, (err, file) => {
@@ -37,45 +33,53 @@ const copyright = {
         })
 
         Promise.all(processedGlobs).then((files) => {
-            let filesProcessed = 0
-            files.forEach((file, index, array) => {
+            const passed = files.forEach((file) => {
                 const content = fs.readFileSync(file)
-                const copyrightStr = 'Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.'
+                const copyrightStr = 'Copyright (c)'
                 const hasCopyrightHeader = content.indexOf(copyrightStr) >= 0
                 const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
                 if (!hasCopyrightHeader) {
-                    if (this.lintMode.enabled) {
+                    if (this.lintMode) {
                         console.log(`${yellow}${file} ${red}missing copyright header`)
-                        this.lintMode.passed = false
+                        return false
                     } else {
                         const newData = this.getHeaderText(ext) + content
-                        fs.writeFile(file, newData, (err) => {
-                            if (err) {
-                                console.log(err)
-                            }
-                            console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
-                        })
+                        fs.writeFileSync(file, newData)
+                        console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
+                        return true
                     }
-                }
-                filesProcessed++
-
-                if (filesProcessed === array.length && !this.lintMode.passed) {
-                    console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
-                    process.exit(1)
+                } else {
+                    return true
                 }
             })
+            console.log(passed);
+            if (passed === false) {
+                console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
+                process.exit(1)
+            } else {
+                console.log(`${cyan}Copyright headers are present in target files`)
+            }
         })
     },
     getHeaderText(ext) {
-        if (!this[ext]) {
-            console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} does not exist`)
+        if (!this.langs[ext]) {
+            console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} is not supported (yet)`)
             process.exit(1)
         } else {
-            const textPath = path.join(__dirname, `./${this[ext]}`)
+            const textPath = path.join(__dirname, `./headers/${this.langs[ext]}`)
             return fs.readFileSync(textPath)
         }
     },
+    buildSupportedExtensions() {
+        const supportedHeaders = path.join(__dirname, './headers')
+        fs.readdir(supportedHeaders, (err, filenames) => {
+            filenames.forEach((file) => {
+                const extension = file.match(/\.[0-9a-z]+/i)[0]
+                this.langs[extension] = file
+            })
+        });
+    }
 }
 
 if (args.length === 0) {
@@ -87,7 +91,7 @@ if (args.length === 0) {
 // Sets lint flag if the user provides --lint command line arg
 if (args.indexOf('--lint') >= 0) {
     args.splice(args.indexOf('--lint'), 1)
-    copyright.lintMode.enabled = true
+    copyright.lintMode = true
 }
 
 copyright.run()
