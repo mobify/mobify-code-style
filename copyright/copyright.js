@@ -82,18 +82,19 @@ const copyright = {
     }
 }
 
-if (args.length === 0) {
+if (args.length === 0 || args.indexOf('--help') >= 0) {
 
     console.log(`
     Usage: node copyright.js [options] _glob pattern_ [additional globs]
 
+    where _glob pattern_ is a glob string
+
+    Example:
+        ${yellow}node copyright.js --lint${defaultFG} src/**/*.js
+
         Options:
 
             --lint        enable lint mode
-
-    Example:
-        ${yellow}node copyright.js src/**/*.js --lint${defaultFG}
-
 
     Visit ${cyan}https://github.com/mobify/mobify-code-style${defaultFG} to learn more.
 `)
