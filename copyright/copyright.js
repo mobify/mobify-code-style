@@ -1,7 +1,6 @@
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
-/* Copyright (c) year Mobify Research & Development Inc. All rights reserved. */
+/* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
-
 
 const glob = require('glob')
 const fs = require('fs')
@@ -14,6 +13,7 @@ const magenta = '\x1b[35m'
 const cyan = '\x1b[36m'
 const blackBG = '\x1b[40m'
 const defaultBG = '\x1b[49m'
+const defaultFG = '\x1b[39m'
 
 const args = process.argv.filter((arg) => {
     return !/node|copyright/.test(arg)
@@ -33,7 +33,7 @@ const copyright = {
         })
 
         Promise.all(processedGlobs).then((files) => {
-            const passed = files.forEach((file) => {
+            const filesMissingHeader = files.filter((file) => {
                 const content = fs.readFileSync(file)
                 const copyrightStr = 'Copyright (c)'
                 const hasCopyrightHeader = content.indexOf(copyrightStr) >= 0
@@ -53,8 +53,8 @@ const copyright = {
                     return true
                 }
             })
-            console.log(passed);
-            if (passed === false) {
+
+            if (filesMissingHeader.length !== files.length) {
                 console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
                 process.exit(1)
             } else {
@@ -68,7 +68,7 @@ const copyright = {
             process.exit(1)
         } else {
             const textPath = path.join(__dirname, `./headers/${this.langs[ext]}`)
-            return fs.readFileSync(textPath)
+            return fs.readFileSync(textPath).toString().replace('year', new Date().getFullYear())
         }
     },
     buildSupportedExtensions() {
@@ -83,8 +83,21 @@ const copyright = {
 }
 
 if (args.length === 0) {
-    console.log(`${cyan}Please enter a list of globs to add copyrights to, followed by an optional --lint command`)
-    console.log(`${yellow}example - "node copyright.js src/**/*.js --lint"`)
+
+    console.log(`
+    Usage: node copyright.js [options] _glob pattern_ [additional globs]
+
+        Options:
+
+            --lint        enable lint mode
+
+    Example:
+        ${yellow}node copyright.js src/**/*.js --lint${defaultFG}
+
+
+    Visit ${cyan}https://github.com/mobify/mobify-code-style${defaultFG} to learn more.
+`)
+
     process.exit(0)
 }
 
