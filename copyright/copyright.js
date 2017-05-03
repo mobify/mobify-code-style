@@ -8,7 +8,7 @@ const fs = require('fs')
 const copyright = {
     items: [],
     missingHeaders: [],
-    ext: '',
+    copyrightText: '',
     lintMode: false,
     updateHeaders() {
         const filesRead = this.items.map((item) => {
@@ -48,20 +48,19 @@ const copyright = {
         }
         return false
     },
-    setExtension(globStr) {
-        const ext = globStr.match(/\.[0-9a-z]+$/i)
-        this.ext = ext[0]
-    },
-    writeHeader(file, data) {
-        const path = `headers/copyright${this.ext}.txt`
+    getHeaderText(globStr) {
+        const ext = globStr.match(/\.[0-9a-z]+$/i)[0]
+        const path = `headers/copyright${ext}.txt`
 
         if (!fs.existsSync(path)) {
             console.log(`\x1b[31m \x1b[40mERROR\x1b[49m - ${path} does not exist`)
             process.exit(1)
+        } else {
+            this.copyrightText = fs.readFileSync(path)
         }
-
-        const copyrightText = fs.readFileSync(path)
-        const newData = copyrightText + data
+    },
+    writeHeader(file, data) {
+        const newData = this.copyrightText + data
 
         fs.writeFile(file, newData, (err) => {
             if (err) {
@@ -89,7 +88,7 @@ const copyright = {
 
         const processedGlobs = args.map((dir) => {
             return new Promise((resolve) => {
-                this.setExtension(dir)
+                this.getHeaderText(dir)
                 glob(`${dir}`, (err, files) => {
                     this.items.push(files[0])
                     resolve()
