@@ -85,9 +85,7 @@ const copyright = {
 if (args.length === 0 || args.indexOf('--help') >= 0) {
 
     console.log(`
-    Usage: node copyright.js [options] _glob pattern_ [additional globs]
-
-    where _glob pattern_ is a glob string
+    Usage: node copyright.js [options] glob [additional globs]
 
     Example:
         ${yellow}node copyright.js --lint${defaultFG} src/**/*.js
