@@ -11,26 +11,37 @@ const copyright = {
     ext: '',
     lintMode: false,
     updateHeaders() {
-        let argumentsProcessed = 0
-        this.items.forEach((item, index, arr) => {
-            fs.readFile(item, (err, data) => {
-                if (!this.hasCopyrightHeader(data)) {
-                    if (this.lintMode === true) {
-                        console.log(`\x1b[33m Missing copyright headers in \x1b[36m ${item}`)
-                        this.missingHeaders.push(item)
-                    } else {
-                        this.writeHeader(item, data)
+        const filesRead = this.items.map((item, index, args) => {
+            return new Promise((resolve) => {
+                fs.readFile(item, (err, data) => {
+                    if (!this.hasCopyrightHeader(data)) {
+                        if (this.lintMode === true) {
+                            console.log(`\x1b[33m Missing copyright headers in \x1b[36m ${item}`)
+                            this.missingHeaders.push(item)
+                        } else {
+                            this.writeHeader(item, data)
+                        }
                     }
-                }
-                argumentsProcessed++
-
-                // need to check lint status after all async
-                // file reads are finished
-                if (argumentsProcessed === arr.length && this.lintMode === true) {
-                    this.getLintStatus()
-                }
+                    resolve(item)
+                })
             })
         })
+
+        Promise.all(filesRead).then((item) => {
+            if (this.lintMode === true) {
+                if (this.missingHeaders.length > 0) {
+                    console.log('\x1b[31m \x1b[40mERROR\x1b[49m - Please run the copyright headers tool in this project')
+                    process.exit(1)
+                } else {
+                    console.log('\x1b[36m Copyright Headers Present')
+                }
+            } else {
+                item.forEach((item) => {
+                    console.log(`\x1b[32mCopyright header succesfully written into \x1b[35m${item}`);
+                })
+            }
+        })
+
     },
     hasCopyrightHeader(data) {
         if (data.indexOf('Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.') >= 0) {
@@ -43,7 +54,13 @@ const copyright = {
         this.ext = ext[0]
     },
     writeHeader(file, data) {
-        const copyrightText = fs.readFileSync(`headers/copyright${this.ext}.txt`)
+        const path = `headers/copyright${this.ext}.txt`
+
+        if (fs.existsSync(path)) {
+            console.log(`\x1b[31m \x1b[40mERROR\x1b[49m - ${path} does not exist`)
+        }
+
+        const copyrightText = fs.readFileSync(path)
         const newData = copyrightText + data
 
         fs.writeFile(file, newData, (err) => {
@@ -52,14 +69,6 @@ const copyright = {
             }
         })
     },
-    getLintStatus() {
-        if (this.missingHeaders.length > 0) {
-            console.log('\x1b[31m \x1b[40mERROR\x1b[49m - Please run the copyright headers tool in this project')
-            process.exit(1)
-        } else {
-            console.log('\x1b[36m Copyright Headers Present')
-        }
-    },
     run() {
         // Sets lint flag if the user provides --lint command line arg
         if (process.argv.indexOf('--lint') >= 0) {
@@ -67,32 +76,27 @@ const copyright = {
             this.lintMode = true
         }
 
-        // Need to add case for when the user does not provide any glob strings
+        // Case for when the user does not provide any glob strings
         // i.e. node copyright.js
         if (process.argv.length <= 2) {
             console.log('\x1b[36m Please enter a list of globs to add copyrights to, followed by an optional --lint command')
             console.log('\x1b[33m example - "node copyright.js src/**/*.js --lint"')
         }
 
-        let argumentsProcessed = 0
 
-        process.argv.forEach((dir, index, args) => {
+        const processedGlobs = process.argv.map((dir, index, args) => {
             if (!/node/.test(dir) && !/copyright/.test(dir)) {
-                copyright.setExtension(dir)
-                glob(`${dir}`, (err, files) => {
-                    copyright.items.push(files[0])
-                    argumentsProcessed++
-
-                    // Only update headers on last async glob call
-                    // once all items are pushed to copyright object
-                    if (argumentsProcessed === args.length) {
-                        copyright.updateHeaders()
-                    }
+                return new Promise((resolve) => {
+                    this.setExtension(dir)
+                    glob(`${dir}`, (err, files) => {
+                        this.items.push(files[0])
+                        resolve()
+                    })
                 })
-            } else {
-                argumentsProcessed++
             }
         })
+
+        Promise.all(processedGlobs).then(() => copyright.updateHeaders())
     }
 }
 
