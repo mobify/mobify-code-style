@@ -1,106 +1,93 @@
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
-/* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
+/* Copyright (c) year Mobify Research & Development Inc. All rights reserved. */
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
+
 
 const glob = require('glob')
 const fs = require('fs')
+const path = require('path')
+
+const red = '\x1b[31m'
+const green = '\x1b[32m'
+const yellow = '\x1b[33m'
+const magenta = '\x1b[35m'
+const cyan = '\x1b[36m'
+const blackBG = '\x1b[40m'
+const defaultBG = '\x1b[49m'
+
+const args = process.argv.filter((arg) => {
+    return !/node|copyright/.test(arg)
+})
 
 const copyright = {
-    items: [],
-    missingHeaders: [],
-    copyrightText: '',
-    lintMode: false,
-    updateHeaders() {
-        const filesRead = this.items.map((item) => {
+    lintMode: {
+        enabled: false,
+        passed: true
+    },
+    '.js': 'headers/copyright.js.txt', // hardcode these?
+    '.py':  'headers/copyright.py.txt',
+    '.jsx': 'headers/copyright.js.txt',
+    run() {
+        const processedGlobs = args.map((folder) => {
             return new Promise((resolve) => {
-                fs.readFile(item, (err, data) => {
-                    if (!this.hasCopyrightHeader(data)) {
-                        if (this.lintMode === true) {
-                            console.log(`\x1b[33m Missing copyright headers in \x1b[36m ${item}`)
-                            this.missingHeaders.push(item)
-                        } else {
-                            console.log(`\x1b[32mCopyright header succesfully written into \x1b[35m${item}`)
-                            this.writeHeader(item, data)
-                        }
-                    }
-                    resolve()
+                glob(`${folder}`, (err, file) => {
+                    resolve(file[0])
                 })
             })
         })
 
-        Promise.all(filesRead).then(() => {
-            if (this.lintMode === true) {
-                if (this.missingHeaders.length > 0) {
-                    console.log('\x1b[31m \x1b[40mERROR\x1b[49m - Please run the copyright headers tool in this project')
-                    process.exit(1)
-                } else {
-                    console.log('\x1b[32m\x1b[40mSUCCESS\x1b[49m - \x1b[36m All copyright headers present')
+        Promise.all(processedGlobs).then((files) => {
+            let filesProcessed = 0
+            files.forEach((file, index, array) => {
+                const content = fs.readFileSync(file)
+                const copyrightStr = 'Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.'
+                const hasCopyrightHeader = content.indexOf(copyrightStr) >= 0
+                const ext = file.match(/\.[0-9a-z]+$/i)[0]
+
+                if (!hasCopyrightHeader) {
+                    if (this.lintMode.enabled) {
+                        console.log(`${yellow}${file} ${red}missing copyright header`)
+                        this.lintMode.passed = false
+                    } else {
+                        const newData = this.getHeaderText(ext) + content
+                        fs.writeFile(file, newData, (err) => {
+                            if (err) {
+                                console.log(err)
+                            }
+                            console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
+                        })
+                    }
                 }
-            } else {
-                console.log('\x1b[32m\x1b[40mSUCCESS\x1b[49m - Copyright headers finished')
-            }
+                filesProcessed++
+
+                if (filesProcessed === array.length && !this.lintMode.passed) {
+                    console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
+                    process.exit(1)
+                }
+            })
         })
-
     },
-    hasCopyrightHeader(data) {
-        if (data.indexOf('Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved.') >= 0) {
-            return true
-        }
-        return false
-    },
-    getHeaderText(globStr) {
-        const ext = globStr.match(/\.[0-9a-z]+$/i)[0]
-        const path = `headers/copyright${ext}.txt`
-
-        if (!fs.existsSync(path)) {
-            console.log(`\x1b[31m \x1b[40mERROR\x1b[49m - ${path} does not exist`)
+    getHeaderText(ext) {
+        if (!this[ext]) {
+            console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} does not exist`)
             process.exit(1)
         } else {
-            this.copyrightText = fs.readFileSync(path)
+            const textPath = path.join(__dirname, `./${this[ext]}`)
+            return fs.readFileSync(textPath)
         }
     },
-    writeHeader(file, data) {
-        const newData = this.copyrightText + data
+}
 
-        fs.writeFile(file, newData, (err) => {
-            if (err) {
-                console.log(err)
-            }
-        })
-    },
-    run() {
-        // removes args and node copyright.js
-        const args = process.argv.filter((arg) => {
-            return !/node|copyright/.test(arg)
-        })
+if (args.length === 0) {
+    console.log(`${cyan}Please enter a list of globs to add copyrights to, followed by an optional --lint command`)
+    console.log(`${yellow}example - "node copyright.js src/**/*.js --lint"`)
+    process.exit(0)
+}
 
-        // Case for when the user does not provide any glob strings
-        // i.e. node copyright.js
-        if (args.length === 0) {
-            console.log('\x1b[36m Please enter a list of globs to add copyrights to, followed by an optional --lint command')
-            console.log('\x1b[33m example - "node copyright.js src/**/*.js --lint"')
-            process.exit(0)
-        }
-
-        // Sets lint flag if the user provides --lint command line arg
-        if (args.indexOf('--lint') >= 0) {
-            args.splice(args.indexOf('--lint'), 1)
-            this.lintMode = true
-        }
-
-
-        const processedGlobs = args.map((dir) => {
-            return new Promise((resolve) => {
-                this.getHeaderText(dir)
-                glob(`${dir}`, (err, files) => {
-                    this.items.push(files[0])
-                    resolve()
-                })
-            })
-        })
-
-        Promise.all(processedGlobs).then(() => copyright.updateHeaders())
-    }
+// Sets lint flag if the user provides --lint command line arg
+if (args.indexOf('--lint') >= 0) {
+    args.splice(args.indexOf('--lint'), 1)
+    copyright.lintMode.enabled = true
 }
 
 copyright.run()

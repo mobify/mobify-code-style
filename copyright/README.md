@@ -4,12 +4,12 @@ This tool reads from the `headers/copyright.extension.txt` text files to select 
 
 ## Quick Start
 
-- Clone this repo
-- `cd` into the `copyright` directory, and run `node copyright.js PATTERN` where `PATTERN` is any standard glob pattern
+```bash
+npm install mobify-code-style
+npm run lint:copyright
+```
 
 ## Example
-
-If this repo was cloned in the same directory as `some-project`
 
 ```bash
 node copyright.js ../../some-project/bin/**/*.js
