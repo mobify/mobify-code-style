@@ -69,8 +69,18 @@ const copyright = {
         })
     },
     run() {
-        // removes first 2 args (node copyright.js)
-        const args = process.argv.slice(2)
+        // removes args and node copyright.js
+        const args = process.argv.filter((arg) => {
+            return !/node|copyright/.test(arg)
+        })
+
+        // Case for when the user does not provide any glob strings
+        // i.e. node copyright.js
+        if (args.length === 0) {
+            console.log('\x1b[36m Please enter a list of globs to add copyrights to, followed by an optional --lint command')
+            console.log('\x1b[33m example - "node copyright.js src/**/*.js --lint"')
+            process.exit(0)
+        }
 
         // Sets lint flag if the user provides --lint command line arg
         if (args.indexOf('--lint') >= 0) {
@@ -78,13 +88,6 @@ const copyright = {
             this.lintMode = true
         }
 
-        // Case for when the user does not provide any glob strings
-        // i.e. node copyright.js
-        if (args.length <= 2) {
-            console.log('\x1b[36m Please enter a list of globs to add copyrights to, followed by an optional --lint command')
-            console.log('\x1b[33m example - "node copyright.js src/**/*.js --lint"')
-            process.exit(0)
-        }
 
         const processedGlobs = args.map((dir) => {
             return new Promise((resolve) => {
