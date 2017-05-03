@@ -1,27 +1,33 @@
+/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
+/* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
+/* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
+
 const glob = require('glob')
 const fs = require('fs')
 
-// dev:
-// node --inspect --debug-brk copyright.js ../../progressive-web-sdk/bin/**/*.js
-
-// test:
-// node copyright.js ../../progressive-web-sdk/bin/**/*.js
-// node copyright.js ../../progressive-web-sdk/bin/**/*.js --lint
-
 const copyright = {
     items: [],
+    missingHeaders: [],
     ext: '',
     lintMode: false,
     updateHeaders() {
-        this.items.forEach((item) => {
+        let argumentsProcessed = 0
+        this.items.forEach((item, index, arr) => {
             fs.readFile(item, (err, data) => {
                 if (!this.hasCopyrightHeader(data)) {
                     if (this.lintMode === true) {
-                        console.log('\x1b[31m', 'ERROR: Missing Copyright Headers - Please run the copyright header tool in this project')
-                        process.exit(1)
+                        console.log(`\x1b[33m Missing copyright headers in \x1b[36m ${item}`)
+                        this.missingHeaders.push(item)
                     } else {
                         this.writeHeader(item, data)
                     }
+                }
+                argumentsProcessed++
+
+                // need to check lint status after all async
+                // file reads are finished
+                if (argumentsProcessed === arr.length && this.lintMode === true) {
+                    this.getLintStatus()
                 }
             })
         })
@@ -46,6 +52,14 @@ const copyright = {
             }
         })
     },
+    getLintStatus() {
+        if (this.missingHeaders.length > 0) {
+            console.log('\x1b[31m \x1b[40mERROR\x1b[49m - Please run the copyright headers tool in this project')
+            process.exit(1)
+        } else {
+            console.log('\x1b[36m Copyright Headers Present')
+        }
+    },
     run() {
         // Sets lint flag if the user provides --lint command line arg
         if (process.argv.indexOf('--lint') >= 0) {
@@ -56,8 +70,8 @@ const copyright = {
         // Need to add case for when the user does not provide any glob strings
         // i.e. node copyright.js
         if (process.argv.length <= 2) {
-            console.log('\x1b[36m', 'Please enter a list of globs to add copyrights to, followed by an optional --lint command')
-            console.log('\x1b[33m', 'example - "node copyright.js src/**/*.js --lint"')
+            console.log('\x1b[36m Please enter a list of globs to add copyrights to, followed by an optional --lint command')
+            console.log('\x1b[33m example - "node copyright.js src/**/*.js --lint"')
         }
 
         let argumentsProcessed = 0
@@ -69,6 +83,8 @@ const copyright = {
                     copyright.items.push(files[0])
                     argumentsProcessed++
 
+                    // Only update headers on last async glob call
+                    // once all items are pushed to copyright object
                     if (argumentsProcessed === args.length) {
                         copyright.updateHeaders()
                     }
