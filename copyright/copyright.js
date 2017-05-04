@@ -58,8 +58,7 @@ const copyright = {
             console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} is not supported (yet)`)
             process.exit(1)
         } else {
-            const textPath = path.join(__dirname, `./headers/${this.langs[ext]}`)
-            return fs.readFileSync(textPath).toString().replace('year', new Date().getFullYear())
+            return this.langs[ext]
         }
     },
     buildSupportedExtensions() {
@@ -68,7 +67,9 @@ const copyright = {
             .readdirSync(headerDir)
             .forEach((file) => {
                 const extension = file.match(/\.[0-9a-z]+$/i)[0]
-                this.langs[extension] = file
+                const textPath = path.join(headerDir, file)
+                const content = fs.readFileSync(textPath).toString().replace('year', new Date().getFullYear())
+                this.langs[extension] = content
             })
     }
 }
