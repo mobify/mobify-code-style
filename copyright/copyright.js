@@ -33,13 +33,13 @@ const copyright = {
         })
 
         Promise.all(processedGlobs).then((files) => {
-            const filesMissingHeader = files.filter((file) => {
-                const content = fs.readFileSync(file)
-                const copyrightStr = 'Copyright (c)'
-                const hasCopyrightHeader = content.indexOf(copyrightStr) >= 0
+            const filesContainingHeader = files.filter((file) => {
+                const hasCopyrightHeader = fs.readFileSync(file).includes('Copyright (c)')
                 const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
-                if (!hasCopyrightHeader) {
+                if (hasCopyrightHeader) {
+                    return true
+                } else {
                     if (this.lintMode) {
                         console.log(`${yellow}${file} ${red}missing copyright header`)
                         return false
@@ -49,12 +49,10 @@ const copyright = {
                         console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
                         return true
                     }
-                } else {
-                    return true
                 }
             })
 
-            if (filesMissingHeader.length !== files.length) {
+            if (filesContainingHeader.length !== files.length) {
                 console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
                 process.exit(1)
             } else {
@@ -75,7 +73,7 @@ const copyright = {
         const supportedHeaders = path.join(__dirname, './headers')
         fs.readdir(supportedHeaders, (err, filenames) => {
             filenames.forEach((file) => {
-                const extension = file.match(/\.[0-9a-z]+/i)[0]
+                const extension = file.match(/\.[0-9a-z]+$/i)[0]
                 this.langs[extension] = file
             })
         });
