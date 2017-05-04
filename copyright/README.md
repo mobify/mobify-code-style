@@ -32,13 +32,13 @@ npm run copyright:lint
 
 This will add copyright headers to _all_ `.js` files in the `src` directory in the root of your project.
 
-## Lint Mode
+## Fix Mode
 
-Passing the `--fix` flag to this tool will disable lint mode.
+Passing the `--fix` flag to this tool will enable fix mode.
 
-With lint mode enabled, the process will exit if any of the target directories contain files which do not have copyright headers.
+With fix mode enabled, the copyright headers will be added to each file that matches the glob and does not contain the headers.
 
-In fix mode, the tool will add the copyright headers to any targetted files.
+Without this flag, the tool is run in lint mode, which will exit the process if any of the target files do not contain the header.
 
 ### Developing
 

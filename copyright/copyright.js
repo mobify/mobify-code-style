@@ -21,10 +21,16 @@ let langs = {}
 let lintMode = true
 let error = false
 
+// we don't want to pass node and copyright.js directories to the glob
 const args = process.argv.filter((arg) => {
     return !/node|copyright/.test(arg)
 })
 
+/**
+ * getHeaderText - retrieve appropriate header file context from langs{} object
+ * @param  {String} ext file extension of desired header file
+ * @return {String}     content of appropriate header file
+ */
 const getHeaderText = (ext) => {
     if (!langs[ext]) {
         console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} is not supported (yet)`)
@@ -34,6 +40,11 @@ const getHeaderText = (ext) => {
     }
 }
 
+/**
+ * buildSupportedExtensions - initializes the langs{} object with the supported
+ * extensions, as well as their respective (c) header content
+ * @return {undefined} - populates the langs{} object
+ */
 const buildSupportedExtensions = () => {
     const headerDir = path.join(__dirname, './headers')
     fs
@@ -45,6 +56,7 @@ const buildSupportedExtensions = () => {
             langs[extension] = content
         })
 }
+
 
 if (args.length === 0 || args.indexOf('--help') >= 0) {
 
@@ -76,9 +88,10 @@ buildSupportedExtensions()
 
 args
     .map((folder) => glob.sync(folder))
-    .reduce((a, b) => a.concat(b))
+    .reduce((a, b) => a.concat(b)) // flatten array of arrays
     .forEach((file) => {
-        const content = fs.readFileSync(file)
+        let content = fs.readFileSync(file)
+
         const hasCopyrightHeader = content.includes('Copyright (c)')
         const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
@@ -87,7 +100,20 @@ args
                 console.log(`${yellow}${file} ${red}missing copyright header`)
                 error = true
             } else {
-                const newData = getHeaderText(ext) + content
+                const contentStr = content.toString().split('\n')
+                let shebang = ''
+                let newData = ''
+
+                // accomodate for shebang and insert before header
+                if (contentStr[0].indexOf('#!') >= 0) {
+                    shebang = contentStr.shift()
+                    content = contentStr.join('\n')
+
+                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + content
+                } else {
+                    newData = getHeaderText(ext) + '\n' + content
+                }
+
                 fs.writeFileSync(file, newData)
                 console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
             }
