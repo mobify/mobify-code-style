@@ -20,46 +20,45 @@ const args = process.argv.filter((arg) => {
 })
 
 const copyright = {
-    lintMode: false,
+    lintMode: true,
     langs: {},
     run() {
         this.buildSupportedExtensions()
+        let files = []
+
         const processedGlobs = args.map((folder) => {
-            return new Promise((resolve) => {
-                glob(`${folder}`, (err, file) => {
-                    resolve(file[0])
-                })
-            })
+            files.push(glob.sync(folder))
         })
 
-        Promise.all(processedGlobs).then((files) => {
-            const filesContainingHeader = files.filter((file) => {
-                const content = fs.readFileSync(file)
-                const hasCopyrightHeader = content.includes('Copyright (c)')
-                const ext = file.match(/\.[0-9a-z]+$/i)[0]
+        // flattens array of arrays returned by glob.sync
+        files = files.reduce((a, b) => a.concat(b))
 
-                if (hasCopyrightHeader) {
-                    return true
-                } else {
-                    if (this.lintMode) {
-                        console.log(`${yellow}${file} ${red}missing copyright header`)
-                        return false
-                    } else {
-                        const newData = this.getHeaderText(ext) + content
-                        fs.writeFileSync(file, newData)
-                        console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
-                        return true
-                    }
-                }
-            })
+        const filesContainingHeader = files.filter((file) => {
+            const content = fs.readFileSync(file)
+            const hasCopyrightHeader = content.includes('Copyright (c)')
+            const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
-            if (filesContainingHeader.length !== files.length) {
-                console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
-                process.exit(1)
+            if (hasCopyrightHeader) {
+                return true
             } else {
-                console.log(`${cyan}Copyright headers are present in target files`)
+                if (this.lintMode) {
+                    console.log(`${yellow}${file} ${red}missing copyright header`)
+                    return false
+                } else {
+                    const newData = this.getHeaderText(ext) + content
+                    fs.writeFileSync(file, newData)
+                    console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
+                    return true
+                }
             }
         })
+
+        if (filesContainingHeader.length !== files.length) {
+            console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
+            process.exit(1)
+        } else {
+            console.log(`${cyan}Copyright headers are present in target files`)
+        }
     },
     getHeaderText(ext) {
         if (!this.langs[ext]) {
@@ -71,13 +70,12 @@ const copyright = {
         }
     },
     buildSupportedExtensions() {
-        const supportedHeaders = path.join(__dirname, './headers')
-        fs.readdir(supportedHeaders, (err, filenames) => {
-            filenames.forEach((file) => {
-                const extension = file.match(/\.[0-9a-z]+$/i)[0]
-                this.langs[extension] = file
-            })
-        });
+        const headerDir = path.join(__dirname, './headers')
+        filenames = fs.readdirSync(headerDir)
+        filenames.forEach((file) => {
+            const extension = file.match(/\.[0-9a-z]+$/i)[0]
+            this.langs[extension] = file
+        })
     }
 }
 
@@ -87,11 +85,11 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
     Usage: node copyright.js [options] glob [additional globs]
 
     Example:
-        ${yellow}node copyright.js --lint${defaultFG} src/**/*.js
+        ${yellow}node copyright.js --fix${defaultFG} src/**/*.js
 
         Options:
 
-            --lint        enable lint mode
+            --fix        run in fix mode
 
     Visit ${cyan}https://github.com/mobify/mobify-code-style${defaultFG} to learn more.
 `)
@@ -99,10 +97,10 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
     process.exit(0)
 }
 
-// Sets lint flag if the user provides --lint command line arg
-if (args.indexOf('--lint') >= 0) {
-    args.splice(args.indexOf('--lint'), 1)
-    copyright.lintMode = true
+// Sets fix flag if the user provides --fix command line arg
+if (args.indexOf('--fix') >= 0) {
+    args.splice(args.indexOf('--fix'), 1)
+    copyright.lintMode = false
 }
 
 copyright.run()
