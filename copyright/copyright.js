@@ -24,36 +24,29 @@ const copyright = {
     langs: {},
     run() {
         this.buildSupportedExtensions()
-        let files = []
+        let error = false
 
-        const processedGlobs = args.map((folder) => {
-            files.push(glob.sync(folder))
-        })
+        args
+            .map((folder) => glob.sync(folder))
+            .reduce((a, b) => a.concat(b))
+            .forEach((file) => {
+                const content = fs.readFileSync(file)
+                const hasCopyrightHeader = content.includes('Copyright (c)')
+                const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
-        // flattens array of arrays returned by glob.sync
-        files = files.reduce((a, b) => a.concat(b))
-
-        const filesContainingHeader = files.filter((file) => {
-            const content = fs.readFileSync(file)
-            const hasCopyrightHeader = content.includes('Copyright (c)')
-            const ext = file.match(/\.[0-9a-z]+$/i)[0]
-
-            if (hasCopyrightHeader) {
-                return true
-            } else {
-                if (this.lintMode) {
-                    console.log(`${yellow}${file} ${red}missing copyright header`)
-                    return false
-                } else {
-                    const newData = this.getHeaderText(ext) + content
-                    fs.writeFileSync(file, newData)
-                    console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
-                    return true
+                if (!hasCopyrightHeader) {
+                    if (this.lintMode) {
+                        console.log(`${yellow}${file} ${red}missing copyright header`)
+                        error = true
+                    } else {
+                        const newData = this.getHeaderText(ext) + content
+                        fs.writeFileSync(file, newData)
+                        console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
+                    }
                 }
-            }
-        })
+            })
 
-        if (filesContainingHeader.length !== files.length) {
+        if (error) {
             console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
             process.exit(1)
         } else {
@@ -71,11 +64,12 @@ const copyright = {
     },
     buildSupportedExtensions() {
         const headerDir = path.join(__dirname, './headers')
-        filenames = fs.readdirSync(headerDir)
-        filenames.forEach((file) => {
-            const extension = file.match(/\.[0-9a-z]+$/i)[0]
-            this.langs[extension] = file
-        })
+        fs
+            .readdirSync(headerDir)
+            .forEach((file) => {
+                const extension = file.match(/\.[0-9a-z]+$/i)[0]
+                this.langs[extension] = file
+            })
     }
 }
 
