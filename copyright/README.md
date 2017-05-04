@@ -4,11 +4,11 @@ This tool reads from the `headers/copyright-header.extension` files to select wh
 
 ## Quick Start
 
-Add the following to your `package.json`
+Add the following to your `package.json` under `"scripts": { ... }`
 
 ```json
-"copyright:lint": "copyright 'glob'",
-"copyright:fix" "copyright 'glob' --fix",
+    "copyright:lint": "copyright 'glob'"
+    "copyright:fix" "copyright 'glob' --fix"
 ```
 
 ```bash
