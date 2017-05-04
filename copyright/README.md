@@ -1,4 +1,4 @@
-## Mobify Copyright Headers
+# Mobify Copyright Headers
 
 This tool reads from the `headers/copyright-header.extension` files to select what header to insert, where `extension` is the target file extension
 

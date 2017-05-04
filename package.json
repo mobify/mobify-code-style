@@ -12,7 +12,8 @@
     "url": "https://github.com/mobify/mobify-code-style/issues"
   },
   "bin": {
-    "lint-md": "docs/bin/lint-md"
+    "lint-md": "docs/bin/lint-md",
+    "copyright": "copyright/copyright.js"
   },
   "homepage": "https://github.com/mobify/mobify-code-style",
   "scripts": {
