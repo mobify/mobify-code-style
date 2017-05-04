@@ -34,7 +34,8 @@ const copyright = {
 
         Promise.all(processedGlobs).then((files) => {
             const filesContainingHeader = files.filter((file) => {
-                const hasCopyrightHeader = fs.readFileSync(file).includes('Copyright (c)')
+                const content = fs.readFileSync(file)
+                const hasCopyrightHeader = content.includes('Copyright (c)')
                 const ext = file.match(/\.[0-9a-z]+$/i)[0]
 
                 if (hasCopyrightHeader) {
