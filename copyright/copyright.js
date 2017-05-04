@@ -27,7 +27,6 @@ const copyright = {
     run() {
         this.buildSupportedExtensions()
         let error = false
-
         args
             .map((folder) => glob.sync(folder))
             .reduce((a, b) => a.concat(b))
@@ -79,10 +78,12 @@ const copyright = {
 if (args.length === 0 || args.indexOf('--help') >= 0) {
 
     console.log(`
-    Usage: node copyright.js [options] glob [additional globs]
+    Usage: node copyright.js [options] 'glob' ['additional globs']
+
+    If your glob is not targetting all nested directories, ensure that the glob string is wrapped in quotes
 
     Example:
-        ${yellow}node copyright.js --fix${defaultFG} src/**/*.js
+        ${yellow}node copyright.js --fix${defaultFG} 'src/**/*.js'
 
         Options:
 

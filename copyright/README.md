@@ -7,8 +7,8 @@ This tool reads from the `headers/copyright-header.extension` files to select wh
 Add the following to your `package.json`
 
 ```json
-"copyright:lint": "copyright glob",
-"copyright:fix" "copyright glob --fix",
+"copyright:lint": "copyright 'glob'",
+"copyright:fix" "copyright 'glob' --fix",
 ```
 
 ```bash
@@ -21,7 +21,7 @@ npm run copyright:lint
 Add the following to your `package.json` file
 
 ```json
-"copyright:fix": "copyright ./src/**/*.js --fix",
+"copyright:fix": "copyright './src/**/*.js' --fix",
 ```
 
 Then run
@@ -42,4 +42,4 @@ In fix mode, the tool will add the copyright headers to any targetted files.
 
 ### Developing
 
-`node --inspect --debug-brk copyright.js ../../some-project/source-folder/**/*.js`
+`node --inspect --debug-brk copyright.js '../../some-project/source-folder/**/*.js'`
