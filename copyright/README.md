@@ -1,14 +1,14 @@
 ## Mobify Copyright Headers
 
-This tool reads from the `headers/copyright.extension.txt` text files to select what header to insert, where `extension` is the target file extension
+This tool reads from the `headers/copyright-header.extension` files to select what header to insert, where `extension` is the target file extension
 
 ## Quick Start
 
 Add the following to your `package.json`
 
 ```json
-"copyright:lint": "copyright.js glob --lint",
-"copyright:fix" "copyright.js glob"
+"copyright:lint": "copyright.js glob",
+"copyright:fix" "copyright.js glob --fix"
 ```
 
 ```bash
@@ -22,13 +22,15 @@ npm run lint:copyright
 node copyright.js ../../some-project/bin/**/*.js
 ```
 
-This command would add the copyright header from `headers/copyright.js.txt` to all `.js` files in the  `some-project/bin` directory
+This command would add the copyright header from `headers/copyright-header.js` to all `.js` files in the  `some-project/bin` directory
 
 ## Lint Mode
 
-Passing the `--lint` flag to this tool will enable lint mode.
+Passing the `--fix` flag to this tool will disable lint mode.
 
 With lint mode enabled, the process will exit if any of the target directories contain files which do not have copyright headers.
+
+In fix mode, the tool will add the copyright headers to any targetted files.
 
 ### Developing
 
