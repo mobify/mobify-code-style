@@ -7,22 +7,30 @@ This tool reads from the `headers/copyright-header.extension` files to select wh
 Add the following to your `package.json`
 
 ```json
-"copyright:lint": "copyright.js glob",
-"copyright:fix" "copyright.js glob --fix"
+"copyright:lint": "copyright glob",
+"copyright:fix" "copyright glob --fix",
 ```
 
 ```bash
 npm install mobify-code-style --save
-npm run lint:copyright
+npm run copyright:lint
 ```
 
 ## Example
 
-```bash
-node copyright.js ../../some-project/bin/**/*.js
+Add the following to your `package.json` file
+
+```json
+"copyright:fix": "copyright ./src/**/*.js --fix",
 ```
 
-This command would add the copyright header from `headers/copyright-header.js` to all `.js` files in the  `some-project/bin` directory
+Then run
+
+```bash
+npm run copyright:lint
+```
+
+This will add copyright headers to _all_ `.js` files in the `src` directory in the root of your project.
 
 ## Lint Mode
 
