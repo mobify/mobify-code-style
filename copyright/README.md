@@ -47,7 +47,7 @@ With fix mode enabled, the copyright headers will be added to each file that mat
 
 Passing the `--update` flag to this tool will enable update mode.
 
-With fix mode enabled, the copyright headers will be updated to the current year in each file that matches the glob and contains headers.
+With update mode enabled, the copyright headers will be updated to the current year in each file that matches the glob and already contains headers.
 
 ### Developing
 
