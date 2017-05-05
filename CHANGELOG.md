@@ -1,5 +1,3 @@
-## To be released
-
 ## v2.7.4 (February 2, 2017)
 - Add new classname prefixes to CSS documentation: `pw-` and `qa-`
 - Add links to alternative CSSComb text editor plugins
