@@ -1,4 +1,4 @@
-## To be released
+## v2.8.0 (May 5, 2017)
 - Adds new copyright-header management tool
 
 ## v2.7.4 (February 2, 2017)
