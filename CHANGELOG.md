@@ -1,6 +1,6 @@
-## 2.8.0 (May 3, 2017)
+## To be released
 - Adds new copyright-header management tool
-    
+
 ## v2.7.4 (February 2, 2017)
 - Add new classname prefixes to CSS documentation: `pw-` and `qa-`
 - Add links to alternative CSSComb text editor plugins
