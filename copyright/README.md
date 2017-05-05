@@ -2,7 +2,7 @@
 
 This tool reads from the `headers/copyright-header.extension` files to select what header to insert, where `extension` is the target file extension
 
-**NOTE**: For any new `copyright-header.extension` files, write `Copyright (c) year` instead of writing the numerical year, the tool will find and replace `year` with the current year.
+For any new `copyright-header.extension` files, write `Copyright (c) year` instead of writing the numerical year, as the tool will find and replace `year` with the current year.
 
 ## Quick Start
 
@@ -13,6 +13,11 @@ Add the following to your `package.json` under `"scripts": { ... }`
     "copyright:fix" "copyright 'glob' --fix",
     "copyright:update" "copyright 'glob' --update"
 ```
+
+**NOTE**: The glob must be wrapped in single quotes to ensure that the globbing is handled by the copyright tool.
+
+Without wrapping the glob pattern in single quotes, your shell will expand the glob, and may not return the same directories across different environments.
+
 
 ```bash
 npm install mobify-code-style --save

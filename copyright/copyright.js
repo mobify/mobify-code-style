@@ -69,7 +69,7 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
     console.log(`
     Usage: node copyright.js [options] 'glob' ['additional globs']
 
-    If your glob is not targetting all nested directories, ensure that the glob string is wrapped in quotes
+    If your glob is not targetting all nested directories, ensure that the glob string is wrapped in single quotes
 
     Example:
         ${yellow}node copyright.js --fix${defaultFG} 'src/**/*.js'
