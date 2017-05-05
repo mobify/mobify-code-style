@@ -2,6 +2,8 @@
 
 This tool reads from the `headers/copyright-header.extension` files to select what header to insert, where `extension` is the target file extension
 
+**NOTE**: For any new `copyright-header.extension` files, write `Copyright (c) year` instead of writing the numerical year, the tool will find and replace `year` with the current year.
+
 ## Quick Start
 
 Add the following to your `package.json` under `"scripts": { ... }`
