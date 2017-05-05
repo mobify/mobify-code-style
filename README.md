@@ -104,3 +104,10 @@ instructions on using `pep8`, `pylint` and `pyflakes` to check Python code.
 ## Documentation
 
 See the [`docs`](docs) directory for setup and configuration of Markdown linting.
+
+
+## Copyright Headers
+
+All Mobify source files should contain copyright headers at the beginning of the file.
+
+See the [`copyright`](copyright) directory for setup and configuration of the copyright manager tool
