@@ -16,9 +16,11 @@ const cyan = '\x1b[36m'
 const blackBG = '\x1b[40m'
 const defaultBG = '\x1b[49m'
 const defaultFG = '\x1b[39m'
+const currentYear = new Date().getFullYear()
 
 let langs = {}
 let lintMode = true
+let updateMode = false
 let error = false
 
 // we don't want to pass node and copyright.js directories to the glob
@@ -52,7 +54,7 @@ const buildSupportedExtensions = () => {
         .forEach((file) => {
             const extension = file.match(/\.[0-9a-z]+$/i)[0]
             const textPath = path.join(headerDir, file)
-            const content = fs.readFileSync(textPath).toString().replace('year', new Date().getFullYear())
+            const content = fs.readFileSync(textPath).toString().replace('year', currentYear)
             langs[extension] = content
         })
 }
@@ -71,6 +73,7 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
         Options:
 
             --fix        run in fix mode
+            --update     update the year in existing headers
 
     Visit ${cyan}https://github.com/mobify/mobify-code-style${defaultFG} to learn more.
 `)
@@ -84,32 +87,41 @@ if (args.indexOf('--fix') >= 0) {
     lintMode = false
 }
 
+if (args.indexOf('--update') >= 0) {
+    args.splice(args.indexOf('--update'), 1)
+    updateMode = true
+}
+
 buildSupportedExtensions()
 
 args
-    .map((folder) => glob.sync(folder))
-    .reduce((a, b) => a.concat(b)) // flatten array of arrays
+    .map((folder) => glob.sync(folder)) // build array of files matching glob pattern
+    .reduce((a, b) => a.concat(b))      // flatten array of arrays
     .forEach((file) => {
-        let content = fs.readFileSync(file)
-
+        const content = fs.readFileSync(file)
         const hasCopyrightHeader = content.includes('Copyright (c)')
         const ext = file.match(/\.[0-9a-z]+$/i)[0]
+
+        let newData = ''
+
+        if (hasCopyrightHeader && updateMode) {
+            newData = content.toString().replace(/(\(c\)\s)(\d{4})/, '$1' + currentYear)
+            fs.writeFileSync(file, newData)
+            console.log(`${green}Copyright header succesfully updated to ${currentYear} in ${magenta}${file}`)
+        }
 
         if (!hasCopyrightHeader) {
             if (lintMode) {
                 console.log(`${yellow}${file} ${red}missing copyright header`)
                 error = true
             } else {
-                const contentStr = content.toString().split('\n')
-                let shebang = ''
-                let newData = ''
+                let contentStr = content.toString().split('\n')
 
                 // accomodate for shebang and insert before header
                 if (contentStr[0].indexOf('#!') >= 0) {
-                    shebang = contentStr.shift()
-                    content = contentStr.join('\n')
-
-                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + content
+                    const shebang = contentStr.shift()
+                    contentStr = contentStr.join('\n')
+                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + contentStr
                 } else {
                     newData = getHeaderText(ext) + '\n' + content
                 }

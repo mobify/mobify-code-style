@@ -7,8 +7,9 @@ This tool reads from the `headers/copyright-header.extension` files to select wh
 Add the following to your `package.json` under `"scripts": { ... }`
 
 ```json
-    "copyright:lint": "copyright 'glob'"
-    "copyright:fix" "copyright 'glob' --fix"
+    "copyright:lint": "copyright 'glob'",
+    "copyright:fix" "copyright 'glob' --fix",
+    "copyright:update" "copyright 'glob' --update"
 ```
 
 ```bash
@@ -27,18 +28,26 @@ Add the following to your `package.json` file
 Then run
 
 ```bash
-npm run copyright:lint
+npm run copyright:fix
 ```
 
 This will add copyright headers to _all_ `.js` files in the `src` directory in the root of your project.
 
-## Fix Mode
+## Options
+
+Without any flags, the tool is run in lint mode, which will exit the process if any of the target files do not contain the header.
+
+### Fix Mode
 
 Passing the `--fix` flag to this tool will enable fix mode.
 
 With fix mode enabled, the copyright headers will be added to each file that matches the glob and does not contain the headers.
 
-Without this flag, the tool is run in lint mode, which will exit the process if any of the target files do not contain the header.
+### Update Mode
+
+Passing the `--update` flag to this tool will enable update mode.
+
+With fix mode enabled, the copyright headers will be updated to the current year in each file that matches the glob and contains headers.
 
 ### Developing
 
