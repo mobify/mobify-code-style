@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/mobify/mobify-code-style",
   "scripts": {
-    "test": "cd docs/test; bash test.sh"
+    "test": "scripts/test.sh"
   },
   "dependencies": {
     "glob": "^7.1.1",
