@@ -16,9 +16,10 @@ const cyan = '\x1b[36m'
 const blackBG = '\x1b[40m'
 const defaultBG = '\x1b[49m'
 const defaultFG = '\x1b[39m'
-const currentYear = new Date().getFullYear()
 
-let langs = {}
+const currentYear = new Date().getFullYear()
+const langs = {}
+
 let lintMode = true
 let updateMode = false
 let error = false
@@ -37,9 +38,8 @@ const getHeaderText = (ext) => {
     if (!langs[ext]) {
         console.log(`${red}${blackBG}ERROR${defaultBG} - ${ext} is not supported (yet)`)
         process.exit(1)
-    } else {
-        return langs[ext]
     }
+    return langs[ext]
 }
 
 /**
@@ -54,7 +54,11 @@ const buildSupportedExtensions = () => {
         .forEach((file) => {
             const extension = file.match(/\.[0-9a-z]+$/i)[0]
             const textPath = path.join(headerDir, file)
-            const content = fs.readFileSync(textPath).toString().replace('year', currentYear)
+            const content = fs
+                              .readFileSync(textPath)
+                              .toString()
+                              .replace('year', currentYear)
+
             langs[extension] = content
         })
 }
@@ -105,7 +109,7 @@ args
         let newData = ''
 
         if (hasCopyrightHeader && updateMode) {
-            newData = content.toString().replace(/(\(c\)\s)(\d{4})/, '$1' + currentYear)
+            newData = content.toString().replace(/(\(c\)\s)(\d{4})/, `$1 ${currentYear}`)
             fs.writeFileSync(file, newData)
             console.log(`${green}Copyright header succesfully updated to ${currentYear} in ${magenta}${file}`)
         }
@@ -121,9 +125,9 @@ args
                 if (contentStr[0].indexOf('#!') >= 0) {
                     const shebang = contentStr.shift()
                     contentStr = contentStr.join('\n')
-                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + contentStr
+                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
                 } else {
-                    newData = getHeaderText(ext) + '\n' + content
+                    newData = getHeaderText(ext) + `\n${content}`  // eslint-disable-line prefer-template
                 }
 
                 fs.writeFileSync(file, newData)
