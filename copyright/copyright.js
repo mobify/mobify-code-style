@@ -69,11 +69,11 @@ const buildSupportedExtensions = () => {
  * @return {String}         new file with no leading \n
  */
 const removeLeadingNewlines = (content) => {
-    if (content[0] === '') {
-        content.shift()
-        removeLeadingNewlines(content)
+    if (content[0] !== '') {
+        return content
     }
-    return content
+    content.shift()
+    return removeLeadingNewlines(content)
 }
 
 if (args.length === 0 || args.indexOf('--help') >= 0) {
