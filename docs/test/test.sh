@@ -31,6 +31,6 @@ EXIT_BAD_FILENAME=$?
 # This if will fall apart quickly as we add more test cases.
 # Need to consider some type of looping, etc possibly.
 if [ "$EXIT_GOOD" -ne "0" ] || [ "$EXIT_BAD" -ne "0" ] || [ "$EXIT_BAD_FILENAME" -ne "0" ]; then
-    echo "One or more tests failed!"
+    echo "One or more tests failed! Good: $EXIT_GOOD  Bad: $EXIT_BAD  Bad Filename: $EXIT_BAD_FILENAME"
     exit 1
 fi
