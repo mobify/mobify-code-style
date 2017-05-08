@@ -1,3 +1,7 @@
+## To be released
+- Fixes whitespace / newline management in copyright tool
+- Fix to additional space added when --update flag passed into copyright tool
+
 ## v2.8.0 (May 5, 2017)
 - Adds new copyright-header management tool
 
