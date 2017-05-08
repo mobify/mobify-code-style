@@ -15,7 +15,10 @@ LINT_MD="$TEST_DIR/../bin/lint-md"
 #"$LINT_MD" "$TEST_DIR/a-bad-filename.md" --no-color > "$TEST_DIR/a-bad-filename.expected.md" 2>&1
 
 # Compare remark output with expected output. Fail on diff.
+set -x
 echo "Testing good.md ..."
+"$LINT_MD" "$TEST_DIR/good.md" --no-color
+diff good.md bad.md
 diff <("$LINT_MD" "$TEST_DIR/good.md" --no-color 2>&1) "$TEST_DIR/good.expected.md"
 EXIT_GOOD=$?
 echo "good.md -> $EXIT_GOOD"
