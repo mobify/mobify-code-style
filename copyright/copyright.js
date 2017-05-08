@@ -16,7 +16,7 @@ const blackBG = '\x1b[40m'
 const defaultBG = '\x1b[49m'
 const defaultFG = '\x1b[39m'
 
-const currentYear = 2018 // new Date().getFullYear()
+const currentYear = new Date().getFullYear()
 const langs = {}
 
 let lintMode = true
