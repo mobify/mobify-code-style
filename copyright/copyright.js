@@ -138,11 +138,9 @@ args
                 // accomodate for shebang and insert before header
                 if (contentStr[0].indexOf('#!') >= 0) {
                     const shebang = contentStr.shift()
-                    debugger
                     contentStr = removeLeadingNewlines(contentStr).join('\n')
                     newData = shebang + '\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
                 } else {
-                    debugger
                     contentStr = removeLeadingNewlines(contentStr).join('\n')
                     newData = getHeaderText(ext) + `\n${contentStr}`  // eslint-disable-line prefer-template
                 }
