@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:6.10.3
+    working_directory: /home/ubuntu/mobify-code-style
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              # NPM login based on env variables
+              echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+              npm publish
+            fi
