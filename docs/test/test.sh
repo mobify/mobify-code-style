@@ -17,8 +17,8 @@ LINT_MD="$TEST_DIR/../bin/lint-md"
 # Compare remark output with expected output. Fail on diff.
 set -x
 echo "Testing good.md ..."
-"$LINT_MD" "$TEST_DIR/good.md" --no-color
-diff good.md bad.md
+"$LINT_MD" "$TEST_DIR/good.md" --no-color 2>&1
+echo "*******************"
 diff <("$LINT_MD" "$TEST_DIR/good.md" --no-color 2>&1) "$TEST_DIR/good.expected.md"
 EXIT_GOOD=$?
 echo "good.md -> $EXIT_GOOD"
