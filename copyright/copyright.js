@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
 /* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
@@ -63,6 +62,19 @@ const buildSupportedExtensions = () => {
         })
 }
 
+/**
+ * Removes extra \n characters from the top of any files
+ * to ensure more consistent spacing between copyright headers
+ * @param  {String} content original file to edit
+ * @return {String}         new file with no leading \n
+ */
+const removeLeadingNewlines = (content) => {
+    if (content[0] !== '') {
+        return content
+    }
+    content.shift()
+    return removeLeadingNewlines(content)
+}
 
 if (args.length === 0 || args.indexOf('--help') >= 0) {
 
@@ -105,13 +117,15 @@ args
         const content = fs.readFileSync(file)
         const hasCopyrightHeader = content.includes('Copyright (c)')
         const ext = file.match(/\.[0-9a-z]+$/i)[0]
-
         let newData = ''
 
         if (hasCopyrightHeader && updateMode) {
-            newData = content.toString().replace(/(\(c\)\s)(\d{4})/, `$1 ${currentYear}`)
-            fs.writeFileSync(file, newData)
-            console.log(`${green}Copyright header succesfully updated to ${currentYear} in ${magenta}${file}`)
+            let previousHeaderYear = content.toString().match(/(?:\(c\))(?:\s)(\d{4})/)[1]
+            if (previousHeaderYear !== currentYear.toString()) {
+                newData = content.toString().replace(`(c) ${previousHeaderYear}`, `(c) ${currentYear}`)
+                fs.writeFileSync(file, newData)
+                console.log(`${green}Copyright header succesfully updated from ${previousHeaderYear} to ${currentYear} in ${magenta}${file}`)
+            }
         }
 
         if (!hasCopyrightHeader) {
@@ -124,10 +138,11 @@ args
                 // accomodate for shebang and insert before header
                 if (contentStr[0].indexOf('#!') >= 0) {
                     const shebang = contentStr.shift()
-                    contentStr = contentStr.join('\n')
-                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
+                    contentStr = removeLeadingNewlines(contentStr).join('\n')
+                    newData = shebang + '\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
                 } else {
-                    newData = getHeaderText(ext) + `\n${content}`  // eslint-disable-line prefer-template
+                    contentStr = removeLeadingNewlines(contentStr).join('\n')
+                    newData = getHeaderText(ext) + `\n${contentStr}`  // eslint-disable-line prefer-template
                 }
 
                 fs.writeFileSync(file, newData)
