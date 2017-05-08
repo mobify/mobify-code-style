@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
 /* Copyright (c) 2017 Mobify Research & Development Inc. All rights reserved. */
 /* * *  *  * *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  * */
@@ -17,7 +16,7 @@ const blackBG = '\x1b[40m'
 const defaultBG = '\x1b[49m'
 const defaultFG = '\x1b[39m'
 
-const currentYear = new Date().getFullYear()
+const currentYear = 2018 // new Date().getFullYear()
 const langs = {}
 
 let lintMode = true
@@ -105,13 +104,15 @@ args
         const content = fs.readFileSync(file)
         const hasCopyrightHeader = content.includes('Copyright (c)')
         const ext = file.match(/\.[0-9a-z]+$/i)[0]
-
         let newData = ''
 
         if (hasCopyrightHeader && updateMode) {
-            newData = content.toString().replace(/(\(c\)\s)(\d{4})/, `$1 ${currentYear}`)
-            fs.writeFileSync(file, newData)
-            console.log(`${green}Copyright header succesfully updated to ${currentYear} in ${magenta}${file}`)
+            let previousHeaderYear = content.toString().match(/(?:\(c\))(?:\s)(\d{4})/)[1]
+            if (previousHeaderYear !== currentYear.toString()) {
+                newData = content.toString().replace(`(c) ${previousHeaderYear}`, `(c) ${currentYear}`)
+                fs.writeFileSync(file, newData)
+                console.log(`${green}Copyright header succesfully updated from ${previousHeaderYear} to ${currentYear} in ${magenta}${file}`)
+            }
         }
 
         if (!hasCopyrightHeader) {
@@ -125,7 +126,7 @@ args
                 if (contentStr[0].indexOf('#!') >= 0) {
                     const shebang = contentStr.shift()
                     contentStr = contentStr.join('\n')
-                    newData = shebang + '\n\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
+                    newData = shebang + '\n' + getHeaderText(ext) + '\n' + contentStr // eslint-disable-line prefer-template
                 } else {
                     newData = getHeaderText(ext) + `\n${content}`  // eslint-disable-line prefer-template
                 }
