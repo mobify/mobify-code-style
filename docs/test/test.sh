@@ -18,19 +18,22 @@ LINT_MD="$TEST_DIR/../bin/lint-md"
 echo "Testing good.md ..."
 diff <("$LINT_MD" "$TEST_DIR/good.md" --no-color 2>&1) "$TEST_DIR/good.expected.md"
 EXIT_GOOD=$?
+echo "good.md -> $EXIT_GOOD"
 
 echo "Testing bad.md ..."
 diff <("$LINT_MD" "$TEST_DIR/bad.md" --no-color 2>&1) "$TEST_DIR/bad.expected.md"
 EXIT_BAD=$?
+echo "bad.md -> $EXIT_BAD"
 
 echo "Testing a-bad-filename.expected.md ..."
 diff <("$LINT_MD" "$TEST_DIR/a-bad-filename.md" --no-color 2>&1) "$TEST_DIR/a-bad-filename.expected.md"
 EXIT_BAD_FILENAME=$?
+echo "a-bad-filename.md -> $EXIT_BAD_FILENAME"
 
 # Fail if either diff failed.
 # This if will fall apart quickly as we add more test cases.
 # Need to consider some type of looping, etc possibly.
 if [ "$EXIT_GOOD" -ne "0" ] || [ "$EXIT_BAD" -ne "0" ] || [ "$EXIT_BAD_FILENAME" -ne "0" ]; then
-    echo "One or more tests failed!"
+    echo "One or more tests failed! $EXIT_GOOD $EXIT_BAD $EXIT_BAD_FILENAME"
     exit 1
 fi
