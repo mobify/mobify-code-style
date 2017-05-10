@@ -152,7 +152,7 @@ args
     })
 
 if (error) {
-    console.log(`${red}${blackBG}ERROR${defaultBG} - Please run the copyright headers tool in this project`)
+    console.log(`${red}${blackBG}ERROR${defaultBG} - Some source files are missing copyright headers. Please run 'copyright --fix' on these files. Mobify projects are configured with an npm run task named 'copyright:fix' that you can use to do this.`)
     process.exit(1)
 } else {
     console.log(`${cyan}Copyright headers are present in target files`)
