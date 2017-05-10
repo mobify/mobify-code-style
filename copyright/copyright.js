@@ -20,6 +20,7 @@ const currentYear = new Date().getFullYear()
 const langs = {}
 
 let lintMode = true
+let updateMode = false
 let error = false
 
 // we don't want to pass node and copyright.js directories to the glob
@@ -88,6 +89,7 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
         Options:
 
             --fix        run in fix mode
+            --update     update the year in existing headers
 
     Visit ${cyan}https://github.com/mobify/mobify-code-style${defaultFG} to learn more.
 `)
@@ -101,6 +103,11 @@ if (args.indexOf('--fix') >= 0) {
     lintMode = false
 }
 
+if (args.indexOf('--update') >= 0) {
+    args.splice(args.indexOf('--update'), 1)
+    updateMode = true
+}
+
 buildSupportedExtensions()
 
 args
@@ -112,7 +119,7 @@ args
         const ext = file.match(/\.[0-9a-z]+$/i)[0]
         let newData = ''
 
-        if (hasCopyrightHeader && !lintMode) {
+        if (hasCopyrightHeader && updateMode) {
             let previousHeaderYear = content.toString().match(/(?:\(c\))(?:\s)(\d{4})/)[1]
             if (previousHeaderYear !== currentYear.toString()) {
                 newData = content.toString().replace(`(c) ${previousHeaderYear}`, `(c) ${currentYear}`)
