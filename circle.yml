@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: node:6.10.3
+    working_directory: /home/ubuntu/mobify-code-style
+    steps:
+      - checkout
+      - run: npm install
+        # npm outputs extra info on... ?linux? that breaks the diffs in docs/test/
+        # test.sh causing tests to fail on CircleCI only, but not on a macOS. As a
+        # result we use `--quiet` to suppress this npm output.
+      - run: npm test --quiet 
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              # NPM login based on env variables
+              echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+              npm publish
+            fi

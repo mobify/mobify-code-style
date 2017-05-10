@@ -1,4 +1,4 @@
-## To be released
+## v2.8.1 (May 8, 2017)
 - Fixes whitespace / newline management in copyright tool
 - Fix to additional space added when --update flag passed into copyright tool
 
