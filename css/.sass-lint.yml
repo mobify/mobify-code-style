@@ -5,7 +5,6 @@ files:
   ignore:
       - '**/node_modules/**/*.scss'
       - '**/bower_components/**/*.scss'
-      - 'app/global/styles/base/**/*.scss'
 options:
   formatter: stylish
   merge-default-rules: false
