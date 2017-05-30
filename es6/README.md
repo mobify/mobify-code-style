@@ -94,10 +94,14 @@ class DatePicker {
 All other symbols (methods, variables, constants within a method) should be `camelCased`!
 
 ```javascript
-// GOOD
+// GOOD - importing a function
 import {addToCart} from './actions'
 
+// GOOD - exporting a function
+export const receiveProductData = createAction('Receive Product Data')
+
 class MyClass {
+	// GOOD - local constant within class
     const name = 'Button'
     render() { ... }
 }
