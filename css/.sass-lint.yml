@@ -67,14 +67,12 @@ rules:
   no-color-literals: 0
   no-css-comments: 2
   no-debug: 2
-  no-disallowed-properties:
-    - 2
-    - properties: ['behavior', 'binding', 'filter', '-moz-']
+  no-disallowed-properties: 0
   no-duplicate-properties: 2
   no-empty-rulesets: 0
   no-extends: 0
   no-ids: 0
-  no-important: 1 # only warn: encourage to not use !important so can easily share styles with AMP
+  no-important: 0
   no-invalid-hex: 2
   no-mergeable-selectors:
     - 2
