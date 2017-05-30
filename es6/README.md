@@ -53,7 +53,7 @@ read-only (`false`) or read-write (`true`).
 
 ## Naming
 
-Classes and constructor functions should be TitleCased
+Classes and constructor functions should be `TitleCased`
 
 ```javascript
 // GOOD
@@ -65,7 +65,10 @@ var LinkLabel = function() { }
 class linkLabel { }
 ```
 
-Constant values that appear outside of a method scope should be in ALL_CAPS
+Constant values that appear outside of a method scope and truly represent "data"
+that is constant (ie. it isn't something that is expected to be mutated during
+the app lifecycle), should be in `ALL_CAPS`. This means that things like global
+functions would still be `camelCased`. See examples below.
 
 ```javascript
 // GOOD
@@ -88,10 +91,12 @@ class DatePicker {
 }
 ```
 
-All other symbols (methods, variables, constants within a method) should be camelCased!
+All other symbols (methods, variables, constants within a method) should be `camelCased`!
 
 ```javascript
 // GOOD
+import {addToCart} from './actions'
+
 class MyClass {
     const name = 'Button'
     render() { ... }
