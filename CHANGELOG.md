@@ -1,4 +1,4 @@
-## To be released
+## v2.8.2 (May 31, 2017)
 - Provided more detailed linting error message in copyright header tool
 - Set sass linting rules to un-ignore base styles
 
