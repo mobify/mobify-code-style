@@ -1,4 +1,4 @@
-## To be released
+## v2.8.3 (May 31, 2017)
 - Set sass linting rules to un-ignore base styles
 
 ## v2.8.2 (May 31, 2017)
