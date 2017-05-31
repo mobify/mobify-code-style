@@ -1,6 +1,6 @@
-## v2.8.2 (May 30, 2017)
+## To be released
 - Provided more detailed linting error message in copyright header tool
-- Remove ignore styles in base folder.
+- Set sass linting rules to un-ignore base styles
 
 ## v2.8.1 (May 8, 2017)
 - Fixes whitespace / newline management in copyright tool
