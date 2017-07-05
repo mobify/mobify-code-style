@@ -71,7 +71,7 @@ the app lifecycle), should be in `ALL_CAPS`. This means that things like global
 functions would still be `camelCased`. See examples below.
 
 ```javascript
-// GOOD
+// GOOD: constant data
 export const DEFAULT_NAME = 'Element'
 
 const STATE_CALLBACKS = {
@@ -80,34 +80,40 @@ const STATE_CALLBACKS = {
     archived: sendArchivedResponse
 }
 
-// BAD
+// BAD: constant data should be ALL_CAPS
 export const defaultName = 'Element'
 
 class DatePicker {
     render() {
-        // WRONG: constant is within a method
+        // BAD: constant is within a method and should be camelCased
         const DEFAULT_VALUE = 0
     }
 }
 ```
 
-All other symbols (methods, variables, constants within a method) should be `camelCased`!
+All other symbols (methods, variables, and constants within a method) should be `camelCased`!
 
 ```javascript
-// GOOD - importing a function
-import {addToCart} from './actions'
+// BAD - functions aren't "data" or a "class" and so shouldn't be TitleCase
+export const ReceiveProductData = createAction('Receive Product Data')
 
-// GOOD - exporting a function
+// GOOD - exporting a function with camelCase name
 export const receiveProductData = createAction('Receive Product Data')
 
-class MyClass {
-	// GOOD - local constant within class
-    const name = 'Button'
-    render() { ... }
-}
 
 // BAD - `const` outside of a method should be ALL_CAPS
 const defaultName = 'Element'
+
+// BAD - Not a constructor function and so should be camelCase
+const AddToCart = () => { console.log('Adding to cart') }
+
+// GOOD - local constants within class or function
+class MyClass {
+    const name = 'Button'
+    render() {
+        const button = <Button name={name} />
+    }
+}
 ```
 
 ## Overriding Lint Rules
