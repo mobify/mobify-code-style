@@ -76,6 +76,12 @@ rules:
   func-style:
     - error
     - expression
+  new-cap:
+    - error
+    - 
+      newIsCap: true
+      capIsNew: true
+      properties: false
   new-parens: error
   no-alert: error
   no-labels: error
