@@ -148,3 +148,14 @@ Message codes can be found [here](http://pylint-messages.wikidot.com/all-codes).
 Disable works for the block in which they are found, so include it at the module
 level to disable a message for a module or file.
 
+## Docstrings
+
+We don't have a company-wide standard for Docstrings, but if you're
+starting a new project, a good choice is the [Google style](https://google.github.io/styleguide/pyguide.html#Comments).
+The official Google documentation isn't always easy to follow, but there
+is an example file in [`example_google.py`](./example_google.py), in this repository.
+
+Using correct `Args` and `Returns` descriptions in your code will make it
+easier for you (or others) to work with many IDEs and code-aware editors
+that can infer the types of parameters and return values for you.
+
