@@ -24,6 +24,12 @@ rules:
   import/no-unresolved: 'off'
   no-duplicate-imports: error
 
+  # Enforce some ordering of imports
+  import/order:
+    - error
+    - newlines-between: always
+  import/first: error
+
   # Stick with ES6 module syntax
   import/no-amd: error
   import/no-commonjs: error
