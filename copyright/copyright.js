@@ -81,7 +81,7 @@ if (args.length === 0 || args.indexOf('--help') >= 0) {
     console.log(`
     Usage: node copyright.js [options] 'glob' ['additional globs']
 
-    If your glob is not targetting all nested directories, ensure that the glob string is wrapped in single quotes
+    If your glob is not targeting all nested directories, ensure that the glob string is wrapped in single quotes
 
     Example:
         ${yellow}node copyright.js --fix${defaultFG} 'src/**/*.js'
@@ -124,7 +124,7 @@ args
             if (previousHeaderYear !== currentYear.toString()) {
                 newData = content.toString().replace(`(c) ${previousHeaderYear}`, `(c) ${currentYear}`)
                 fs.writeFileSync(file, newData)
-                console.log(`${green}Copyright header succesfully updated from ${previousHeaderYear} to ${currentYear} in ${magenta}${file}`)
+                console.log(`${green}Copyright header successfully updated from ${previousHeaderYear} to ${currentYear} in ${magenta}${file}`)
             }
         }
 
@@ -135,7 +135,7 @@ args
             } else {
                 let contentStr = content.toString().split('\n')
 
-                // accomodate for shebang and insert before header
+                // accommodate for shebang and insert before header
                 if (contentStr[0].indexOf('#!') >= 0) {
                     const shebang = contentStr.shift()
                     contentStr = removeLeadingNewlines(contentStr).join('\n')
@@ -146,7 +146,7 @@ args
                 }
 
                 fs.writeFileSync(file, newData)
-                console.log(`${green}Copyright header succesfully written into ${magenta}${file}`)
+                console.log(`${green}Copyright header successfully written into ${magenta}${file}`)
             }
         }
     })
