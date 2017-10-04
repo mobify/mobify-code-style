@@ -47,7 +47,7 @@ const getHeaderText = (ext) => {
  * @return {undefined} - populates the langs{} object
  */
 const buildSupportedExtensions = () => {
-    const headerDir = path.join(__dirname, './headers')
+    const headerDir = path.join(__dirname, 'headers')
     fs
         .readdirSync(headerDir)
         .forEach((file) => {
