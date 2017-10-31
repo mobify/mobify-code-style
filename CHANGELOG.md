@@ -1,3 +1,6 @@
+## To be released
+- Add support to copyright tooling for TypeScript files (.ts, .tsx) [#164](https://github.com/mobify/mobify-code-style/pull/164)
+
 ## v2.8.3 (May 31, 2017)
 - Set sass linting rules to un-ignore base styles
 
