@@ -51,6 +51,71 @@ globals:
 The boolean value indicates whether the global is to be treated as
 read-only (`false`) or read-write (`true`).
 
+## Naming
+
+Classes and constructor functions should be `TitleCased`
+
+```javascript
+// GOOD
+class DatePicker { }
+
+var LinkLabel = function() { }
+
+// BAD
+class linkLabel { }
+```
+
+Constant values that appear outside of a method scope and truly represent "data"
+that is constant (ie. it isn't something that is expected to be mutated during
+the app lifecycle), should be in `ALL_CAPS`. This means that things like global
+functions would still be `camelCased`. See examples below.
+
+```javascript
+// GOOD: constant data
+export const DEFAULT_NAME = 'Element'
+
+const STATE_CALLBACKS = {
+    pending: sendPendingResponse,
+    completed: sendCompletedResponse,
+    archived: sendArchivedResponse
+}
+
+// BAD: constant data should be ALL_CAPS
+export const defaultName = 'Element'
+
+class DatePicker {
+    render() {
+        // BAD: constant is within a method and should be camelCased
+        const DEFAULT_VALUE = 0
+    }
+}
+```
+
+All other symbols (methods, variables, and constants within a method) should be `camelCased`!
+
+```javascript
+// BAD - functions aren't "data" or a "class" and so shouldn't be TitleCase
+export const ReceiveProductData = createAction('Receive Product Data')
+
+// GOOD - exporting a function with camelCase name
+export const receiveProductData = createAction('Receive Product Data')
+
+
+// BAD - `const` outside of a method should be ALL_CAPS
+const defaultName = 'Element'
+
+// BAD - Not a constructor function and so should be camelCase
+const AddToCart = () => { console.log('Adding to cart') }
+
+// GOOD - local constants within class or function
+class MyClass {
+    const name = 'Button'
+    render() {
+        const button = <Button name={name} />
+    }
+}
+```
+
 ## Overriding Lint Rules
 
 Some of the lint rules disallow uncommon but valid behaviour that is easily confused with/typoed from much more common behaviour. If you need to use the disallowed behaviour on purpose, use an explicit lint override in the source.
