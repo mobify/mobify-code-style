@@ -1,4 +1,4 @@
-## To be released
+## v2.8.4 (October 31, 2017)
 - Add support to copyright tooling for TypeScript files (.ts, .tsx) [#164](https://github.com/mobify/mobify-code-style/pull/164)
 
 ## v2.8.3 (May 31, 2017)
