@@ -43,17 +43,17 @@ Our CSS class naming convention (which we call CSM or Component, Sub-Component, 
 </div>
 ```
 
-This example may seem confusing at first but if we break down each of the selectors that we have, it begins to make more sense.
+This example may seem confusing at first, but if we break down each of the selectors that we have, it begins to make more sense.
 
 `.c-blog` This is a high-level component. In this example, it describes a wrapper that may contain blog content.
 
-`.c-blog__title` This is a sub-component. In this example, it is a title for a blog.
+`.c-blog__title` This is a sub-component. In this example, it's a title for a blog.
 
-`.c-blog-post` This is another high-level component. In this example, it describes the blog post itself. Notice that it is its own component instead of a sub-component of `c-blog` because a blog post does not need to be child of the blog container. This way the component is able to live anywhere.
+`.c-blog-post` This is another high-level component. In this example, it describes the blog post itself. Notice that it can be its own component instead of a sub-component of `c-blog` because a blog post does not need to be child of the blog container. This way, the component is able to live anywhere.
 
 `c-blog-post.c--featured` This is a modifier. Notice that the `c--featured` class is paired with the component or sub-component it belongs to. In this example, it describes a different way of displaying the `c-blog-post` component.
 
-`.c-blog-post__time` Like before, this is another sub-component this time belonging to the `c-blog-post` component. It is still a sub-component even though it is not a **direct** child of the component. In other words, sub-components are not required to be direct children of its parent component.
+`.c-blog-post__time` Like before, this is another sub-component this time belonging to the `c-blog-post` component. It's still a sub-component, even though it is not a **direct** child of the component. In other words, sub-components are not required to be direct children of their parent component.
 
 ### Components
 
@@ -70,7 +70,7 @@ Components are independent and self-contained units of UI. Styles belonging to a
 
 ### Sub-components
 
-Sub-components are elements that are child to its parent component. The classname should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component – sub-components are only ever child to the parent component.
+Sub-components are elements that are descendants of their parent component. Their classnames should be formatted as such: `c-[parent-component-name]__[sub-component-name]`. Sub-components do not, and should not, have sub-components of their own. If you find you need to write a sub-sub-component, instead just treat it as a sub-component.
 
 Like components, these should always live at the root level of a file. Avoid nesting these within the parent component or another sub-component.
 
@@ -103,7 +103,7 @@ Like components, these should always live at the root level of a file. Avoid nes
 
 ### Modifiers
 
-Modifiers, as their name suggests, modify components or sub-components. They are always chained to the component or sub-component they belong to.
+Modifiers, as their name suggests, modify components or sub-components. They're always chained to the component or sub-component they belong to.
 
 * Prefixed with the namespace of the affected element and two dashes (`c--`, `t--`)
 * Contained to the scope of a single component
@@ -292,7 +292,7 @@ Prefix | Purpose | Location |
 `.m-` (*) | Desktop embedded mobile markup classes: these are classes that we will use if we author Markup that is intended for clients to embed onto their desktop pages, but is for mobile content. | *n/a* |
 `.js-` | Javascript classes are used exclusively by scripts and should never have CSS styles applied to them. Repeat: **Do NOT** style Javascript classes. | *n/a*
 
-> \* The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third part plugins, and are treated as third party libraries with their own conventions.
+> \* The `m-` class prefix has an old, deprecated use: Mobify Modules. However, Mobify Modules have been replaced with third party plugins, and are treated as third party libraries with their own conventions.
 
 
 ## Components That Style Components
@@ -308,9 +308,9 @@ Sometimes there are situations when a component makes use of other components, a
 </button>
 ```
 
-In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it should be unaware of anything external to itself. Continuing with this example, the Icon is an external component, therefore the Button component should be completely unaware there there is even such thing as icon classes, like `c-icon`.
+In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it shouldn't be aware of anything external to itself. Since Icon is an external component, the Button component should be completely unaware that of `c-icon`.
 
-The solution to this challenge is to instead give the external component a new class that our new component can know about, like `c-button__icon`. By doing it in this way the external Icon component is, for all intents and purposes, being treated as a sub-component of the Button component. This method also has the benefit of being free of any (tight) coupling between the components. Both components can change, be added or removed, without really effecting the other in an unpredictable way.
+The solution to this challenge is to instead give the external component a new class that our new component can know about, like `c-button__icon`. This way, the component is treated like a sub-component of Button, and eliminates any tight coupling between the components.  Both components can change, be added or removed, without affecting the other in an unpredictable way.
 
 So, to summarize...
 
@@ -349,25 +349,22 @@ So, to summarize...
 
 ## Parsing vs. Decorating
 
-It's important to understand that we have a few different ways of authoring our CSS, and the way we do this is depends a lot on how we convert the desktop markup for mobile. Ideally, we parse the desktop markup and take full control of the final HTML. However, this isn't always possible, and sometimes we just output the desktop markup as is: untouched, or perhaps partially wrapped in order to control the appearance entirely through CSS.
+Ideally, we have total control over the HTML markup of a project. However, sometimes there are engineering requirements that force us to retain client markup, or partially wrap it in a container of our own.
 
-If you find yourself wondering "should I be adding a new class, or should I use the classes from desktop?" consider the following: If we're using their class names, we obviously can't follow our CSM syntax. But that said, sometimes we just have no choice; perhaps there are engineering requirements that force us to retain the markup structure. Under such circumstances, we must stick to the desktop classes.
-
-Below is laid out some situational advice that should clarify when to use desktop classes and when to author our own. We also talk about ways to adjust the code style when using their class names.
+If you find yourself wondering "should I be adding a new class, or should I use the classes from desktop?" consider the following: If we're using their class names, we can't follow our CSM syntax. Here's some advice:
 
 ### When to use our class naming convention
 
 * When writing your own markup in a template
-* When decorating (adding, moving, or wrapping) markup in a View, Parser, Decorator or UI-Script
+* When decorating (adding, moving, or wrapping) markup in a View, Parser, Decorator or UI-Script (Adaptive.js)
 * When adding custom classes to existing markup
 * When you find yourself using @extend
 
-### When to use their existing selectors
+### When to use client selectors
 
 * When it's fastest, easiest or most efficient to use their markup than it is to add our own.
 * When their markup is too inconsistent, or makes parsing too difficult.
-* When mobile functionality is tightly coupled to desktop's markup structure.
-* When intercepting AJAXed content or content added after a page is too costly, unperformant, or inefficent.
+* When functionality is tightly coupled to markup structure.
 
 ### How to use their existing selectors in our components
 
@@ -394,7 +391,7 @@ Always component classes should always be structured with our naming conventions
 
 Desktop classes can be added inside their parent component, but adding our own classes should be your FIRST approach so as to avoid nesting.
 
-Constantly evaluate your nesting in situation like this.
+Constantly evaluate your nesting in situations like this.
 
 ```scss
 // Okay
@@ -427,7 +424,7 @@ Constantly evaluate your nesting in situation like this.
 }
 ```
 
-Use their modifiers the same way you would use our modifiers. Chain it to the component or sub-component it directly affects.
+Use their modifiers the same way you would use our modifiers. Chain them to the component or sub-component it directly affects.
 
 ```scss
 // Okay

@@ -1,6 +1,6 @@
 # Sass (SCSS) Best Practices
 
-As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` syntax and [Autoprefixer](https://github.com/ai/autoprefixer) to build our CSS. We have some guidelines when using these guys.
+As mentioned earlier, we use [Sass](http://sass-lang.com/) with SCSS syntax.
 
 
 ## Table of Contents
@@ -23,31 +23,29 @@ As mentioned earlier, we use [Sass](http://sass-lang.com/) using the `SCSS` synt
 
 ## Nest Only When Necessary
 
-Limit nesting as much as possible. Assess every single level of nesting that you use. This prevents increasing specificity and impacting performance. Before nesting, ask yourself "will this work without nesting?" Just because you *can* nest does not mean you should, or that it makes the code maintainable (Hint: it doesn't).
+Limit nesting as much as possible. This prevents increasing specificity and impacting performance. Before nesting, ask yourself, "will this work without nesting?" Just because you *can* nest doesn't mean you should, or that it makes the code maintainable (Hint: it doesn't).
 
 At most, go no more than 4 levels deep.
 
 
 ### Beware Nested Comma Separated Selectors
 
-[This example](http://sassmeister.com/gist/891f2002ef23bf8e4788) demonstrates a real-world scenario that happens when developers recklessly author code to match the markup too closely.
-
-It is a bad habit to nest every or most times an element is appears nested in the markup. CSS is not HTML, so we can't treat it in the same way. We have to be mindful of the selectors that we are compiling.
+[This example](http://sassmeister.com/gist/891f2002ef23bf8e4788) demonstrates a real-world scenario that happens when developers recklessly author code to match the markup too closely. CSS is not HTML, so we can't treat it in the same way. We have to be mindful of the selectors that we're compiling.
 
 What strategy do we use to avoid unnecessary nesting? Let's use the above [sassmesiter.com](http://sassmeister.com/gist/891f2002ef23bf8e4788) example and tweak it to show a few ways we could approach it instead. We could...
 
 * [Nest less](http://sassmeister.com/gist/12ca39f4fa72cafc5a75)
 * [Don't nest at all](http://sassmeister.com/gist/67f8fd11522e1d4692a9) and use template classes
-* or, [don't nest at all](http://sassmeister.com/gist/036b0a161a47f321b776) and use component classes
+* Or, [don't nest at all](http://sassmeister.com/gist/036b0a161a47f321b776) and use component classes
 
-The approach you use depends on many factors. How much control you have over the markup? How reusable are the styles that you are writing? Are the desktop or inline styles that you must account for?
+The approach you use depends on many factors. How much control you have over the markup? How reusable are the styles that you are writing? Are there desktop or inline styles that you must account for?
 
-Chances are you will have to use a combination of all these strategies that works based on the state of your project and its markup.
+Chances are you'll have to use a combination of all these strategies that works based on the state of your project and its markup.
 
 
 ## Global vs. Local Variables/Mixins
 
-Any `$variable` that is used in more than one file should be placed in the `/vellum/variables.scss` file. Others should be placed at the top of the file in which they're used.
+Any `$variable` that is used in more than one file should be placed in the `/variables.scss` file. Others should be placed at the top of the file in which they're used.
 
 Any `@mixin` that is used in more than one file should be placed in the `/utilities` folder.
 
@@ -59,7 +57,7 @@ As a rule of thumb, try to avoid `@extend`.
 
 ### Pitfalls
 
-The main problem with `@extend` is that it is easy to bloat your code by using it. When first starting to use it, the code can be very innocent in appearance, such as:
+The main problem with `@extend` is that it has a tendency to bloat your code. When first starting to use it, the code can be very innocent in appearance:
 
 ```scss
 // SCSS code
@@ -74,7 +72,7 @@ The main problem with `@extend` is that it is easy to bloat your code by using i
 .c-callout {}
 ```
 
-That does appear pretty innocent. However, what happens if we do this:
+Nothing too strange here. However, what happens if we do this:
 
 ```scss
 // SCSS code
@@ -94,12 +92,12 @@ That does appear pretty innocent. However, what happens if we do this:
 .t-home .cta .c-button, .t-home .cta .c-callout {}
 ```
 
-Whoa! See what happened? Notice the extra selector that got compiled that we probably didn't expect to happen: `.t-home .cta .c-callout`. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any, and I mean really any instance that `.c-button` is written in a selector, they all get extended by `.c-callout`, which can be a massive amount of unwanted code.
+Whoa! See what happened? You probably didn't intend to create the `.t-home .cta .c-callout` selector. This happens because Sass extends every single instance of that selector, regardless of the selector chain. That means any time `.c-button` is written in a selector, it will get extended by `.c-callout`, which can lead to a massive amount of unwanted code.
 
 
 ### Workaround
 
-So there is a workaround for the problem we described above: __never directly extend a standard class__. Instead, __only extend placeholder classes__. Let's see what that looks like using the same example from above:
+There is a workaround for the problem we described above: __never directly extend a standard class__. Instead, __only extend placeholder classes__. Let's see what that looks like using the same example from above:
 
 ```scss
 // SCSS code
@@ -127,7 +125,7 @@ This technique is described in detail in Chris Lamb's article [Mastering Sass Ex
 
 The placeholder class always goes after the regular selectors. In other words, make the placeholder class the last selector in a chain of comma separated selectors.
 
-In most cases, the placeholder class is named after the element or component class it is related to:
+In most cases, the placeholder class is named after the element or component class it's related to:
 
 ```
 h1,
@@ -166,12 +164,12 @@ If the placeholder selector is for a modifier class, use the following name conv
 
 ### Genuine Usecases
 
-__Scenario 1__: There are situations where you want to have default styles on elements like lists or headings, but you may also need classes for those same styles to use when you can't use the exact markup. Good real life example is when you need a heading to be an `<h3>` but it must look like an `<h1>` or vice versa.
+__Scenario 1__: There are situations where you want to have default styles on elements like lists or headings, but you may also need classes for those same styles to use when you can't use the exact markup. A good real life example is when you need a heading to be an `<h3>` but it should look like an `<h1>` or vice versa.
 
 This is how we deal with this scenario using `@extend`:
 
 ```scss
-// In `/vellum`
+// In `/base`
 // ---
 
 h1,
@@ -212,11 +210,11 @@ h2,
 // and so on...
 ```
 
-Please note that in Mobify's way of writing CSS, we do not declare classes in vellum (a.k.a. globals) and we do not style elements or tags in components, which is why these two are declared separately in their respective directories.
+At Mobify, we don't declare classes in the default `base` styles or style elements or tags in components, which is why these two are declared separately in their respective directories.
 
-__Scenario 2__: This scenario is very specific to Mobify and here is why... as you probably know by now, using Mobify's Adaptive.js you are basically transforming a site's DOM and applying new CSS to the new DOM. Typically, we would expect to have full control over the markup, and therefore over all the classes added to the DOM. Unfortunately, there are times when parts of the DOM cannot be changed exactly like you might want, such as when the website is using third-party plugins like BazaarVoice.
+__Scenario 2__: This scenario occurs commonly when working with 3rd party plugins like BazaarVoice.
 
-What are the consequences of not being able to control parts of the DOM? It means we might not be able to add classes to the DOM reliably, which means that we can't apply our styles as easily as we would like. Instead, we are forced to write some gnarly selectors to ensure these situations can work. Let's use BazaarVoice again as our example:
+What are the consequences of not being able to control parts of the DOM? It means we might not be able to add classes to the DOM reliably, which means that we can't apply our styles as easily as we would like. Instead, we are forced to write some gnarly selectors. Here's an example using BazaarVoice:
 
 ```scss
 [id="BVRRContainer"] {
@@ -235,49 +233,38 @@ What are the consequences of not being able to control parts of the DOM? It mean
 }
 ```
 
-So what is happening here? Well because we can't add classes to the DOM on the BazaarVoice widget, instead we have to directly select the IDs and classes that they are using already. Now because we want BazaarVoice to look like our website, we want to reuse some of the CSS we've written. The solution to this is to use `@extend` on BazaarVoice selectors.
+What's happening here? Since we can't add classes to the DOM on the BazaarVoice widget, we have to directly select the IDs and classes that they're using already. However, we still want BazaarVoice to look like our website, AND to reuse some of the CSS we've written. The solution is to use `@extend` on BazaarVoice selectors.
 
 
 ## Filename Naming Convention
 
-The file naming convention should be identical to the Class Naming convention as described below, but with the following difference:
+The file naming convention should be identical to the Class Naming convention described below, but with the following difference:
 
-Sass files (technical scss files) should be a Sass partial
+Sass files (technical SCSS files) should be a Sass partial:
 
 * This means it's prepended with a underscore `_`
 
-Sass files are named after it's root class name
+Sass files are named after their root class name:
 
-* Vellum: the filename can be named after the grouping of elements
-    * Example `ul`, `ol` and `li` can be grouped together in `_list.scss`
+* Utilities: the filename can be named after the grouping of elements
+    * Example `u-color-error` and `u-bg-color-error` both live in  `_color.scss`
 * Components: the base component will be the filename
-    * `c-color-picker` makes `_color-picker.scss`
-    * Sub-components and modifiers are ignored!
+    * `c-color-picker` lives in `_color-picker.scss`, along with its sub-components and modifiers.
 * Templates: the base template will be the filename
-    * `t-my-account` makes `_my-account.scss`
-    * Sub-templates and modifiers are ignored!
+    * `t-my-account` lives in `_my-account.scss` with its sub-templates and modifiers.
     * Note that this should ultimately match our template filename naming convention
 
-## Note on Partials
+### Note on Underscores
 
-Be aware that there are two kinds of partials:
+SCSS files are appended with the underscore (`_`) character for two reasons:
 
-*Template Partials* are dust template partials that are used specifically to hold small chunks of reusable code.
-
-These partials live in the `/adaptation/templates/partials` directory.
-
-*Sass Partials* are Sass or SCSS files that are appended with the underscore (`_`) character and is used for two reasons: First reason is to prevent the file from compiling into a CSS of the same name. The second is to simplify `@import` declarations by way of allowing you to reference the file without the file extension.
-
-These partials live throughout the `/assets/styles` directory. In fact, most SCSS files are partials with the exception of the core `stylesheet.scss`.
-
-When discussing partials, it should be clear which type is being talked about based on context. For example when discussing HTML, the structure of a document or a View then the Template Partial is what's relevant.
-
-On the flip side, if discussing CSS, Sass or stylesheets then a Sass Partial is what's relevant.
+1. To prevent the file from compiling into a `.css` file of the same name.
+1. To simplify `@import` declarations by allowing you to reference the file without the file extension.
 
 
 ## Commenting Best Practice
 
-It is always better to over document your stylesheets than under document! That means writing lots of comments!
+It's always better to over-document your stylesheets than under-document! That means writing lots of comments!
 
 When writing comments, it is best to following a format that makes making changes easy, without having to clutter your code.
 
@@ -302,9 +289,9 @@ The second aspect of comments are the comments themselves! There are three types
 
 2. Direct Comments
 
-Direct comments are those that apply to a single line of code as denoted by the number in the note. So the first note (1) will apply anywhere you see `// 1`.
+Direct comments are those that apply to a single line of code, as denoted by the number in the note. So the first note (1) will apply anywhere you see `// 1`.
 
-Be aware that these notes typically only refer to the code directly beneath it, as far as just before the next section (i.e. the next sub-component). That next section could have it's own Direct Notes, but they will only apply to that section despite using the same numbers.
+Be aware that these notes typically only refer to the code directly beneath them. The section below the next title may have its own notes as well, and the numbering will start again.
 
 ```scss
 // My Component
@@ -330,7 +317,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 //
 // Notes:
 //
-// 1. We see the number 1 again! But this note only counts for the code below and ignore the 1 above
+// 1. We see the number 1 again! But this note only counts for the code below and ignores the 1 above
 
 .c-my-component__inner {
     display: block; // 1
@@ -340,7 +327,7 @@ Be aware that these notes typically only refer to the code directly beneath it, 
 
 3. Global Direct Comments
 
-Global Direct Comments are used in the same way as normal Direct Comments with one crucial difference: these are declared once at the top of the file and can be used through any section!
+Global Direct Comments are used in the same way as normal Direct Comments with one crucial difference: these are declared once at the top of the file and can be used in any section!
 
 So Note A will always refer to the same note.
 
@@ -367,22 +354,22 @@ This is a rare use case, but can be useful sometimes when you have the same set 
 }
 ```
 
-### Common things to Comment
+### What to Comment
 
 * The parent relative position to an absolutely positioned element
-* Explicit dimensions like widths or heights that don't appear based on any meaninful unit (like `$v-space` or `$h-space` and even font sizes)
+* Explicit dimensions like widths or heights that don't appear based on any meaningful `$unit`
 
 ## Variable Naming Convention
 
 Variable names should follow this pattern: `${modifer(s)}-{name}`.
 
-The name of a variable should describe the application of the variable value. For example, instead of saying `$color` (which is too generic to be useful), you would write `$link-color` which gives the name meaning and purpose.
+The name of a variable should describe the application of the variable value. For example, instead of saying `$color` (which is too generic to be useful), you would write `$link-color`, which gives the name meaning and purpose.
 
 Similarly, the variable name can refer to specific properties such as `$border-radius` or `$border`.
 
 Modifiers should be added before the name. So our above examples with modifiers prepended to them will look like `$dark-link-color`, `$large-border-radius` and `$dotted-border`.
 
-Do note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
+Note that variables without modifiers are implicitly the base version of that variable. As such, variables like `$base-link-color`, `$base-border-radius` and `$base-border-radius` are unnecessary.
 
 ### Exceptions
 
