@@ -453,4 +453,4 @@ Use their modifiers the same way you would use our modifiers. Chain them to the 
 }
 ```
 
-Continue on to [Block Comment Documentation Guide →](../localization-and-theming-best-practices/readme.md)
+Continue on to [Responsive Best Practices →](../responsive-best-practices/readme.md)

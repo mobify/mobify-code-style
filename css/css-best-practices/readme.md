@@ -101,43 +101,7 @@ The exception to this rule is when a base or root class is dependent on a global
 
 ## Mobile First
 
-When styling responsively, keep in mind that the first breakpoint is no breakpoint. This way, you build upon a ruleset that already exists, rather than creating one from scratch for each breakpoint.
-
-Instead of:
-```
-// Button
-// ===
-
-.c-button {
-    @media screen and (min-width: 0) and (max-width: 460px) {
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    @media screen and (min-width: 461px) and (max-width: 768px) {
-        padding: 10px;
-        font-size: 14px;
-    }
-}
-```
-
-Try:
-
-```
-// Button
-// ===
-
-.c-button {
-    padding: 10px;
-    font-size: 12px;
-
-    @media screen and (min-width: 461px) {
-        font-size: 14px;
-    }
-}
-```
-
-Exceptions to this rule obviously exist. If you are styling a completely different DOM or the overall layout of the component needs to change completely, it is best to used mediaqueries that are scoped to a particular range. A good example here would be a menu that changes from drawer-style to mega-menu depending on viewport width.
+When styling responsively, we use min-width queries and build on top of them when we need to. Learn more about our other responsive best practices [here](responsive-best-practices/readme.md). 
 
 ## Single Direction Rule
 
