@@ -308,7 +308,7 @@ Sometimes there are situations when a component makes use of other components, a
 </button>
 ```
 
-In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it shouldn't be aware of anything external to itself. Since Icon is an external component, the Button component should be completely unaware that of `c-icon`.
+In situations like this it is tempting to just style the icon's class inside of the button. However, this practice is poor and creates tight coupling between the Button and Icon components that shouldn't exist. As a rule of thumb, a component should only know about what it's responsible for; it shouldn't be aware of anything external to itself. Since Icon is an external component, the Button component should be completely unaware of `c-icon`.
 
 The solution to this challenge is to instead give the external component a new class that our new component can know about, like `c-button__icon`. This way, the component is treated like a sub-component of Button, and eliminates any tight coupling between the components.  Both components can change, be added or removed, without affecting the other in an unpredictable way.
 

@@ -1,16 +1,22 @@
 # Responsive Best Practices
 
+## Table of Contents
+
+* [Mobile First](#mobile-first)
+* [Use 4 or Less Major Breakpoints](#use-4-or-less-major-breakpoints)
+* [Keep Your Queries With Their Components](#keep-your-queries-with-their-components)
+
 ## Mobile First
 
 Our philosophy is that _the first breakpoint is no breakpoint_.
 
-There are plenty of good reasons to approach [design](https://www.lukew.com/ff/entry.asp?933) and [content strategy](https://alistapart.com/article/your-content-now-mobile) from this perspective, and the same goes for styling. An experience shouldn't depend on a specific viewport width work well.
+There are plenty of good reasons to approach [design](https://www.lukew.com/ff/entry.asp?933) and [content strategy](https://alistapart.com/article/your-content-now-mobile) from this perspective, and the same goes for styling. An experience shouldn't depend on a specific viewport width to work well.
 
 When writing your CSS, a mobile-first mindset will help keep your code DRY. *Using `min-width` only queries is the key.*
 
 Instead of:
 
-```
+```scss
 // Button
 // ===
 
@@ -29,7 +35,7 @@ Instead of:
 
 Try:
 
-```
+```scss
 // Button
 // ===
 
@@ -64,11 +70,11 @@ SCSS allows you to write media queries inside a declaration. This has several ad
 1. All component and sub-component styles, including modifiers, are in one place
 1. You can easily see what you are building on top of
 1. Less scrolling and reduced cognitive overhead
-1. Debugger is simpler
+1. Debugging is simpler
 
 Instead of:
 
-```
+```scss
 // Some Component
 // ===
 
@@ -112,7 +118,7 @@ Instead of:
 
 Try:
 
-```
+```scss
 // Some Component
 // ===
 

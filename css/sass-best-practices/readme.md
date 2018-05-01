@@ -45,7 +45,7 @@ Chances are you'll have to use a combination of all these strategies that works 
 
 ## Global vs. Local Variables/Mixins
 
-Any `$variable` that is used in more than one file should be placed in the `/variables.scss` file. Others should be placed at the top of the file in which they're used.
+Any `$variable` that is used in more than one file should be placed in the `_variables.scss` file. Others should be placed at the top of the file in which they're used.
 
 Any `@mixin` that is used in more than one file should be placed in the `/utilities` folder.
 

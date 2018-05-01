@@ -90,7 +90,7 @@ When authoring CSS, you should be always aware of the selectors that you are cre
 
 Strive to create selectors that actually fully describe where it is authored. Put another way, any given selector should tell you which file and where in the file it is written.
 
-This can be down by following this simple rule: the first class in a selector is the file it can be found.
+This can be done by following this simple rule: the first class in a selector is the file it can be found.
 
 For example `.t-pdp .c-product` would be written in `_pdp.scss` and NOT `_product.scss`.
 
@@ -101,7 +101,7 @@ The exception to this rule is when a base or root class is dependent on a global
 
 ## Mobile First
 
-When styling responsively, we use min-width queries and build on top of them when we need to. Learn more about our other responsive best practices [here](responsive-best-practices/readme.md). 
+When styling responsively, we use min-width queries and build on top of them when we need to. Learn more about our other responsive best practices [here](responsive-best-practices/readme.md).
 
 ## Single Direction Rule
 
