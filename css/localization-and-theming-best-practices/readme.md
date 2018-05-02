@@ -2,41 +2,16 @@
 
 ## Table of Contents
 
-* [For Non-Componentized Projects](#for-non-componentized-projects)
 * [For Componentized Projects](#for-componentized-projects)
+* [For Older, Non-Componentized Projects](#for-non-componentized-projects)
 * [Best Practices for Theming](#best-practices-for-theming)
 
 
 Otherwise known as l10n and i18n, we sometimes must author CSS that targets certain nationalities. Below we describe two methodologies for tackling this particular challenge:
 
-
-## For Non-Componentized Projects
-
-Projects that don't follow Mobify's modern CSS best practices aren't likely to have component classes. As such, targeting changes is most likely going to be entirely through template class names and desktop class names.
-
-As such, our preferred method for apply l10n and i18n styles is as follows.
-
-1. Create a localization or internationalization folder
-2. Create a SCSS file for each l10n or i18n that is to be targetted (i.e. english, french, deutch, etc.)
-3. Write your SCSS in the following format...
-
-```scss
-.x-deutsch {
-
-    .t-template-name {
-        // ...
-    }
-
-    .client-class-name {
-        // ...
-    }
-}
-```
-
-
 ## For Componentized Projects
 
-Projects that do follow Mobify's modern CSS best practices have component classes. As such, our preferred method of applying l10n and i18n changes is as follows.
+Projects that follow Mobify's modern CSS best practices have component classes. Our preferred method of applying l10n and i18n changes are as follows:
 
 1. Identify whether a l10n or i18n change applies to a component or template class
 2. Open that component or class in your editor
@@ -78,6 +53,30 @@ Projects that do follow Mobify's modern CSS best practices have component classe
 .t-page-name__sub-template {
 
     .x-deutsch {
+        // ...
+    }
+}
+```
+
+
+## For Non-Componentized Projects
+
+Projects that don't follow Mobify's modern CSS best practices aren't likely to have component classes. As such, targeting changes is most likely going to be entirely through template class names and desktop class names.
+
+As such, our preferred method for apply l10n and i18n styles is as follows.
+
+1. Create a localization or internationalization folder
+2. Create a SCSS file for each l10n or i18n that is to be targetted (i.e. english, french, deutch, etc.)
+3. Write your SCSS in the following format...
+
+```scss
+.x-deutsch {
+
+    .t-template-name {
+        // ...
+    }
+
+    .client-class-name {
         // ...
     }
 }

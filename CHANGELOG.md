@@ -1,3 +1,6 @@
+## v2.8.5 (April 30, 2018)
+- Add in Responsive Best Practices section, updated references to Adaptive [#165](https://github.com/mobify/mobify-code-style/pull/165)
+
 ## v2.8.4 (October 31, 2017)
 - Add support to copyright tooling for TypeScript files (.ts, .tsx) [#164](https://github.com/mobify/mobify-code-style/pull/164)
 
