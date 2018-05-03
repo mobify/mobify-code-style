@@ -40,3 +40,4 @@ Before you start, make sure you have [Package Control](https://packagecontrol.io
 * [CSSComb for VIM](https://github.com/csscomb/vim-csscomb)
 * [jetbrains-csscomb](https://github.com/csscomb/jetbrains-csscomb) which should work for all JetBrains IDEs, such as IDEA, PyCharm, WebStorm, PhpStorm, RubyMine, and perhaps others.
 * [CSSComb for Emacs](https://github.com/channikhabra/css-comb.el), including Aquamacs
+* [CSSComb for VS Code](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-csscomb)
