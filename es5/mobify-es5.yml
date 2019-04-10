@@ -47,7 +47,6 @@ rules:
   space-infix-ops: error
   space-unary-ops: error
   no-undef: error
-  eol-last: warn
   quotes:
     - error
     - single

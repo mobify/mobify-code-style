@@ -87,9 +87,6 @@
         // Disallow undeclared variables (unless mentioned in /*global ...*/ comment)
         "no-undef": 2,
 
-        // Warn if single newline at end of file is missing
-        "eol-last": 1,
-
         // Enforce single quotes for string literals
         "quotes": [2, "single"],
 

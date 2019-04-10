@@ -139,7 +139,6 @@ rules:
     - error
     - property
   dot-notation: error
-  eol-last: error
   generator-star-spacing: error
   indent:
     - error
@@ -168,7 +167,6 @@ rules:
   no-spaced-func: error
   no-trailing-spaces: error
   no-whitespace-before-property: error
-  object-curly-spacing: error
   operator-linebreak:
     - error
     - after

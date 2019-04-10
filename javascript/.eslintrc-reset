@@ -149,7 +149,6 @@
         "comma-spacing": 0,                             // enforce spacing before and after comma ***
         "comma-style": 0,                               // enforce one true comma style ***
         "consistent-this": 0,                           // enforces consistent naming when capturing the current execution context ***
-        "eol-last": 0,                                  // enforce newline at the end of file, with no multiple empty lines
         "func-names": 0,                                // require function expressions to have a name
         "func-style": 0,                                // enforces use of function declarations or expressions ***
         "key-spacing": 0,                               // enforces spacing between keys and values in object literal properties ***
