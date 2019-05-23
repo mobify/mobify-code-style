@@ -23,7 +23,7 @@ echo "Testing bad.md ..."
 diff <("$LINT_MD" "$TEST_DIR/bad.md" --no-color 2>&1) "$TEST_DIR/bad.expected.md"
 EXIT_BAD=$?
 
-echo "Testing a-bad-filename.expected.md ..."
+echo "Testing a-bad-filename.md ..."
 diff <("$LINT_MD" "$TEST_DIR/a-bad-filename.md" --no-color 2>&1) "$TEST_DIR/a-bad-filename.expected.md"
 EXIT_BAD_FILENAME=$?
 
