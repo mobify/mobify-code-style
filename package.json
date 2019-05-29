@@ -1,6 +1,6 @@
 {
   "name": "mobify-code-style",
-  "version": "2.8.4",
+  "version": "2.8.5",
   "description": "Code style guide and linting tools for Mobify",
   "repository": {
     "type": "git",
