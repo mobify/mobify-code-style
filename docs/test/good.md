@@ -4,13 +4,13 @@ Used to test style.
 
 ## GOOD: One level step down headings.
 
-<!--lint disable no-duplicate-headings-in-section -->
+<!--lint disable no-duplicate-headings-in-section-->
 
 ### GOOD: Repeated Content when rule is disabled
 
 ### GOOD: Repeated Content when rule is disabled
 
-<!--lint enable no-duplicate-headings-in-section -->
+<!--lint enable no-duplicate-headings-in-section-->
 
 ## GOOD: Section with subsections that duplicate
 
