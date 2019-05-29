@@ -1,4 +1,4 @@
-## To Be Released
+## To be released
 - Remove `linebreak-style` blocks windows users from linting their code properly [#169](https://github.com/mobify/mobify-code-style/pull/169)
 - Add in Responsive Best Practices section, updated references to Adaptive [#165](https://github.com/mobify/mobify-code-style/pull/165)
 
