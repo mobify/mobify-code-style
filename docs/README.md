@@ -47,9 +47,19 @@ What kind of document best meets your goal?
 **While writing**
 
 - [Write like you talk](http://paulgraham.com/talk.html).
-- [Only use terms from the glossary](https://docs.google.com/document/d/1xbHkio-hdps-5zZG-SmmAKbR9WpXtrJJ-fprShN7NkM/edit).
+- Refer to [Mobify's Style Guide](https://docs.google.com/document/d/1jlcg5boC3MUHN7fy2n3Yu_FBGzGgTUPrnMoePzQtqE4/edit#heading=h.ph65erg81h9r) for guidance on things like when to capitalize headings and titles, when to use contractions, and how to write in Mobify's tone of voice.
+- Check out our [Capitalization & Spelling Guide](https://docs.google.com/document/d/1LO7RAr2vD3LFs_bj5j0vIFMKsVFrOFfEjpCheYEH3Lg/edit#heading=h.ibiuv244lv6z) to help confirm the specific ways we spell, capitalize and contract common words at Mobify.
+
+**Code examples**
+
+- Assume that the readers of your document will copy and paste your code examples directly into their projects. That means you need to test they work (especially on PC machines, which is what most of our partners use)! 
+- In addition, consider whether the code examples are safe for all users, even future users:
+1. What are the defaults of the functions in the code example? Why did we choose them? Are they safe for all kinds of projects?
+2. How do we expect the application to change over time? If it changes in that way, will this code be safe?
+- Choose a concise, simple example whenever possible.
+- Explain what you're doing in words. Either through code examples, or directly above or below the example.
 
 **After writing**
 
 - [ ] 👍 Review
-- [ ] 🍻 Celeberate
+- [ ] 🍻 Celebrate
