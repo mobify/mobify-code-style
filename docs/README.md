@@ -57,7 +57,7 @@ What kind of document best meets your goal?
   1. What are the defaults of the functions in the code example? Why did we choose them? Are they safe for all kinds of projects?
   2. How do we expect the application to change over time? If it changes in that way, will this code be safe?
 - Choose a concise, simple example whenever possible.
-- Explain what you're doing in words. Either through code examples, or directly above or below the example.
+- Explain what you're doing in words. Either through code comments, or directly above or below the example.
 
 **After writing**
 
